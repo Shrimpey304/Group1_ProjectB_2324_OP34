@@ -1,24 +1,83 @@
+using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json;
 namespace Cinema;
 
-public class DisplayRoom{
+public static class DisplayRoom{
 
-    public static void DisplaySeatingIDs(List<Dictionary<string, string>>[,] seatingArrangement, int rows, int columns){
+    /// <summary>
+    /// temporary test to tell if what im doing is correct
+    /// </summary>
+    /// <param name="seating"></param>
+    public static void DisplaySeatingIDs(string fileName)
+        {
+            try
+            {   
+                List<Seating> seatingJson = SeatingJsonUtils.ReadFromJson(fileName);
+                Seating seating = seatingJson[0];
 
-        Console.WriteLine("Seating IDs Grid:");
-
-        for (int r = 0; r < rows; r++){
-            
-            for (int c = 0; c < columns; c++){
-
-                List<Dictionary<string, string>> seatingList = seatingArrangement[r, c];
-
-                foreach (var seatingInfo in seatingList)
+                if (seating != null)
                 {
-                    string id = seatingInfo["ID"];
-                    Console.Write($"[{id.PadLeft(3)}]");
+                    Console.WriteLine("Seating IDs Grid:");
+
+                    for (int i = 0; i < seating.Rows; i++)
+                    {
+                        for (int j = 0; j < seating.Columns; j++)
+                        {
+                            Console.Write($"[{seating.SeatingArrangement[i, j][0].RowID},{seating.SeatingArrangement[i, j][0].ColumnID}]");
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed to load seating arrangement from JSON.");
                 }
             }
-            Console.WriteLine(); 
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error displaying seating IDs: {ex.Message}");
+            }
         }
+
+    /// <summary>
+    /// used for creating new cinema rooms
+    /// </summary>
+    /// <param name="rows"></param>
+    /// <remarks> to create a new room json file: string "DataStorage/yourjsonname.json" </remarks>
+    /// <param name="cols"></param>
+    /// <param name="filePath"></param>
+    public static void CreateNewDefaultJson(int rows, int cols, string filePath)
+    {
+        List<Seating> seatingInstance = new();
+
+        int Rows = rows;
+        int Columns = cols;
+
+        Seating seating = new Seating(Rows, Columns);
+
+        for (int i = 0; i < Rows; i++)
+        {
+            for (int j = 0; j < Columns; j++)
+            {
+                if (seating.SeatingArrangement[i, j] == null)
+                {
+                    seating.SeatingArrangement[i, j] = new List<SeatInfo>();
+                }
+                seating.SeatingArrangement[i, j].Add(new SeatInfo{
+
+                    RowID = i,
+                    ColumnID = j,
+                    Price = 10.0,
+                    IsReserved = false,
+                    Type = SeatType.Normal
+
+                });
+            }
+        }
+
+        seatingInstance.Add(seating);
+        SeatingJsonUtils.UploadToJson(seatingInstance, filePath);
+
     }
+
 }
