@@ -66,7 +66,6 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    /// <param name="wantSeatTypeInstead"></param>
     public static void SelectSeating(string fileName){
         try
         {   
@@ -81,50 +80,67 @@ public static class DisplayRoom{
         
             while(!Console.KeyAvailable){
                 
+                List<Seating> TempSeatingJson = SeatingJsonUtils.ReadFromJson(fileName);
+                Seating tempSeating = TempSeatingJson[0];
+
                 Console.Clear();
 
-                if (seating != null)
+                if (tempSeating != null)
                 {
-                    for (int i = 0; i < seating.Rows; i++)
+                    for (int i = 0; i < tempSeating.Rows; i++)
                     {
-                        for (int j = 0; j < seating.Columns; j++)
+                        for (int j = 0; j < tempSeating.Columns; j++)
                         {
-                            if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[selectedPositionRow , selectedPositionCol]){
+                            if (tempSeating.SeatingArrangement[i,j] == tempSeating.SeatingArrangement[selectedPositionRow , selectedPositionCol]){
 
-                                if(!seating.SeatingArrangement[i,j][0].IsReserved){
+                                if(!tempSeating.SeatingArrangement[i,j][0].IsReserved){
 
-                                    if (seating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                    if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
                                         Console.BackgroundColor = ConsoleColor.Green;
                                         Console.Write($"[ N ]");
-                                    }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
+                                    }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
                                         Console.BackgroundColor = ConsoleColor.Green;
                                         Console.Write($"[ D ]");
-                                    }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
+                                    }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
                                         Console.BackgroundColor = ConsoleColor.Green;
                                         Console.Write($"[ P ]");
                                     }
+
+                                }else if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
+                                    
+                                    Console.BackgroundColor = ConsoleColor.Green;
+                                    Console.Write($"[ S ]");
+
                                 }else{
+
                                     Console.BackgroundColor = ConsoleColor.DarkGray;
                                     Console.Write($"[ R ]");
+
                                 }
 
                             }else{
 
-                                if(!seating.SeatingArrangement[i,j][0].IsReserved){
-
-                                    if (seating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-                                        Console.BackgroundColor = ConsoleColor.Yellow;
-                                        Console.Write($"[ N ]");
-                                    }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
+                                if(!tempSeating.SeatingArrangement[i,j][0].IsReserved){
+                                    
+                                    if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
+                                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                                        Console.Write($"[ S ]");
+                                    }
+                                    else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
                                         Console.BackgroundColor = ConsoleColor.Blue;
                                         Console.Write($"[ D ]");
-                                    }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
+                                    }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
                                         Console.BackgroundColor = ConsoleColor.Red;
                                         Console.Write($"[ P ]");
+                                    }else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                        Console.BackgroundColor = ConsoleColor.Yellow;
+                                        Console.Write($"[ N ]");
                                     }
                                 }else{
+
                                     Console.BackgroundColor = ConsoleColor.DarkGray;
                                     Console.Write($"[ R ]");
+
                                 }
                             }
                         }
@@ -185,12 +201,34 @@ public static class DisplayRoom{
                         break;
                         case ConsoleKey.Enter:
                             Console.WriteLine($"selected:{selectedPositionRow},{selectedPositionCol}");
-                            SelectedPositions.Add(lastPos);
+
+                            if(tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation == false){
+
+                                tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation = true;
+                                SelectedPositions.Add(lastPos);
+
+                            }else{
+
+                                tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation = false;
+                                SelectedPositions.Remove(lastPos);
+
+                            }
                         break;
+                        case ConsoleKey.Backspace:
+
+                            List<Seating> UploadSeatingPreAdjustment = new(){seating};
+                            SeatingJsonUtils.UploadToJson(UploadSeatingPreAdjustment, fileName);
+                            
+                        break;
+                        
                     }
                 }catch(Exception ex ){
                     Console.WriteLine(ex.Message);
                 }
+
+                List<Seating> TempUploadSeating = new(){tempSeating};
+
+                SeatingJsonUtils.UploadToJson(TempUploadSeating, fileName);
             }
         }
         catch (Exception ex)
@@ -229,7 +267,8 @@ public static class DisplayRoom{
                     ColumnID = j,
                     Price = 10.0,
                     IsReserved = false,
-                    Type = SeatType.Normal
+                    Type = SeatType.Normal,
+                    inPrereservation = false
 
                 });
             }

@@ -6,7 +6,7 @@ public class Program{
 
         const string fileName = "DataStorage/CinemaRoom1.json";
         DisplayRoom.SelectSeating(fileName);
-
+        
     }
 
 }

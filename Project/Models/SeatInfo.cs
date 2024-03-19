@@ -6,6 +6,7 @@ public class SeatInfo
     public int ColumnID { get; set; }
     public double Price { get; set; }
     public bool IsReserved { get; set; }
+    public bool inPrereservation { get; set; }
     public SeatType Type { get; set; }
 }
 
