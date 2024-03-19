@@ -8,7 +8,7 @@ public static class DisplayRoom{
     /// temporary test to tell if what im doing is correct
     /// </summary>
     /// <param name="seating"></param>
-    public static void DisplaySeatingIDs(string fileName)
+    public static void DisplaySeatingIDs(string fileName, bool wantSeatTypeInstead)
         {
             try
             {   
@@ -23,10 +23,24 @@ public static class DisplayRoom{
                     {
                         for (int j = 0; j < seating.Columns; j++)
                         {
-                            Console.Write($"[{seating.SeatingArrangement[i, j][0].RowID},{seating.SeatingArrangement[i, j][0].ColumnID}]");
+                            if (!wantSeatTypeInstead){
+                                Console.Write($"[{seating.SeatingArrangement[i, j][0].RowID},{seating.SeatingArrangement[i, j][0].ColumnID}]");
+                            }else{
+                                if (seating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                    Console.Write($"[ N ]");
+                                }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
+                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                    Console.Write($"[ D ]");
+                                }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
+                                    Console.BackgroundColor = ConsoleColor.Red;
+                                    Console.Write($"[ P ]");
+                                }
+                            }
                         }
                         Console.WriteLine();
                     }
+                    Console.ResetColor();
                 }
                 else
                 {

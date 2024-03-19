@@ -5,7 +5,7 @@ public class Program{
     public static void Main(){
 
         const string fileName = "DataStorage/CinemaRoom1.json";
-        DisplayRoom.DisplaySeatingIDs(fileName);
+        DisplayRoom.DisplaySeatingIDs(fileName, true);
 
     }
 

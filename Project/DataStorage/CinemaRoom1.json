@@ -8,7 +8,7 @@
             "ColumnID": 0,
             "Price": 10.0,
             "IsReserved": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -17,7 +17,7 @@
             "ColumnID": 1,
             "Price": 10.0,
             "IsReserved": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -44,7 +44,7 @@
             "ColumnID": 4,
             "Price": 10.0,
             "IsReserved": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -53,7 +53,7 @@
             "ColumnID": 5,
             "Price": 10.0,
             "IsReserved": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -62,7 +62,7 @@
             "ColumnID": 6,
             "Price": 10.0,
             "IsReserved": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
