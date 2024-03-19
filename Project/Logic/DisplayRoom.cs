@@ -7,62 +7,6 @@ namespace Cinema;
 public static class DisplayRoom{
 
     /// <summary>
-    /// temporary test to tell if what im doing is correct
-    /// </summary>
-    /// <param name="seating"></param>
-    public static void DisplaySeatingIDs(string fileName, bool wantSeatTypeInstead)
-    {
-        try
-        {   
-            List<Seating> seatingJson = SeatingJsonUtils.ReadFromJson(fileName);
-            Seating seating = seatingJson[0];
-
-            if (seating != null)
-            {
-                Console.WriteLine("Seating IDs Grid:");
-
-                for (int i = 0; i < seating.Rows; i++)
-                {
-                    for (int j = 0; j < seating.Columns; j++)
-                    {
-                        if (!wantSeatTypeInstead){
-                            Console.Write($"[{seating.SeatingArrangement[i, j][0].RowID},{seating.SeatingArrangement[i, j][0].ColumnID}]");
-                        }else{
-
-                            if(!seating.SeatingArrangement[i,j][0].IsReserved){
-
-                                if (seating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-                                    Console.BackgroundColor = ConsoleColor.Yellow;
-                                    Console.Write($"[ N ]");
-                                }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
-                                    Console.BackgroundColor = ConsoleColor.Blue;
-                                    Console.Write($"[ D ]");
-                                }else if(seating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
-                                    Console.BackgroundColor = ConsoleColor.Red;
-                                    Console.Write($"[ P ]");
-                                }
-                            }else{
-                                Console.BackgroundColor = ConsoleColor.DarkGray;
-                                Console.Write($"[ R ]");
-                            }
-                        }
-                    }
-                    Console.WriteLine();
-                }
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.WriteLine("Failed to load seating arrangement from JSON.");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error displaying seating: {ex.Message}");
-        }
-    }
-
-    /// <summary>
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
@@ -121,7 +65,7 @@ public static class DisplayRoom{
                             }else{
 
                                 if(!tempSeating.SeatingArrangement[i,j][0].IsReserved){
-                                    
+
                                     if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
                                         Console.BackgroundColor = ConsoleColor.DarkMagenta;
                                         Console.Write($"[ S ]");
@@ -157,11 +101,11 @@ public static class DisplayRoom{
 
                 if(SelectedPositions.Count > 0){
 
-                    Console.Write($"Selected seats: Row: {SelectedPositions[0].Item1} Seat: ");
+                    Console.Write($"Selected seats: Row: {SelectedPositions[0].Item1} Seat ");
 
                     foreach(Tuple<int,int> seatLoc in SelectedPositions){
 
-                        Console.Write($" {seatLoc.Item2} -");
+                        Console.Write($"- {seatLoc.Item2}");
                     }
 
                 }else{
@@ -202,7 +146,7 @@ public static class DisplayRoom{
                         case ConsoleKey.Enter:
                             Console.WriteLine($"selected:{selectedPositionRow},{selectedPositionCol}");
 
-                            if(tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation == false){
+                            if(tempSeating!.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation == false){
 
                                 tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation = true;
                                 SelectedPositions.Add(lastPos);
@@ -226,7 +170,7 @@ public static class DisplayRoom{
                     Console.WriteLine(ex.Message);
                 }
 
-                List<Seating> TempUploadSeating = new(){tempSeating};
+                List<Seating> TempUploadSeating = new(){tempSeating!};
 
                 SeatingJsonUtils.UploadToJson(TempUploadSeating, fileName);
             }
