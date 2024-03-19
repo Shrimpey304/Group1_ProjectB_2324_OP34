@@ -126,7 +126,7 @@
             "RowID": 1,
             "ColumnID": 3,
             "Price": 10.0,
-            "IsReserved": false,
+            "IsReserved": true,
             "Type": 0
           }
         ],
@@ -135,7 +135,7 @@
             "RowID": 1,
             "ColumnID": 4,
             "Price": 10.0,
-            "IsReserved": false,
+            "IsReserved": true,
             "Type": 0
           }
         ],
