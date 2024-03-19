@@ -75,7 +75,9 @@ public static class DisplayRoom{
 
             int selectedPositionCol = 0;
             int selectedPositionRow = 0;
-            
+
+            //item 1 = row || item 2 = col
+            List<Tuple<int,int>> SelectedPositions = new();    
         
             while(!Console.KeyAvailable){
                 
@@ -137,6 +139,20 @@ public static class DisplayRoom{
                 
                 Tuple<int,int> lastPos = new Tuple<int, int>(selectedPositionRow,selectedPositionCol);
 
+                if(SelectedPositions.Count > 0){
+
+                    Console.Write($"Selected seats: Row: {SelectedPositions[0].Item1} Seat: ");
+
+                    foreach(Tuple<int,int> seatLoc in SelectedPositions){
+
+                        Console.Write($" {seatLoc.Item2} -");
+                    }
+
+                }else{
+
+                    Console.WriteLine("Selected seats: None");
+                }
+
                 try{
                     switch(Console.ReadKey(true).Key){
                         case ConsoleKey.UpArrow:
@@ -169,6 +185,7 @@ public static class DisplayRoom{
                         break;
                         case ConsoleKey.Enter:
                             Console.WriteLine($"selected:{selectedPositionRow},{selectedPositionCol}");
+                            SelectedPositions.Add(lastPos);
                         break;
                     }
                 }catch(Exception ex ){
