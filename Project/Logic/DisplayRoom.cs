@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Cinema;
 
 public static class DisplayRoom{
-
+  
     /// <summary>
     /// used to select seats in any cinema room
     /// </summary>
