@@ -10,7 +10,7 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    public static void SelectSeating(string fileName){
+    public static void SelectSeating(string fileName, MovieSession moviesesh){
         try
         {   
             List<Seating> seatingJson = SeatingJsonUtils.ReadFromJson(fileName);
@@ -37,9 +37,41 @@ public static class DisplayRoom{
                         {
                             if (tempSeating.SeatingArrangement[i,j] == tempSeating.SeatingArrangement[selectedPositionRow , selectedPositionCol]){
 
-                                if(!tempSeating.SeatingArrangement[i,j][0].IsReserved){
+                                if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
 
-                                    if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                    foreach(MovieSession sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
+
+                                        if(sesh != moviesesh){
+
+                                            if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                                Console.BackgroundColor = ConsoleColor.Green;
+                                                Console.Write($"[ N ]");
+                                            }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
+                                                Console.BackgroundColor = ConsoleColor.Green;
+                                                Console.Write($"[ D ]");
+                                            }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
+                                                Console.BackgroundColor = ConsoleColor.Green;
+                                                Console.Write($"[ P ]");
+                                            }
+
+                                        }else if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
+                                            
+                                            Console.BackgroundColor = ConsoleColor.Green;
+                                            Console.Write($"[ S ]");
+
+                                        }else{
+
+                                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                                            Console.Write($"[ R ]");
+
+                                        }
+                                    }
+                                }else{
+
+                                    if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){    
+                                        Console.BackgroundColor = ConsoleColor.Green;
+                                        Console.Write($"[ S ]");
+                                    }else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
                                         Console.BackgroundColor = ConsoleColor.Green;
                                         Console.Write($"[ N ]");
                                     }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
@@ -49,22 +81,39 @@ public static class DisplayRoom{
                                         Console.BackgroundColor = ConsoleColor.Green;
                                         Console.Write($"[ P ]");
                                     }
-
-                                }else if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
-                                    
-                                    Console.BackgroundColor = ConsoleColor.Green;
-                                    Console.Write($"[ S ]");
-
-                                }else{
-
-                                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                                    Console.Write($"[ R ]");
-
                                 }
 
                             }else{
 
-                                if(!tempSeating.SeatingArrangement[i,j][0].IsReserved){
+                                if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
+
+
+                                    foreach(MovieSession sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
+
+                                        if(sesh != moviesesh){
+
+                                            if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
+                                                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                                                Console.Write($"[ S ]");
+                                            }
+                                            else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
+                                                Console.BackgroundColor = ConsoleColor.Blue;
+                                                Console.Write($"[ D ]");
+                                            }else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
+                                                Console.BackgroundColor = ConsoleColor.Red;
+                                                Console.Write($"[ P ]");
+                                            }else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
+                                                Console.BackgroundColor = ConsoleColor.Yellow;
+                                                Console.Write($"[ N ]");
+                                            }
+                                        }else{
+
+                                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                                            Console.Write($"[ R ]");
+
+                                        }
+                                    }
+                                }else{
 
                                     if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
                                         Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -80,12 +129,8 @@ public static class DisplayRoom{
                                         Console.BackgroundColor = ConsoleColor.Yellow;
                                         Console.Write($"[ N ]");
                                     }
-                                }else{
-
-                                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                                    Console.Write($"[ R ]");
-
                                 }
+
                             }
                         }
                         Console.WriteLine();
@@ -210,7 +255,7 @@ public static class DisplayRoom{
                     RowID = i,
                     ColumnID = j,
                     Price = 10.0,
-                    IsReserved = false,
+                    reservedInSession = new(),
                     Type = SeatType.Normal,
                     inPrereservation = false
 
