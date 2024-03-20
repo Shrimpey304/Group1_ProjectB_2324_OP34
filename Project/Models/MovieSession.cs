@@ -2,15 +2,29 @@ namespace Cinema;
 
 public class MovieSession
 {
-	public string StartTime;
-	public string EndTime;
+	public static int sID = 1;
+	public int sessionID;
+	public DateTime StartTime;
+	public DateTime EndTime;
 	
 	// public DisplayRoom Room;
 	
-	public MovieSession(string start, string end, string FileName)
+	public MovieSession(DateTime start, DateTime end)
 	{
 		StartTime = start;
 		EndTime = end;
-		// Room = new DisplayRoom({FileName})
+		sessionID = sID ++;
 	}
+
+	public static void MakeSession(DateTime start, DateTime end){
+
+		MovieSession session = new(start, end);
+		List<MovieSession> sessionToUpload = new(){session};
+		const string filePath = "DataStorage/Sessions.json";
+
+		SessionsJsonUtils.UploadToJson(sessionToUpload, filePath);
+
+	}
+
+
 }
