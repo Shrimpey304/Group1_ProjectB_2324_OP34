@@ -1,0 +1,19 @@
+[
+    {
+      "Id": 1,
+      "MailAdress": "kimogaming@gmail.com",
+      "Password": "123123",
+      "IsAdmin": true,
+      "Phonenumber": null,
+      "Name": "Kimo"
+    },
+    {
+      "Id": 1,
+      "MailAdress": "PookieBear@gmail.com",
+      "Password": "123123",
+      "IsAdmin": true,
+      "Phonenumber": null,
+      "Name": "Ronan"
+    }
+  ]
+  
