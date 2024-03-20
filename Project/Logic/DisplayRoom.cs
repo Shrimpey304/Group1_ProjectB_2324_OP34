@@ -19,7 +19,7 @@ public static class DisplayRoom{
             int selectedPositionCol = 0;
             int selectedPositionRow = 0;
 
-            //item 1 = row || item 2 = col
+            //item 1 = row    item 2 = col
             List<Tuple<int,int>> SelectedPositions = new();    
         
             while(!Console.KeyAvailable){
