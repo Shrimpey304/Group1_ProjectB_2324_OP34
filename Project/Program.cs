@@ -9,7 +9,6 @@ public class Program{
         // // MovieSession.MakeSession(DateTime.Now, DateTime.Now.AddHours(1));
         // List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
         // MovieSession sesh = sessions[0];
-
         // DisplayRoom.SelectSeating(fileName, sesh);
         LoginMenu.RunApplication(); // call LoginMenu
         

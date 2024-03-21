@@ -4,7 +4,7 @@ namespace Cinema
 {
     public class UserLoginCheck
     {
-        private readonly Accountdataaccess _accountJsonUtils = new AccountJsonUtils();
+        private readonly Accountdataaccess _accountJsonUtils = new Accountdataaccess();
 
         public bool ValidateLogin(string username, string password)
         {

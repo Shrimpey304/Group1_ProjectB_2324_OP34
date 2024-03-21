@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace DataAccess
+namespace Cinema
 {
     public class User
     {
@@ -10,12 +10,21 @@ namespace DataAccess
         public string Password { get; set; }
     }
 
-    public class AccountJsonUtils
+    public class Accountdataaccess
     {
-        private readonly string _filePath = "DataStorage/Accounts.json"; // Adjusted path to reach the DataStorage folder
+        // Use an absolute path for the file location
+        private readonly string _filePath = @"C:\Users\ronan\OneDrive\Documenten\GitHub\Group1_ProjectB_2324_OP34\Project\DataStorage\Accounts.json";
 
         public List<User> GetUsers()
         {
+            // Ensure the directory exists before trying to read the file
+            var directory = Path.GetDirectoryName(_filePath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+                return new List<User>();
+            }
+
             if (!File.Exists(_filePath))
             {
                 return new List<User>();
@@ -27,6 +36,13 @@ namespace DataAccess
 
         public void SaveUser(User user)
         {
+            // Ensure the directory exists before trying to write the file
+            var directory = Path.GetDirectoryName(_filePath);
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
             var users = GetUsers();
             users.Add(user);
             var json = JsonConvert.SerializeObject(users, Formatting.Indented);
