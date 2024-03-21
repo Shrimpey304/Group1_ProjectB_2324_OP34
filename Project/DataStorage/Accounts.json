@@ -1,14 +1,21 @@
 [
-  {
-    "Username": null,
-    "Password": "123123"
-  },
-  {
-    "Username": null,
-    "Password": "123123"
-  },
-  {
-    "Username": "Ronan",
-    "Password": "123"
-  }
+	{
+		"id": 1,
+		"emailAddress": "n@b.c",
+		"password": "xyz",
+		"fullName": "Nikola Tesla"
+	},
+	{
+		"id": 2,
+		"emailAddress": "t@b.c",
+		"password": "xyz",
+		"fullName": "Thomas Edison"
+	},
+	{
+		"id": 3,
+		"emailAddress": "pookiebearG@gmail.com",
+		"password": "123G",
+		"fullName": "Ronan Pookie Hardjo Bear"
+	}
+
 ]

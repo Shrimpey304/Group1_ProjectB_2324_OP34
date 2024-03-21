@@ -10,8 +10,8 @@ public class Program{
         // List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
         // MovieSession sesh = sessions[0];
         // DisplayRoom.SelectSeating(fileName, sesh);
-        LoginMenu.RunApplication(); // call LoginMenu
-        
+        //LoginMenu.RunApplication(); // call LoginMenu
+        Menu.Start();
     }
 
 }
