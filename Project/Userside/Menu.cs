@@ -1,28 +1,46 @@
-static class Menu
-{
+using System;
+using Cinema; // Ensure this matches your project structure for accessing UserRegistration
 
-    //This shows the menu. You can call back to this method to show the menu again
-    //after another presentation method is completed.
-    //You could edit this to show different menus depending on the user's role
-    static public void Start()
+public static class Menu
+{
+    public static void Start()
     {
         Console.WriteLine("Enter 1 to login");
-        Console.WriteLine("Enter 2 to do something else in the future");
+        Console.WriteLine("Enter 2 to register");
+        Console.WriteLine("Enter 3 for other options");
 
-        string input = Console.ReadLine();
-        if (input == "1")
+        var input = Console.ReadLine();
+        switch (input)
         {
-            UserLogin.Start();
+            case "1":
+                // Implement login logic
+                break;
+            case "2":
+                Register();
+                break;
+            case "3":
+                // Implement other options
+                Console.WriteLine("Other options are not yet implemented.");
+                break;
+            default:
+                Console.WriteLine("Invalid input.");
+                Start();
+                break;
         }
-        else if (input == "2")
-        {
-            Console.WriteLine("This feature is not yet implemented");
-        }
-        else
-        {
-            Console.WriteLine("Invalid input");
-            Start();
-        }
+    }
 
+    private static void Register()
+    {
+        Console.WriteLine("Enter your email address:");
+        var email = Console.ReadLine();
+        Console.WriteLine("Enter your password:");
+        var password = Console.ReadLine();
+        Console.WriteLine("Enter your full name:");
+        var fullName = Console.ReadLine();
+
+        UserRegistration.Register(email, password, fullName);
+        Console.WriteLine("Registration successful.");
+
+        Start(); // Return to the main menu
     }
 }

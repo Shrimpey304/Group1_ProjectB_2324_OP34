@@ -2,7 +2,7 @@ using System.Text.Json;
 
 static class AccountsAccess
 {
-    static string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"C:\Users\aidan\OneDrive\Documenten\Code files\Hoopschijt\DataSources\accounts.json");
+    static string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"C:\Users\ronan\OneDrive\Documenten\GitHub\Group1_ProjectB_2324_OP34\Project\DataStorage\Accounts.json");
 
 
     public static List<AccountModel> LoadAll()
