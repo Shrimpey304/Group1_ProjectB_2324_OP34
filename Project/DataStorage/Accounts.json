@@ -26,5 +26,12 @@
     "password": "test123",
     "fullName": "fulltest",
     "isAdmin": false
+  },
+  {
+    "id": 5,
+    "emailAddress": "4",
+    "password": "7",
+    "fullName": "\\7",
+    "isAdmin": false
   }
 ]

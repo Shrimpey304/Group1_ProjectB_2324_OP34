@@ -7,10 +7,10 @@ static class UserLogin
     {
         Console.WriteLine("Welcome to the login page");
         Console.WriteLine("Please enter your email address");
-        string email = Console.ReadLine();
+        string? email = Console.ReadLine();
         Console.WriteLine("Please enter your password");
-        string password = Console.ReadLine();
-        AccountModel acc = accountsLogic.CheckLogin(email, password);
+        string? password = Console.ReadLine();
+        AccountModel acc = accountsLogic.CheckLogin(email!, password!);
         if (acc != null)
         {
             Console.WriteLine("Welcome back " + acc.FullName);

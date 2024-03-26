@@ -37,7 +37,7 @@ public static class Menu
         Console.WriteLine("Enter your full name:");
         var fullName = Console.ReadLine();
 
-        UserRegistration.Register(email, password, fullName);
+        UserRegistration.Register(email!, password!, fullName!);
         Console.WriteLine("Registration successful.");
 
         Start(); // Return to the main menu
