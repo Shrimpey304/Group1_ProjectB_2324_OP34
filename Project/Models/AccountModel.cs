@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 
-
-class AccountModel
+public class AccountModel
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -15,20 +14,15 @@ class AccountModel
     [JsonPropertyName("fullName")]
     public string FullName { get; set; }
 
-    [JsonPropertyName("IsAdmin")]
-    public bool IsAdmin { get; set; }
+    [JsonPropertyName("isAdmin")]
+    public bool IsAdmin { get; set; } = false; // Default to false
 
-    public AccountModel(int id, string emailAddress, string password, string fullName, bool isadmin)
+    // Assuming ID is handled elsewhere (e.g., by UserRepository), we don't include it in the constructor.
+    public AccountModel(string emailAddress, string password, string fullName, bool isAdmin)
     {
-        Id = id;
         EmailAddress = emailAddress;
         Password = password;
         FullName = fullName;
-        IsAdmin = isadmin;
+        IsAdmin = isAdmin;
     }
-
 }
-
-
-
-
