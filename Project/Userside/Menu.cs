@@ -12,7 +12,7 @@ public static class Menu
         switch (input)
         {
             case "1":
-                // Implement login logic
+                UserLogin.Start();
                 break;
             case "2":
                 Register();

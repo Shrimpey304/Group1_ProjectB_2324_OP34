@@ -33,5 +33,12 @@
     "password": "yeet123",
     "fullName": "deletes",
     "isAdmin": false
+  },
+  {
+    "id": 6,
+    "emailAddress": "th@g.c",
+    "password": "123123",
+    "fullName": "th jo",
+    "isAdmin": false
   }
 ]
