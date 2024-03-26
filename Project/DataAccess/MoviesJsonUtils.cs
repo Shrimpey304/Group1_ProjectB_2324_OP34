@@ -5,8 +5,8 @@ public class MoviesJsonUtils{
 
     const string filePath = "DataStorage/Movies.json";
 
-    public static void UpdateSingleObject(Movie toWrite, string fileName){
-        List<Movie> objList = ReadFromJson(fileName);
+    public static void UpdateSingleObject(MovieModel toWrite, string fileName){
+        List<MovieModel> objList = ReadFromJson(fileName);
         
         if (toWrite != null && objList != null){
 
@@ -30,7 +30,7 @@ public class MoviesJsonUtils{
         }
     }
 
-    public static bool AreEqual(Movie obj1, Movie obj2)
+    public static bool AreEqual(MovieModel obj1, MovieModel obj2)
     {
         // Serialize objects to JSON and compare the strings
         string json1 = JsonConvert.SerializeObject(obj1, Formatting.None);
@@ -38,13 +38,13 @@ public class MoviesJsonUtils{
         return json1 == json2;
     }
 
-    public static List<Movie> ReadFromJson(string fileName){
+    public static List<MovieModel> ReadFromJson(string fileName){
         try{
 
             if (File.Exists(fileName)){
 
                 string json = File.ReadAllText(fileName);
-                return JsonConvert.DeserializeObject<List<Movie>>(json)!;
+                return JsonConvert.DeserializeObject<List<MovieModel>>(json)!;
 
             }
         }catch (Exception ex){
@@ -52,10 +52,10 @@ public class MoviesJsonUtils{
             Console.WriteLine($"Error reading from JSON file: {ex.Message}");
         }
 
-        return new List<Movie>();
+        return new List<MovieModel>();
     }
 
-    public static void UploadToJson(List<Movie> objList, string fileName){
+    public static void UploadToJson(List<MovieModel> objList, string fileName){
         try{
 
             string json = JsonConvert.SerializeObject(objList, Formatting.Indented);
