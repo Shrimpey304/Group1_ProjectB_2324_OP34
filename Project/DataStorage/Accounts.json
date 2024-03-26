@@ -1,5 +1,4 @@
 [
-
   {
     "id": 1,
     "emailAddress": "n@b.c",
@@ -26,6 +25,13 @@
     "emailAddress": "test@gmail.com",
     "password": "test123",
     "fullName": "fulltest",
+    "isAdmin": false
+  },
+  {
+    "id": 5,
+    "emailAddress": "yeetes@gmail.com",
+    "password": "yeet123",
+    "fullName": "deletes",
     "isAdmin": false
   }
 ]
