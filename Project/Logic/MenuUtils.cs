@@ -18,15 +18,15 @@ public static class MenuUtils{
         List<string> options = new List<string>(optionsAndActions.Keys);
         bool[] selectedOptions = new bool[options.Count];
 
-        if(headertype == "main"){
-            DisplayHeader.HeaderMain();
-        }
-
         while (true)
         {
             Console.Clear();
 
-            Console.WriteLine("press 'enter' to select option");
+            if(headertype == "main"){
+                DisplayHeader.HeaderMain();
+            }
+
+            Console.WriteLine("\n\npress 'enter' to select option\n");
 
             for (int i = 0; i < options.Count; i++)
             {
