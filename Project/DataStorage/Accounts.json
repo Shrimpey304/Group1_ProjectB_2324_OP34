@@ -26,19 +26,5 @@
     "password": "test123",
     "fullName": "fulltest",
     "isAdmin": false
-  },
-  {
-    "id": 5,
-    "emailAddress": "yeetes@gmail.com",
-    "password": "yeet123",
-    "fullName": "deletes",
-    "isAdmin": false
-  },
-  {
-    "id": 6,
-    "emailAddress": "th@g.c",
-    "password": "123123",
-    "fullName": "th jo",
-    "isAdmin": false
   }
 ]

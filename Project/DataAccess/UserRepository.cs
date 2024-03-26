@@ -6,7 +6,7 @@ using Cinema;
 
 public class UserRepository
 {
-    private readonly string _filePath = @"C:\Users\aidan\OneDrive\Documenten\GitHub\Group1_ProjectB_2324_OP34\Project\DataStorage\Accounts.json";
+    const string _filePath = @"DataStorage\Accounts.json";
 
     public List<AccountModel> GetAllUsers()
     {
