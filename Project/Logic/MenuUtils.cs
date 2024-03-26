@@ -12,11 +12,15 @@ public static class MenuUtils{
         Console.ReadKey();
     }
 
-    static void RunCheckboxMenu(Dictionary<string, Action> optionsAndActions)
+    static void RunCheckboxMenu(Dictionary<string, Action> optionsAndActions, string headertype)
     {
         int selectedIndex = 0;
         List<string> options = new List<string>(optionsAndActions.Keys);
         bool[] selectedOptions = new bool[options.Count];
+
+        if(headertype == "main"){
+            DisplayHeader.HeaderMain();
+        }
 
         while (true)
         {
@@ -51,9 +55,14 @@ public static class MenuUtils{
 
     public static void displayMainMenu(){
 
-        Dictionary<string, Action> MainMenuOptions = new(){ { "a", DisplaySeatingTest }, {"b", TestLogin} };
+        Dictionary<string, Action> MainMenuOptions = new()
+        { 
+            { "Display seating test", DisplaySeatingTest},
+            { "Test login", TestLogin } 
+        };
 
-        RunCheckboxMenu(MainMenuOptions);
+        
+        RunCheckboxMenu(MainMenuOptions, "main");
         
     }
 
