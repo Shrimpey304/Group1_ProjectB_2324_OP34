@@ -1,6 +1,5 @@
 using System;
-using Cinema; // Ensure this matches your project structure for accessing UserRegistration
-
+using Cinema; 
 public static class Menu
 {
     public static void Start()

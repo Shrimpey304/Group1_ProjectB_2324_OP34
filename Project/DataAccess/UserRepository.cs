@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using Cinema; // Make sure this using directive matches your project's structure
+using Cinema; 
 
 public class UserRepository
 {

@@ -1,4 +1,4 @@
-using Cinema; // Adjust namespace based on your project's structure
+using Cinema; 
 
 public static class UserRegistration
 {
