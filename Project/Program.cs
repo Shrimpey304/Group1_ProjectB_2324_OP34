@@ -10,10 +10,11 @@ public class Program{
 		// MovieSession.MakeSession(DateTime.Now, DateTime.Now.AddHours(1));
 		
 		
-		List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
-		MovieSession sesh = sessions[0];
+		// List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
+		// MovieSession sesh = sessions[0];
 
-		DisplayRoom.SelectSeating(fileName, sesh);
+		// DisplayRoom.SelectSeating(fileName, sesh);
+		Menu.Start(); // Start the application menu
 		
 		// Movie m1 = new Movie("title 1", 13, "Not Horror", "Very not-scary");
 		// Movie m2 = new Movie("Scary radio", 18, "Very scared", "OH NO");

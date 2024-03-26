@@ -1,21 +1,30 @@
 [
-	{
-		"id": 1,
-		"emailAddress": "n@b.c",
-		"password": "xyz",
-		"fullName": "Nikola Tesla"
-	},
-	{
-		"id": 2,
-		"emailAddress": "t@b.c",
-		"password": "xyz",
-		"fullName": "Thomas Edison"
-	},
-	{
-		"id": 3,
-		"emailAddress": "pookiebearG@gmail.com",
-		"password": "123G",
-		"fullName": "Ronan Pookie Hardjo Bear"
-	}
-
+  {
+    "id": 1,
+    "emailAddress": "n@b.c",
+    "password": "xyz",
+    "fullName": "Nikola Tesla",
+    "isAdmin": false
+  },
+  {
+    "id": 2,
+    "emailAddress": "t@b.c",
+    "password": "xyz",
+    "fullName": "Thomas Edison",
+    "isAdmin": false
+  },
+  {
+    "id": 3,
+    "emailAddress": "pookiebearG@gmail.com",
+    "password": "123G",
+    "fullName": "Ronan Pookie Hardjo Bear",
+    "isAdmin": false
+  },
+  {
+    "id": 4,
+    "emailAddress": "test@gmail.com",
+    "password": "test123",
+    "fullName": "fulltest",
+    "isAdmin": false
+  }
 ]
