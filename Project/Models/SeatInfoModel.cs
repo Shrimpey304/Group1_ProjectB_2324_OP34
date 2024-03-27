@@ -7,7 +7,7 @@ public class SeatInfo
     public double Price { get; set; }
     // public bool IsReserved { get; set; }
     public bool inPrereservation { get; set; }
-    public List<MovieSession> reservedInSession = new();
+    public List<MovieSessionModel> reservedInSession = new();
     public SeatType Type { get; set; }
 }
 

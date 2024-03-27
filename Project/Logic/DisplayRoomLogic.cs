@@ -10,7 +10,7 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    public static void SelectSeating(string fileName, MovieSession moviesesh){
+    public static void SelectSeating(string fileName, MovieSessionModel moviesesh){
         try
         {   
             List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
@@ -39,7 +39,7 @@ public static class DisplayRoom{
 
                                 if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
 
-                                    foreach(MovieSession sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
+                                    foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
                                         if(sesh != moviesesh){
 
@@ -88,7 +88,7 @@ public static class DisplayRoom{
                                 if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
 
 
-                                    foreach(MovieSession sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
+                                    foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
                                         if(sesh != moviesesh){
 

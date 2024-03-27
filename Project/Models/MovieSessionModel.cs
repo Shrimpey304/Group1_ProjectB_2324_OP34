@@ -1,6 +1,6 @@
 namespace Cinema;
 
-public class MovieSession
+public class MovieSessionModel
 {
 	public static int sID = 1;
 	public int sessionID;
@@ -10,7 +10,7 @@ public class MovieSession
 	
 	// public DisplayRoom Room;
 	
-	public MovieSession(DateTime start, DateTime end, MovieModel movie)
+	public MovieSessionModel(DateTime start, DateTime end, MovieModel movie)
 	{
 		StartTime = start;
 		EndTime = end;
@@ -18,15 +18,15 @@ public class MovieSession
 		sessionID = sID ++;
 	}
 
-	public static void MakeSession(DateTime start, DateTime end){
+	// public static void MakeSession(DateTime start, DateTime end){
 
-		MovieSession session = new(start, end);
-		List<MovieSession> sessionToUpload = new(){session};
-		const string filePath = "DataStorage/Sessions.json";
+	// 	MovieSession session = new(start, end);
+	// 	List<MovieSession> sessionToUpload = new(){session};
+	// 	const string filePath = "DataStorage/Sessions.json";
+		
+	// 	JsonAccess.UploadToJson(sessionToUpload, filePath);
 
-		JsonAccess.UploadToJson(sessionToUpload, filePath);
-
-	}
+	// }
 
 
 }

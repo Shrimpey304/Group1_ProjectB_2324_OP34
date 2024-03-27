@@ -1,4 +1,3 @@
-
 namespace Cinema;
 
 public class MovieModel

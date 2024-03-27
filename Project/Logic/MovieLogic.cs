@@ -44,10 +44,10 @@ public class MovieLogic
 			Console.WriteLine("[{0}]\nTitle: {1}\nAge Restriction: {2}\nDescription: {3}\nGenre: {4}\n\n",movie.movieID, movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
 
 		}
-		Console.Write("Type the ID of a movie to see it's upcoming sessions.\n  >>> ");
 		string UserInput;
 		do
 		{
+			Console.Write("Type the ID of a movie to see it's upcoming sessions.\n  >>> ");
 			UserInput = Console.ReadLine();
 		}while ((UserInput == null) || (IsDigitsOnly(UserInput) == false) || (UserInput == ""));
 		
@@ -58,7 +58,7 @@ public class MovieLogic
 			{
 				Console.WriteLine("Current selected movie:");
 				Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-				//ListSessions()
+				MovieSessionLogic.ListSessions(UserInputInt);
 			}
 		}
 	}
