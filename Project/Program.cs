@@ -4,14 +4,15 @@ public class Program{
 
 	public static void Main(){
 	  
+		MenuUtils.displayMainMenu();
 
-		const string fileName = "DataStorage/CinemaRoom1.json";
-		const string fileNameSesh = "DataStorage/Sessions.json";
+		// const string fileName = "DataStorage/CinemaRoom1.json";
+		// const string fileNameSesh = "DataStorage/Sessions.json";
 		
-		List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
-		MovieSession sesh = sessions[0];
+		// List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
+		// MovieSession sesh = sessions[0];
 
-		DisplayRoom.SelectSeating(fileName, sesh);
+		// DisplayRoom.SelectSeating(fileName, sesh);
 		// MovieSession.MakeSession(DateTime.Now, DateTime.Now.AddHours(1));
 
 		// DisplayRoom.SelectSeating(fileName, sesh);
