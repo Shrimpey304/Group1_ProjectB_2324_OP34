@@ -6,13 +6,15 @@ public class MovieSession
 	public int sessionID;
 	public DateTime StartTime;
 	public DateTime EndTime;
+	public MovieModel Movie;
 	
 	// public DisplayRoom Room;
 	
-	public MovieSession(DateTime start, DateTime end)
+	public MovieSession(DateTime start, DateTime end, MovieModel movie)
 	{
 		StartTime = start;
 		EndTime = end;
+		Movie = movie;
 		sessionID = sID ++;
 	}
 

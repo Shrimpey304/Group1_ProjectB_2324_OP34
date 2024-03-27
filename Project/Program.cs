@@ -24,6 +24,6 @@ public class Program{
 		// Movie.AddMovie(m1);
 		// Movie.AddMovie(m2);
 		
-		MovieLogic.ListAllMovies();
+		//MovieLogic.ListAllMovies();
 	}
 }
