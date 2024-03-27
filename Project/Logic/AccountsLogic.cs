@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+namespace Cinema;
 
 
 //This class is not static so later on we can use inheritance and interfaces
@@ -14,29 +15,17 @@ class AccountsLogic
     //private set, so this can only be set by the class itself
     static public AccountModel? CurrentAccount { get; private set; }
 
+    const string filePathAccounts = @"DataStorage\Accounts.json";
     public AccountsLogic()
     {
-        _accounts = AccountsAccess.LoadAll();
+        _accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts);
     }
 
 
     public void UpdateList(AccountModel acc)
     {
-        //Find if there is already an model with the same id
-        int index = _accounts.FindIndex(s => s.Id == acc.Id);
 
-        if (index != -1)
-        {
-            //update existing model
-            _accounts[index] = acc;
-        }
-        else
-        {
-            //add new model
-            _accounts.Add(acc);
-        }
-        AccountsAccess.WriteAll(_accounts);
-
+        JsonAccess.UpdateSingleObject<AccountModel>(acc ,filePathAccounts);
     }
 
     public AccountModel GetById(int id)

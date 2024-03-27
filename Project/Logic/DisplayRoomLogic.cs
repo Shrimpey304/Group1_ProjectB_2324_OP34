@@ -13,7 +13,7 @@ public static class DisplayRoom{
     public static void SelectSeating(string fileName, MovieSession moviesesh){
         try
         {   
-            List<Seating> seatingJson = SeatingJsonUtils.ReadFromJson(fileName);
+            List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
             Seating seating = seatingJson[0];
 
             int selectedPositionCol = 0;
@@ -24,7 +24,7 @@ public static class DisplayRoom{
         
             while(!Console.KeyAvailable){
                 
-                List<Seating> TempSeatingJson = SeatingJsonUtils.ReadFromJson(fileName);
+                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
                 Seating tempSeating = TempSeatingJson[0];
 
                 Console.Clear();
@@ -206,7 +206,7 @@ public static class DisplayRoom{
                         case ConsoleKey.Backspace:
 
                             List<Seating> UploadSeatingPreAdjustment = new(){seating};
-                            SeatingJsonUtils.UploadToJson(UploadSeatingPreAdjustment, fileName);
+                            JsonAccess.UploadToJson(UploadSeatingPreAdjustment, fileName);
                             
                         break;
                         
@@ -217,7 +217,7 @@ public static class DisplayRoom{
 
                 List<Seating> TempUploadSeating = new(){tempSeating!};
 
-                SeatingJsonUtils.UploadToJson(TempUploadSeating, fileName);
+                JsonAccess.UploadToJson(TempUploadSeating, fileName);
             }
         }
         catch (Exception ex)
@@ -264,7 +264,7 @@ public static class DisplayRoom{
         }
 
         seatingInstance.Add(seating);
-        SeatingJsonUtils.UploadToJson(seatingInstance, filePath);
+        JsonAccess.UploadToJson(seatingInstance, filePath);
 
     }
 

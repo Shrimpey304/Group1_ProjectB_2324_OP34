@@ -27,16 +27,18 @@ public class MovieLogic
 
 	public static void AddMovie(MovieModel movie)
 	{
-		List<MovieModel> MovieList = MoviesJsonUtils.ReadFromJson("Movies.json");
+		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>("Movies.json");
 
 		MovieList.Add(movie);
 
-		MoviesJsonUtils.UploadToJson(MovieList, "Movies.Json");
+		JsonAccess.UploadToJson(MovieList, "Movies.Json");
 	}
+
+	const string filePathMovies = "DataStorage/Movies.json";
 
 	public static void ListAllMovies()
 	{
-		List<MovieModel> MovieList = MoviesJsonUtils.ReadFromJson("C:/Users/thomj/OneDrive/Documenten/GitHub/Group1_ProjectB_2324_OP34/Project/DataStorage/Movies.Json");
+		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 		foreach (MovieModel movie in MovieList)
 		{
 			Console.WriteLine("[{0}]\nTitle: {1}\nAge Restriction: {2}\nDescription: {3}\nGenre: {4}\n\n",movie.movieID, movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);

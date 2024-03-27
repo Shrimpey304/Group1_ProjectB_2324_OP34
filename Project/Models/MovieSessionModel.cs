@@ -22,7 +22,7 @@ public class MovieSession
 		List<MovieSession> sessionToUpload = new(){session};
 		const string filePath = "DataStorage/Sessions.json";
 
-		SessionsJsonUtils.UploadToJson(sessionToUpload, filePath);
+		JsonAccess.UploadToJson(sessionToUpload, filePath);
 
 	}
 

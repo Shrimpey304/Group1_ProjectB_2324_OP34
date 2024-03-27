@@ -1,12 +1,15 @@
 namespace Cinema;
 using Newtonsoft.Json;
 
-public class SeatingJsonUtils{
+public class JsonAccess{
 
-    const string filePath = "DataStorage/CinemaRoom1.json";
+    const string filePathMovies = "DataStorage/Movies.json";
+    const string filePathAccounts = @"DataStorage\Accounts.json";
+    const string filePathCineR1 = "DataStorage/CinemaRoom1.json";
+    const string filePathSessions = "DataStorage/Sessions.json";
 
-    public static void UpdateSingleObject(Seating toWrite, string fileName){
-        List<Seating> objList = ReadFromJson(fileName);
+    public static void UpdateSingleObject<T>(T toWrite, string fileName) where T : class{
+        List<T> objList = ReadFromJson<T>(fileName);
         
         if (toWrite != null && objList != null){
 
@@ -30,7 +33,7 @@ public class SeatingJsonUtils{
         }
     }
 
-    public static bool AreEqual(Seating obj1, Seating obj2)
+    private static bool AreEqual<T>(T obj1, T obj2)
     {
         // Serialize objects to JSON and compare the strings
         string json1 = JsonConvert.SerializeObject(obj1, Formatting.None);
@@ -38,13 +41,14 @@ public class SeatingJsonUtils{
         return json1 == json2;
     }
 
-    public static List<Seating> ReadFromJson(string fileName){
+    public static List<T> ReadFromJson<T>(string fileName) where T : class
+    {
         try{
 
             if (File.Exists(fileName)){
 
                 string json = File.ReadAllText(fileName);
-                return JsonConvert.DeserializeObject<List<Seating>>(json)!;
+                return JsonConvert.DeserializeObject<List<T>>(json)!;
 
             }
         }catch (Exception ex){
@@ -52,10 +56,11 @@ public class SeatingJsonUtils{
             Console.WriteLine($"Error reading from JSON file: {ex.Message}");
         }
 
-        return new List<Seating>();
+        return new List<T>();
     }
 
-    public static void UploadToJson(List<Seating> objList, string fileName){
+    public static void UploadToJson<T>(List<T> objList, string fileName) where T : class
+    {
         try{
 
             string json = JsonConvert.SerializeObject(objList, Formatting.Indented);

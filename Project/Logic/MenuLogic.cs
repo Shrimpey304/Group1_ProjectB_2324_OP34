@@ -72,7 +72,7 @@ public static class MenuUtils{
         const string fileNameSesh = "DataStorage/Sessions.json";
         //waiting for logic to select room by movie/session
         
-        List<MovieSession> sessions = SessionsJsonUtils.ReadFromJson(fileNameSesh);
+        List<MovieSession> sessions = JsonAccess.ReadFromJson<MovieSession>(fileNameSesh);
         DisplayRoom.SelectSeating(fileName, sessions[0]);
     }
     
