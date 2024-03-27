@@ -37,13 +37,9 @@ class AccountsLogic
     {
         if (email == null || password == null)
         {
-            return null!;
+            return null;
         }
         CurrentAccount = _accounts.Find(i => i.EmailAddress == email && i.Password == password);
         return CurrentAccount!;
     }
 }
-
-
-
-

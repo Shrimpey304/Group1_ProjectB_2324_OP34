@@ -1,11 +1,22 @@
 namespace Cinema; 
 
-public static class UserRegistration
+public static class UserRegistrationLogic
 {
     public static void Register(string email, string password, string fullName)
     {
         UserRepository userRepository = new();
-        AccountModel newUser = new AccountModel(email, password, fullName, false); // isAdmin is always false on registration
-        userRepository.AddUser(newUser);
+        if (!userRepository.UserExists(email))
+        {
+            var salt = PasswordHasher.GenerateSalt();
+            var hashedPassword = PasswordHasher.HashPassword(password, salt);
+            
+            AccountModel newUser = new AccountModel(email, hashedPassword, salt, fullName, false);
+            userRepository.AddUser(newUser);
+            Console.WriteLine("Registration successful. Welcome, " + fullName);
+        }
+        else
+        {
+            Console.WriteLine("A user with this email already exists.");
+        }
     }
 }

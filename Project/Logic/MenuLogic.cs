@@ -58,13 +58,16 @@ public static class MenuUtils{
         Dictionary<string, Action> MainMenuOptions = new()
         { 
             { "Display seating test", DisplaySeatingTest},
-            { "Test login", TestLogin } 
+            { "Test login", TestLogin },
+            { "Test register", TestRegister },
+            { "Exit", KillProgram}
         };
 
         
         RunCheckboxMenu(MainMenuOptions, "main");
         
     }
+
 
 
     public static void DisplaySeatingTest(){
@@ -77,6 +80,13 @@ public static class MenuUtils{
     }
     
     public static void TestLogin(){
-        Console.WriteLine("test");
+        UserLogin.Start();
+    }
+    public static void TestRegister(){
+        UserRegistration.Start();
+    }
+    public static void KillProgram(){
+        Console.WriteLine("Exiting the program...");
+        Environment.Exit(0);
     }
 }
