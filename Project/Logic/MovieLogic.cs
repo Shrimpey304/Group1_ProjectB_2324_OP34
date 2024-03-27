@@ -39,11 +39,16 @@ public class MovieLogic
 	public static void ListAllMovies()
 	{
 		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		Console.WriteLine($" ____________________________________________________________________________________________");
+		Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
+		Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
+
 		foreach (MovieModel movie in MovieList)
 		{
-			Console.WriteLine("[{0}]\nTitle: {1}\nAge Restriction: {2}\nDescription: {3}\nGenre: {4}\n\n",movie.movieID, movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-
+			// string movieIDString = Convert.ToString(movie.movieID);
+			Console.WriteLine($"| {Convert.ToString(movie.movieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
 		}
+		Console.WriteLine($" --------------------------------------------------------------------------------------------");
 		string UserInput;
 		do
 		{
@@ -51,13 +56,15 @@ public class MovieLogic
 			UserInput = Console.ReadLine();
 		}while ((UserInput == null) || (IsDigitsOnly(UserInput) == false) || (UserInput == ""));
 		
-		int UserInputInt = Convert.ToInt32(UserInput);
+		int UserInputInt = Convert.ToInt32(UserInput);  // this is possible, because it is always only numbers (see 2 lines above)
 		foreach (MovieModel movie in MovieList)
 		{
 			if (UserInputInt == movie.movieID)
 			{
+				Console.Clear();
 				Console.WriteLine("Current selected movie:");
-				Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
+				// Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
+				Console.WriteLine($"{Convert.ToString(movie.movieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)}");
 				MovieSessionLogic.ListSessions(UserInputInt);
 			}
 		}
