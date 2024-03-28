@@ -1,5 +1,6 @@
 using System.Data.Common;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 namespace Cinema;
@@ -24,7 +25,7 @@ public static class DisplayRoom{
         
             while(!Console.KeyAvailable){
                 
-                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
+                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileName); //will be used for a function later
                 Seating tempSeating = TempSeatingJson[0];
 
                 Console.Clear();
@@ -157,7 +158,7 @@ public static class DisplayRoom{
 
                     Console.WriteLine("Selected seats: None");
                 }
-
+                Tuple<int, int> ?lastDeselectedPosition = null;
                 try{
                     switch(Console.ReadKey(true).Key){
                         case ConsoleKey.UpArrow:
@@ -189,18 +190,41 @@ public static class DisplayRoom{
                             }
                         break;
                         case ConsoleKey.Enter:
-                            Console.WriteLine($"selected:{selectedPositionRow},{selectedPositionCol}");
+                            if (tempSeating!.SeatingArrangement[selectedPositionRow, selectedPositionCol][0].inPrereservation == false)
+                            {
+                                if (SelectedPositions.Count == 0 || SelectedSeatsInRow(SelectedPositions, selectedPositionRow, selectedPositionCol, tempSeating))
+                                {
+                                    tempSeating.SeatingArrangement[selectedPositionRow, selectedPositionCol][0].inPrereservation = true;
+                                    SelectedPositions.Add(new Tuple<int, int>(selectedPositionRow, selectedPositionCol));
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You can only select multiple connecting seats in the same row.");
+                                }
+                            }
+                            else
+                            {
+                                if (SelectedPositions.Count >= 2)
+                                {
+                                    var sortedPositions = SelectedPositions.OrderBy(pos => pos.Item2).ToList();
 
-                            if(tempSeating!.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation == false){
+                                    int index = sortedPositions.FindIndex(pos => pos.Item2 == selectedPositionCol);
 
-                                tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation = true;
-                                SelectedPositions.Add(lastPos);
-
-                            }else{
-
-                                tempSeating.SeatingArrangement[selectedPositionRow,selectedPositionCol][0].inPrereservation = false;
-                                SelectedPositions.Remove(lastPos);
-
+                                    if (index > 0 && index < sortedPositions.Count - 1)
+                                    {
+                                        Console.WriteLine("This seat is between two selected seats and cannot be deselected.");
+                                    }
+                                    else
+                                    {
+                                        tempSeating.SeatingArrangement[selectedPositionRow, selectedPositionCol][0].inPrereservation = false;
+                                        SelectedPositions.Remove(new Tuple<int, int>(selectedPositionRow, selectedPositionCol));
+                                    }
+                                }
+                                else
+                                {
+                                    tempSeating.SeatingArrangement[selectedPositionRow, selectedPositionCol][0].inPrereservation = false;
+                                    SelectedPositions.Remove(new Tuple<int, int>(selectedPositionRow, selectedPositionCol));
+                                }
                             }
                         break;
                         case ConsoleKey.Backspace:
@@ -225,6 +249,27 @@ public static class DisplayRoom{
             Console.WriteLine($"Error displaying seating: {ex.Message}");
         }
     }
+
+    private static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating tempseating)
+    {
+        foreach (var pos in selectedPositions)
+        {
+            if(tempseating.SeatingArrangement[pos.Item1,pos.Item2][0].inPrereservation){
+                if (pos.Item1 != selectedPositionRow || Math.Abs(pos.Item2 - selectedPositionCol) >= 8)
+                {
+                    return false;
+                }
+            }else{
+                tempseating.SeatingArrangement[pos.Item1,pos.Item2][0].inPrereservation = true;
+                if (pos.Item1 != selectedPositionRow || Math.Abs(pos.Item2 - selectedPositionCol) >= 8)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     /// <summary>
     /// used for creating new cinema rooms
