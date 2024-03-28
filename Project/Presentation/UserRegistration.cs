@@ -23,7 +23,7 @@ namespace Cinema
             // Call the registration logic
             UserRegistrationLogic.Register(email, password, fullName);
 
-            Menu.Start();
+            
         }
     }
 }

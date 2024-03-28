@@ -17,25 +17,32 @@ public class AccountsLogic
         _accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts) ?? new List<AccountModel>();
     }
 
-    public AccountModel CheckLogin(string email, string password)
+    public AccountModel? CheckLogin(string email, string password)
     {
-        // Attempt to find the user by email.
-        var user = _accounts.FirstOrDefault(u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
-        if (user != null)
-        {
-            // Hash the input password with the user's stored salt
-            var hashedInputPassword = PasswordHasher.HashPassword(password, user.Salt);
-
-            // Compare the hashed input password with the stored hashed password
-            if (hashedInputPassword == user.Password)
+        try{
+            // Attempt to find the user by email.
+            var user = _accounts.FirstOrDefault(u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
+            if (user != null)
             {
-                CurrentAccount = user; // Successfully authenticated
-                return user;
-            }
-        }
+                // Hash the input password with the user's stored salt
+                var hashedInputPassword = PasswordHasher.HashPassword(password, user.Salt);
 
-        // Authentication failed
-        return null;
+                // Compare the hashed input password with the stored hashed password
+                if (hashedInputPassword == user.Password)
+                {
+                    CurrentAccount = user; // Successfully authenticated
+                    return user;
+                }
+                return null;
+            }
+
+            // Authentication failed
+            return null;
+        }
+        catch(Exception e){
+            Console.WriteLine(e);
+            return null;
+        }
     }
 
     public void UpdateList(AccountModel acc)

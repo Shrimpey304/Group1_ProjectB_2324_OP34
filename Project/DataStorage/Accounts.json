@@ -86,5 +86,13 @@
     "salt": "ROmrC1Wxi73JjTko0f8IYQ==",
     "fullName": "full bool",
     "isAdmin": false
+  },
+  {
+    "id": 12,
+    "emailAddress": "tester@g.c",
+    "password": "472deeee4b8beb10732e8ac35f0367acbf8c7dcacd8f5bc371b082c1f7054d7d",
+    "salt": "B2slyrUTIx4xKdwb11CRoA==",
+    "fullName": "tester ronan",
+    "isAdmin": false
   }
 ]
