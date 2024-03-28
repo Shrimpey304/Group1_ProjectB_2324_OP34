@@ -60,7 +60,8 @@ public static class MenuUtils{
             { "Display seating test", DisplaySeatingTest},
             { "Test login", TestLogin },
             { "Test register", TestRegister },
-            { "Exit", KillProgram}
+            { "Display MovieList", MovieLogic.ListAllMovies},
+            { "Exit", KillProgram},
         };
 
         
@@ -75,7 +76,7 @@ public static class MenuUtils{
         const string fileNameSesh = "DataStorage/Sessions.json";
         //waiting for logic to select room by movie/session
         
-        List<MovieSession> sessions = JsonAccess.ReadFromJson<MovieSession>(fileNameSesh);
+        List<MovieSessionModel> sessions = JsonAccess.ReadFromJson<MovieSessionModel>(fileNameSesh);
         DisplayRoom.SelectSeating(fileName, sessions[0]);
     }
     

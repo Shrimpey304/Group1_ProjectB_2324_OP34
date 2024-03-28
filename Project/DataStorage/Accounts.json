@@ -94,5 +94,29 @@
     "salt": "B2slyrUTIx4xKdwb11CRoA==",
     "fullName": "tester ronan",
     "isAdmin": false
+  },
+  {
+    "id": 13,
+    "emailAddress": "NoobSlayer69@gmail.com",
+    "password": "6359a34f6c7202a03d4f6215da80d00567a6e07e41554b0ae4e037ca50b67080",
+    "salt": "oXXdjAUxlWCEHWlitG8uXQ==",
+    "fullName": "Noob Jonathan Slayer the 69th",
+    "isAdmin": false
+  },
+  {
+    "id": 14,
+    "emailAddress": "caldj@hr.nl",
+    "password": "9bed9d1688a2fb42f134a96cc31ab5a2ae5a30531554347748f157a9f7391aa5",
+    "salt": "nhpKD7s/2zXpSkApy1tMmQ==",
+    "fullName": "Joana",
+    "isAdmin": false
+  },
+  {
+    "id": 15,
+    "emailAddress": "c@hr.nl",
+    "password": "e46194bd5849295e2eb1741022eb19ed62c46e2f3af6eb91e0182501dcee683f",
+    "salt": "KClXlqm4pix0UYJxnzexWA==",
+    "fullName": "Joana",
+    "isAdmin": false
   }
 ]

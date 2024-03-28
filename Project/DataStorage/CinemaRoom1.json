@@ -676,7 +676,7 @@
             "RowID": 4,
             "ColumnID": 6,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 0
           }
         ],
@@ -686,7 +686,7 @@
             "RowID": 4,
             "ColumnID": 7,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 0
           }
         ],
