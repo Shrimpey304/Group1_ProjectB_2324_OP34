@@ -1,7 +1,122 @@
 [
-  {
-    "sessionID": 1,
-    "StartTime": "2024-03-20T10:58:44.1436016+01:00",
-    "EndTime": "2024-03-20T11:58:44.1544798+01:00"
-  }
+    {
+        "sessionID": 1,
+        "StartTime": "2024-04-01T15:00:00",
+        "EndTime": "2024-04-01T16:58:00",
+        "Movie": {
+            "movieID": 2,
+            "Title": "The Godfather",
+            "Description": "An offer you can't refuse.",
+            "GenreName": "Crime Drama",
+            "AgeRestriction": 18
+        }
+    },
+    {
+        "sessionID": 2,
+        "StartTime": "2024-04-02T16:00:00",
+        "EndTime": "2024-04-02T17:58:00",
+        "Movie": {
+            "movieID": 4,
+            "Title": "The Dark Knight",
+            "Description": "Why so serious?",
+            "GenreName": "Action Crime",
+            "AgeRestriction": 14
+        }
+    },
+    {
+        "sessionID": 3,
+        "StartTime": "2024-04-03T17:00:00",
+        "EndTime": "2024-04-03T18:58:00",
+        "Movie": {
+            "movieID": 3,
+            "Title": "The Shawshank Redemption",
+            "Description": "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
+            "GenreName": "Drama",
+            "AgeRestriction": 16
+        }
+    },
+    {
+        "sessionID": 4,
+        "StartTime": "2024-04-04T18:00:00",
+        "EndTime": "2024-04-04T20:22:00",
+        "Movie": {
+            "movieID": 7,
+            "Title": "The Matrix",
+            "Description": "Welcome to the real world.",
+            "GenreName": "Action Sci-Fi",
+            "AgeRestriction": 14
+        }
+    },
+    {
+        "sessionID": 5,
+        "StartTime": "2024-04-05T19:00:00",
+        "EndTime": "2024-04-05T20:58:00",
+        "Movie": {
+            "movieID": 6,
+            "Title": "Forrest Gump",
+            "Description": "Life is like a box of chocolates.",
+            "GenreName": "Drama Romance",
+            "AgeRestriction": 12
+        }
+    },
+    {
+        "sessionID": 6,
+        "StartTime": "2024-04-06T20:00:00",
+        "EndTime": "2024-04-06T22:28:00",
+        "Movie": {
+            "movieID": 5,
+            "Title": "Inception",
+            "Description": "Your mind is the scene of the crime.",
+            "GenreName": "Action Sci-Fi",
+            "AgeRestriction": 14
+        }
+    },
+    {
+        "sessionID": 7,
+        "StartTime": "2024-04-07T21:00:00",
+        "EndTime": "2024-04-07T22:54:00",
+        "Movie": {
+            "movieID": 1,
+            "Title": "Pulp Fiction",
+            "Description": "ENGLISH, MOTHERFUCKER! DO YOU SPEAK IT?",
+            "GenreName": "Action Comedy",
+            "AgeRestriction": 16
+        }
+    },
+    {
+        "sessionID": 8,
+        "StartTime": "2024-04-08T22:00:00",
+        "EndTime": "2024-04-08T23:58:00",
+        "Movie": {
+            "movieID": 8,
+            "Title": "The Lord of the Rings: The Fellowship of the Ring",
+            "Description": "One ring to rule them all.",
+            "GenreName": "Action Adventure",
+            "AgeRestriction": 12
+        }
+    },
+    {
+        "sessionID": 9,
+        "StartTime": "2024-04-09T23:00:00",
+        "EndTime": "2024-04-10T00:58:00",
+        "Movie": {
+            "movieID": 2,
+            "Title": "The Godfather",
+            "Description": "An offer you can't refuse.",
+            "GenreName": "Crime Drama",
+            "AgeRestriction": 18
+        }
+    },
+    {
+        "sessionID": 10,
+        "StartTime": "2024-04-10T00:00:00",
+        "EndTime": "2024-04-10T02:32:00",
+        "Movie": {
+            "movieID": 4,
+            "Title": "The Dark Knight",
+            "Description": "Why so serious?",
+            "GenreName": "Action Crime",
+            "AgeRestriction": 14
+        }
+    }
 ]

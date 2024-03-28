@@ -1,4 +1,3 @@
-
 namespace Cinema;
 
 public class MovieModel
@@ -10,6 +9,7 @@ public class MovieModel
 	public string Description;
 	public string GenreName;
 	public int AgeRestriction;
+	
 	
 	
 	public MovieModel(string title, int ageRest, string genreName, string description) 

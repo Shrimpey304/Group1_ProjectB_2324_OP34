@@ -3,6 +3,8 @@
 public class Program{
 
 	public static void Main(){
+		List<MovieModel> myList = new List<MovieModel>(){new MovieModel("helo", 13, "funny", "big haha")};
+		JsonAccess.UploadToJson(myList, "Movies.json");
 	  
 		MenuUtils.displayMainMenu();
 
@@ -24,6 +26,6 @@ public class Program{
 		// Movie.AddMovie(m1);
 		// Movie.AddMovie(m2);
 		
-		MovieLogic.ListAllMovies();
+		//MovieLogic.ListAllMovies();
 	}
 }
