@@ -285,17 +285,32 @@ public static class DisplayRoom{
 
     private static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating tempseating)
     {
+        bool positionside1taken = false;
+        bool positionside2taken = false;
         foreach (var pos in selectedPositions)
         {
+            foreach(var positionsNext in selectedPositions){
+                if((pos.Item2 + 1) == positionsNext.Item2){
+                    positionside1taken = true;
+                }else if((pos.Item2 - 1) == positionsNext.Item2){
+                    positionside2taken = true;
+                }
+            }
             if(tempseating.SeatingArrangement[pos.Item1,pos.Item2][0].inPrereservation){
                 if (pos.Item1 != selectedPositionRow || Math.Abs(pos.Item2 - selectedPositionCol) >= 8)
                 {
+                    if(positionside1taken && positionside2taken){
+                        return false;
+                    }
                     return false;
                 }
             }else{
                 tempseating.SeatingArrangement[pos.Item1,pos.Item2][0].inPrereservation = true;
                 if (pos.Item1 != selectedPositionRow || Math.Abs(pos.Item2 - selectedPositionCol) >= 8)
                 {
+                    if(positionside1taken && positionside2taken){
+                        return false;
+                    }
                     return false;
                 }
             }
