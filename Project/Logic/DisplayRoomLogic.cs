@@ -32,8 +32,29 @@ public static class DisplayRoom{
 
                 if (tempSeating != null)
                 {
+                    Console.Write("".PadLeft(3));
+                    for (int col = 0; col < tempSeating.Columns; col++){
+                        Console.ResetColor();
+
+                        if(col >= 10){
+
+                            Console.Write($" {col}  ");
+
+                        }else if(col >= 100){
+
+                            Console.Write($" {col} ");
+
+                        }else{
+
+                            Console.Write($"  {col}  ");
+
+                        }
+                    }
+                    Console.WriteLine("");
                     for (int i = 0; i < tempSeating.Rows; i++)
                     {
+                        Console.ResetColor();
+                        Console.Write($"{i}  ".PadRight(3));
                         for (int j = 0; j < tempSeating.Columns; j++)
                         {
                             if (tempSeating.SeatingArrangement[i,j] == tempSeating.SeatingArrangement[selectedPositionRow , selectedPositionCol]){
@@ -134,9 +155,21 @@ public static class DisplayRoom{
 
                             }
                         }
-                        Console.WriteLine();
+                        Console.WriteLine("");
                     }
                     Console.ResetColor();
+                    Console.WriteLine("\n");
+                    Console.Write("".PadLeft(3));
+                    for (int col = 0; col < tempSeating.Columns; col++){
+                        Console.ResetColor();
+                        Console.Write("_____");
+                    } //legenda
+                    Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write(" = Normal seat  ");
+                    Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write(" = Deluxe seat  ");
+                    Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write(" = Premium seat  \n");
+                    Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  ");
+                    Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  ");
+                    Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
                 }
                 else
                 {
