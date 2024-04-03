@@ -9,7 +9,7 @@ public class MovieSessionLogic
 		
 		foreach (MovieSessionModel session in SessionList)
 		{
-			if (session.Movie.movieID == UserInput)
+			if (session.MovieID == UserInput)
 			{
 				HasSessions = true;
 			}
@@ -19,7 +19,7 @@ public class MovieSessionLogic
 			int Counter = 1;
 			foreach (MovieSessionModel session in SessionList)
 			{
-				if (session.Movie.movieID == UserInput)
+				if (session.MovieID == UserInput)
 				{
 					Console.WriteLine($"Session {Counter++}:\nStart: {session.StartTime}\nEnd: {session.EndTime}\n");
 				}

@@ -5,7 +5,7 @@ public class MovieModel
 
 	public string Title;
 	public static int mID = 1;
-	public int movieID;
+	public int MovieID;
 	public string Description;
 	public string GenreName;
 	public int AgeRestriction;
@@ -18,7 +18,7 @@ public class MovieModel
 		Description = description;
 		AgeRestriction = ageRest;
 		GenreName = genreName;
-		movieID = mID ++;
+		MovieID = mID ++;
 	}
 }
 

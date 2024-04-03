@@ -1,111 +1,111 @@
 [
     {
-        "movieID": 1,
+        "MovieID": 1,
         "Title": "Pulp Fiction",
         "AgeRestriction": 16,
         "GenreName": "Action Comedy",
         "Description": "ENGLISH, MOTHERFUCKER! DO YOU SPEAK IT?"
     },
     {
-        "movieID": 2,
+        "MovieID": 2,
         "Title": "The Godfather",
         "AgeRestriction": 18,
         "GenreName": "Crime Drama",
         "Description": "An offer you can't refuse."
     },
     {
-        "movieID": 3,
+        "MovieID": 3,
         "Title": "The Shawshank Redemption",
         "AgeRestriction": 16,
         "GenreName": "Drama",
         "Description": "Hope is a good thing, maybe the best of things, and no good thing ever dies."
     },
     {
-        "movieID": 4,
+        "MovieID": 4,
         "Title": "The Dark Knight",
         "AgeRestriction": 14,
         "GenreName": "Action Crime",
         "Description": "Why so serious?"
     },
     {
-        "movieID": 5,
+        "MovieID": 5,
         "Title": "Inception",
         "AgeRestriction": 14,
         "GenreName": "Action Sci-Fi",
         "Description": "Your mind is the scene of the crime."
     },
     {
-        "movieID": 6,
+        "MovieID": 6,
         "Title": "Forrest Gump",
         "AgeRestriction": 12,
         "GenreName": "Drama Romance",
         "Description": "Life is like a box of chocolates."
     },
     {
-        "movieID": 7,
+        "MovieID": 7,
         "Title": "The Matrix",
         "AgeRestriction": 14,
         "GenreName": "Action Sci-Fi",
         "Description": "Welcome to the real world."
     },
     {
-        "movieID": 8,
+        "MovieID": 8,
         "Title": "The Lord of the Rings: The Fellowship of the Ring",
         "AgeRestriction": 12,
         "GenreName": "Action Adventure",
         "Description": "One ring to rule them all."
     },
     {
-        "movieID": 9,
+        "MovieID": 9,
         "Title": "Titanic",
         "AgeRestriction": 12,
         "GenreName": "Romance Drama",
         "Description": "I'm the king of the world!"
     },
     {
-        "movieID": 10,
+        "MovieID": 10,
         "Title": "Star Wars: Episode IV - A New Hope",
         "AgeRestriction": 10,
         "GenreName": "Action Adventure",
         "Description": "May the Force be with you."
     },
     {
-        "movieID": 11,
+        "MovieID": 11,
         "Title": "Jurassic Park",
         "AgeRestriction": 10,
         "GenreName": "Action Adventure",
         "Description": "Life finds a way."
     },
     {
-        "movieID": 12,
+        "MovieID": 12,
         "Title": "Avatar",
         "AgeRestriction": 12,
         "GenreName": "Action Adventure",
         "Description": "I see you."
     },
     {
-        "movieID": 13,
+        "MovieID": 13,
         "Title": "The Silence of the Lambs",
         "AgeRestriction": 18,
         "GenreName": "Crime Thriller",
         "Description": "A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti."
     },
     {
-        "movieID": 14,
+        "MovieID": 14,
         "Title": "Fight Club",
         "AgeRestriction": 18,
         "GenreName": "Drama",
         "Description": "The first rule of Fight Club is: You do not talk about Fight Club."
     },
     {
-        "movieID": 15,
+        "MovieID": 15,
         "Title": "The Avengers",
         "AgeRestriction": 12,
         "GenreName": "Action Adventure",
         "Description": "I am Iron Man."
     },
     {
-        "movieID": 16,
+        "MovieID": 16,
         "Title": "The Lion King",
         "AgeRestriction": 6,
         "GenreName": "Animation Adventure",
