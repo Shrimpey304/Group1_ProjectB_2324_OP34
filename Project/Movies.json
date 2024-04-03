@@ -1,7 +1,7 @@
 [
   {
     "Title": "helo",
-    "movieID": 1,
+    "MovieID": 1,
     "Description": "big haha",
     "GenreName": "funny",
     "AgeRestriction": 13
