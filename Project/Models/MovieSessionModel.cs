@@ -7,15 +7,17 @@ public class MovieSessionModel
 	public DateTime StartTime;
 	public DateTime EndTime;
 	public int MovieID;
+	public int RoomID;
 	
 	// public DisplayRoom Room;
 	
-	public MovieSessionModel(DateTime start, DateTime end, int movieID)
+	public MovieSessionModel(DateTime start, DateTime end, int movieID, int roomID)
 	{
 		StartTime = start;
 		EndTime = end;
 		MovieID = movieID;
 		sessionID = sID ++;
+		RoomID = roomID;
 	}
 
 	// public static void MakeSession(DateTime start, DateTime end){

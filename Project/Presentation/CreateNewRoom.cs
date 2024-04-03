@@ -15,8 +15,8 @@ public class CreateNewRoom{
         }
         Console.WriteLine("how many columns do you want to have? (horizontal amount of seats)");
         string ?colsString = Console.ReadLine();
-        if (rowsString is not null){
-            colInt = Convert.ToInt32(rowsString);
+        if (colsString is not null){
+            colInt = Convert.ToInt32(colsString);
         }else{
             colInt = 10;
         }

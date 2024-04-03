@@ -57,10 +57,9 @@ public static class MenuUtils{
 
         Dictionary<string, Action> MainMenuOptions = new()
         { 
-            { "Display seating test", DisplaySeatingTest},
-            { "Test login", TestLogin },
-            { "Test register", TestRegister },
-            { "Display MovieList", MovieLogic.ListAllMovies},
+            { "Login", TestLogin },
+            { "Register", TestRegister },
+            { "Display MovieList", ReserveTicket.ReserveProcess},
             { "Exit", KillProgram},
 
         };
@@ -68,17 +67,6 @@ public static class MenuUtils{
         
         RunCheckboxMenu(MainMenuOptions, "main");
         
-    }
-
-
-
-    public static void DisplaySeatingTest(){
-        const string fileName = "DataStorage/CinemaRoom1.json";
-        const string fileNameSesh = "DataStorage/Sessions.json";
-        //waiting for logic to select room by movie/session
-        
-        List<MovieSessionModel> sessions = JsonAccess.ReadFromJson<MovieSessionModel>(fileNameSesh);
-        DisplayRoom.SelectSeating(fileName, sessions[0]);
     }
     
     public static void TestLogin(){

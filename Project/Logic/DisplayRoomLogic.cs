@@ -11,20 +11,33 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    public static void SelectSeating(string fileName, int sessionId){
+    public static  List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
         try
-        {   
-            MovieSessionModel ?selectedSession = null;
-            List<MovieSessionModel> moviesessions = JsonAccess.ReadFromJson<MovieSessionModel>(@"DataStorage/");
+        {  
+            string fileNM = "";
+            string DataStoragePath = @"DataStorage/"; 
+            string[] filelist = Directory.GetFiles(DataStoragePath);
 
-            foreach( var session in moviesessions){
+            foreach(string file in filelist){
+                Console.WriteLine(file.ToLower());
+            }
 
-                if(session.sessionID == sessionId){
-                    selectedSession = session;
+            if (filelist != null){
+
+                foreach(string file in filelist){
+                    Console.WriteLine(file);
+                    if (file.ToLower() == $"datastorage/cinemaroom{session.RoomID}.json"){
+                        List<Seating>fileJson = JsonAccess.ReadFromJson<Seating>($"{file}");
+                        if (fileJson != null && fileJson.Count > 0){
+                            fileNM = file; 
+                        }
+                    }
                 }
             }
 
-            List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
+            string FileName = $"{DataStoragePath}{fileNM}";
+
+            List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(FileName);
             Seating seating = seatingJson[0];
 
             int selectedPositionCol = 0;
@@ -35,7 +48,7 @@ public static class DisplayRoom{
         
             while(!Console.KeyAvailable){
                 
-                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileName); //will be used for a function later
+                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(FileName); //will be used for a function later
                 Seating tempSeating = TempSeatingJson[0];
 
                 Console.Clear();
@@ -73,7 +86,7 @@ public static class DisplayRoom{
 
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != selectedSession){
+                                        if(sesh != session){
 
                                             if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
                                                 Console.BackgroundColor = ConsoleColor.Green;
@@ -121,7 +134,7 @@ public static class DisplayRoom{
 
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != selectedSession){
+                                        if(sesh != session){
 
                                             if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
                                                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -271,24 +284,27 @@ public static class DisplayRoom{
                         case ConsoleKey.Backspace:
 
                             List<Seating> UploadSeatingPreAdjustment = new(){seating};
-                            JsonAccess.UploadToJson(UploadSeatingPreAdjustment, fileName);
+                            JsonAccess.UploadToJson(UploadSeatingPreAdjustment, FileName);
                             
                         break;
-                        
                     }
+                    return SelectedPositions;
                 }catch(Exception ex ){
                     Console.WriteLine(ex.Message);
                 }
 
                 List<Seating> TempUploadSeating = new(){tempSeating!};
 
-                JsonAccess.UploadToJson(TempUploadSeating, fileName);
+                JsonAccess.UploadToJson(TempUploadSeating, FileName);
+                return SelectedPositions;
             }
+            return SelectedPositions;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error displaying seating: {ex.Message}");
+            Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
         }
+        return null;
     }
 
     private static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating tempseating)
