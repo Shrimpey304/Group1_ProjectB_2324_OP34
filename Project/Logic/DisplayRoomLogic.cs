@@ -11,9 +11,19 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    public static void SelectSeating(string fileName, MovieSessionModel moviesesh){
+    public static void SelectSeating(string fileName, int sessionId){
         try
         {   
+            MovieSessionModel ?selectedSession = null;
+            List<MovieSessionModel> moviesessions = JsonAccess.ReadFromJson<MovieSessionModel>(@"DataStorage/");
+
+            foreach( var session in moviesessions){
+
+                if(session.sessionID == sessionId){
+                    selectedSession = session;
+                }
+            }
+
             List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileName);
             Seating seating = seatingJson[0];
 
@@ -63,7 +73,7 @@ public static class DisplayRoom{
 
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != moviesesh){
+                                        if(sesh != selectedSession){
 
                                             if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
                                                 Console.BackgroundColor = ConsoleColor.Green;
@@ -109,10 +119,9 @@ public static class DisplayRoom{
 
                                 if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
 
-
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != moviesesh){
+                                        if(sesh != selectedSession){
 
                                             if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
                                                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -191,7 +200,6 @@ public static class DisplayRoom{
 
                     Console.WriteLine("Selected seats: None");
                 }
-                Tuple<int, int> ?lastDeselectedPosition = null;
                 try{
                     switch(Console.ReadKey(true).Key){
                         case ConsoleKey.UpArrow:
@@ -377,6 +385,7 @@ public static class DisplayRoom{
             string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
             seatingInstance.Add(seating);
             JsonAccess.UploadToJson(seatingInstance, newPath);
+
         }else{
 
             int id = 1;
@@ -407,5 +416,4 @@ public static class DisplayRoom{
         }
 
     }
-
 }

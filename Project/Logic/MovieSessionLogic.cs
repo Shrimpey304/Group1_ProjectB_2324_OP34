@@ -2,7 +2,7 @@ namespace Cinema;
 
 public class MovieSessionLogic
 {
-	public static void ListSessions(int UserInput)
+	public static int ListSessions(int UserInput)
 	{
 		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
 		bool HasSessions = false;
@@ -22,12 +22,16 @@ public class MovieSessionLogic
 				if (session.MovieID == UserInput)
 				{
 					Console.WriteLine($"Session {Counter++}:\nStart: {session.StartTime}\nEnd: {session.EndTime}\n");
+					return session.sessionID;
 				}
+				return 0;
 			}
 		}
 		else
 		{
 			Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
+			return 0;
 		}
+		return 0;
 	}
 }
