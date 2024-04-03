@@ -62,6 +62,7 @@ public static class MenuUtils{
             { "Test register", TestRegister },
             { "Display MovieList", MovieLogic.ListAllMovies},
             { "Exit", KillProgram},
+
         };
 
         
