@@ -326,38 +326,85 @@ public static class DisplayRoom{
     /// <remarks> to create a new room json file: string "DataStorage/yourjsonname.json" </remarks>
     /// <param name="cols"></param>
     /// <param name="filePath"></param>
-    public static void CreateNewDefaultJson(int rows, int cols, string filePath)
+    public static void CreateNewDefaultJson(int rows, int cols)
     {
+        string DataStoragePath = @"DataStorage/";
+
         List<Seating> seatingInstance = new();
 
         int Rows = rows;
         int Columns = cols;
 
-        Seating seating = new Seating(Rows, Columns);
+        string[] filelist = Directory.GetFiles(DataStoragePath);
+        List<int> cinemaroomlist = new();
 
-        for (int i = 0; i < Rows; i++)
-        {
-            for (int j = 0; j < Columns; j++)
-            {
-                if (seating.SeatingArrangement[i, j] == null)
-                {
-                    seating.SeatingArrangement[i, j] = new List<SeatInfo>();
+        if (filelist != null){
+
+            foreach(string file in filelist){
+                if (file.ToLower().Contains("cinemaroom")){
+                    string[] splitfile = file.ToLower().Split("cinemaroom");
+                    string[] splitfileID = splitfile[1].Split(".json");
+                    int fileID = Convert.ToInt32(splitfileID[0]);
+                    cinemaroomlist.Add(fileID);
                 }
-                seating.SeatingArrangement[i, j].Add(new SeatInfo{
-
-                    RowID = i,
-                    ColumnID = j,
-                    Price = 10.0,
-                    reservedInSession = new(),
-                    Type = SeatType.Normal,
-                    inPrereservation = false
-
-                });
             }
         }
 
-        seatingInstance.Add(seating);
-        JsonAccess.UploadToJson(seatingInstance, filePath);
+        if (cinemaroomlist is not null){
+
+            int id = cinemaroomlist.Max() + 1;
+            Seating seating = new Seating(Rows, Columns, id);
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    if (seating.SeatingArrangement[i, j] == null)
+                    {
+                        seating.SeatingArrangement[i, j] = new List<SeatInfo>();
+                    }
+                    seating.SeatingArrangement[i, j].Add(new SeatInfo{
+
+                        RowID = i,
+                        ColumnID = j,
+                        Price = 10.0,
+                        reservedInSession = new(),
+                        Type = SeatType.Normal,
+                        inPrereservation = false
+
+                    });
+                }
+            }
+            string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
+            seatingInstance.Add(seating);
+            JsonAccess.UploadToJson(seatingInstance, newPath);
+        }else{
+
+            int id = 1;
+            Seating seating = new Seating(Rows, Columns, id);
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    if (seating.SeatingArrangement[i, j] == null)
+                    {
+                        seating.SeatingArrangement[i, j] = new List<SeatInfo>();
+                    }
+                    seating.SeatingArrangement[i, j].Add(new SeatInfo{
+
+                        RowID = i,
+                        ColumnID = j,
+                        Price = 10.0,
+                        reservedInSession = new(),
+                        Type = SeatType.Normal,
+                        inPrereservation = false
+
+                    });
+                }
+            }
+            string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
+            seatingInstance.Add(seating);
+            JsonAccess.UploadToJson(seatingInstance, newPath);
+        }
 
     }
 
