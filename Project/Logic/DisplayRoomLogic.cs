@@ -35,9 +35,8 @@ public static class DisplayRoom{
                 }
             }
 
-            string FileName = $"{DataStoragePath}{fileNM}";
-
-            List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(FileName);
+            Console.WriteLine($"{fileNM}");
+            List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileNM);
             Seating seating = seatingJson[0];
 
             int selectedPositionCol = 0;
@@ -48,7 +47,7 @@ public static class DisplayRoom{
         
             while(!Console.KeyAvailable){
                 
-                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(FileName); //will be used for a function later
+                List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileNM); //will be used for a function later
                 Seating tempSeating = TempSeatingJson[0];
 
                 Console.Clear();
@@ -284,7 +283,7 @@ public static class DisplayRoom{
                         case ConsoleKey.Backspace:
 
                             List<Seating> UploadSeatingPreAdjustment = new(){seating};
-                            JsonAccess.UploadToJson(UploadSeatingPreAdjustment, FileName);
+                            JsonAccess.UploadToJson(UploadSeatingPreAdjustment, fileNM);
                             
                         break;
                     }
@@ -295,7 +294,7 @@ public static class DisplayRoom{
 
                 List<Seating> TempUploadSeating = new(){tempSeating!};
 
-                JsonAccess.UploadToJson(TempUploadSeating, FileName);
+                JsonAccess.UploadToJson(TempUploadSeating, fileNM);
                 return SelectedPositions;
             }
             return SelectedPositions;
