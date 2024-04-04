@@ -94,5 +94,21 @@
     "salt": "B2slyrUTIx4xKdwb11CRoA==",
     "fullName": "tester ronan",
     "isAdmin": false
+  },
+  {
+    "id": 13,
+    "emailAddress": "bob@gmail.com",
+    "password": "940b670dd72f7ea24fd9d74cacaee45c65cd10d22d64bbe68a303f243b94d06e",
+    "salt": "pF4ZtwRt/SSJ640uDfx/qw==",
+    "fullName": "bob full",
+    "isAdmin": false
+  },
+  {
+    "id": 14,
+    "emailAddress": "kevin@gmail.com",
+    "password": "bd635d25531276305f889c6b292458089c5dbc09a923d30cf257657345d9edea",
+    "salt": "L851ByjWIBn9/cSpgJP1Zw==",
+    "fullName": "Kevin long jonh",
+    "isAdmin": false
   }
 ]

@@ -71,12 +71,13 @@ public static class MenuUtils{
 
 
     public static void DisplaySeatingTest(){
-        const string fileName = "DataStorage/CinemaRoom1.json";
-        const string fileNameSesh = "DataStorage/Sessions.json";
-        //waiting for logic to select room by movie/session
+        Console.WriteLine("yeet");
+        // const string fileName = "DataStorage/CinemaRoom1.json";
+        // const string fileNameSesh = "DataStorage/Sessions.json";
+        // //waiting for logic to select room by movie/session
         
-        List<MovieSession> sessions = JsonAccess.ReadFromJson<MovieSession>(fileNameSesh);
-        DisplayRoom.SelectSeating(fileName, sessions[0]);
+        // List<MovieSession> sessions = JsonAccess.ReadFromJson<MovieSession>(fileNameSesh);
+        // DisplayRoom.SelectSeating(fileName, sessions[0]);
     }
     
     public static void TestLogin(){
