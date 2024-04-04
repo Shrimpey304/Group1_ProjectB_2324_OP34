@@ -11,7 +11,7 @@ public static class DisplayRoom{
     /// used to select seats in any cinema room
     /// </summary>
     /// <param name="fileName"></param>
-    public static  List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
+    public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
         try
         {  
             string fileNM = "";
@@ -46,7 +46,7 @@ public static class DisplayRoom{
             List<Tuple<int,int>> SelectedPositions = new();    
         
             while(!Console.KeyAvailable){
-                
+
                 List<Seating> TempSeatingJson = JsonAccess.ReadFromJson<Seating>(fileNM); //will be used for a function later
                 Seating tempSeating = TempSeatingJson[0];
 
@@ -286,25 +286,39 @@ public static class DisplayRoom{
                             JsonAccess.UploadToJson(UploadSeatingPreAdjustment, fileNM);
                             
                         break;
+                        case ConsoleKey.R:
+                            
+                            if(SelectedPositions != null){
+                                Console.WriteLine("generating ticket for selected seats");
+                                Thread.Sleep(2000);
+                            }else{
+                                Console.WriteLine("you need to select atleast 1 seat");
+                                break;
+                            }
+                        return SelectedPositions;
                     }
-                    return SelectedPositions;
                 }catch(Exception ex ){
                     Console.WriteLine(ex.Message);
+                    return null;
                 }
 
                 List<Seating> TempUploadSeating = new(){tempSeating!};
 
                 JsonAccess.UploadToJson(TempUploadSeating, fileNM);
-                return SelectedPositions;
             }
-            return SelectedPositions;
+            return null;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
+            return null;
         }
-        return null;
     }
+
+    public static List<Tuple<int,int>> ReturnSelected(List<Tuple<int,int>> selectedSeating){
+        return selectedSeating;
+    }
+
 
     private static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating tempseating)
     {

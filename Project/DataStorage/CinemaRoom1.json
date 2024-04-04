@@ -798,7 +798,7 @@
             "RowID": 5,
             "ColumnID": 3,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 0
           }
         ],
@@ -808,7 +808,7 @@
             "RowID": 5,
             "ColumnID": 4,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 1
           }
         ],
@@ -818,7 +818,7 @@
             "RowID": 5,
             "ColumnID": 5,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 2
           }
         ],
@@ -828,7 +828,7 @@
             "RowID": 5,
             "ColumnID": 6,
             "Price": 10.0,
-            "inPrereservation": false,
+            "inPrereservation": true,
             "Type": 2
           }
         ],
