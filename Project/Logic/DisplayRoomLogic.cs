@@ -288,7 +288,14 @@ public static class DisplayRoom{
                         break;
                         case ConsoleKey.R:
                             
-                            if(SelectedPositions != null){
+                            if(SelectedPositions is not null && SelectedPositions.Count != 0){
+                                foreach(Tuple<int,int> pos in SelectedPositions){
+                                    tempSeating.SeatingArrangement[pos.Item1, pos.Item2][0].reservedInSession.Add(session);
+                                    tempSeating.SeatingArrangement[pos.Item1, pos.Item2][0].inPrereservation = false;
+                                    List<Seating> uploadTempSeatingReserved = new(){tempSeating!};
+
+                                    JsonAccess.UploadToJson(uploadTempSeatingReserved, fileNM);
+                                }
                                 Console.WriteLine("generating ticket for selected seats");
                                 Thread.Sleep(2000);
                             }else{
@@ -313,10 +320,6 @@ public static class DisplayRoom{
             Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
             return null;
         }
-    }
-
-    public static List<Tuple<int,int>> ReturnSelected(List<Tuple<int,int>> selectedSeating){
-        return selectedSeating;
     }
 
 

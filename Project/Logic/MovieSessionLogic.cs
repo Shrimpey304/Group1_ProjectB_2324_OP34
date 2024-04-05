@@ -9,6 +9,7 @@ public class MovieSessionLogic
 		
 		foreach (MovieSessionModel session in SessionList)
 		{
+			Console.WriteLine($"{UserInput} - {session.MovieID}");
 			if (session.MovieID == UserInput)
 			{
 				HasSessions = true;
@@ -16,24 +17,30 @@ public class MovieSessionLogic
 		}
 		Console.WriteLine(HasSessions);
 		if (HasSessions){
-			int Counter = 0;
+			int Counter = 1;
+			MovieSessionModel chosenSesh = null;
 			foreach (MovieSessionModel session in SessionList)
 			{
-				Console.WriteLine(Counter);
+				Console.Write($"{Counter}");
 				if (session.MovieID == UserInput)
 				{
 					Console.WriteLine(session.MovieID);
-					Console.WriteLine($"Session {Counter++}:\nStart: {session.StartTime}\nEnd: {session.EndTime}\n");
-					Thread.Sleep(2000);
-					return session;
+					Console.WriteLine($"Session: {Counter++} | Start: {session.StartTime} | End: {session.EndTime}");
+					
 				}
-				Thread.Sleep(2000);
 			}
+			string ?inp = Console.ReadLine();
+			int intinp = Convert.ToInt32(inp);
+			foreach (MovieSessionModel session in SessionList){
+				if(session.sessionID == intinp -1){
+					chosenSesh = session;
+				}
+			}
+			return chosenSesh;
 		}
 		else
 		{
 			Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
-			Thread.Sleep(2000);
 			return null;
 		}
 		Thread.Sleep(2000);

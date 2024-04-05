@@ -68,7 +68,6 @@ public class MovieLogic
 				// MovieSessionLogic.ListSessions(UserInputInt);
 				return UserInputInt;
 			}
-			return 0;
 		}
 		return 0;
 	}
