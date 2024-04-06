@@ -18,19 +18,25 @@ public static class DisplayRoom{
             string DataStoragePath = @"DataStorage/"; 
             string[] filelist = Directory.GetFiles(DataStoragePath);
 
-            foreach(string file in filelist){
-                Console.WriteLine(file.ToLower());
-            }
 
             if (filelist != null){
 
                 foreach(string file in filelist){
-                    Console.WriteLine(file);
-                    if (file.ToLower() == $"datastorage/cinemaroom{session.RoomID}.json"){
-                        List<Seating>fileJson = JsonAccess.ReadFromJson<Seating>($"{file}");
-                        if (fileJson != null && fileJson.Count > 0){
-                            fileNM = file; 
+                    Console.WriteLine(file.ToLower());
+                    Thread.Sleep(2000);
+                    try{
+                        if (file.ToLower() == $"datastorage/cinemaroom{Convert.ToString(session.RoomID)}.json"){
+                            // List<Seating> sitdown = JsonAccess.ReadFromJson<Seating>(file);
+                            List<Seating>fileJson = JsonAccess.ReadFromJson<Seating>($"{file}");
+                            if (fileJson != null && fileJson.Count > 0){
+                                fileNM = file;
+                            }else{
+                                continue;
+                            }
                         }
+                    }catch(Exception e){
+                        Console.WriteLine(e);
+                        continue;
                     }
                 }
             }
@@ -85,7 +91,7 @@ public static class DisplayRoom{
 
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != session){
+                                        if(sesh.sessionID != session.sessionID){
 
                                             if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
                                                 Console.BackgroundColor = ConsoleColor.Green;
@@ -103,7 +109,7 @@ public static class DisplayRoom{
                                             Console.BackgroundColor = ConsoleColor.Green;
                                             Console.Write($"[ S ]");
 
-                                        }else{
+                                        }else if(sesh.sessionID == session.sessionID){
 
                                             Console.BackgroundColor = ConsoleColor.DarkGray;
                                             Console.Write($"[ R ]");
@@ -133,7 +139,7 @@ public static class DisplayRoom{
 
                                     foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
 
-                                        if(sesh != session){
+                                        if(sesh.sessionID != session.sessionID){
 
                                             if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
                                                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
@@ -149,7 +155,7 @@ public static class DisplayRoom{
                                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                                 Console.Write($"[ N ]");
                                             }
-                                        }else{
+                                        }else if(sesh.sessionID == session.sessionID){
 
                                             Console.BackgroundColor = ConsoleColor.DarkGray;
                                             Console.Write($"[ R ]");

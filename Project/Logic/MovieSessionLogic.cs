@@ -32,10 +32,11 @@ public class MovieSessionLogic
 			string ?inp = Console.ReadLine();
 			int intinp = Convert.ToInt32(inp);
 			foreach (MovieSessionModel session in SessionList){
-				if(session.sessionID == intinp -1){
+				if(session.sessionID == intinp){
 					chosenSesh = session;
 				}
 			}
+			Console.WriteLine($"{chosenSesh.RoomID}, {chosenSesh.MovieID}");
 			return chosenSesh;
 		}
 		else
@@ -43,7 +44,5 @@ public class MovieSessionLogic
 			Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
 			return null;
 		}
-		Thread.Sleep(2000);
-		return null;
 	}
 }
