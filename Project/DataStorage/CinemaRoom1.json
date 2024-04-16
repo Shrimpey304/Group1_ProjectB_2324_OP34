@@ -500,7 +500,15 @@
         ],
         [
           {
-            "reservedInSession": [],
+            "reservedInSession": [
+              {
+                "sessionID": 2,
+                "StartTime": "2024-04-02T16:00:00",
+                "EndTime": "2024-04-02T17:58:00",
+                "MovieID": 4,
+                "RoomID": 1
+              }
+            ],
             "RowID": 3,
             "ColumnID": 4,
             "Price": 10.0,
@@ -510,7 +518,15 @@
         ],
         [
           {
-            "reservedInSession": [],
+            "reservedInSession": [
+              {
+                "sessionID": 2,
+                "StartTime": "2024-04-02T16:00:00",
+                "EndTime": "2024-04-02T17:58:00",
+                "MovieID": 4,
+                "RoomID": 1
+              }
+            ],
             "RowID": 3,
             "ColumnID": 5,
             "Price": 10.0,
@@ -520,7 +536,15 @@
         ],
         [
           {
-            "reservedInSession": [],
+            "reservedInSession": [
+              {
+                "sessionID": 2,
+                "StartTime": "2024-04-02T16:00:00",
+                "EndTime": "2024-04-02T17:58:00",
+                "MovieID": 4,
+                "RoomID": 1
+              }
+            ],
             "RowID": 3,
             "ColumnID": 6,
             "Price": 10.0,
