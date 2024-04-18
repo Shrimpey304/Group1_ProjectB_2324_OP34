@@ -22,8 +22,6 @@ public static class DisplayRoom{
             if (filelist != null){
 
                 foreach(string file in filelist){
-                    Console.WriteLine(file.ToLower());
-                    Thread.Sleep(2000);
                     try{
                         if (file.ToLower() == $"datastorage/cinemaroom{Convert.ToString(session.RoomID)}.json"){
                             // List<Seating> sitdown = JsonAccess.ReadFromJson<Seating>(file);
