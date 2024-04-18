@@ -9,22 +9,18 @@ public class MovieSessionLogic
 		
 		foreach (MovieSessionModel session in SessionList)
 		{
-			Console.WriteLine($"{UserInput} - {session.MovieID}");
 			if (session.MovieID == UserInput)
 			{
 				HasSessions = true;
 			}
 		}
-		Console.WriteLine(HasSessions);
 		if (HasSessions){
 			int Counter = 1;
 			MovieSessionModel chosenSesh = null;
 			foreach (MovieSessionModel session in SessionList)
 			{
-				Console.Write($"{Counter}");
 				if (session.MovieID == UserInput)
 				{
-					Console.WriteLine(session.MovieID);
 					Console.WriteLine($"Session: {Counter++} | Start: {session.StartTime} | End: {session.EndTime}");
 					
 				}
@@ -36,7 +32,6 @@ public class MovieSessionLogic
 					chosenSesh = session;
 				}
 			}
-			Console.WriteLine($"{chosenSesh.RoomID}, {chosenSesh.MovieID}");
 			return chosenSesh;
 		}
 		else
