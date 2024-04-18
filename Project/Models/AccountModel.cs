@@ -18,15 +18,18 @@ public class AccountModel
     public string FullName { get; set; }
 
     [JsonPropertyName("isAdmin")]
-    public bool IsAdmin { get; set; } = false; // Default to false
+    public bool IsAdmin { get; set; }
 
-    // Assuming ID is handled elsewhere (e.g., by UserRepository), we don't include it in the constructor.
-    public AccountModel(string emailAddress, string password, string salt, string fullName, bool isAdmin)
+    [JsonPropertyName("isActive")]
+    public bool IsActive { get; set; } // New property to indicate if the user is currently logged in
+
+    public AccountModel(string emailAddress, string password, string salt, string fullName, bool isAdmin, bool isActive)
     {
         EmailAddress = emailAddress;
-        Password = password; // This will now store the hashed password
+        Password = password;
         Salt = salt;
         FullName = fullName;
         IsAdmin = isAdmin;
+        IsActive = isActive;
     }
 }

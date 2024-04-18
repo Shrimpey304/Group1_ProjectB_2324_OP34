@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1,
+    "emailAddress": "ronan@gmail.com",
+    "password": "d364eeb3a31f86e0abde39c8a9a8b6088702069b8e2383735eef519a25523c83",
+    "salt": "X1tyNQ30lhFTNsRWrDowGQ==",
+    "fullName": "Ronan Hardjo",
+    "isAdmin": false,
+    "isActive": false
+  }
+]

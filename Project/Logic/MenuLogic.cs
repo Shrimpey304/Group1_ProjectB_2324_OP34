@@ -57,9 +57,9 @@ public static class MenuUtils{
 
         Dictionary<string, Action> MainMenuOptions = new()
         { 
-            { "Display seating test", DisplaySeatingTest},
-            { "Test login", TestLogin },
-            { "Test register", TestRegister },
+            { "Display seating", DisplaySeatingTest},
+            { "login", TestLogin },
+            { "register", TestRegister },
             { "Exit", KillProgram}
         };
 
