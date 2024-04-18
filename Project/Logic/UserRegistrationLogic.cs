@@ -22,7 +22,9 @@ namespace Cinema
 
             var salt = PasswordHasher.GenerateSalt();
             var hashedPassword = PasswordHasher.HashPassword(password, salt);
-            AccountModel newUser = new AccountModel(email, hashedPassword, salt, fullName, isAdmin: false);
+
+            // Include isActive: false when creating a new user
+            AccountModel newUser = new AccountModel(email, hashedPassword, salt, fullName, isAdmin: false, isActive: false);
             userRepository.AddUser(newUser);
 
             Console.WriteLine("Registration successful. Welcome, " + fullName);
