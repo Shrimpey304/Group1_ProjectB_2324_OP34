@@ -57,6 +57,7 @@ public static class MenuUtils{
 
         Dictionary<string, Action> MainMenuOptions = new()
         { 
+
             { "Login", TestLogin },
             { "Register", TestRegister },
             { "Display MovieList", ReserveTicket.ReserveProcess},
@@ -68,6 +69,7 @@ public static class MenuUtils{
         RunCheckboxMenu(MainMenuOptions, "main");
         
     }
+
     
     public static void TestLogin(){
         UserLogin.Start();

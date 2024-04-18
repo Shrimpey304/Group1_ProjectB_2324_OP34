@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using System.Text.Json;
 using Cinema;
 
 public class AccountsLogic
@@ -19,7 +18,8 @@ public class AccountsLogic
 
     public AccountModel? CheckLogin(string email, string password)
     {
-        try{
+        try
+        {
             // Attempt to find the user by email.
             var user = _accounts.FirstOrDefault(u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
             if (user != null)
@@ -30,18 +30,28 @@ public class AccountsLogic
                 // Compare the hashed input password with the stored hashed password
                 if (hashedInputPassword == user.Password)
                 {
-                    CurrentAccount = user; // Successfully authenticated
+                    SetAllAccountsInactive();  // Set all accounts to inactive
+                    user.IsActive = true;      // Set the current user as active
+                    CurrentAccount = user;     // Update the current account pointer
+                    JsonAccess.UploadToJson(_accounts, filePathAccounts); // Save changes to JSON
                     return user;
                 }
-                return null;
             }
-
             // Authentication failed
             return null;
         }
-        catch(Exception e){
-            Console.WriteLine(e);
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error during login: {e}");
             return null;
+        }
+    }
+
+    private void SetAllAccountsInactive()
+    {
+        foreach (var account in _accounts)
+        {
+            account.IsActive = false;  // Set IsActive to false for all accounts
         }
     }
 
@@ -62,4 +72,3 @@ public class AccountsLogic
         return _accounts.FirstOrDefault(a => a.Id == id);
     }
 }
-// all might
