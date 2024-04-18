@@ -4,14 +4,12 @@ public class Ticket{
 
     //User class voor userdata nodig
     //Movie Movie class voor moviedata
-    DateOnly DateOfMovie;
-    DateTime TimeOfMovie;
-    List<Tuple<int,int>> ReservedSeats;
+    public MovieSessionModel moviesession;
+    public List<Tuple<int,int>> ReservedSeats;
 
-    public Ticket(DateOnly dateofmovie, DateTime timeofmovie, List<Tuple<int,int>> reservedseats){
+    public Ticket(MovieSessionModel session, List<Tuple<int,int>> reservedseats){
 
-        DateOfMovie = dateofmovie;
-        TimeOfMovie = timeofmovie;
+        moviesession = session;
         ReservedSeats = reservedseats;
 
     }

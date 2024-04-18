@@ -57,8 +57,12 @@ public static class MenuUtils{
 
         Dictionary<string, Action> MainMenuOptions = new()
         { 
-            { "Display seating test", DisplaySeatingTest},
-            { "Test login", TestLogin } 
+
+            { "Login", TestLogin },
+            { "Register", TestRegister },
+            { "Display MovieList", ReserveTicket.ReserveProcess},
+            { "Exit", KillProgram},
+
         };
 
         
@@ -66,17 +70,15 @@ public static class MenuUtils{
         
     }
 
-
-    public static void DisplaySeatingTest(){
-        const string fileName = "DataStorage/CinemaRoom1.json";
-        const string fileNameSesh = "DataStorage/Sessions.json";
-        //waiting for logic to select room by movie/session
-        
-        List<MovieSession> sessions = JsonAccess.ReadFromJson<MovieSession>(fileNameSesh);
-        DisplayRoom.SelectSeating(fileName, sessions[0]);
-    }
     
     public static void TestLogin(){
-        Console.WriteLine("test");
+        UserLogin.Start();
+    }
+    public static void TestRegister(){
+        UserRegistration.Start();
+    }
+    public static void KillProgram(){
+        Console.WriteLine("Exiting the program...");
+        Environment.Exit(0);
     }
 }
