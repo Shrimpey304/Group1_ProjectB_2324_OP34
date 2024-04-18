@@ -6,16 +6,18 @@ public class MovieSessionModel
 	public int sessionID;
 	public DateTime StartTime;
 	public DateTime EndTime;
-	public MovieModel Movie;
+	public int MovieID;
+	public int RoomID;
 	
 	// public DisplayRoom Room;
 	
-	public MovieSessionModel(DateTime start, DateTime end, MovieModel movie)
+	public MovieSessionModel(DateTime start, DateTime end, int movieID, int roomID)
 	{
 		StartTime = start;
 		EndTime = end;
-		Movie = movie;
+		MovieID = movieID;
 		sessionID = sID ++;
+		RoomID = roomID;
 	}
 
 	// public static void MakeSession(DateTime start, DateTime end){
