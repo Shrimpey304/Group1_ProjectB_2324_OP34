@@ -91,4 +91,11 @@ public class AccountsLogic
             }
         }
     }
+
+    public static void getuserinfo(){
+        Console.WriteLine("your account info:");
+
+        Console.WriteLine($"Name: {CurrentAccount.FullName}");
+        Console.WriteLine($"EMail: {CurrentAccount.EmailAddress}");
+    }
 }

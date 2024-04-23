@@ -83,6 +83,7 @@ public static class MenuUtils{
 
             { "Reserve Ticket", ReserveTicket.ReserveProcess},
             { "Show Tickets", AccountsLogic.GetTickets},
+            { "Show Profile", AccountsLogic.getuserinfo},
             { "Logout", AccountsLogic.logout},
             { "Exit", KillProgram}
 
