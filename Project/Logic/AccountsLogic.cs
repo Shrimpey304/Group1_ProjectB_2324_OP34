@@ -21,7 +21,7 @@ public class AccountsLogic
         try
         {
             // Attempt to find the user by email.
-            var user = _accounts.FirstOrDefault(u => u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
+            var user = _accounts.FirstOrDefault(u => u != null && u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
             if (user != null)
             {
                 // Hash the input password with the user's stored salt
@@ -36,6 +36,8 @@ public class AccountsLogic
                     JsonAccess.UploadToJson(_accounts, filePathAccounts); // Save changes to JSON
                     return user;
                 }
+            }else{
+                throw new NullReferenceException("");
             }
             // Authentication failed
             return null;
@@ -47,12 +49,19 @@ public class AccountsLogic
         }
     }
 
-    private void SetAllAccountsInactive()
+    public void SetAllAccountsInactive()
     {
         foreach (var account in _accounts)
         {
             account.IsActive = false;  // Set IsActive to false for all accounts
         }
+    }
+
+    public static void logout(){
+        AccountsLogic instAccLog = new AccountsLogic();
+        instAccLog.SetAllAccountsInactive();
+        CurrentAccount = null;
+        MenuUtils.displayMainMenu();
     }
 
     public void UpdateList(AccountModel acc)
@@ -70,5 +79,16 @@ public class AccountsLogic
     {
         // Find and return the account by ID
         return _accounts.FirstOrDefault(a => a.Id == id);
+    }
+
+    public static void GetTickets(){
+
+        Console.WriteLine("Current Tickets:\n\n");
+
+        if (CurrentAccount != null){
+            foreach(var ticket in CurrentAccount.TicketList){
+                Console.WriteLine($"Movie: {ticket.moviesession.MovieID} Time: {ticket.moviesession.StartTime}");
+            }
+        }
     }
 }

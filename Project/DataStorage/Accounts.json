@@ -1,29 +1,59 @@
 [
   {
     "Id": 1,
-    "EmailAddress": "ronan@gmail.com",
-    "Password": "d364eeb3a31f86e0abde39c8a9a8b6088702069b8e2383735eef519a25523c83",
-    "Salt": "X1tyNQ30lhFTNsRWrDowGQ==",
-    "FullName": "Ronan Hardjo",
+    "EmailAddress": "kimo.edelbroek@gmail.com",
+    "Password": "517c129176c31e4dbdda34147386d4c731c2faa6a912693a133736370d81e375",
+    "Salt": "WBUNjQAe88JTPE/BbGHPnw==",
+    "FullName": "kimo",
     "IsAdmin": false,
-    "IsActive": false
-  },
-  {
-    "Id": 2,
-    "EmailAddress": "read@gmail.com",
-    "Password": "e617a92bac40042284a7e3f15835571437d16668e1f392a82fe48778c6b2e497",
-    "Salt": "TEFt3lHynnHYgx9mMmEsXA==",
-    "FullName": "full pain",
-    "IsAdmin": false,
-    "IsActive": false
-  },
-  {
-    "Id": 3,
-    "EmailAddress": "testing@gmail.com",
-    "Password": "36686770299c77325c0103de5d354d233bf64e2912532dd6bb49754fa8f72275",
-    "Salt": "v10nfHQh/ncpPx1I09yDtg==",
-    "FullName": "full testing",
-    "IsAdmin": false,
-    "IsActive": true
+    "IsActive": true,
+    "TicketList": [
+      {
+        "moviesession": {
+          "sessionID": 1,
+          "StartTime": "2024-04-01T15:00:00",
+          "EndTime": "2024-04-01T16:58:00",
+          "MovieID": 2,
+          "RoomID": 1
+        },
+        "ReservedSeats": [
+          {
+            "Item1": 1,
+            "Item2": 4
+          },
+          {
+            "Item1": 1,
+            "Item2": 5
+          },
+          {
+            "Item1": 1,
+            "Item2": 6
+          }
+        ]
+      },
+      {
+        "moviesession": {
+          "sessionID": 1,
+          "StartTime": "2024-04-01T15:00:00",
+          "EndTime": "2024-04-01T16:58:00",
+          "MovieID": 2,
+          "RoomID": 1
+        },
+        "ReservedSeats": [
+          {
+            "Item1": 5,
+            "Item2": 7
+          },
+          {
+            "Item1": 5,
+            "Item2": 8
+          },
+          {
+            "Item1": 5,
+            "Item2": 9
+          }
+        ]
+      }
+    ]
   }
 ]
