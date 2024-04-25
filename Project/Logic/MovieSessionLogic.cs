@@ -16,7 +16,8 @@ public class MovieSessionLogic
 		}
 		if (HasSessions){
 			int Counter = 1;
-			MovieSessionModel chosenSesh = null;
+			MovieSessionModel chosenSession = null;
+			Console.WriteLine("Upcoming sessions for this movie:");
 			foreach (MovieSessionModel session in SessionList)
 			{
 				if (session.MovieID == UserInput)
@@ -25,14 +26,15 @@ public class MovieSessionLogic
 					
 				}
 			}
+			System.Console.WriteLine("\nPlease select a session by typing the session ID.");
 			string ?inp = Console.ReadLine();
 			int intinp = Convert.ToInt32(inp);
 			foreach (MovieSessionModel session in SessionList){
 				if(session.sessionID == intinp){
-					chosenSesh = session;
+					chosenSession = session;
 				}
 			}
-			return chosenSesh;
+			return chosenSession;
 		}
 		else
 		{
