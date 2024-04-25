@@ -1,0 +1,93 @@
+[
+    {
+        "SnackID": 1,
+        "Name": "Salty Popcorn",
+        "Price": 4,
+        "Description": "Freshly popped corn with salt sprinkled on."
+    },
+    {
+        "SnackID": 2,
+        "Name": "Caramel Popcorn",
+        "Price": 5,
+        "Description": "Crunchy popcorn coated in sweet caramel glaze."
+    },
+    {
+        "SnackID": 3,
+        "Name": "Nachos with Cheese",
+        "Price": 6,
+        "Description": "Crispy tortilla chips topped with warm nacho cheese sauce."
+    },
+    {
+        "SnackID": 4,
+        "Name": "Large Soda",
+        "Price": 5,
+        "Description": "Giant serving of your favorite soft drink, perfect for quenching your thirst."
+    },
+    {
+        "SnackID": 5,
+        "Name": "Hot Dog",
+        "Price": 7,
+        "Description": "Classic beef hot dog served in a soft bun with optional mustard and ketchup."
+    },
+    {
+        "SnackID": 6,
+        "Name": "Candy Bar",
+        "Price": 3,
+        "Description": "Assorted chocolate bar with various flavors like caramel, peanuts, or nougat."
+    },
+    {
+        "SnackID": 7,
+        "Name": "Pretzel",
+        "Price": 4,
+        "Description": "Freshly baked soft pretzel sprinkled with coarse salt."
+    },
+    {
+        "SnackID": 8,
+        "Name": "Ice Cream Cone",
+        "Price": 4,
+        "Description": "Single scoop of vanilla ice cream in a crispy sugar cone."
+    },
+    {
+        "SnackID": 9,
+        "Name": "Chicken Tenders",
+        "Price": 8,
+        "Description": "Crispy breaded chicken tenders served with your choice of dipping sauce."
+    },
+    {
+        "SnackID": 10,
+        "Name": "Fruit Cup",
+        "Price": 5,
+        "Description": "Fresh assortment of seasonal fruits, perfect for a healthier snack option."
+    },
+    {
+        "SnackID": 11,
+        "Name": "Soft Pretzel Bites",
+        "Price": 5,
+        "Description": "Miniature soft pretzel bites served with a side of cheese sauce."
+    },
+    {
+        "SnackID": 12,
+        "Name": "Churros",
+        "Price": 4,
+        "Description": "Sweet fried dough dusted with cinnamon sugar."
+    },
+    {
+        "SnackID": 14,
+        "Name": "Milkshake",
+        "Price": 6,
+        "Description": "Creamy milkshake available in flavors like chocolate, vanilla, or strawberry."
+    },
+    {
+        "SnackID": 15,
+        "Name": "Loaded Fries",
+        "Price": 7,
+        "Description": "French fries topped with melted cheese, bacon bits, and green onions."
+    },
+    {
+        "SnackID": 16,
+        "Name": "Brownie",
+        "Price": 4,
+        "Description": "Rich chocolate brownie, served warm and gooey."
+    }
+]
+

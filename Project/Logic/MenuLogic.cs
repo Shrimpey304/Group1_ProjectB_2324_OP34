@@ -5,104 +5,106 @@ namespace Cinema;
 
 public static class MenuUtils{
 
-    static void PerformAction(Action action)
-    {
-        Console.Clear();
-        action.Invoke();
-        Console.WriteLine("\nPress any key to continue...");
-        Console.ReadKey();
-    }
+	static void PerformAction(Action action)
+	{
+		Console.Clear();
+		action.Invoke();
+		Console.WriteLine("\nPress any key to continue...");
+		Console.ReadKey();
+	}
 
-    static void RunCheckboxMenu(Dictionary<string, Action> optionsAndActions, string headertype)
-    {
-        int selectedIndex = 0;
-        List<string> options = new List<string>(optionsAndActions.Keys);
-        bool[] selectedOptions = new bool[options.Count];
+	static void RunCheckboxMenu(Dictionary<string, Action> optionsAndActions, string headertype)
+	{
+		int selectedIndex = 0;
+		List<string> options = new List<string>(optionsAndActions.Keys);
+		bool[] selectedOptions = new bool[options.Count];
 
-        while (true)
-        {
-            Console.Clear();
+		while (true)
+		{
+			Console.Clear();
 
-            if(headertype == "main"){
-                DisplayHeader.HeaderMain();
-            }
+			if(headertype == "main"){
+				DisplayHeader.HeaderMain();
+			}
 
-            if(AccountsLogic.CurrentAccount != null){
-                Console.WriteLine($"\nwelcome: {AccountsLogic.CurrentAccount.FullName}");
-            }else{
-                Console.WriteLine("\nwelcome: user");
-            }
-            Console.WriteLine("\n\npress 'enter' to select option\n");
+			if(AccountsLogic.CurrentAccount != null){
+				Console.WriteLine($"\nwelcome: {AccountsLogic.CurrentAccount.FullName}");
+			}else{
+				Console.WriteLine("\nwelcome: user");
+			}
+			Console.WriteLine("\n\npress 'enter' to select option\n");
 
-            for (int i = 0; i < options.Count; i++)
-            {
-                Console.Write(selectedIndex == i ? "[x] " : "[ ] ");
-                Console.WriteLine(options[i]);
-            }
+			for (int i = 0; i < options.Count; i++)
+			{
+				Console.Write(selectedIndex == i ? "[x] " : "[ ] ");
+				Console.WriteLine(options[i]);
+			}
 
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
+			ConsoleKeyInfo keyInfo = Console.ReadKey();
 
-            switch (keyInfo.Key)
-            {
-                case ConsoleKey.UpArrow:
-                    selectedIndex = (selectedIndex - 1 + options.Count) % options.Count;
-                    break;
+			switch (keyInfo.Key)
+			{
+				case ConsoleKey.UpArrow:
+					selectedIndex = (selectedIndex - 1 + options.Count) % options.Count;
+					break;
 
-                case ConsoleKey.DownArrow:
-                    selectedIndex = (selectedIndex + 1) % options.Count;
-                    break;
+				case ConsoleKey.DownArrow:
+					selectedIndex = (selectedIndex + 1) % options.Count;
+					break;
 
-                case ConsoleKey.Enter:
-                    PerformAction(optionsAndActions[options[selectedIndex]]);
-                    break;
-            }
-        }
-    }
+				case ConsoleKey.Enter:
+					PerformAction(optionsAndActions[options[selectedIndex]]);
+					break;
+			}
+		}
+	}
 
-    public static void displayMainMenu(){
+	public static void displayMainMenu(){
 
-        Dictionary<string, Action> MainMenuOptions = new()
-        { 
+		Dictionary<string, Action> MainMenuOptions = new()
+		{ 
 
-            { "Login", TestLogin },
-            { "Register", TestRegister },
-            { "Display MovieList", () => MovieLogic.ListAllMovies(true)},
-            { "Exit", KillProgram},
+			{ "Login", TestLogin },
+			{ "Register", TestRegister },
+			{ "Display MovieList", () => MovieLogic.ListAllMovies(true)},
+			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Exit", KillProgram},
 
-        };
+		};
 
-        
-        RunCheckboxMenu(MainMenuOptions, "main");
-        
-    }
+		
+		RunCheckboxMenu(MainMenuOptions, "main");
+		
+	}
 
-        public static void displayLoggedinMenu(){
+		public static void displayLoggedinMenu(){
 
-        Dictionary<string, Action> LoginMenuOptions = new()
-        { 
+		Dictionary<string, Action> LoginMenuOptions = new()
+		{ 
 
-            { "Reserve Ticket", ReserveTicket.ReserveProcess},
-            { "Show Tickets", AccountsLogic.GetTickets},
-            { "Show Profile", AccountsLogic.getuserinfo},
-            { "Logout", AccountsLogic.logout},
-            { "Exit", KillProgram}
+			{ "Reserve Ticket", ReserveTicket.ReserveProcess},
+			{ "Show Tickets", AccountsLogic.GetTickets},
+			{ "Show Profile", AccountsLogic.getuserinfo},
+			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Logout", AccountsLogic.logout},
+			{ "Exit", KillProgram}
 
-        };
+		};
 
-        
-        RunCheckboxMenu(LoginMenuOptions, "main");
-        
-    }
+		
+		RunCheckboxMenu(LoginMenuOptions, "main");
+		
+	}
 
-    
-    public static void TestLogin(){
-        UserLogin.Start();
-    }
-    public static void TestRegister(){
-        UserRegistration.Start();
-    }
-    public static void KillProgram(){
-        Console.WriteLine("Exiting the program...");
-        Environment.Exit(0);
-    }
+	
+	public static void TestLogin(){
+		UserLogin.Start();
+	}
+	public static void TestRegister(){
+		UserRegistration.Start();
+	}
+	public static void KillProgram(){
+		Console.WriteLine("Exiting the program...");
+		Environment.Exit(0);
+	}
 }
