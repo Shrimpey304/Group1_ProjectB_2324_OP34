@@ -195,6 +195,7 @@ public static class DisplayRoom{
                     Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  ");
                     Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  ");
                     Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
+                    Console.Write("R"); Console.ResetColor(); Console.Write(" = Reserve  \n");
                 }
                 else
                 {

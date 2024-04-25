@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 namespace Cinema;
 
 public static class MenuUtils{
@@ -26,6 +27,11 @@ public static class MenuUtils{
                 DisplayHeader.HeaderMain();
             }
 
+            if(AccountsLogic.CurrentAccount != null){
+                Console.WriteLine($"\nwelcome: {AccountsLogic.CurrentAccount.FullName}");
+            }else{
+                Console.WriteLine("\nwelcome: user");
+            }
             Console.WriteLine("\n\npress 'enter' to select option\n");
 
             for (int i = 0; i < options.Count; i++)
@@ -60,13 +66,31 @@ public static class MenuUtils{
 
             { "Login", TestLogin },
             { "Register", TestRegister },
-            { "Display MovieList", ReserveTicket.ReserveProcess},
+            { "Display MovieList", () => MovieLogic.ListAllMovies(true)},
             { "Exit", KillProgram},
 
         };
 
         
         RunCheckboxMenu(MainMenuOptions, "main");
+        
+    }
+
+        public static void displayLoggedinMenu(){
+
+        Dictionary<string, Action> LoginMenuOptions = new()
+        { 
+
+            { "Reserve Ticket", ReserveTicket.ReserveProcess},
+            { "Show Tickets", AccountsLogic.GetTickets},
+            { "Show Profile", AccountsLogic.getuserinfo},
+            { "Logout", AccountsLogic.logout},
+            { "Exit", KillProgram}
+
+        };
+
+        
+        RunCheckboxMenu(LoginMenuOptions, "main");
         
     }
 
