@@ -67,7 +67,7 @@ public static class MenuUtils{
 			{ "Login", TestLogin },
 			{ "Register", TestRegister },
 			{ "Display MovieList", () => MovieLogic.ListAllMovies(true)},
-			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
 			{ "Exit", KillProgram},
 
 		};
@@ -77,7 +77,7 @@ public static class MenuUtils{
 		
 	}
 
-		public static void displayLoggedinMenu(){
+	public static void displayLoggedinMenu(){
 
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
@@ -85,7 +85,7 @@ public static class MenuUtils{
 			{ "Reserve Ticket", ReserveTicket.ReserveProcess},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -93,6 +93,21 @@ public static class MenuUtils{
 
 		
 		RunCheckboxMenu(LoginMenuOptions, "main");
+		
+	}
+	
+	public static void displaySnackOption(){
+
+		Dictionary<string, Action> DisplaySnack = new()
+		{ 
+
+			{ "Yes",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "No", Console.WriteLine},
+
+		};
+
+		
+		RunCheckboxMenu(DisplaySnack, "main");
 		
 	}
 
