@@ -18,7 +18,7 @@ static class UserLogin
         if (acc != null)
         {
             Console.WriteLine($"Welcome back {acc.FullName}");
-            Console.WriteLine($"Your email number is {acc.EmailAddress}");
+            MenuUtils.displayLoggedinMenu();
         }
         else
         {

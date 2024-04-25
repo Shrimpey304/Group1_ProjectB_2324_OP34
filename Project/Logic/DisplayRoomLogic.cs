@@ -454,4 +454,3 @@ public static class DisplayRoom{
 		}
 
 	}
-}
