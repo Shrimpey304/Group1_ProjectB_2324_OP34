@@ -17,7 +17,6 @@ public class ReserveTicket{
 				AccountsLogic instAL = new();
 				AccountsLogic.CurrentAccount.TicketList.Add(newticket);
 				instAL.UpdateList(AccountsLogic.CurrentAccount);
-				Console.WriteLine("Would you like to order snacks?");
 				MenuUtils.displaySnackOption();
 
 			}else{

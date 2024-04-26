@@ -1,9 +1,12 @@
-using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Cinema;
 //Seperate Food and drinks!!!
+
+
 public class SnackMenuLogic
 {
+	public static bool FinishOrder = false;
 	const string filePathSnackMenu = "DataStorage/Menu.json";
 	public static void ListSnackMenu(bool isvoid)
 	{
@@ -11,7 +14,7 @@ public class SnackMenuLogic
 		{
 			List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
 			IDictionary<int, string> OrderedSnacks = new Dictionary<int, string>();
-			bool FinishOrder = false;
+			
 			while(FinishOrder == false)
 			{
 				Console.WriteLine(" ________________________________________________________________________________________________________________________________________________________________");
@@ -45,7 +48,6 @@ public class SnackMenuLogic
 						Console.WriteLine($"Added {SnackAmountInt} {snack.Name} to order.");
 						return;
 					}
-
 				}
 			}
 		}
@@ -68,5 +70,10 @@ public class SnackMenuLogic
 
 		Console.WriteLine(" ----------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose");
+	}
+	
+	public static void stopOrdering()
+	{
+		FinishOrder = true;
 	}
 }

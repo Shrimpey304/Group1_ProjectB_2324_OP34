@@ -25,13 +25,17 @@ public static class MenuUtils{
 
 			if(headertype == "main"){
 				DisplayHeader.HeaderMain();
-			}
-
-			if(AccountsLogic.CurrentAccount != null){
+				if(AccountsLogic.CurrentAccount != null){
 				Console.WriteLine($"\nwelcome: {AccountsLogic.CurrentAccount.FullName}");
-			}else{
+				}else{
 				Console.WriteLine("\nwelcome: user");
+				}
 			}
+			else if(headertype == "snacks"){
+				DisplayHeader.HeaderSnack();
+				Console.WriteLine("\n\nWould you like to order (more)?");
+			}
+			
 			Console.WriteLine("\n\npress 'enter' to select option\n");
 
 			for (int i = 0; i < options.Count; i++)
@@ -101,13 +105,14 @@ public static class MenuUtils{
 		Dictionary<string, Action> DisplaySnack = new()
 		{ 
 
-			{ "Yes",() => SnackMenuLogic.ListSnackMenu(true)},
-			{ "No", Console.WriteLine},
+			{ "Add snacks",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Remove snacks",Console.WriteLine},
+			{ "Finish order", () => SnackMenuLogic.stopOrdering()},
 
 		};
-
+		Console.WriteLine("Would you like to order snacks?\n");
 		
-		RunCheckboxMenu(DisplaySnack, "main");
+		RunCheckboxMenu(DisplaySnack, "snacks");
 		
 	}
 
