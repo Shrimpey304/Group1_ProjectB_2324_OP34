@@ -8,6 +8,7 @@ public class SnackMenuLogic
 {
 	public static bool FinishOrder = false;
 	const string filePathSnackMenu = "DataStorage/Menu.json";
+	public static IDictionary<int, string>  OrderedSnacks = new Dictionary<int, string>();
 	public static void ListSnackMenu(bool isvoid)
 	{
 		if (isvoid)
@@ -72,8 +73,28 @@ public class SnackMenuLogic
 		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose");
 	}
 	
-	public static void stopOrdering()
+	public static void FinishOrdering()
 	{
+		List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
+		double TotalCost = 0;
 		FinishOrder = true;
+		Console.WriteLine("Your total order:\n");
+		foreach (KeyValuePair <int,string> item in OrderedSnacks)
+		{
+			Console.WriteLine($"{item.Key} {item.Value}");
+			foreach(SnackMenuModel snack in menuList)
+			{
+				if (snack.Name == item.Value)
+				{
+					int SnackPrice = Convert.ToInt32(snack.Price);
+					TotalCost += SnackPrice * item.Key;
+				}
+			}
+		}
+		if (OrderedSnacks != null)
+		{
+			Console.WriteLine(OrderedSnacks);
+		}
+		Console.WriteLine(TotalCost);
 	}
 }
