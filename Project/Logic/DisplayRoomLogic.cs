@@ -84,7 +84,7 @@ public static class DisplayRoom{
 					}
 					Console.WriteLine("");
 					
-					SetColor(selectedPositionCol, selectedPositionRow, tempSeating);
+					SetColor(selectedPositionRow, selectedPositionCol, tempSeating, session);
 
 					Console.ResetColor();
 					Console.WriteLine("\n");
@@ -226,7 +226,7 @@ public static class DisplayRoom{
 		}
 	}
 
-	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating){
+	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating, MovieSessionModel session){
 
 
 		for (int i = 0; i < seating.Rows; i++)
@@ -235,17 +235,54 @@ public static class DisplayRoom{
 			Console.Write($"{i}  ".PadRight(3));
 			for (int j = 0; j < seating.Columns; j++)
 			{
-				foreach(MovieSessionModel sesh in seating.SeatingArrangement[i,j][0].reservedInSession)
+				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
 				{
-					if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
 					{
-
+						bool reserved = false;
+						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession){
+							if (thissession == session)
+							{
+								reserved = true;
+								Console.BackgroundColor = ConsoleColor.DarkGray;
+								Console.Write($"[ R ]");
+							}
+						}
+						if(!reserved){
+				
+							seatColor(seating.SeatingArrangement[i,j][0], true);
+			
+						}
+					}
+					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+					{
 						seatColor(seating.SeatingArrangement[i,j][0], true);
+					}
 
-					}else{
-
+				}
+				else if (seating.SeatingArrangement[i,j] != seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+				{
+					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
+					{
+						bool reserved = false;
+						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession)
+						{
+							if (thissession == session)
+							{
+								reserved = true;
+								Console.BackgroundColor = ConsoleColor.DarkGray;
+								Console.Write($"[ R ]");
+							}
+						}
+						if(!reserved){
+				
+							seatColor(seating.SeatingArrangement[i,j][0], false);
+			
+						}
+					}
+					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+					{
 						seatColor(seating.SeatingArrangement[i,j][0], false);
-
 					}
 				}
 			}
@@ -255,47 +292,48 @@ public static class DisplayRoom{
 
 	private static void seatColor(SeatInfo seatinfo, bool OverrideColor){
 
-		if(seatinfo.inPrereservation){
-			if(OverrideColor == false){
-				Console.BackgroundColor = ConsoleColor.DarkMagenta;
-			}else{
-				Console.BackgroundColor = ConsoleColor.Green;
-			}
-			Console.Write($"[ S ]");
-			
-		}else if(seatinfo.reservedInSession.Count != 0){
-			Console.BackgroundColor = ConsoleColor.DarkGray;
-			Console.Write($"[ R ]");
-
-		}else{
+		if(!seatinfo.inPrereservation){
 
 			switch(seatinfo.Type){
 				case SeatType.Normal:
-					if(OverrideColor == false){
+					if(!OverrideColor){
 						Console.BackgroundColor = ConsoleColor.Yellow;
+						Console.Write($"[ N ]");
 					}else{
 						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ N ]");
 					}
-					Console.Write($"[ N ]");
 					break;
 				case SeatType.Deluxe:
-					if(OverrideColor == false){
+					if(!OverrideColor){
 						Console.BackgroundColor = ConsoleColor.Blue;
+						Console.Write($"[ D ]");
 					}else{
 						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ D ]");
 					}
-					Console.Write($"[ D ]");
 					break;
 				case SeatType.Premium:
-					if(OverrideColor == false){
+					if(!OverrideColor){
 						Console.BackgroundColor = ConsoleColor.Red;
+						Console.Write($"[ P ]");
 					}else{
 						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ P ]");
 					}
-					Console.Write($"[ P ]");
 					break;
 			}
+		}else{
+
+			if(!OverrideColor){
+				Console.BackgroundColor = ConsoleColor.DarkMagenta;
+				Console.Write($"[ S ]");
+			}else{
+				Console.BackgroundColor = ConsoleColor.Green;
+				Console.Write($"[ S ]");
+			}
 		}
+
 	}
 
 	private static void Legenda(){
