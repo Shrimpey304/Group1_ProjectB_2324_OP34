@@ -96,5 +96,7 @@ public class SnackMenuLogic
 			Console.WriteLine(OrderedSnacks);
 		}
 		Console.WriteLine(TotalCost);
+		Thread.Sleep(2000);
+		MenuUtils.displayLoggedinMenu();
 	}
 }
