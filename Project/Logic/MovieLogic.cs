@@ -64,7 +64,7 @@ public class MovieLogic
 				Console.Clear();
 				Console.WriteLine("Current selected movie:");
 				// Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-				Console.WriteLine($"{Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)}");
+				Console.WriteLine($"{Convert.ToString(movie.MovieID)}: {movie.Title} [PG-{Convert.ToString(movie.AgeRestriction)}]");
 				// MovieSessionLogic.ListSessions(UserInputInt);
 				return UserInputInt;
 			}
