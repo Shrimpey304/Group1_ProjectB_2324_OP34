@@ -18,16 +18,16 @@ public class SnackMenuLogic
 			
 			while(FinishOrder == false)
 			{
-				Console.WriteLine(" ________________________________________________________________________________________________________________________________________________________________");
-				Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                      | Extra Info        |");
-				Console.WriteLine("|---------+-------------------------------------+---------+----------------------------------------------------------------------------------+-------------------|");
+				Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
+				Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                   | Extra Info |");
+				Console.WriteLine("|---------+-------------------------------------+---------+-------------------------------------------------------------------------------+------------|");
 
 				foreach (SnackMenuModel snack in menuList)
 				{
-					Console.WriteLine($"| {snack.SnackID.ToString().PadLeft(7)} | {snack.Name.PadRight(35)} | ${snack.Price.ToString("0.00").PadLeft(6)} | {snack.Description.PadRight(80)} | {snack.ExtraInfo.PadRight(17)} |");
+					Console.WriteLine($"| {snack.SnackID.ToString().PadLeft(7)} | {snack.Name.PadRight(35)} | ${snack.Price.ToString("0.00").PadLeft(6)} | {snack.Description.PadRight(77)} | {snack.ExtraInfo.PadRight(10)} |");
 				}
 
-				Console.WriteLine(" ----------------------------------------------------------------------------------------------------------------------------------------------------------------");
+				Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 				Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
 				string OrderedSnack;
 				do{
@@ -60,17 +60,18 @@ public class SnackMenuLogic
 	{
 		List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
 
-		Console.WriteLine(" ________________________________________________________________________________________________________________________________________________________________");
-		Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                      | Extra Info        |");
-		Console.WriteLine("|---------+-------------------------------------+---------+----------------------------------------------------------------------------------+-------------------|");
+		Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
+		Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                   | Extra Info |");
+		Console.WriteLine("|---------+-------------------------------------+---------+-------------------------------------------------------------------------------+------------|");
 
 		foreach (SnackMenuModel snack in menuList)
 		{
-			Console.WriteLine($"| {snack.SnackID.ToString().PadLeft(7)} | {snack.Name.PadRight(35)} | ${snack.Price.ToString("0.00").PadLeft(6)} | {snack.Description.PadRight(80)} | {snack.ExtraInfo.PadRight(17)} |");
+			Console.WriteLine($"| {snack.SnackID.ToString().PadLeft(7)} | {snack.Name.PadRight(35)} | ${snack.Price.ToString("0.00").PadLeft(6)} | {snack.Description.PadRight(77)} | {snack.ExtraInfo.PadRight(10)} |");
 		}
 
-		Console.WriteLine(" ----------------------------------------------------------------------------------------------------------------------------------------------------------------");
-		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose");
+		Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
+
 	}
 	
 	public static void FinishOrdering()
