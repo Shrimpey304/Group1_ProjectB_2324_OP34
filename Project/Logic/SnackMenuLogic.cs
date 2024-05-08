@@ -93,7 +93,10 @@ public class SnackMenuLogic
 		}
 		if (OrderedSnacks != null)
 		{
-			Console.WriteLine(OrderedSnacks);
+			foreach(KeyValuePair<int,string> item in OrderedSnacks)
+			{
+				Console.WriteLine($"{item.Value} {item.Key}");
+			}
 		}
 		Console.WriteLine(TotalCost);
 		Thread.Sleep(2000);
