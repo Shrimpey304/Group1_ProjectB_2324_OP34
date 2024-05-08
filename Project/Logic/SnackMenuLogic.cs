@@ -6,16 +6,17 @@ namespace Cinema;
 
 public class SnackMenuLogic
 {
+	public static Dictionary<int, string>  OrderedSnacks = new Dictionary<int, string>();
 	public static bool FinishOrder = false;
 	const string filePathSnackMenu = "DataStorage/Menu.json";
-	public static IDictionary<int, string>  OrderedSnacks = new Dictionary<int, string>();
+	public static double TotalCost = 0;
+	public static List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);	
+	
 	public static void ListSnackMenu(bool isvoid)
 	{
 		if (isvoid)
 		{
-			List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
-			IDictionary<int, string> OrderedSnacks = new Dictionary<int, string>();
-			
+
 			while(FinishOrder == false)
 			{
 				Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
@@ -58,8 +59,6 @@ public class SnackMenuLogic
 	
 	public static void ListSnackMenu()
 	{
-		List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
-
 		Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
 		Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                   | Extra Info |");
 		Console.WriteLine("|---------+-------------------------------------+---------+-------------------------------------------------------------------------------+------------|");
@@ -71,18 +70,14 @@ public class SnackMenuLogic
 
 		Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
-
 	}
 	
 	public static void FinishOrdering()
 	{
-		List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);
-		double TotalCost = 0;
 		FinishOrder = true;
 		Console.WriteLine("Your total order:\n");
 		foreach (KeyValuePair <int,string> item in OrderedSnacks)
 		{
-			Console.WriteLine($"{item.Key} {item.Value}");
 			foreach(SnackMenuModel snack in menuList)
 			{
 				if (snack.Name == item.Value)
@@ -94,10 +89,13 @@ public class SnackMenuLogic
 		}
 		if (OrderedSnacks != null)
 		{
-			Console.WriteLine(OrderedSnacks);
+			foreach (KeyValuePair <int,string> snack in OrderedSnacks)
+			{
+				Console.WriteLine($"{snack.Value} {snack.Key}");
+			}
 		}
-		Console.WriteLine(TotalCost);
-		Thread.Sleep(2000);
+		Console.WriteLine($"Total cost:\n${TotalCost}");
+		Thread.Sleep(5000);
 		MenuUtils.displayLoggedinMenu();
 	}
 }
