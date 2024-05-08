@@ -96,6 +96,6 @@ public class SnackMenuLogic
 		}
 		Console.WriteLine($"Total cost:\n${TotalCost}");
 		Thread.Sleep(5000);
-		MenuUtils.displayLoggedinMenu();
+		TicketLogic.AddReservation();
 	}
 }

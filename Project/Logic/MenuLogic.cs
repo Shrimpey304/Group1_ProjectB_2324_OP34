@@ -86,7 +86,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
 
-			{ "Reserve Ticket", ReserveTicket.ReserveProcess},
+			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
@@ -111,8 +111,12 @@ public static class MenuUtils{
 
 		};
 		Console.WriteLine("Would you like to order snacks?\n");
+		if (SnackMenuLogic.FinishOrder != true)
+		{
+			RunCheckboxMenu(DisplaySnack, "snacks");
+		}
+		return;
 		
-		RunCheckboxMenu(DisplaySnack, "snacks");
 		
 	}
 
