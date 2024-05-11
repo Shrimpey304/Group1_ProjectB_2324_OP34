@@ -1,5 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
-
+using System.Linq;
 namespace Cinema;
 //Seperate Food and drinks!!!
 
@@ -98,4 +97,33 @@ public class SnackMenuLogic
 		Thread.Sleep(5000);
 		TicketLogic.AddReservation();
 	}
+	
+	public static void RemoveSnack()
+	{
+		int counter = 0;
+		Console.WriteLine("Current Dictionary:");
+		foreach (var pair in OrderedSnacks)
+		{
+			Console.WriteLine($"{counter++} {pair.Key}: {pair.Value}");
+		}
+
+		// Ask user for the key to remove
+		Console.Write("\nEnter the number to remove: ");
+		string keyToRemove = Console.ReadLine();
+		int keyToRemoveInt = Convert.ToInt32(keyToRemove)-1;
+
+        if (keyToRemoveInt >= 0 && keyToRemoveInt < myDictionary.Count)
+        {
+            // Select the key-value pair at the specified index
+            KeyValuePair<string, int> pairToRemove = OrderedSnacks.ElementAt(keyToRemoveInt);
+
+            // Remove the key-value pair
+            myDictionary.Remove(pairToRemove.Key);
+            Console.WriteLine($"Key '{pairToRemove.Key}' removed successfully.");
+        }
+        else
+        {
+            Console.WriteLine($"Invalid index. Index should be between 0 and {myDictionary.Count - 1}.");
+        }
+	} 
 }

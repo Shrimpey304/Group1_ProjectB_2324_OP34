@@ -106,7 +106,6 @@ public static class MenuUtils{
 		{ 
 
 			{ "Add snacks",() => SnackMenuLogic.ListSnackMenu(true)},
-			{ "Remove snacks",Console.WriteLine},
 			{ "Finish order", () => SnackMenuLogic.FinishOrdering()},
 
 		};

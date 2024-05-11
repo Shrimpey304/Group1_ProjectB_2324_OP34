@@ -24,10 +24,7 @@ public class TicketLogic{
 		AccountsLogic.CurrentAccount.TicketList.Add(newticket);
 		_reservations.Add(newticket);
 		JsonAccess.UploadToJson(_reservations,filePathReservations);
-		foreach (Ticket ticket1  in _reservations)
-		{
-			Console.WriteLine("test werkt");
-		}
+		MenuUtils.displayLoggedinMenu();
 	}
 	
 
