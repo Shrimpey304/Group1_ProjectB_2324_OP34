@@ -10,6 +10,7 @@ namespace Cinema
             Console.WriteLine("Please enter your email address:");
             string email = Console.ReadLine();
 
+            Console.WriteLine("Password must be/ contain:\nAt least 8 characters long.\nAt least one uppercase letter.\nAt least one number.\nAt least one symbol.");
             string password = GetPassword("Please enter your password:");
             string confirmPassword = GetPassword("Please re-enter your password for confirmation:");
 

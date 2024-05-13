@@ -36,7 +36,7 @@ public static class MenuUtils{
 				Console.WriteLine("\n\nWould you like to order (more)?");
 			}
 			
-			Console.WriteLine("\n\npress 'enter' to select option\n");
+			Console.WriteLine("\n\nuse the arrows and press 'enter' to select option\n");
 
 			for (int i = 0; i < options.Count; i++)
 			{
