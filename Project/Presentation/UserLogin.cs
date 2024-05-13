@@ -18,7 +18,14 @@ static class UserLogin
         if (acc != null)
         {
             Console.WriteLine($"Welcome back {acc.FullName}");
-            MenuUtils.displayLoggedinMenu();
+            if (acc.IsAdmin)
+            {
+                MenuUtils.displayLoggedinAdminMenu();
+            }
+            else
+            {
+                MenuUtils.displayLoggedinMenu();
+            }
         }
         else
         {
