@@ -1,3 +1,12 @@
 [
-
+  {
+    "Id": 1,
+    "EmailAddress": "t.j@gmail.com",
+    "Password": "0319fa6d279aad69994af7973630d8870a46f6e6f606d4a8d7df6da910c42353",
+    "Salt": "azUZPTrHVd9JTbA30UdRZA==",
+    "FullName": "tj",
+    "IsAdmin": false,
+    "IsActive": true,
+    "TicketList": []
+  }
 ]
