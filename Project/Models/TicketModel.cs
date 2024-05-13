@@ -11,7 +11,7 @@ public class Ticket{
 	public double Totalprice;
 	
 	public static int UserID;
-	public Ticket(MovieSessionModel session, List<Tuple<int,int>> reservedseats, double totalprice, Dictionary<int,string> orderedsnacks,int userID){
+	public Ticket(MovieSessionModel session, List<Tuple<int,int>> reservedseats, double totalprice, Dictionary<string, int> orderedsnacks,int userID){
 
 		moviesession = session;
 		ReservedSeats = reservedseats;

@@ -5,7 +5,7 @@ namespace Cinema;
 
 public class SnackMenuLogic
 {
-	public static Dictionary<int, string>  OrderedSnacks = new Dictionary<int, string>();
+	public static Dictionary<string, int>  OrderedSnacks = new Dictionary<string, int>();
 	public static bool FinishOrder = false;
 	const string filePathSnackMenu = "DataStorage/Menu.json";
 	public static double TotalCost = 0;
@@ -45,7 +45,7 @@ public class SnackMenuLogic
 						Console.WriteLine($"How many {snack.Name} would you like?");
 						string SnackAmount = Console.ReadLine();
 						int SnackAmountInt = Convert.ToInt32(SnackAmount);
-						OrderedSnacks.Add(SnackAmountInt, snack.Name);
+						OrderedSnacks.Add(snack.Name, SnackAmountInt);
 						Console.WriteLine($"Added {SnackAmountInt} {snack.Name} to order.");
 						return;
 					}
@@ -75,22 +75,22 @@ public class SnackMenuLogic
 	{
 		FinishOrder = true;
 		Console.WriteLine("Your total order:\n");
-		foreach (KeyValuePair <int,string> item in OrderedSnacks)
+		foreach (KeyValuePair <string, int> item in OrderedSnacks)
 		{
 			foreach(SnackMenuModel snack in menuList)
 			{
-				if (snack.Name == item.Value)
+				if (snack.Name == item.Key)
 				{
 					int SnackPrice = Convert.ToInt32(snack.Price);
-					TotalCost += SnackPrice * item.Key;
+					TotalCost += SnackPrice * item.Value;
 				}
 			}
 		}
 		if (OrderedSnacks != null)
 		{
-			foreach (KeyValuePair <int,string> snack in OrderedSnacks)
+			foreach (KeyValuePair <string,int> snack in OrderedSnacks)
 			{
-				Console.WriteLine($"{snack.Value} {snack.Key}");
+				Console.WriteLine($"{snack.Key} {snack.Value}");
 			}
 		}
 		Console.WriteLine($"Total cost:\n${TotalCost}");
@@ -110,20 +110,20 @@ public class SnackMenuLogic
 		// Ask user for the key to remove
 		Console.Write("\nEnter the number to remove: ");
 		string keyToRemove = Console.ReadLine();
-		int keyToRemoveInt = Convert.ToInt32(keyToRemove)-1;
+		int keyToRemoveInt = Convert.ToInt32(keyToRemove);
 
-        if (keyToRemoveInt >= 0 && keyToRemoveInt < myDictionary.Count)
+        if (keyToRemoveInt >= 0 && keyToRemoveInt < OrderedSnacks.Count)
         {
             // Select the key-value pair at the specified index
             KeyValuePair<string, int> pairToRemove = OrderedSnacks.ElementAt(keyToRemoveInt);
 
             // Remove the key-value pair
-            myDictionary.Remove(pairToRemove.Key);
+        	OrderedSnacks.Remove(pairToRemove.Key);
             Console.WriteLine($"Key '{pairToRemove.Key}' removed successfully.");
         }
         else
         {
-            Console.WriteLine($"Invalid index. Index should be between 0 and {myDictionary.Count - 1}.");
+            Console.WriteLine($"Invalid index. Index should be between 0 and {OrderedSnacks.Count - 1}.");
         }
 	} 
 }
