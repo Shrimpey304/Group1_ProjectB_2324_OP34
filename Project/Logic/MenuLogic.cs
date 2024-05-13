@@ -35,6 +35,10 @@ public static class MenuUtils{
 				DisplayHeader.HeaderSnack();
 				Console.WriteLine("\n\nWould you like to order (more)?");
 			}
+			else if(headertype == "admin"){
+				DisplayHeader.AdminHeader();
+				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount.FullName}");
+			}
 			
 			Console.WriteLine("\n\nuse the arrows and press 'enter' to select option\n");
 
@@ -105,7 +109,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
 
-			{ "Reserve Ticket", ReserveTicket.ReserveProcess},
+			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
@@ -116,7 +120,7 @@ public static class MenuUtils{
 		};
 
 		
-		RunCheckboxMenu(LoginMenuOptions, "main");
+		RunCheckboxMenu(LoginMenuOptions, "admin");
 		
 	}
 	
