@@ -11,36 +11,42 @@ public static class DisplayRoom{
 	/// used to select seats in any cinema room
 	/// </summary>
 	/// <param name="fileName"></param>
+
+	private static string getFileDir(MovieSessionModel session){
+
+		string fileNM = "";
+		string DataStoragePath = @"DataStorage/"; 
+		string[] filelist = Directory.GetFiles(DataStoragePath);
+
+
+		if (filelist != null){
+
+			foreach(string file in filelist){
+				try{
+					if (file.ToLower() == $"datastorage/cinemaroom{Convert.ToString(session.RoomID)}.json"){
+						List<Seating>fileJson = JsonAccess.ReadFromJson<Seating>($"{file}");
+						if (fileJson != null && fileJson.Count > 0){
+							fileNM = file;
+						}else{
+							continue;
+						}
+					}
+				}catch(Exception e){
+					Console.WriteLine(e);
+					continue;
+				}
+			}
+			return fileNM;
+		}
+		return "";
+	}
+
 	public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
 		try
 		{  
-			string fileNM = "";
-			string DataStoragePath = @"DataStorage/"; 
-			string[] filelist = Directory.GetFiles(DataStoragePath);
+			string fileNM = getFileDir(session);
 
-
-			if (filelist != null){
-
-				foreach(string file in filelist){
-					try{
-						if (file.ToLower() == $"datastorage/cinemaroom{Convert.ToString(session.RoomID)}.json"){
-							// List<Seating> sitdown = JsonAccess.ReadFromJson<Seating>(file);
-							List<Seating>fileJson = JsonAccess.ReadFromJson<Seating>($"{file}");
-							if (fileJson != null && fileJson.Count > 0){
-								fileNM = file;
-							}else{
-								continue;
-							}
-						}
-					}catch(Exception e){
-						Console.WriteLine(e);
-						continue;
-					}
-				}
-			}
-
-			Console.WriteLine($"{fileNM}");
-			List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileNM);
+			List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(getFileDir(session));
 			Seating seating = seatingJson[0];
 
 			int selectedPositionCol = 0;
@@ -77,126 +83,18 @@ public static class DisplayRoom{
 						}
 					}
 					Console.WriteLine("");
-					for (int i = 0; i < tempSeating.Rows; i++)
-					{
-						Console.ResetColor();
-						Console.Write($"{i}  ".PadRight(3));
-						for (int j = 0; j < tempSeating.Columns; j++)
-						{
-							if (tempSeating.SeatingArrangement[i,j] == tempSeating.SeatingArrangement[selectedPositionRow , selectedPositionCol]){
+					
+					SetColor(selectedPositionRow, selectedPositionCol, tempSeating, session);
 
-								if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
-
-									foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
-
-										if(sesh.sessionID != session.sessionID){
-
-											if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-												Console.BackgroundColor = ConsoleColor.Green;
-												Console.Write($"[ N ]");
-											}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
-												Console.BackgroundColor = ConsoleColor.Green;
-												Console.Write($"[ D ]");
-											}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
-												Console.BackgroundColor = ConsoleColor.Green;
-												Console.Write($"[ P ]");
-											}
-
-										}else if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
-											
-											Console.BackgroundColor = ConsoleColor.Green;
-											Console.Write($"[ S ]");
-
-										}else if(sesh.sessionID == session.sessionID){
-
-											Console.BackgroundColor = ConsoleColor.DarkGray;
-											Console.Write($"[ R ]");
-
-										}
-									}
-								}else{
-
-									if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){    
-										Console.BackgroundColor = ConsoleColor.Green;
-										Console.Write($"[ S ]");
-									}else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-										Console.BackgroundColor = ConsoleColor.Green;
-										Console.Write($"[ N ]");
-									}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
-										Console.BackgroundColor = ConsoleColor.Green;
-										Console.Write($"[ D ]");
-									}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
-										Console.BackgroundColor = ConsoleColor.Green;
-										Console.Write($"[ P ]");
-									}
-								}
-
-							}else{
-
-								if(tempSeating.SeatingArrangement[i,j][0].reservedInSession.Count() > 0){
-
-									foreach(MovieSessionModel sesh in tempSeating.SeatingArrangement[i,j][0].reservedInSession){
-
-										if(sesh.sessionID != session.sessionID){
-
-											if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
-												Console.BackgroundColor = ConsoleColor.DarkMagenta;
-												Console.Write($"[ S ]");
-											}
-											else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
-												Console.BackgroundColor = ConsoleColor.Blue;
-												Console.Write($"[ D ]");
-											}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
-												Console.BackgroundColor = ConsoleColor.Red;
-												Console.Write($"[ P ]");
-											}else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-												Console.BackgroundColor = ConsoleColor.Yellow;
-												Console.Write($"[ N ]");
-											}
-										}else if(sesh.sessionID == session.sessionID){
-
-											Console.BackgroundColor = ConsoleColor.DarkGray;
-											Console.Write($"[ R ]");
-
-										}
-									}
-								}else{
-
-									if(tempSeating.SeatingArrangement[i,j][0].inPrereservation){
-										Console.BackgroundColor = ConsoleColor.DarkMagenta;
-										Console.Write($"[ S ]");
-									}
-									else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Deluxe){
-										Console.BackgroundColor = ConsoleColor.Blue;
-										Console.Write($"[ D ]");
-									}else if(tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Premium){
-										Console.BackgroundColor = ConsoleColor.Red;
-										Console.Write($"[ P ]");
-									}else if (tempSeating.SeatingArrangement[i,j][0].Type == SeatType.Normal){
-										Console.BackgroundColor = ConsoleColor.Yellow;
-										Console.Write($"[ N ]");
-									}
-								}
-
-							}
-						}
-						Console.WriteLine("");
-					}
 					Console.ResetColor();
 					Console.WriteLine("\n");
 					Console.Write("".PadLeft(3));
 					for (int col = 0; col < tempSeating.Columns; col++){
 						Console.ResetColor();
 						Console.Write("_____");
-					} //legenda
+					}
 					Console.WriteLine($"\n{"Screen".PadLeft((int)((tempSeating.Columns * 2.5) + 3))}");
-					Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write(" = Normal seat  \n");
-					Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write(" = Deluxe seat  \n");
-					Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write(" = Premium seat  \n");
-					Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
-					Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
-					Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
-					Console.Write("Press R to reserve selected seats\n");
+					Legenda();
 				}
 				else
 				{
@@ -326,6 +224,126 @@ public static class DisplayRoom{
 			Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
 			return null;
 		}
+	}
+
+	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating, MovieSessionModel session){
+
+
+		for (int i = 0; i < seating.Rows; i++)
+		{
+			Console.ResetColor();
+			Console.Write($"{i}  ".PadRight(3));
+			for (int j = 0; j < seating.Columns; j++)
+			{
+				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+				{
+					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
+					{
+						bool reserved = false;
+						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession){
+							if (thissession == session)
+							{
+								reserved = true;
+								Console.BackgroundColor = ConsoleColor.DarkGray;
+								Console.Write($"[ R ]");
+							}
+						}
+						if(!reserved){
+				
+							seatColor(seating.SeatingArrangement[i,j][0], true);
+			
+						}
+					}
+					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+					{
+						seatColor(seating.SeatingArrangement[i,j][0], true);
+					}
+
+				}
+				else if (seating.SeatingArrangement[i,j] != seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+				{
+					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
+					{
+						bool reserved = false;
+						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession)
+						{
+							if (thissession == session)
+							{
+								reserved = true;
+								Console.BackgroundColor = ConsoleColor.DarkGray;
+								Console.Write($"[ R ]");
+							}
+						}
+						if(!reserved){
+				
+							seatColor(seating.SeatingArrangement[i,j][0], false);
+			
+						}
+					}
+					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+					{
+						seatColor(seating.SeatingArrangement[i,j][0], false);
+					}
+				}
+			}
+			Console.WriteLine("");
+		}
+	}
+
+	private static void seatColor(SeatInfo seatinfo, bool OverrideColor){
+
+		if(!seatinfo.inPrereservation){
+
+			switch(seatinfo.Type){
+				case SeatType.Normal:
+					if(!OverrideColor){
+						Console.BackgroundColor = ConsoleColor.Yellow;
+						Console.Write($"[ N ]");
+					}else{
+						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ N ]");
+					}
+					break;
+				case SeatType.Deluxe:
+					if(!OverrideColor){
+						Console.BackgroundColor = ConsoleColor.Blue;
+						Console.Write($"[ D ]");
+					}else{
+						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ D ]");
+					}
+					break;
+				case SeatType.Premium:
+					if(!OverrideColor){
+						Console.BackgroundColor = ConsoleColor.Red;
+						Console.Write($"[ P ]");
+					}else{
+						Console.BackgroundColor = ConsoleColor.Green;
+						Console.Write($"[ P ]");
+					}
+					break;
+			}
+		}else{
+
+			if(!OverrideColor){
+				Console.BackgroundColor = ConsoleColor.DarkMagenta;
+				Console.Write($"[ S ]");
+			}else{
+				Console.BackgroundColor = ConsoleColor.Green;
+				Console.Write($"[ S ]");
+			}
+		}
+
+	}
+
+	private static void Legenda(){
+		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write(" = Normal seat  \n");
+		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write(" = Deluxe seat  \n");
+		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write(" = Premium seat  \n");
+		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
+		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
+		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
+		Console.Write("Press R to reserve selected seats\n");
 	}
 
 

@@ -1,0 +1,108 @@
+[
+    {
+        "SnackID": 1,
+        "Name": "Salty Popcorn",
+        "Price": 4.0,
+        "Description": "Freshly popped corn with salt sprinkled on.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 2,
+        "Name": "Caramel Popcorn",
+        "Price": 5.0,
+        "Description": "Crunchy popcorn coated in sweet caramel glaze.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 3,
+        "Name": "Nachos with Cheese",
+        "Price": 6.0,
+        "Description": "Crispy tortilla chips topped with warm nacho cheese sauce.",
+        "ExtraInfo": "[L]"
+    },
+    {
+        "SnackID": 4,
+        "Name": "Large Soda",
+        "Price": 5.0,
+        "Description": "Giant serving of your favorite soft drink, perfect for quenching your thirst.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 5,
+        "Name": "Hot Dog",
+        "Price": 7.0,
+        "Description": "Classic beef hot dog served in a soft bun with optional mustard and ketchup.",
+        "ExtraInfo": "-"
+    },
+    {
+        "SnackID": 6,
+        "Name": "Candy Bar",
+        "Price": 3.0,
+        "Description": "Assorted chocolate bar with various flavors like caramel, peanuts, or nougat.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 7,
+        "Name": "Pretzel",
+        "Price": 4.0,
+        "Description": "Freshly baked soft pretzel sprinkled with coarse salt.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 8,
+        "Name": "Ice Cream Cone",
+        "Price": 4.0,
+        "Description": "Single scoop of vanilla ice cream in a crispy sugar cone.",
+        "ExtraInfo": "[L]"
+    },
+    {
+        "SnackID": 9,
+        "Name": "Chicken Tenders",
+        "Price": 8.0,
+        "Description": "Crispy breaded chicken tenders served with your choice of dipping sauce.",
+        "ExtraInfo": "-"
+    },
+    {
+        "SnackID": 10,
+        "Name": "Fruit Cup",
+        "Price": 5.0,
+        "Description": "Fresh assortment of seasonal fruits, perfect for a healthier snack option.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 11,
+        "Name": "Soft Pretzel Bites",
+        "Price": 5.0,
+        "Description": "Miniature soft pretzel bites served with a side of cheese sauce.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 12,
+        "Name": "Churros",
+        "Price": 4.0,
+        "Description": "Sweet fried dough dusted with cinnamon sugar.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 14,
+        "Name": "Milkshake",
+        "Price": 6.0,
+        "Description": "Creamy milkshake available in flavors like chocolate, vanilla, or strawberry.",
+        "ExtraInfo": "[L]"
+    },
+    {
+        "SnackID": 15,
+        "Name": "Loaded Fries",
+        "Price": 7.0,
+        "Description": "French fries topped with melted cheese, bacon bits, and green onions.",
+        "ExtraInfo": "[V]"
+    },
+    {
+        "SnackID": 16,
+        "Name": "Brownie",
+        "Price": 4.0,
+        "Description": "Rich chocolate brownie, served warm and gooey.",
+        "ExtraInfo": "[V]"
+    }
+]
+
