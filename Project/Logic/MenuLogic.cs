@@ -99,6 +99,26 @@ public static class MenuUtils{
 		RunCheckboxMenu(LoginMenuOptions, "main");
 		
 	}
+
+	public static void displayLoggedinAdminMenu(){
+
+		Dictionary<string, Action> LoginMenuOptions = new()
+		{ 
+
+			{ "Reserve Ticket", ReserveTicket.ReserveProcess},
+			{ "Show Tickets", AccountsLogic.GetTickets},
+			{ "Show Profile", AccountsLogic.getuserinfo},
+			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
+			{ "Random Admin option", AccountsLogic.logout},
+			{ "Logout", AccountsLogic.logout},
+			{ "Exit", KillProgram}
+
+		};
+
+		
+		RunCheckboxMenu(LoginMenuOptions, "main");
+		
+	}
 	
 	public static void displaySnackOption(){
 
@@ -116,7 +136,9 @@ public static class MenuUtils{
 		
 	}
 
-	
+	public static void RandomAdminOption(){
+		Console.WriteLine("Random option");
+	}
 	public static void TestLogin(){
 		UserLogin.Start();
 	}
