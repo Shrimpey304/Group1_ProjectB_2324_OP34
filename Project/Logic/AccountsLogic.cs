@@ -2,21 +2,22 @@ using Cinema;
 
 public class AccountsLogic
 {
-	private List<AccountModel> _accounts;
+	public static List<AccountModel> _accounts = new List<AccountModel>();
 	public static AccountModel? CurrentAccount { get; private set; }
 	private const string filePathAccounts = @"DataStorage\Accounts.json";
 
-	public AccountsLogic()
-	{
-		// Initialize accounts list by reading from the JSON file
-		_accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts) ?? new List<AccountModel>();
-	}
+	// public AccountsLogic()
+	// {
+	// 	// Initialize accounts list by reading from the JSON file
+	// 	_accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts) ?? new List<AccountModel>();
+	// }
 
 	public AccountModel? CheckLogin(string email, string password)
 	{
 		try
 		{
 			// Attempt to find the user by email.
+			_accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts);
 			var user = _accounts.FirstOrDefault(u => u != null && u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
 			if (user != null)
 			{
@@ -45,17 +46,17 @@ public class AccountsLogic
 		}
 	}
 
-	public void SetAllAccountsInactive()
+	public static void SetAllAccountsInactive()
 	{
 		foreach (var account in _accounts)
 		{
 			account.IsActive = false;  // Set IsActive to false for all accounts
 		}
+		JsonAccess.UploadToJson<AccountModel>(_accounts, filePathAccounts);
 	}
 
 	public static void logout(){
-		AccountsLogic instAccLog = new AccountsLogic();
-		instAccLog.SetAllAccountsInactive();
+		SetAllAccountsInactive();
 		CurrentAccount = null;
 		MenuUtils.displayMainMenu();
 	}
