@@ -6,11 +6,6 @@ public class AccountsLogic
 	public static AccountModel? CurrentAccount { get; private set; }
 	private const string filePathAccounts = @"DataStorage\Accounts.json";
 
-	// public AccountsLogic()
-	// {
-	// 	// Initialize accounts list by reading from the JSON file
-	// 	_accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts) ?? new List<AccountModel>();
-	// }
 
 	public AccountModel? CheckLogin(string email, string password)
 	{

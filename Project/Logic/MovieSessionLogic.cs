@@ -30,7 +30,6 @@ public class MovieSessionLogic
 					Console.WriteLine($"| {Convert.ToString(Counter).PadRight(7)} | {Convert.ToString(session.StartTime).PadRight(25)} | End: {Convert.ToString(session.EndTime).PadRight(20)} |");
 					usableSessions.Add(session);
 					Counter++;
-					
 				}
 			}
 

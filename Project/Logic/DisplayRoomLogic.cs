@@ -248,6 +248,28 @@ public static class DisplayRoom{
 			Console.WriteLine("");
 		}
 	}
+
+	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating){
+
+
+		for (int i = 0; i < seating.Rows; i++)
+		{
+			Console.ResetColor();
+			Console.Write($"{i+1}".PadRight(3)); //displays rownumber
+			for (int j = 0; j < seating.Columns; j++)
+			{
+				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+				{
+					seatColor(seating.SeatingArrangement[i,j][0], true);
+				}
+				else
+				{
+					seatColor(seating.SeatingArrangement[i,j][0], false);
+				}
+			}
+			Console.WriteLine("");
+		}
+	}
 	
 
 	private static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
@@ -365,6 +387,111 @@ public static class DisplayRoom{
 			}
 		}
 		return true;
+	}
+
+
+	public static void changeSeattype(List<Seating> seatinglist, string fileNM){
+
+		Seating ?seating = seatinglist[0];
+		int selectedPositionCol = 0;
+		int selectedPositionRow = 0;
+		Tuple<int,int> lastPos = new Tuple<int, int>(selectedPositionRow,selectedPositionCol);
+
+		try{
+			while(!Console.KeyAvailable){
+
+				Console.Clear();
+
+				Console.ResetColor();
+				Console.WriteLine($"\n{"Screen".PadLeft((int)((seating!.Columns * 2.5) + 3))}");
+				Console.Write("".PadLeft(3));
+				for (int col = 0; col < seating.Columns; col++){
+					Console.ResetColor();
+					Console.Write("_____");
+				}
+				Console.WriteLine("\n");
+
+				if (seating != null)
+				{
+					Console.Write("".PadLeft(3));
+					for (int col = 0; col < seating.Columns; col++){
+						Console.ResetColor();
+
+						if(col >= 10){
+
+							Console.Write($" {col+1}  ");
+
+						}else if(col >= 100){
+
+							Console.Write($" {col+1} ");
+
+						}else{
+
+							Console.Write($"  {col+1}  ");
+
+						}
+					}
+					Console.WriteLine("");
+					
+					SetColor(selectedPositionRow, selectedPositionCol, seating);
+
+				}
+				else
+				{
+					Console.WriteLine("Failed to load seating arrangement from JSON.");
+				}
+				
+
+				try{
+					switch(Console.ReadKey(true).Key){
+						case ConsoleKey.UpArrow:
+							if((selectedPositionRow - 1) < 0){
+								selectedPositionRow = lastPos.Item1;
+							}else{
+								selectedPositionRow --;
+							}
+						break;
+						case ConsoleKey.DownArrow:
+							if((selectedPositionRow +1) > (seating!.Rows -1)){
+								selectedPositionRow = lastPos.Item1;
+							}else{
+								selectedPositionRow ++;
+							}
+						break;
+						case ConsoleKey.LeftArrow:
+							if((selectedPositionCol - 1) < 0){
+								selectedPositionCol = lastPos.Item2;
+							}else{
+								selectedPositionCol --;
+							}
+						break;
+						case ConsoleKey.RightArrow:
+							if((selectedPositionCol +1) > (seating!.Columns -1)){
+								selectedPositionCol = lastPos.Item2;
+							}else{
+								selectedPositionCol ++;
+							}
+						break;
+						case ConsoleKey.Enter:
+							continue; // implement seatchanging
+						case ConsoleKey.Backspace:
+							continue; //implement saving changes
+					}
+				}catch(Exception ex ){
+					Console.WriteLine(ex.Message);
+				}
+
+				List<Seating> UploadSeating = new(){seating!};
+
+				JsonAccess.UploadToJson(UploadSeating, fileNM);
+			}
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
+		}
+
+
 	}
 
 
