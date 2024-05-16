@@ -62,6 +62,15 @@ public static class DisplayRoom{
 
 				Console.Clear();
 
+				Console.ResetColor();
+				Console.WriteLine($"\n{"Screen".PadLeft((int)((tempSeating.Columns * 2.5) + 3))}");
+				Console.Write("".PadLeft(3));
+				for (int col = 0; col < tempSeating.Columns; col++){
+					Console.ResetColor();
+					Console.Write("_____");
+				}
+				Console.WriteLine("\n");
+
 				if (tempSeating != null)
 				{
 					Console.Write("".PadLeft(3));
@@ -70,15 +79,15 @@ public static class DisplayRoom{
 
 						if(col >= 10){
 
-							Console.Write($" {col}  ");
+							Console.Write($" {col+1}  ");
 
 						}else if(col >= 100){
 
-							Console.Write($" {col} ");
+							Console.Write($" {col+1} ");
 
 						}else{
 
-							Console.Write($"  {col}  ");
+							Console.Write($"  {col+1}  ");
 
 						}
 					}
@@ -86,14 +95,6 @@ public static class DisplayRoom{
 					
 					SetColor(selectedPositionRow, selectedPositionCol, tempSeating, session);
 
-					Console.ResetColor();
-					Console.WriteLine("\n");
-					Console.Write("".PadLeft(3));
-					for (int col = 0; col < tempSeating.Columns; col++){
-						Console.ResetColor();
-						Console.Write("_____");
-					}
-					Console.WriteLine($"\n{"Screen".PadLeft((int)((tempSeating.Columns * 2.5) + 3))}");
 					Legenda();
 				}
 				else
@@ -103,7 +104,7 @@ public static class DisplayRoom{
 				
 				Tuple<int,int> lastPos = new Tuple<int, int>(selectedPositionRow,selectedPositionCol);
 
-				if(SelectedPositions.Count > 0){
+				if(SelectedPositions!.Count > 0){
 
 					Console.Write($"Selected seats: Row: {SelectedPositions[0].Item1} Seat ");
 
@@ -194,7 +195,7 @@ public static class DisplayRoom{
 							
 							if(SelectedPositions is not null && SelectedPositions.Count != 0){
 								foreach(Tuple<int,int> pos in SelectedPositions){
-									tempSeating.SeatingArrangement[pos.Item1, pos.Item2][0].reservedInSession.Add(session);
+									tempSeating!.SeatingArrangement[pos.Item1, pos.Item2][0].reservedInSession.Add(session);
 									tempSeating.SeatingArrangement[pos.Item1, pos.Item2][0].inPrereservation = false;
 									List<Seating> uploadTempSeatingReserved = new(){tempSeating!};
 
@@ -210,19 +211,19 @@ public static class DisplayRoom{
 					}
 				}catch(Exception ex ){
 					Console.WriteLine(ex.Message);
-					return null;
+					return null!;
 				}
 
 				List<Seating> TempUploadSeating = new(){tempSeating!};
 
 				JsonAccess.UploadToJson(TempUploadSeating, fileNM);
 			}
-			return null;
+			return null!;
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
-			return null;
+			return null!;
 		}
 	}
 
@@ -232,61 +233,45 @@ public static class DisplayRoom{
 		for (int i = 0; i < seating.Rows; i++)
 		{
 			Console.ResetColor();
-			Console.Write($"{i}  ".PadRight(3));
+			Console.Write($"{i+1}".PadRight(3)); //displays rownumber
 			for (int j = 0; j < seating.Columns; j++)
 			{
 				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
 				{
-					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
-					{
-						bool reserved = false;
-						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession){
-							if (thissession == session)
-							{
-								reserved = true;
-								Console.BackgroundColor = ConsoleColor.DarkGray;
-								Console.Write($"[ R ]");
-							}
-						}
-						if(!reserved){
-				
-							seatColor(seating.SeatingArrangement[i,j][0], true);
-			
-						}
-					}
-					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
-					{
-						seatColor(seating.SeatingArrangement[i,j][0], true);
-					}
-
+					processSeat(i, j, seating, session, true);
 				}
-				else if (seating.SeatingArrangement[i,j] != seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
+				else //if (seating.SeatingArrangement[i,j] != seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow]) **previous else check but not needed ofcourse**
 				{
-					if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
-					{
-						bool reserved = false;
-						foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession)
-						{
-							if (thissession == session)
-							{
-								reserved = true;
-								Console.BackgroundColor = ConsoleColor.DarkGray;
-								Console.Write($"[ R ]");
-							}
-						}
-						if(!reserved){
-				
-							seatColor(seating.SeatingArrangement[i,j][0], false);
-			
-						}
-					}
-					else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
-					{
-						seatColor(seating.SeatingArrangement[i,j][0], false);
-					}
+					processSeat(i, j, seating, session, false);
 				}
 			}
 			Console.WriteLine("");
+		}
+	}
+	
+
+	private static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
+
+		if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
+		{
+			bool reserved = false;
+			foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession){
+				if (thissession.sessionID == session.sessionID)
+				{
+					reserved = true;
+					Console.BackgroundColor = ConsoleColor.DarkGray;
+					Console.Write($"[ R ]");
+				}
+			}
+			if(!reserved){
+	
+				seatColor(seating.SeatingArrangement[i,j][0], color);
+
+			}
+		}
+		else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+		{
+			seatColor(seating.SeatingArrangement[i,j][0], color);
 		}
 	}
 

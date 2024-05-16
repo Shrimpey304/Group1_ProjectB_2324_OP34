@@ -18,6 +18,7 @@ public class MovieSessionLogic
 			int Counter = 1;
 			MovieSessionModel chosenSession = null;
 			Console.WriteLine("Upcoming sessions for this movie:");
+			// reservation issue ----------------------------------------------------------------------------------------------
 			foreach (MovieSessionModel session in SessionList)
 			{
 				if (session.MovieID == UserInput)
@@ -35,6 +36,7 @@ public class MovieSessionLogic
 				}
 			}
 			return chosenSession;
+			// reservation issue ----------------------------------------------------------------------------------------------
 		}
 		else
 		{

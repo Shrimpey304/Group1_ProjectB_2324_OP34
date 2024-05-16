@@ -196,15 +196,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 4,
             "Price": 10.0,
@@ -214,15 +206,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 5,
             "Price": 10.0,
@@ -232,15 +216,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 6,
             "Price": 10.0,
@@ -524,15 +500,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 4,
             "Price": 10.0,
@@ -542,15 +510,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 5,
             "Price": 10.0,
@@ -560,15 +520,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 6,
             "Price": 10.0,
@@ -882,15 +834,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 7,
             "Price": 10.0,
@@ -900,15 +844,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 8,
             "Price": 10.0,
@@ -918,15 +854,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 2,
-                "StartTime": "2024-04-02T16:00:00",
-                "EndTime": "2024-04-02T17:58:00",
-                "MovieID": 4,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 9,
             "Price": 10.0,

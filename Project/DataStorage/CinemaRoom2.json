@@ -4,15 +4,7 @@
       [
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 1,
-                "StartTime": "2024-04-01T15:00:00",
-                "EndTime": "2024-04-01T16:58:00",
-                "MovieID": 2,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 0,
             "Price": 10.0,
@@ -22,15 +14,7 @@
         ],
         [
           {
-            "reservedInSession": [
-              {
-                "sessionID": 1,
-                "StartTime": "2024-04-01T15:00:00",
-                "EndTime": "2024-04-01T16:58:00",
-                "MovieID": 2,
-                "RoomID": 1
-              }
-            ],
+            "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 1,
             "Price": 10.0,

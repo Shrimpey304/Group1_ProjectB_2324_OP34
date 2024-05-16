@@ -18,9 +18,9 @@ public class TicketLogic{
 	}
 	public static void AddReservation()
 	{
-		List<MovieSessionModel> session = JsonAccess.ReadFromJson<MovieSessionModel>($"DataStorage/Sessions.json");
+		// List<MovieSessionModel> session = JsonAccess.ReadFromJson<MovieSessionModel>($"DataStorage/Sessions.json");
 		
-		Ticket newticket = new(session[0],selectedSeating,SnackMenuLogic.TotalCost,SnackMenuLogic.OrderedSnacks,AccountsLogic.CurrentAccount.Id);
+		Ticket newticket = new(selectedSession,selectedSeating,SnackMenuLogic.TotalCost,SnackMenuLogic.OrderedSnacks,AccountsLogic.CurrentAccount!.Id);
 		
 		Console.WriteLine($"movie: {newticket.moviesession.MovieID} \nRoom: {newticket.moviesession.RoomID} Seats: {newticket.ReservedSeats} ");
 		
