@@ -16,36 +16,37 @@ public class MovieSessionLogic
 		}
 		if (HasSessions){
 			int Counter = 1;
-			MovieSessionModel chosenSession = null;
 			Console.WriteLine("Upcoming sessions for this movie:");
 			List<MovieSessionModel> usableSessions = new();
-			// reservation issue ----------------------------------------------------------------------------------------------
+
+			Console.WriteLine($" _________________________________________________________________");
+			Console.WriteLine($"| {"Session".PadRight(7)} | {"Start".PadRight(25)} | {"End".PadRight(25)} |");
+			Console.WriteLine($"|---------+---------------------------+---------------------------|");
+
 			foreach (MovieSessionModel session in SessionList)
 			{
 				if (session.MovieID == UserInput)
 				{
-					Console.WriteLine($"Session: {Counter++} | Start: {session.StartTime} | End: {session.EndTime}");
+					Console.WriteLine($"| {Convert.ToString(Counter).PadRight(7)} | {Convert.ToString(session.StartTime).PadRight(25)} | End: {Convert.ToString(session.EndTime).PadRight(20)} |");
 					usableSessions.Add(session);
+					Counter++;
 					
 				}
 			}
-			System.Console.WriteLine("\nPlease select a session by typing the session ID.");
+
+			Console.WriteLine($" -----------------------------------------------------------------");
+			
+			Console.WriteLine("\nPlease select a session by typing the session ID.");
+
 			string ?inp = Console.ReadLine();
 			int intinp = Convert.ToInt32(inp);
-			// foreach (MovieSessionModel session in SessionList){
-			// 	if(session.sessionID == intinp){
-			// 		chosenSession = session;
-			// 	}
-			// }
-			chosenSession = usableSessions[intinp-1];
-			
-			return chosenSession;
-			// reservation issue ----------------------------------------------------------------------------------------------
+
+			return usableSessions[intinp-1];
 		}
 		else
 		{
 			Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
-			return null;
+			return null!;
 		}
 	}
 }
