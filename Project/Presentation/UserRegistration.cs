@@ -13,7 +13,7 @@ namespace Cinema
             string email;
             do
             {
-                email = InputHandler.ReadInputWithCancel("Please enter your email address:");
+                email = InputHandler.ReadInputWithCancel("Please enter your email address:\nPress esc key if you want to cancel.");
                 if (email == null)
                 {
                     Console.WriteLine("Registration cancelled.");
@@ -30,7 +30,7 @@ namespace Cinema
             string password;
             do
             {
-                password = GetValidPassword("Please enter your password:\nMust at least contain 8 characters, one capital letter, one symbol, and one number:");
+                password = GetValidPassword("Please enter your password:\nMust at least contain 8 characters\nOne capital letter\nOne symbol\nOne number:\nPress esc key if you want to cancel.");
                 if (password == null) // Check if the user pressed Esc to quit during password input
                 {
                     Console.WriteLine("Registration cancelled.");
@@ -56,11 +56,9 @@ namespace Cinema
             } while (password != confirmPassword);
 
             // Full name input
-            Console.WriteLine("Please enter your full names:");
             string fullName = InputHandler.ReadInputWithCancel("Please enter your full names:");
             if (fullName == null)
             {
-                Console.WriteLine("Registration cancelled.");
                 return;
             }
 
@@ -71,7 +69,32 @@ namespace Cinema
 
         private static string GetPassword(string prompt)
         {
-            return InputHandler.ReadInputWithCancel(prompt);
+            Console.WriteLine(prompt);
+            StringBuilder password = new StringBuilder();
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true); // True to not display the pressed key in the console
+                if (key.Key == ConsoleKey.Enter && password.Length > 0)
+                {
+                    Console.WriteLine();  // Move to the next line
+                    return password.ToString();
+                }
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine("\nOperation cancelled.");  // Provide feedback
+                    return null;  // Return null if Esc is pressed to indicate cancellation
+                }
+                else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                {
+                    password.Remove(password.Length - 1, 1);
+                    Console.Write("\b \b");  // Remove last character from console display
+                }
+                else if (!char.IsControl(key.KeyChar))
+                {
+                    password.Append(key.KeyChar);
+                    Console.Write("•");  // Display a placeholder instead of the real character
+                }
+            }
         }
 
         private static string GetValidPassword(string prompt)
