@@ -35,4 +35,26 @@ public static class DisplayHeader{
                                                              
 	}
 
+	public static void LoginHeader()
+	{
+		
+		Console.WriteLine(" _____         ____        _____     _____      __      _  ");
+		Console.WriteLine("(_   _)       / __ \\      / ___ \\   (_   _)    /  \\    / ) ");
+		Console.WriteLine("  | |        / /  \\ \\    / /   \\_)    | |     / /\\ \\  / /  ");
+		Console.WriteLine("  | |       ( ()  () )  ( (  ____     | |     ) ) ) ) ) )  ");
+		Console.WriteLine("  | |   __  ( ()  () )  ( ( (__  )    | |    ( ( ( ( ( (   ");
+		Console.WriteLine("__| |___) )  \\ \\__/ /    \\ \\__/ /    _| |__  / /  \\ \\/ /   ");
+		Console.WriteLine("\\________/    \\____/      \\____/    /_____( (_/    \\__/    ");
+	}
+
+	public static void RegistrationHeader(){
+		Console.WriteLine(" ______      _____      _____     _____    _____   ________    _____   ______    ");
+		Console.WriteLine("(   __ \\    / ___/     / ___ \\   (_   _)  / ____\\ (___  ___)  / ___/  (   __ \\   ");
+		Console.WriteLine(" ) (__) )  ( (__      / /   \\_)    | |   ( (___       ) )    ( (__     ) (__) )  ");
+		Console.WriteLine("(    __/    ) __)    ( (  ____     | |    \\___ \\     ( (      ) __)   (    __/   ");
+		Console.WriteLine(" ) \\ \\  _  ( (       ( ( (__  )    | |        ) )     ) )    ( (       ) \\ \\  _  ");
+		Console.WriteLine("( ( \\ \\_))  \\ \\___    \\ \\__/ /    _| |__  ___/ /     ( (      \\ \\___  ( ( \\ \\_)) ");
+		Console.WriteLine(" )_) \\__/    \\____\\    \\____/    /_____( /____/      /__\\      \\____\\  )_) \\__/  ");
+	}
+
 }

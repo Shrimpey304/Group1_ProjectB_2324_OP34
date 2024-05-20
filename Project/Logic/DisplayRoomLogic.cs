@@ -233,9 +233,19 @@ public static class DisplayRoom{
 						break;
 						case ConsoleKey.Backspace:
 
-							List<Seating> UploadSeatingPreAdjustment = new(){seating};
-							JsonAccess.UploadToJson(UploadSeatingPreAdjustment, fileNM);
-							
+							Console.WriteLine("Cancelling process...");
+							for (int i = 0; i < seating.Rows; i++)
+							{
+								for (int j = 0; j < seating.Columns; j++){
+									var seat = tempSeating.SeatingArrangement[i,j][0];
+									if(seat.inPrereservation){
+										seat.inPrereservation = false;
+									}
+								}
+							}
+			
+							MenuUtils.displayLoggedinMenu();
+
 						break;
 						case ConsoleKey.R:
 							
@@ -432,21 +442,22 @@ public static class DisplayRoom{
 
 
 	private static void Legenda(){
-		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write(" = Normal seat  \n");
-		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write(" = Deluxe seat  \n");
-		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write(" = Premium seat  \n");
+		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({NORMAL_SEAT_PRICE} euro)\n");
+		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DELUXE_SEAT_PRICE} euro)\n");
+		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({PREMIUM_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
+		Console.Write("Press Backspace to cancel and go back to the main menu\n");
 		Console.Write("Press R to reserve selected seats\n");
 	}
 
 
 	private static void ChangeSeatLegenda(){
-		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write(" = Normal seat  \n");
-		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write(" = Deluxe seat  \n");
-		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write(" = Premium seat  \n");
+		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({NORMAL_SEAT_PRICE} euro)\n");
+		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DELUXE_SEAT_PRICE} euro)\n");
+		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({PREMIUM_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");

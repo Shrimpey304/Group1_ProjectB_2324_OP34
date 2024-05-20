@@ -6,9 +6,17 @@ namespace Cinema
     {
         public static void Start()
         {
-            Console.WriteLine("Welcome to the registration page.");
-            Console.WriteLine("Please enter your email address:");
-            string email = Console.ReadLine();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
+            Console.WriteLine("Welcome to the registration page!");
+            Console.WriteLine("Please enter your email address\n");
+
+            Console.Write(">>> ");
+            string email = Console.ReadLine()!;
+
+            Console.Clear();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
             Console.WriteLine("Password must be/ contain:\nAt least 8 characters long.\nAt least one uppercase letter.\nAt least one number.\nAt least one symbol.");
             string password = GetPassword("Please enter your password:");
@@ -21,7 +29,7 @@ namespace Cinema
             }
 
             Console.WriteLine("Please enter your full name:");
-            string fullName = Console.ReadLine();
+            string fullName = Console.ReadLine()!;
 
             // Proceed with the registration
             UserRegistrationLogic.Register(email, password, fullName);
@@ -29,7 +37,8 @@ namespace Cinema
 
         private static string GetPassword(string prompt)
         {
-            Console.WriteLine(prompt);
+            Console.WriteLine($"{prompt}\n");
+            Console.Write(">>> ");
             string password = "";
             while (true)
             {

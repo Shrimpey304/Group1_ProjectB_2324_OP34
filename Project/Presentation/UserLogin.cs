@@ -6,12 +6,20 @@ static class UserLogin
 
     public static void Start()
     {
-        Console.WriteLine("Welcome to the login page");
-        Console.WriteLine("Please enter your email address:");
+        DisplayHeader.LoginHeader();
+        Console.WriteLine("\n---------------------------------------------------------------------------\n");
+        Console.WriteLine("Welcome to the login page!");
+        Console.WriteLine("Please enter your email address\n");
+
+        Console.Write(">>> ");
         string? email = Console.ReadLine();
 
         // Use GetPassword method for masked password input
-        Console.WriteLine("Please enter your password:");
+        Console.Clear();
+        DisplayHeader.LoginHeader();
+        Console.WriteLine("\n---------------------------------------------------------------------------\n");
+
+        Console.WriteLine("Please enter your password\n");
         string password = GetPassword();
 
         AccountModel? acc = accountsLogic.CheckLogin(email!, password);
@@ -35,6 +43,7 @@ static class UserLogin
 
     private static string GetPassword()
     {
+        Console.Write(">>> ");
         string password = "";
         while (true)
         {

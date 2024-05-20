@@ -20,21 +20,21 @@ public class MovieSessionLogic
 			Console.WriteLine("Upcoming sessions for this movie:");
 			List<MovieSessionModel> usableSessions = new();
 
-			Console.WriteLine($" _________________________________________________________________");
-			Console.WriteLine($"| {"Session".PadRight(7)} | {"Start".PadRight(25)} | {"End".PadRight(25)} |");
-			Console.WriteLine($"|---------+---------------------------+---------------------------|");
+			Console.WriteLine($" _________________________________________________________________________");
+			Console.WriteLine($"| {"Session".PadRight(7)} | {"Start".PadRight(25)} | {"End".PadRight(25)} | Room: |");
+			Console.WriteLine($"|---------+---------------------------+---------------------------+-------|");
 
 			foreach (MovieSessionModel session in SessionList)
 			{
 				if (session.MovieID == UserInput)
 				{
-					Console.WriteLine($"| {Convert.ToString(Counter).PadRight(7)} | {Convert.ToString(session.StartTime).PadRight(25)} | End: {Convert.ToString(session.EndTime).PadRight(20)} |");
+					Console.WriteLine($"| {Convert.ToString(Counter).PadRight(7)} | {Convert.ToString(session.StartTime).PadRight(25)} | End: {Convert.ToString(session.EndTime).PadRight(20)} | {Convert.ToString(session.RoomID).PadRight(5)} |");
 					usableSessions.Add(session);
 					Counter++;
 				}
 			}
 
-			Console.WriteLine($" -----------------------------------------------------------------");
+			Console.WriteLine($" ------------------------------------------------------------------------");
 			
 			Console.WriteLine("\nPlease select a session by typing the session ID.");
 

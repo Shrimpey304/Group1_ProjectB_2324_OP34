@@ -80,6 +80,7 @@ public class AccountsLogic
 		if (CurrentAccount != null){
 			foreach(var ticket in CurrentAccount.TicketList){
 				Console.WriteLine("-------------------------------------------------");
+				Console.WriteLine($"Room: {ticket.moviesession.RoomID}");
 				Console.WriteLine($"Movie: {ticket.moviesession.MovieID} Time: {ticket.moviesession.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				foreach (var seat in ticket.ReservedSeats){
