@@ -2,6 +2,7 @@ namespace Cinema;
 
 public class MovieSessionLogic
 {
+
 	public static MovieSessionModel ListSessions(int UserInput)
 	{
 		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
@@ -47,5 +48,12 @@ public class MovieSessionLogic
 			Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
 			return null!;
 		}
+	}
+
+	public static MovieSessionModel getSessionByID(int movieID){
+
+		List<MovieSessionModel> _sessions = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
+
+		return _sessions.FirstOrDefault(a => a.sessionID == movieID)!;
 	}
 }

@@ -37,7 +37,7 @@ public static class MenuUtils{
 			}
 			else if(headertype == "admin"){
 				DisplayHeader.AdminHeader();
-				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount.FullName}");
+				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount!.FullName}");
 			}
 			
 			Console.WriteLine("\n\nuse the arrows and press 'enter' to select option\n");
@@ -109,6 +109,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
 
+			{ "Change Seat Types", DisplayRoom.adminChangeSeatTypes},
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
