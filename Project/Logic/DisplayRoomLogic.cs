@@ -196,13 +196,26 @@ public static class DisplayRoom{
 							var cursorOnSeatingPosition = tempSeating!.SeatingArrangement[selectedPositionRow, selectedPositionCol][0];
 
 							if(cursorOnSeatingPosition.Type == SeatType.NoSeat){
-								continue;
+								break;
+							}
+
+							bool containsSession = false;
+							foreach (var sesh in cursorOnSeatingPosition.reservedInSession){
+								if(sesh.sessionID == session.sessionID){
+									containsSession = true;
+									Console.WriteLine(" cant reserve a seat that is already reserved");
+									break;
+								}
+							}
+							if (containsSession){
+								break;
 							}
 
 							if (cursorOnSeatingPosition.inPrereservation == false)
 							{
 								if (SelectedPositions.Count == 0 || SelectedSeatsInRow(SelectedPositions, selectedPositionRow, selectedPositionCol, tempSeating))
 								{
+									
 									cursorOnSeatingPosition.inPrereservation = true;
 									SelectedPositions.Add(new Tuple<int, int>(selectedPositionRow, selectedPositionCol));
 								}
@@ -243,6 +256,10 @@ public static class DisplayRoom{
 									}
 								}
 							}
+
+							List<Seating> undoUploadSeating = new(){tempSeating!};
+
+							JsonAccess.UploadToJson(undoUploadSeating, fileNM);
 			
 							MenuUtils.displayLoggedinMenu();
 
@@ -422,7 +439,7 @@ public static class DisplayRoom{
 						Console.BackgroundColor = ConsoleColor.Black;
 						Console.Write($"     ");
 					}else{
-						Console.BackgroundColor = ConsoleColor.Black;
+						Console.BackgroundColor = ConsoleColor.Green;
 						Console.Write($"     ");
 					}
 					break;
@@ -661,6 +678,27 @@ public static class DisplayRoom{
 		changeSeattype(selected);
 	}
 
+
+    public static void adminCreateRoom(){
+		DisplayHeader.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine("How many rows will your room have\n");
+		Console.Write(">>> ");
+		string rows = Console.ReadLine()!;
+		int introws = Convert.ToInt32(rows);
+
+		Console.Clear();
+		DisplayHeader.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine("How many Columns will your room have\n");
+		Console.Write(">>> ");
+		string cols = Console.ReadLine()!;
+		int intcols = Convert.ToInt32(cols);
+
+		CreateNewDefaultJson(introws, intcols);
+
+		Console.WriteLine("room created succesfully");
+	}
 
 	/// <summary>
 	/// used for creating new cinema rooms

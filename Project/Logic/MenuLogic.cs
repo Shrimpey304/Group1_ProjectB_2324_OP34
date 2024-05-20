@@ -110,11 +110,10 @@ public static class MenuUtils{
 		{ 
 
 			{ "Change Seat Types", DisplayRoom.adminChangeSeatTypes},
-			{ "Reserve Ticket", TicketLogic.ReserveTicket},
+			{ "Create New Room", DisplayRoom.adminCreateRoom},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
-			{ "Random Admin option", AccountsLogic.logout},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 

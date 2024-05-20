@@ -7,9 +7,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ],
         [
@@ -17,9 +17,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ],
         [
@@ -27,7 +27,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -37,7 +37,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -47,7 +47,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -57,7 +57,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -67,7 +67,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -77,7 +77,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -87,7 +87,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -97,7 +97,7 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -107,9 +107,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ],
         [
@@ -117,39 +117,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 11,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 0,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 0,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 0,
-            "ColumnID": 14,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ]
       ],
@@ -159,9 +129,9 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ],
         [
@@ -169,7 +139,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -179,7 +149,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -189,7 +159,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -199,7 +169,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -209,7 +179,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -219,7 +189,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -229,7 +199,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -239,7 +209,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -249,7 +219,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -259,7 +229,7 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -269,39 +239,9 @@
             "reservedInSession": [],
             "RowID": 1,
             "ColumnID": 11,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 1,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 1,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 1,
-            "ColumnID": 14,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ]
       ],
@@ -311,9 +251,9 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ],
         [
@@ -321,7 +261,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -331,7 +271,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -341,7 +281,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -351,7 +291,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -361,7 +301,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -371,7 +311,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -381,7 +321,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -391,7 +331,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -401,7 +341,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -411,7 +351,7 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -421,39 +361,9 @@
             "reservedInSession": [],
             "RowID": 2,
             "ColumnID": 11,
-            "Price": 10.0,
+            "Price": 0.0,
             "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 2,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 2,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 2,
-            "ColumnID": 14,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
+            "Type": 3
           }
         ]
       ],
@@ -463,7 +373,7 @@
             "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -473,7 +383,7 @@
             "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -483,7 +393,7 @@
             "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -493,7 +403,7 @@
             "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -503,7 +413,17 @@
             "reservedInSession": [],
             "RowID": 3,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 3,
+            "ColumnID": 5,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -512,58 +432,8 @@
           {
             "reservedInSession": [],
             "RowID": 3,
-            "ColumnID": 5,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
             "ColumnID": 6,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 7,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 8,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 9,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -572,38 +442,48 @@
           {
             "reservedInSession": [],
             "RowID": 3,
+            "ColumnID": 7,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 3,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 3,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 3,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 3,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 3,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -615,7 +495,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -625,7 +505,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -635,7 +515,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -645,7 +525,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -655,7 +535,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -665,57 +545,7 @@
             "reservedInSession": [],
             "RowID": 4,
             "ColumnID": 5,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 6,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 7,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 8,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 9,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -724,38 +554,58 @@
           {
             "reservedInSession": [],
             "RowID": 4,
+            "ColumnID": 6,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 4,
+            "ColumnID": 7,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 4,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 4,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 4,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 4,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 4,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -767,7 +617,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -777,7 +627,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -787,7 +637,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -797,9 +647,9 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -807,7 +657,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -817,7 +667,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
             "Type": 2
           }
@@ -827,7 +677,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
             "Type": 2
           }
@@ -837,37 +687,7 @@
             "reservedInSession": [],
             "RowID": 5,
             "ColumnID": 7,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 8,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 9,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -876,38 +696,38 @@
           {
             "reservedInSession": [],
             "RowID": 5,
+            "ColumnID": 8,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 5,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 5,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 5,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 5,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -919,7 +739,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -929,7 +749,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -939,7 +759,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -949,9 +769,9 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -959,7 +779,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -969,7 +789,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
             "Type": 2
           }
@@ -979,7 +799,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
             "Type": 2
           }
@@ -989,37 +809,7 @@
             "reservedInSession": [],
             "RowID": 6,
             "ColumnID": 7,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 8,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 9,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 2
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
             "Type": 1
           }
@@ -1028,38 +818,38 @@
           {
             "reservedInSession": [],
             "RowID": 6,
+            "ColumnID": 8,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 6,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 6,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 6,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 6,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1071,7 +861,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1081,7 +871,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1091,7 +881,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1101,9 +891,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1111,9 +901,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1121,9 +911,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -1131,9 +921,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -1141,9 +931,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1151,9 +941,9 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1161,7 +951,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1171,7 +961,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1181,37 +971,7 @@
             "reservedInSession": [],
             "RowID": 7,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 7,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 7,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 7,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1223,7 +983,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1233,7 +993,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1243,7 +1003,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1253,9 +1013,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1263,9 +1023,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1273,9 +1033,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -1283,9 +1043,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 15.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 2
           }
         ],
         [
@@ -1293,9 +1053,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1303,9 +1063,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1313,7 +1073,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1323,7 +1083,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1333,37 +1093,7 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 11,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 8,
-            "ColumnID": 12,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 8,
-            "ColumnID": 13,
-            "Price": 10.0,
-            "inPrereservation": false,
-            "Type": 0
-          }
-        ],
-        [
-          {
-            "reservedInSession": [],
-            "RowID": 8,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1375,7 +1105,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 0,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1385,7 +1115,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 1,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1395,7 +1125,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 2,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1405,7 +1135,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 3,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1415,9 +1145,9 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 4,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1425,9 +1155,9 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 5,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1435,9 +1165,9 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 6,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1445,9 +1175,9 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 7,
-            "Price": 10.0,
+            "Price": 12.0,
             "inPrereservation": false,
-            "Type": 0
+            "Type": 1
           }
         ],
         [
@@ -1455,7 +1185,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 8,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1465,7 +1195,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 9,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1475,7 +1205,7 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 10,
-            "Price": 10.0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1485,7 +1215,19 @@
             "reservedInSession": [],
             "RowID": 9,
             "ColumnID": 11,
-            "Price": 10.0,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 0,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1493,9 +1235,9 @@
         [
           {
             "reservedInSession": [],
-            "RowID": 9,
-            "ColumnID": 12,
-            "Price": 10.0,
+            "RowID": 10,
+            "ColumnID": 1,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1503,9 +1245,9 @@
         [
           {
             "reservedInSession": [],
-            "RowID": 9,
-            "ColumnID": 13,
-            "Price": 10.0,
+            "RowID": 10,
+            "ColumnID": 2,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
           }
@@ -1513,17 +1255,463 @@
         [
           {
             "reservedInSession": [],
-            "RowID": 9,
-            "ColumnID": 14,
-            "Price": 10.0,
+            "RowID": 10,
+            "ColumnID": 3,
+            "Price": 9.0,
             "inPrereservation": false,
             "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 4,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 5,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 6,
+            "Price": 12.0,
+            "inPrereservation": false,
+            "Type": 1
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 7,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 10,
+            "ColumnID": 11,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 0,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 1,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 2,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 3,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 4,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 5,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 6,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 7,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 10,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 11,
+            "ColumnID": 11,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 0,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 1,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 2,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 3,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 4,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 5,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 6,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 7,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 10,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 12,
+            "ColumnID": 11,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 0,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 1,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 2,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 3,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 4,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 5,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 6,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 7,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 8,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 9,
+            "Price": 9.0,
+            "inPrereservation": false,
+            "Type": 0
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 10,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
+          }
+        ],
+        [
+          {
+            "reservedInSession": [],
+            "RowID": 13,
+            "ColumnID": 11,
+            "Price": 0.0,
+            "inPrereservation": false,
+            "Type": 3
           }
         ]
       ]
     ],
     "ID": 1,
-    "Rows": 10,
-    "Columns": 15
+    "Rows": 14,
+    "Columns": 12
   }
 ]
