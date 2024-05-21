@@ -76,7 +76,7 @@
     "Salt": "YR0IO0NJkyd29akyJHUMYg==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": true,
+    "IsActive": false,
     "TicketList": []
   },
   {
@@ -87,6 +87,16 @@
     "FullName": "max pain",
     "IsAdmin": false,
     "IsActive": false,
+    "TicketList": []
+  },
+  {
+    "Id": 9,
+    "EmailAddress": "ronanhardjo@gmail.com",
+    "Password": "ad05b9494383d7177dde9d9710a3bb35be1e5b6ff54b05442b6511f73ddda87e",
+    "Salt": "cQmgODDtRWxxSi9Vbg+mxA==",
+    "FullName": "Ronan Hardjo",
+    "IsAdmin": false,
+    "IsActive": true,
     "TicketList": []
   }
 ]
