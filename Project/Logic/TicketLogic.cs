@@ -27,9 +27,9 @@ public class TicketLogic{
 		AccountsLogic.CurrentAccount.TicketList.Add(newticket);
 		_reservations.Add(newticket);
 		JsonAccess.UploadToJson(_reservations,filePathReservations);
+		ConfirmationLogic.ShowConfirmation(newticket);
+		Console.WriteLine("Press any key to return to the main menu");
+		Console.ReadKey();
 		MenuUtils.displayLoggedinMenu();
 	}
-	
-
-
 }

@@ -78,25 +78,5 @@
     "IsAdmin": false,
     "IsActive": false,
     "TicketList": []
-  },
-  {
-    "Id": 8,
-    "EmailAddress": "painmail@gmail.com",
-    "Password": "89aca657a52936d2ca31b5415807960fde6e57ede4ae6c422628f2a9ea659729",
-    "Salt": "riw777LHqkiTbF78ctIOFw==",
-    "FullName": "max pain",
-    "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
-  },
-  {
-    "Id": 9,
-    "EmailAddress": "ronanhardjo@gmail.com",
-    "Password": "ad05b9494383d7177dde9d9710a3bb35be1e5b6ff54b05442b6511f73ddda87e",
-    "Salt": "cQmgODDtRWxxSi9Vbg+mxA==",
-    "FullName": "Ronan Hardjo",
-    "IsAdmin": false,
-    "IsActive": true,
-    "TicketList": []
   }
 ]
