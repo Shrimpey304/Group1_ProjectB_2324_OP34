@@ -43,18 +43,106 @@ class ConfirmationLogic
 		Console.Clear();
 		Console.WriteLine(ConfirmationTextBody);
 		
-		string htmlBody = $"<html>" +
-			$"<body>" +
-			$"<h1>Your reservation has been made!</h1>" +
-			$"<p>Reservation ID: #{ticket.TicketID}<br></p>" +
-			$"<p>Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}</p>" +
-			$"<p>Room: #{ticket.moviesession.RoomID}</p>" +
-			$"<p>{CurrentSeats}<br></p>" +
-			$"<p>{HTMLSnacks}<br></p>" +
-			$"<p>Total price: €{ticket.Totalprice},00<br></p>" +
-			$"<p>Thank you for your reservation!</p>" +
-			$"</body>" +
-			$"</html>";
+		// string htmlBody = $"<html>" +
+		// 	$"<body>" +
+		// 	$"<h1>Your reservation has been made!</h1>" +
+		// 	$"<p>Reservation Number: #{ticket.TicketID}<br></p>" +
+		// 	$"<p>Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}</p>" +
+		// 	$"<p>Room: #{ticket.moviesession.RoomID}</p>" +
+		// 	$"<p>{CurrentSeats}<br></p>" +
+		// 	$"<p>{HTMLSnacks}<br></p>" +
+		// 	$"<p>Total price: €{ticket.Totalprice},00<br></p>" +
+		// 	$"<p>Thank you for your reservation!</p>" +
+		// 	$"</body>" +
+		// 	$"</html>";
+
+		string actionLink = "https://hr.nl";
+		string htmlBody = $@"
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<style>
+				body {{
+					font-family: Arial, sans-serif;
+					margin: 0;
+					padding: 0;
+					background-color: #f4f4f4;
+				}}
+				.container {{
+					width: 100%;
+					max-width: 600px;
+					margin: 0 auto;
+					background-color: #ffffff;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+					border-radius: 8px;
+					overflow: hidden;
+				}}
+				.header {{
+					background-color: #4CAF50;
+					color: white;
+					padding: 20px;
+					text-align: center;
+				}}
+				.content {{
+					padding: 20px;
+					line-height: 1.6;
+					color: #333333;
+				}}
+				.content h1 {{
+					color: #4CAF50;
+				}}
+				.content p {{
+					margin: 0 0 10px;
+				}}
+				.content a {{
+					color: inherit;
+					text-decoration: none;
+				}}
+				.footer {{
+					background-color: #f1f1f1;
+					color: #888888;
+					text-align: center;
+					padding: 10px;
+					font-size: 12px;
+				}}
+				.button {{
+					display: inline-block;
+					padding: 10px 20px;
+					margin: 20px 0;
+					color: #ffffff;
+					background-color: #4CAF50;
+					text-decoration: none;
+					border-radius: 5px;
+				}}
+				.button:hover {{
+					background-color: #45a049;
+				}}
+			</style>
+		</head>
+		<body>
+			<div class='container'>
+				<div class='header'>
+					<h1>Cinneville Rotterdam</h1>
+				</div>
+				<div class='content'>
+					<h1>Hello, {AccountsLogic.CurrentAccount!.EmailAddress}!</h1>
+					<p>Reservation Number: #{ticket.TicketID}</p>
+					<p>Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}</p>
+					<p>Room: #{ticket.moviesession.RoomID}</p>
+					<p>{CurrentSeats}<br></p>
+					<p>{HTMLSnacks}<br></p>
+					<p>Total price: €{ticket.Totalprice},00<br></p>
+					<p>Thank you for your reservation!</p>
+					<a href='{actionLink}' class='button'>Visit website</a>
+				</div>
+				<div class='footer'>
+					<p>&copy; 2024 Hogeschool Rotterdam. All rights reserved.</p>
+					<p>Wijnhaven 103, Rotterdam</p>
+				</div>
+			</div>
+		</body>
+		</html>
+		";
 
 		// Send confirmation email
 		EmailSenderLogic emailSender = new EmailSenderLogic();
