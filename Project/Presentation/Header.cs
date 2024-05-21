@@ -16,11 +16,13 @@ public static class DisplayHeader{
 	
 	public static void HeaderSnack()
 	{
-		Console.WriteLine("/ ____|                   | |  ");
-		Console.WriteLine("| (___  _ __    __ _  ___ | | __");
-		Console.WriteLine("\\___ \\| '_ \\ / _`  |/ __  | |/ /");
-		Console.WriteLine("____) | | | | (_| | (__   |   < ");
-		Console.WriteLine("|_____/ |_| |_|\\__,_|\\__  |_|\\_\\");
+		Console.WriteLine("  _____      __      _     ____       ____    __   ___  ");
+		Console.WriteLine(" / ____\\    /  \\    / )   (    )     / ___)  () ) / __) ");
+		Console.WriteLine("( (___     / /\\ \\  / /    / /\\ \\    / /      ( (_/ /    ");
+		Console.WriteLine(" \\___ \\    ) ) ) ) ) )   ( (__) )  ( (       ()   (     ");
+		Console.WriteLine("     ) )  ( ( ( ( ( (     )    (   ( (       () /\\ \\    ");
+		Console.WriteLine(" ___/ /   / /  \\ \\/ /    /  /\\  \\   \\ \\___   ( (  \\ \\   ");
+		Console.WriteLine("/____/   (_/    \\__/    /__(  )__\\   \\____)  ()_)  \\_\\  ");
 	}
 
 	public static void AdminHeader()

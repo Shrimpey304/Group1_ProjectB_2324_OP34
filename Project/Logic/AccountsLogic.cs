@@ -36,7 +36,6 @@ public class AccountsLogic
 		}
 		catch (Exception e)
 		{
-			Console.WriteLine($"Error during login: {e}");
 			return null;
 		}
 	}

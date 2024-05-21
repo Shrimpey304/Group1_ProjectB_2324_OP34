@@ -21,7 +21,6 @@ namespace Cinema
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
             // Email input and validation in a loop
-            string email;
             do
             {
                 email = InputHandler.ReadInputWithCancel("Please enter your email address:\nPress esc key if you want to cancel.");
@@ -41,7 +40,7 @@ namespace Cinema
             string password;
             do
             {
-                password = GetValidPassword("Please enter your password:\nMust at least contain 8 characters\nOne capital letter\nOne symbol\nOne number:\nPress esc key if you want to cancel.");
+                password = GetValidPassword("Please enter your password:\nMust at least contain 8 characters\nOne capital letter\nOne symbol\nOne number:\nPress esc key if you want to cancel or enter to confirm.");
                 if (password == null) // Check if the user pressed Esc to quit during password input
                 {
                     Console.WriteLine("Registration cancelled.");
@@ -53,7 +52,7 @@ namespace Cinema
             string confirmPassword;
             do
             {
-                confirmPassword = GetPassword("Please re-enter your password for confirmation:");
+                confirmPassword = GetPassword("Please re-enter your password for confirmation and press enter to confirm:");
                 if (confirmPassword == null)
                 {
                     Console.WriteLine("Registration cancelled.");
@@ -67,15 +66,11 @@ namespace Cinema
             } while (password != confirmPassword);
 
             // Full name input
-            string fullName = InputHandler.ReadInputWithCancel("Please enter your full names:");
+            string fullName = InputHandler.ReadInputWithCancel("Please enter your full name and press enter to confirm:");
             if (fullName == null)
             {
                 return;
             }
-
-            Console.WriteLine("Please enter your full name:");
-            string fullName = Console.ReadLine()!;
-
 
             // Proceed with the registration
             UserRegistrationLogic.Register(email, password, fullName);

@@ -11,7 +11,7 @@ static class UserLogin
         DisplayHeader.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
         Console.WriteLine("Welcome to the login page!");
-        Console.WriteLine("Please enter your email address\n");
+        Console.WriteLine("Please enter your email address and press enter to confirm\n");
 
         Console.Write(">>> ");
         string? email = Console.ReadLine();
@@ -22,7 +22,7 @@ static class UserLogin
         DisplayHeader.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
-        Console.WriteLine("Please enter your password\n");
+        Console.WriteLine("Please enter your password and press enter to confirm\n");
         string password = GetPassword();
 
         // Check if password retrieval was cancelled

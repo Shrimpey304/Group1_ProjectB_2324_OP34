@@ -37,6 +37,7 @@ class ConfirmationLogic
 			$"{CurrentSeats}\n\n" +
 			$"{CurrentSnacks}\n\n" +
 			$"Total price: €{ticket.Totalprice},00\n\n" +
+			"Please pay at the register\n\n"+
 			"Thank you for your reservation!";
 
 		Console.Clear();
@@ -64,11 +65,11 @@ class ConfirmationLogic
 		string smtpUser = "cineville@solidhorizons.net"; // SMTP username
 		string smtpPass = "cineville123!"; // SMTP password
 		string fromAddress = "cineville@solidhorizons.net"; // Your email address
-		string toAddress = "RammusShenCho@gmail.com"; // Basic email address
-		/*
-		uncomment this and Comment the previous line to send the email to the user instead of the Basic mail
-		string toAddress = AccountsLogic.CurrentAccount.EmailAdress; // Recipient email address
-		*/
+		//string toAddress = "RammusShenCho@gmail.com"; // Basic email address
+		
+		//uncomment this and Comment the previous line to send the email to the user instead of the Basic mail
+		string toAddress = AccountsLogic.CurrentAccount!.EmailAddress; // Recipient email address
+		
 		string subject = $"Your reservation at Cineville"; // Email subject
 		string body = htmlBody; // Confirmation email body
 

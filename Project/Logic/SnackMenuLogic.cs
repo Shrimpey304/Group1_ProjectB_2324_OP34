@@ -18,6 +18,7 @@ public static class SnackMenuLogic
 
 			while(FinishOrder == false)
 			{
+				Console.Clear();
 				Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
 				Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                   | Extra Info |");
 				Console.WriteLine("|---------+-------------------------------------+---------+-------------------------------------------------------------------------------+------------|");
@@ -44,21 +45,16 @@ public static class SnackMenuLogic
 						Console.Clear();
 						Console.WriteLine($"How many {snack.Name} would you like?");
 						string SnackAmount = Console.ReadLine();
-						// Initialize OrderedSnacks if it is null
+
 						OrderedSnacks ??= new List<Tuple<string, int>>();
-						// try
-						// {
+
 						int SnackAmountInt = Convert.ToInt32(SnackAmount);
 						var a = new Tuple<string, int>(snack.Name, SnackAmountInt);
 
 						OrderedSnacks.Add(a);
 
 						Console.WriteLine($"Added {SnackAmountInt} {snack.Name} to order.");
-						// }
-						// catch (Exception e)
-						// {
-						// 	Console.WriteLine("Error message: " + e.Message);
-						// }
+
 						
 						return;
 					}

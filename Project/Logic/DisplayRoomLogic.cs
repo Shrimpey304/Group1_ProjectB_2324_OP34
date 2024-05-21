@@ -151,11 +151,11 @@ public static class DisplayRoom{
 
 				if(SelectedPositions!.Count > 0){
 
-					Console.Write($"Selected seats: Row: {SelectedPositions[0].Item1} Seat ");
+					Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat ");
 
 					foreach(Tuple<int,int> seatLoc in SelectedPositions){
 
-						Console.Write($"- {seatLoc.Item2}");
+						Console.Write($" [{seatLoc.Item2}]");
 					}
 
 				}else{
@@ -234,7 +234,8 @@ public static class DisplayRoom{
 
 									if (index > 0 && index < sortedPositions.Count - 1)
 									{
-										Console.WriteLine("This seat is between two selected seats and cannot be deselected.");
+										cursorOnSeatingPosition.inPrereservation = false;
+										// Console.WriteLine("This seat is between two selected seats and cannot be deselected.");
 									}
 								}
 								else
@@ -277,10 +278,11 @@ public static class DisplayRoom{
 
 									JsonAccess.UploadToJson(uploadTempSeatingReserved, fileNM);
 								}
-								Console.WriteLine("generating ticket for selected seats");
+								Console.WriteLine("\nGenerating ticket for selected seats");
 								Thread.Sleep(2000);
 							}else{
 								Console.WriteLine("you need to select atleast 1 seat");
+								Thread.Sleep(1000);
 								break;
 							}
 						return SelectedPositions;
@@ -467,6 +469,7 @@ public static class DisplayRoom{
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
 		Console.Write("Press Backspace to cancel and go back to the main menu\n");
+		Console.Write("Press Enter to select a seat (max 8 in a row)\n");
 		Console.Write("Press R to reserve selected seats\n");
 	}
 
@@ -479,6 +482,7 @@ public static class DisplayRoom{
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.Write(" = Screen  \n");
+		Console.Write("Press Enter to change seat type\n");
 		Console.Write("Press Backspace when you are finished and wish to go to the main menu\n");
 	}
 

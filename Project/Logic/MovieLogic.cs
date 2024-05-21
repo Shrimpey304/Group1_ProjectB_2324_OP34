@@ -27,7 +27,7 @@ public class MovieLogic
 
 	public static void AddMovie(MovieModel movie)
 	{
-		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>("Movies.json");
+		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 
 		MovieList.Add(movie);
 
@@ -96,16 +96,19 @@ public class MovieLogic
 			int UserInputInt = Convert.ToInt32(UserInput);  // this is possible, because it is always only numbers (see 2 lines above)
 			foreach (MovieModel movie in MovieList)
 			{
-				if (UserInputInt == movie.MovieID)
+				if (UserInputInt-1 == movie.MovieID)
 				{
 					Console.Clear();
 					Console.WriteLine("Current selected movie:");
 					// Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-					Console.WriteLine($"{Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)}");
+					Console.WriteLine($"{Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)}\n");
+					MovieSessionLogic.ListSessionsNoReservation(UserInputInt);
 					// MovieSessionLogic.ListSessions(UserInputInt);
 					
 				}
 			}
 		}
 	}
+
+
 }
