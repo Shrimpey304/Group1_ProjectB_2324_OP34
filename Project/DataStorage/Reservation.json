@@ -1,14 +1,20 @@
 [
   {
     "moviesession": {
-      "sessionID": 1,
-      "StartTime": "2024-06-15T15:00:00",
-      "EndTime": "2024-06-15T16:58:00",
-      "MovieID": 3,
+      "sessionID": 9,
+      "StartTime": "2024-06-23T23:00:00",
+      "EndTime": "2024-06-24T00:58:00",
+      "MovieID": 2,
       "RoomID": 1
     },
     "ReservedSeats": [
       {
+        "Item1": 0,
+        "Item2": 2
+      }
+    ],
+    "Totalprice": 9.0,
+=======
         "Item1": 3,
         "Item2": 1
       },

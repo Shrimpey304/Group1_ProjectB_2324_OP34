@@ -8,20 +8,30 @@ static class UserLogin
 
     public static void Start()
     {
-        Console.WriteLine("Welcome to the login page");
-        Console.WriteLine("Please enter your email address:");
+        DisplayHeader.LoginHeader();
+        Console.WriteLine("\n---------------------------------------------------------------------------\n");
+        Console.WriteLine("Welcome to the login page!");
+        Console.WriteLine("Please enter your email address\n");
+
+        Console.Write(">>> ");
         string? email = Console.ReadLine();
 
         // Use GetPassword method for masked password input
-        Console.WriteLine("Please enter your password:");
-        string? password = GetPassword();
-        
+      
+        Console.Clear();
+        DisplayHeader.LoginHeader();
+        Console.WriteLine("\n---------------------------------------------------------------------------\n");
+
+        Console.WriteLine("Please enter your password\n");
+        string password = GetPassword();
+
         // Check if password retrieval was cancelled
         if (password == null)
         {
             Console.WriteLine("Login cancelled.");
             return; // Exit the method if login was cancelled
         }
+
 
         AccountModel? acc = accountsLogic.CheckLogin(email!, password);
         if (acc != null)
@@ -44,6 +54,7 @@ static class UserLogin
 
     private static string? GetPassword()
     {
+        Console.Write(">>> ");
         string password = "";
         while (true)
         {

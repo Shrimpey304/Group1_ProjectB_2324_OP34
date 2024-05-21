@@ -7,7 +7,18 @@ namespace Cinema
     {
         public static void Start()
         {
-            Console.WriteLine("Welcome to the registration page.");
+
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
+            Console.WriteLine("Welcome to the registration page!");
+            Console.WriteLine("Please enter your email address\n");
+
+            Console.Write(">>> ");
+            string email = Console.ReadLine()!;
+
+            Console.Clear();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
             // Email input and validation in a loop
             string email;
@@ -62,6 +73,10 @@ namespace Cinema
                 return;
             }
 
+            Console.WriteLine("Please enter your full name:");
+            string fullName = Console.ReadLine()!;
+
+
             // Proceed with the registration
             UserRegistrationLogic.Register(email, password, fullName);
             Console.WriteLine("Registration successful. Welcome, " + fullName);
@@ -69,8 +84,14 @@ namespace Cinema
 
         private static string GetPassword(string prompt)
         {
+
+            Console.WriteLine($"{prompt}\n");
+            Console.Write(">>> ");
+            string password = "";
+
             Console.WriteLine(prompt);
-            StringBuilder password = new StringBuilder();
+
+
             while (true)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true); // True to not display the pressed key in the console

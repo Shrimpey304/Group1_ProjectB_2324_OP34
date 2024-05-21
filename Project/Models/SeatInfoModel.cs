@@ -15,5 +15,6 @@ public enum SeatType
 {
     Normal,
     Deluxe,
-    Premium
+    Premium,
+    NoSeat
 }

@@ -37,7 +37,7 @@ public static class MenuUtils{
 			}
 			else if(headertype == "admin"){
 				DisplayHeader.AdminHeader();
-				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount.FullName}");
+				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount!.FullName}");
 			}
 			
 			Console.WriteLine("\n\nuse the arrows and press 'enter' to select option\n");
@@ -75,7 +75,7 @@ public static class MenuUtils{
 			{ "Login", TestLogin },
 			{ "Register", TestRegister },
 			{ "Display MovieList", () => MovieLogic.ListAllMovies(true)},
-			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
+			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Exit", KillProgram},
 
 		};
@@ -93,7 +93,7 @@ public static class MenuUtils{
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
+			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -109,11 +109,11 @@ public static class MenuUtils{
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
 
-			{ "Reserve Ticket", TicketLogic.ReserveTicket},
+			{ "Change Seat Types", DisplayRoom.adminChangeSeatTypes},
+			{ "Create New Room", DisplayRoom.adminCreateRoom},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Display Menu",() => SnackMenuLogic.ListSnackMenu()},
-			{ "Random Admin option", AccountsLogic.logout},
+			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -130,8 +130,8 @@ public static class MenuUtils{
 		{ 
 
 			{ "Add snacks",() => SnackMenuLogic.ListSnackMenu(true)},
-			{"Remove snack",() => SnackMenuLogic.RemoveSnack()},
-			{ "Finish order", () => SnackMenuLogic.FinishOrdering()},
+			{"Remove snack", SnackMenuLogic.RemoveSnack},
+			{ "Finish order", SnackMenuLogic.FinishOrdering},
 
 		};
 		Console.WriteLine("Would you like to order snacks?\n");

@@ -78,5 +78,15 @@
     "IsAdmin": false,
     "IsActive": false,
     "TicketList": []
+  },
+  {
+    "Id": 8,
+    "EmailAddress": "kimo.edelbroek@gmail.com",
+    "Password": "3b501605ef14ce7cc12bf800374bb7d3961988d18aefa74c02bca70693025c2c",
+    "Salt": "k7rvRydnxLIffZA7w7NFjg==",
+    "FullName": "kimo",
+    "IsAdmin": false,
+    "IsActive": true,
+    "TicketList": []
   }
 ]
