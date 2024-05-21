@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Cinema
 {
@@ -7,6 +8,12 @@ namespace Cinema
     {
         public static void Register(string email, string password, string fullName)
         {
+            if (!ValidateEmail(email))
+            {
+                Console.WriteLine("Invalid email format or domain. Email must be '@gmail.com', '@outlook.com', '@gmail.nl', or '@outlook.nl'.");
+                return;
+            }
+
             if (!ValidatePassword(password))
             {
                 Console.WriteLine("Password does not meet the security requirements.");
@@ -30,6 +37,15 @@ namespace Cinema
             Console.WriteLine("Registration successful. Welcome, " + fullName);
         }
 
+        public static bool ValidateEmail(string email)
+        {
+            string[] validDomains = { "@gmail.com", "@outlook.com", "@gmail.nl", "@outlook.nl" };
+            bool hasValidDomain = validDomains.Any(domain => email.EndsWith(domain));
+            bool containsAtSign = email.Contains("@");
+            bool hasCorrectFormat = Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            return containsAtSign && hasValidDomain && hasCorrectFormat;
+        }
+
         public static bool ValidatePassword(string password)
         {
             if (password.Length < 8)
@@ -49,7 +65,7 @@ namespace Cinema
             }
             if (!password.Any(ch => !char.IsLetterOrDigit(ch)))
             {
-                Console.WriteLine("Password must contain at least one symbol.");
+                    Console.WriteLine("Password must contain at least one symbol.");
                 return false;
             }
             return true;

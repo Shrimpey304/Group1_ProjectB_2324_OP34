@@ -14,6 +14,86 @@
       }
     ],
     "Totalprice": 9.0,
+=======
+        "Item1": 3,
+        "Item2": 1
+      },
+      {
+        "Item1": 3,
+        "Item2": 2
+      },
+      {
+        "Item1": 3,
+        "Item2": 3
+      },
+      {
+        "Item1": 3,
+        "Item2": 4
+      }
+    ],
+    "Totalprice": 46.0,
+    "TicketID": 0,
+    "TicketList": null
+  },
+  {
+    "moviesession": {
+      "sessionID": 1,
+      "StartTime": "2024-06-15T15:00:00",
+      "EndTime": "2024-06-15T16:58:00",
+      "MovieID": 3,
+      "RoomID": 1
+    },
+    "ReservedSeats": [
+      {
+        "Item1": 1,
+        "Item2": 1
+      },
+      {
+        "Item1": 1,
+        "Item2": 2
+      }
+    ],
+    "Totalprice": 12786.0,
+    "TicketID": 0,
+    "TicketList": null
+  },
+  {
+    "moviesession": {
+      "sessionID": 1,
+      "StartTime": "2024-06-15T15:00:00",
+      "EndTime": "2024-06-15T16:58:00",
+      "MovieID": 3,
+      "RoomID": 1
+    },
+    "ReservedSeats": null,
+    "Totalprice": 6.0,
+    "TicketID": 0,
+    "TicketList": null
+  },
+  {
+    "moviesession": {
+      "sessionID": 1,
+      "StartTime": "2024-06-15T15:00:00",
+      "EndTime": "2024-06-15T16:58:00",
+      "MovieID": 3,
+      "RoomID": 1
+    },
+    "ReservedSeats": [
+      {
+        "Item1": 2,
+        "Item2": 2
+      },
+      {
+        "Item1": 2,
+        "Item2": 3
+      },
+      {
+        "Item1": 2,
+        "Item2": 4
+      }
+    ],
+    "Totalprice": 6.0,
+    "TicketID": 0,
     "TicketList": null
   }
 ]
