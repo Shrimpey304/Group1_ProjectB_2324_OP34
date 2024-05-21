@@ -76,6 +76,16 @@
     "Salt": "YR0IO0NJkyd29akyJHUMYg==",
     "FullName": "ki",
     "IsAdmin": false,
+    "IsActive": false,
+    "TicketList": []
+  },
+  {
+    "Id": 8,
+    "EmailAddress": "RammusShenCho@gmail.com",
+    "Password": "fa8e1dab1724335b75e7ae97374dcc1c190d0d2c88d3cad5a0bd62b600ef43d7",
+    "Salt": "RNWY6Y9pDGYEctUiUa+3/w==",
+    "FullName": "Rammus Shen",
+    "IsAdmin": false,
     "IsActive": true,
     "TicketList": []
   }
