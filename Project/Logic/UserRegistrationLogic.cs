@@ -39,11 +39,10 @@ namespace Cinema
 
         public static bool ValidateEmail(string email)
         {
-            string[] validDomains = { "@gmail.com", "@outlook.com", "@gmail.nl", "@outlook.nl" };
-            bool hasValidDomain = validDomains.Any(domain => email.EndsWith(domain));
-            bool containsAtSign = email.Contains("@");
-            bool hasCorrectFormat = Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-            return containsAtSign && hasValidDomain && hasCorrectFormat;
+
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            
+            return Regex.IsMatch(email, pattern);
         }
 
         public static bool ValidatePassword(string password)

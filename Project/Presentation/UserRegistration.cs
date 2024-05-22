@@ -21,9 +21,9 @@ namespace Cinema
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
             // Email input and validation in a loop
+            
             do
             {
-                email = InputHandler.ReadInputWithCancel("Please enter your email address:\nPress esc key if you want to cancel.");
                 if (email == null)
                 {
                     Console.WriteLine("Registration cancelled.");
@@ -38,6 +38,7 @@ namespace Cinema
 
             // Password input and validation in a loop
             string password;
+            bool goodpw = false;
             do
             {
                 password = GetValidPassword("Please enter your password:\nMust at least contain 8 characters\nOne capital letter\nOne symbol\nOne number:\nPress esc key if you want to cancel or enter to confirm.");
@@ -46,7 +47,8 @@ namespace Cinema
                     Console.WriteLine("Registration cancelled.");
                     return;
                 }
-            } while (!UserRegistrationLogic.ValidatePassword(password));
+                goodpw = true;
+            } while (!goodpw);
 
             // Confirm password input and validation in a loop
             string confirmPassword;
@@ -79,13 +81,9 @@ namespace Cinema
 
         private static string GetPassword(string prompt)
         {
-
             Console.WriteLine($"{prompt}\n");
             Console.Write(">>> ");
-            string password = "";
-
-            Console.WriteLine(prompt);
-
+            StringBuilder password = new StringBuilder();
 
             while (true)
             {

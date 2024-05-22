@@ -86,6 +86,16 @@
     "Salt": "k7rvRydnxLIffZA7w7NFjg==",
     "FullName": "kimo",
     "IsAdmin": false,
+    "IsActive": false,
+    "TicketList": []
+  },
+  {
+    "Id": 9,
+    "EmailAddress": "t.t@t.t",
+    "Password": "b307efd44da2839a48b073ccb91d362140144857a1b9d4f7223edce62a980d30",
+    "Salt": "c+N9ZszoyhIY2dgiOxtnHA==",
+    "FullName": "kiki",
+    "IsAdmin": false,
     "IsActive": true,
     "TicketList": []
   }
