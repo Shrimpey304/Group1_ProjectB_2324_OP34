@@ -18,6 +18,8 @@ public static class SnackMenuLogic
 
 			while(FinishOrder == false)
 			{
+				string OrderedSnack;
+				do{
 				Console.Clear();
 				Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
 				Console.WriteLine("| SnackID | Name                                | Price   | Description                                                                   | Extra Info |");
@@ -30,8 +32,6 @@ public static class SnackMenuLogic
 
 				Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 				Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
-				string OrderedSnack;
-				do{
 				Console.WriteLine("Type the in the SnackID you want to order");	
 				OrderedSnack = Console.ReadLine();
 				}

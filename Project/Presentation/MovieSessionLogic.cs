@@ -13,26 +13,28 @@ public class MovieSessionLogic
 
         if (HasSessions)
         {
-            Console.WriteLine("Upcoming sessions for this movie:");
-            List<MovieSessionModel> usableSessions = new();
-
-            Console.WriteLine($" _________________________________________________________________________");
-            Console.WriteLine($"| {"Session".PadRight(7)} | {"Start".PadRight(25)} | {"End".PadRight(25)} | Room: |");
-            Console.WriteLine($"|---------+---------------------------+---------------------------+-------|");
-
-            int Counter = 1;
-            foreach (MovieSessionModel session in SessionList.Where(s => s.MovieID == UserInput))
-            {
-                Console.WriteLine($"| {Counter.ToString().PadRight(7)} | {session.StartTime.ToString().PadRight(25)} | End: {session.EndTime.ToString().PadRight(20)} | {session.RoomID.ToString().PadRight(5)} |");
-                usableSessions.Add(session);
-                Counter++;
-            }
-
-            Console.WriteLine($" ------------------------------------------------------------------------");
-            Console.WriteLine("\nPlease select a session by typing the session ID and pressing enter.");
 
             while (true)
             {
+                Console.Clear();
+                Console.WriteLine("Upcoming sessions for this movie:");
+                List<MovieSessionModel> usableSessions = new();
+
+                Console.WriteLine($" _________________________________________________________________________");
+                Console.WriteLine($"| {"Session".PadRight(7)} | {"Start".PadRight(25)} | {"End".PadRight(25)} | Room: |");
+                Console.WriteLine($"|---------+---------------------------+---------------------------+-------|");
+
+                int Counter = 1;
+                foreach (MovieSessionModel session in SessionList.Where(s => s.MovieID == UserInput))
+                {
+                    Console.WriteLine($"| {Counter.ToString().PadRight(7)} | {session.StartTime.ToString().PadRight(25)} | End: {session.EndTime.ToString().PadRight(20)} | {session.RoomID.ToString().PadRight(5)} |");
+                    usableSessions.Add(session);
+                    Counter++;
+                }
+
+                Console.WriteLine($" ------------------------------------------------------------------------");
+                Console.WriteLine("\nPlease select a session by typing the session ID and pressing enter.");
+
                 string inp = InputHandler.ReadInputWithCancelLoggedIn("\nPlease select a session by typing the session ID and pressing enter. Press ESC to cancel.");
                 if (inp == null) return null; // Handle cancellation
 

@@ -39,19 +39,21 @@ public class MovieLogic
 	public static int ListAllMovies()
 	{
 		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
-		Console.WriteLine($" ____________________________________________________________________________________________");
-		Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
-		Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
 
-		foreach (MovieModel movie in MovieList)
-		{
-			// string movieIDString = Convert.ToString(movie.movieID);
-			Console.WriteLine($"| {Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
-		}
-		Console.WriteLine($" --------------------------------------------------------------------------------------------");
 		string UserInput;
 		do
 		{
+			Console.Clear();
+			Console.WriteLine($" ____________________________________________________________________________________________");
+			Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
+			Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
+
+			foreach (MovieModel movie in MovieList)
+			{
+				// string movieIDString = Convert.ToString(movie.movieID);
+				Console.WriteLine($"| {Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
+			}
+			Console.WriteLine($" --------------------------------------------------------------------------------------------");
 			Console.Write("Type the ID of a movie to see it's upcoming sessions.\n  >>> ");
 			UserInput = Console.ReadLine();
 		}while ((UserInput == null) || (IsDigitsOnly(UserInput) == false) || (UserInput == ""));
