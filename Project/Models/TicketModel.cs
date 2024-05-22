@@ -17,7 +17,7 @@ public class Ticket{
 		moviesession = session;
 		ReservedSeats = reservedseats;
 		Totalprice = totalprice;
-		SnackMenuLogic.OrderedSnacks = orderedsnacks;
+		SnackMenuLogic.OrderedSnacks = orderedsnacks ?? new List<Tuple<string, int>>();
 		UserID = userID;
 	}
 

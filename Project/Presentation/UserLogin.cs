@@ -11,14 +11,17 @@ static class UserLogin
         DisplayHeader.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
         Console.WriteLine("Welcome to the login page!");
-        Console.WriteLine("Please enter your email address and press enter to confirm\n");
-        // set esc erbij G
-
+        Console.WriteLine("Please enter your email address and press enter to confirm\nPress Esc key to cancel.");
+        
         Console.Write(">>> ");
-        string? email = Console.ReadLine();
+        string? email = ReadEmailOrCancel();
 
-        // Use GetPassword method for masked password input
-      
+        if (email == null)
+        {
+            Console.WriteLine("Login cancelled.");
+            return; // Exit the method if login was cancelled
+        }
+
         Console.Clear();
         DisplayHeader.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
@@ -26,15 +29,13 @@ static class UserLogin
         Console.WriteLine("Please enter your password and press enter to confirm\nPress Esc key to cancel.");
         string password = GetPassword();
 
-        // Check if password retrieval was cancelled
         if (password == null)
         {
             Console.WriteLine("Login cancelled.");
             return; // Exit the method if login was cancelled
         }
 
-
-        AccountModel? acc = accountsLogic.CheckLogin(email!, password);
+        AccountModel? acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
         {
             Console.WriteLine($"Welcome back {acc.FullName}");
@@ -53,6 +54,34 @@ static class UserLogin
         }
     }
 
+    private static string? ReadEmailOrCancel()
+    {
+        string email = "";
+        while (true)
+        {
+            var key = Console.ReadKey(true);
+            if (key.Key == ConsoleKey.Enter && email.Length > 0) // Ensure email is not empty
+            {
+                Console.WriteLine();
+                return email;
+            }
+            else if (key.Key == ConsoleKey.Escape)
+            {
+                return null; // Return null to indicate cancellation
+            }
+            else if (key.Key == ConsoleKey.Backspace && email.Length > 0)
+            {
+                email = email[..^1]; // Removes last character
+                Console.Write("\b \b"); // Removes the character visually
+            }
+            else if (!char.IsControl(key.KeyChar))
+            {
+                email += key.KeyChar; // Add character to email
+                Console.Write(key.KeyChar); // Display the character
+            }
+        }
+    }
+
     private static string? GetPassword()
     {
         Console.Write(">>> ");
@@ -60,24 +89,24 @@ static class UserLogin
         while (true)
         {
             var key = Console.ReadKey(true);
-            if (key.Key == ConsoleKey.Enter && password.Length > 0) // Ensure password is not empty
+            if (key.Key == ConsoleKey.Enter && password.Length > 0)
             {
                 Console.WriteLine();
                 return password;
             }
-            else if (key.Key == ConsoleKey.Escape) // Handle the Esc key to cancel the login
+            else if (key.Key == ConsoleKey.Escape)
             {
                 return null; // Return null to indicate cancellation
             }
             else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
             {
-                password = password[..^1]; // Removes last character
-                Console.Write("\b \b"); // Moves the cursor back, writes space to remove the character, then moves back again.
+                password = password[..^1];
+                Console.Write("\b \b");
             }
             else if (!char.IsControl(key.KeyChar))
             {
-                password += key.KeyChar; // Add character to password
-                Console.Write("•"); // Display '•' instead of '*'
+                password += key.KeyChar;
+                Console.Write("•");
             }
         }
     }

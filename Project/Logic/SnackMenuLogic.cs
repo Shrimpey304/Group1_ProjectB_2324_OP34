@@ -84,22 +84,24 @@ public static class SnackMenuLogic
 	{
 		FinishOrder = true;
 		Console.WriteLine("Your total order:\n");
-		foreach (Tuple<string, int> item in OrderedSnacks)
-		{
-			foreach(SnackMenuModel snack in menuList)
+		if (OrderedSnacks != null){
+			foreach (Tuple<string, int> item in OrderedSnacks)
 			{
-				if (snack.Name == item.Item1)
+				foreach(SnackMenuModel snack in menuList)
 				{
-					int SnackPrice = Convert.ToInt32(snack.Price);
-					TotalCost += SnackPrice * item.Item2;
+					if (snack.Name == item.Item1)
+					{
+						int SnackPrice = Convert.ToInt32(snack.Price);
+						TotalCost += SnackPrice * item.Item2;
+					}
 				}
 			}
-		}
-		if (OrderedSnacks != null)
-		{
-			foreach (Tuple<string,int> snack in OrderedSnacks)
+			if (OrderedSnacks != null)
 			{
-				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
+				foreach (Tuple<string,int> snack in OrderedSnacks)
+				{
+					Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
+				}
 			}
 		}
 		Console.WriteLine($"Total cost:\n${TotalCost}");

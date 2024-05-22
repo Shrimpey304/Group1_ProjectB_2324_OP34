@@ -20,13 +20,22 @@ class ConfirmationLogic
 			CurrentSeats += $"[{seat.Item2}] ";
 		}
 		
-		string CurrentSnacks = "Snacks:\n";
-		string HTMLSnacks = "Snacks:<br>";
-		foreach (Tuple<string, int> snack in SnackMenuLogic.OrderedSnacks)
-		{
-			CurrentSnacks += $"• {snack.Item1} [{snack.Item2}x]\n";
-			HTMLSnacks += $"• {snack.Item1} [{snack.Item2}x]<br>";
-		}
+
+        string CurrentSnacks;
+        string HTMLSnacks;
+        
+        if (SnackMenuLogic.OrderedSnacks != null){
+            CurrentSnacks = "Snacks:\n";
+            HTMLSnacks = "Snacks:<br>";
+            foreach (Tuple<string, int> snack in SnackMenuLogic.OrderedSnacks)
+            {
+                CurrentSnacks += $"• {snack.Item1} [{snack.Item2}x]\n";
+                HTMLSnacks += $"• {snack.Item1} [{snack.Item2}x]<br>";
+            }
+        }else{
+            CurrentSnacks = "No Snacks\n";
+            HTMLSnacks = "No Snacks<br>";
+        }
 
 
 		
