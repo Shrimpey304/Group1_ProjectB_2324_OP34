@@ -33,8 +33,6 @@ namespace Cinema
             // Include isActive: false when creating a new user
             AccountModel newUser = new AccountModel(email, hashedPassword, salt, fullName, isAdmin: false, isActive: false);
             userRepository.AddUser(newUser);
-
-            Console.WriteLine("Registration successful. Welcome, " + fullName);
         }
 
         public static bool ValidateEmail(string email)

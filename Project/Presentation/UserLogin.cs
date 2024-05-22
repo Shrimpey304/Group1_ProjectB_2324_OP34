@@ -106,7 +106,7 @@ static class UserLogin
             else if (!char.IsControl(key.KeyChar))
             {
                 password += key.KeyChar;
-                Console.Write("•");
+                Console.Write("*");
             }
         }
     }

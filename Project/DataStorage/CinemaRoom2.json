@@ -17,9 +17,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 1,
-            "Price": 0.0,
+            "Price": 9.0,
             "inPrereservation": false,
-            "Type": 3
+            "Type": 0
           }
         ],
         [
@@ -37,9 +37,9 @@
             "reservedInSession": [],
             "RowID": 0,
             "ColumnID": 3,
-            "Price": 0.0,
+            "Price": 9.0,
             "inPrereservation": false,
-            "Type": 3
+            "Type": 0
           }
         ],
         [
@@ -1607,9 +1607,9 @@
             "reservedInSession": [],
             "RowID": 8,
             "ColumnID": 8,
-            "Price": 0.0,
+            "Price": 15.0,
             "inPrereservation": false,
-            "Type": 3
+            "Type": 2
           }
         ],
         [

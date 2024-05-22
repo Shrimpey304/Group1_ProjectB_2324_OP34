@@ -7,13 +7,11 @@ namespace Cinema
     {
         public static void Start()
         {
+            Console.Clear();
             DisplayHeader.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
             Console.WriteLine("Welcome to the registration page!");
-            Console.WriteLine("Please enter your email address and press enter to confirm or press Esc to cancel.");
-
-            Console.Write(">>> ");
-            string email = ReadInputOrCancel();
+            string email = ReadInputOrCancel("Please enter your email address and press enter to confirm or press Esc to cancel.");
 
             if (email == null)
             {
@@ -80,10 +78,19 @@ namespace Cinema
 
         private static string ReadInputOrCancel(string prompt = "")
         {
+            Console.Clear();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
+            Console.WriteLine("Welcome to the registration page!\n");
+
+
             if (!string.IsNullOrEmpty(prompt))
             {
                 Console.WriteLine(prompt);
             }
+
+            Console.Write(">>> ");
+
             StringBuilder input = new StringBuilder();
             while (true)
             {
@@ -113,6 +120,9 @@ namespace Cinema
 
         private static string GetPassword(string prompt)
         {
+            Console.Clear();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
             Console.WriteLine($"{prompt}\n");
             Console.Write(">>> ");
             StringBuilder password = new StringBuilder();
@@ -145,6 +155,10 @@ namespace Cinema
 
         private static string GetValidPassword(string prompt)
         {
+
+            Console.Clear();
+            DisplayHeader.RegistrationHeader();
+            Console.WriteLine("\n---------------------------------------------------------------------------\n");
             string password;
             do
             {
