@@ -13,7 +13,7 @@ public class TicketLogic{
 	{
 		int selectedMovieID = MovieUI.ListAllMovies();
 		Console.WriteLine("\n\n");
-		selectedSession = MovieSessionLogic.ListSessions(selectedMovieID);
+		selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
 		selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
 		totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
 		MenuUtils.displaySnackOption();

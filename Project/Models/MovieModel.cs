@@ -9,17 +9,16 @@ public class MovieModel
 	public string Description;
 	public string GenreName;
 	public int AgeRestriction;
-	public int RoomID;
+
 	
 	
-	public MovieModel(string title, int ageRest, string genreName, string description, int rID) 
+	public MovieModel(string title, int ageRest, string genreName, string description) 
 	{
 		Title = title;
 		Description = description;
 		AgeRestriction = ageRest;
 		GenreName = genreName;
 		MovieID = mID ++;
-		RoomID = rID;
 	}
 }
 

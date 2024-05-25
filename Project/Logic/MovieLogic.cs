@@ -2,6 +2,7 @@ namespace Cinema;
 public class MovieLogic
 {
 	const string filePathMovies = "DataStorage/Movies.json";
+	const string filePathSessions = "DataStorage/Sessions.json";
 	private int _ageRestriction;
 	public int AgeRestriction
 	{
@@ -32,7 +33,23 @@ public class MovieLogic
 
 		MovieList.Add(movie);
 
-		JsonAccess.UploadToJson(MovieList, "Movies.Json");
+		JsonAccess.UploadToJson(MovieList, filePathMovies);
+	}
+
+
+	public static void AddMovieSession(MovieSessionModel session)
+	{
+		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+
+		int cnt = 0;
+		foreach(MovieSessionModel sesh in SessionList){
+			cnt ++;
+		}
+		session.sessionID = cnt;
+
+		SessionList.Add(session);
+
+		JsonAccess.UploadToJson(SessionList, filePathSessions);
 	}
 
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Cinema;
 
-public class MovieSessionLogic
+public class MovieSessionUI
 {
     public static MovieSessionModel ListSessions(int UserInput)
     {

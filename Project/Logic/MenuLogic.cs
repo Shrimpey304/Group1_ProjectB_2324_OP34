@@ -112,6 +112,8 @@ public static class MenuUtils{
 
 			{ "Change Seat Types", AdminFuncUI.adminChangeSeatTypes},
 			{ "Create New Room", AdminFuncUI.adminCreateRoom},
+			{ "Add Movie", AdminFuncUI.adminAddMovie},
+			{ "Add Session", AdminFuncUI.adminAddSession},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
