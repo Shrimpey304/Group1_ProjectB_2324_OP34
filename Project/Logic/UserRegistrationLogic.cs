@@ -30,7 +30,6 @@ namespace Cinema
             var salt = PasswordHasher.GenerateSalt();
             var hashedPassword = PasswordHasher.HashPassword(password, salt);
 
-            // Include isActive: false when creating a new user
             AccountModel newUser = new AccountModel(email, hashedPassword, salt, fullName, isAdmin: false, isActive: false);
             userRepository.AddUser(newUser);
         }

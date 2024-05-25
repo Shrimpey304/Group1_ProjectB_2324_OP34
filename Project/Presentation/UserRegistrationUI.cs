@@ -8,7 +8,7 @@ namespace Cinema
         public static void Start()
         {
             Console.Clear();
-            DisplayHeader.RegistrationHeader();
+            DisplayHeaderUI.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
             Console.WriteLine("Welcome to the registration page!");
             string email = ReadInputOrCancel("Please enter your email address and press enter to confirm or press Esc to cancel.");
@@ -20,7 +20,7 @@ namespace Cinema
             }
 
             Console.Clear();
-            DisplayHeader.RegistrationHeader();
+            DisplayHeaderUI.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
             // Email input and validation in a loop
@@ -79,7 +79,7 @@ namespace Cinema
         private static string ReadInputOrCancel(string prompt = "")
         {
             Console.Clear();
-            DisplayHeader.RegistrationHeader();
+            DisplayHeaderUI.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
             Console.WriteLine("Welcome to the registration page!\n");
 
@@ -103,7 +103,7 @@ namespace Cinema
                 else if (key.Key == ConsoleKey.Escape)
                 {
                     Console.WriteLine("\nOperation cancelled.");
-                    return null;
+                    return null!;
                 }
                 else if (key.Key == ConsoleKey.Backspace && input.Length > 0)
                 {
@@ -121,7 +121,7 @@ namespace Cinema
         private static string GetPassword(string prompt)
         {
             Console.Clear();
-            DisplayHeader.RegistrationHeader();
+            DisplayHeaderUI.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
             Console.WriteLine($"{prompt}\n");
             Console.Write(">>> ");
@@ -138,7 +138,7 @@ namespace Cinema
                 else if (key.Key == ConsoleKey.Escape)
                 {
                     Console.WriteLine("\nOperation cancelled.");  // Provide feedback
-                    return null;  // Return null if Esc is pressed to indicate cancellation
+                    return null!;  // Return null if Esc is pressed to indicate cancellation
                 }
                 else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
                 {
@@ -157,13 +157,13 @@ namespace Cinema
         {
 
             Console.Clear();
-            DisplayHeader.RegistrationHeader();
+            DisplayHeaderUI.RegistrationHeader();
             Console.WriteLine("\n---------------------------------------------------------------------------\n");
             string password;
             do
             {
                 password = GetPassword(prompt);
-                if (password == null) return null; // Return null if Esc is pressed to indicate cancellation
+                if (password == null) return null!; // Return null if Esc is pressed to indicate cancellation
 
                 if (!UserRegistrationLogic.ValidatePassword(password))
                 {

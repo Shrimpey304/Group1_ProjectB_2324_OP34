@@ -4,40 +4,6 @@ using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 
-// public class EmailSenderLogic
-// {
-
-
-// 	public void SendEmail(string recipientEmail, string subject, string body)
-// 	{
-		
-// 		// Configure SMTP client
-// 		SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
-// 		{
-// 			Port = 587,
-// 			EnableSsl = true,
-// 			Credentials = new NetworkCredential("cinevujoana@gmail.com", "cineville123!")
-			
-// 		};
-
-// 		try
-// 		{
-// 			// Send email
-// 			smtpClient.Send("cinevujoana@gmail.com", recipientEmail, subject, body);
-// 			Console.WriteLine("Email sent successfully.");
-// 		}
-// 		catch (Exception ex)
-// 		{
-// 			Console.WriteLine("Failed to send email. Error message: " + ex.Message);
-// 		}
-// 		finally
-// 		{
-// 			// Clean up resources
-// 			smtpClient.Dispose();
-// 		}
-// 	}
-// }
-
 public class EmailSenderLogic
 {
 	public void SendEmail(string smtpHost, int smtpPort, string smtpUser, string smtpPass, 
@@ -45,8 +11,7 @@ public class EmailSenderLogic
 	{
 		try
 		{
-			// Ensure SSL/TLS is enabled and properly validated
-			ServicePointManager.ServerCertificateValidationCallback = ValidateServerCertificate;
+			ServicePointManager.ServerCertificateValidationCallback = ValidateServerCertificate!;
 		}
 		catch (Exception ex)
 		{
@@ -61,13 +26,15 @@ public class EmailSenderLogic
 			mail.Body = body;
 			mail.IsBodyHtml = true;
 
-			// Create a new SmtpClient object
-			SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort);
-			smtpClient.Credentials = new NetworkCredential(smtpUser, smtpPass);
-			smtpClient.EnableSsl = true; // Enable SSL/TLS
+            // Create a new SmtpClient object
+            SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort)
+            {
+                Credentials = new NetworkCredential(smtpUser, smtpPass),
+                EnableSsl = true 
+            };
 
-			// Send the email
-			smtpClient.Send(mail);
+            // Send the email
+            smtpClient.Send(mail);
 			Console.WriteLine("\n(This information has been sent to the email address you provided.)");
 		}
 		catch (Exception ex)

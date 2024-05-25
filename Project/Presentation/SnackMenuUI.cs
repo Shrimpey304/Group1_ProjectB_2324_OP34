@@ -33,7 +33,7 @@ public static class SnackMenuLogic
 				Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 				Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
 				Console.WriteLine("Type the in the SnackID you want to order");	
-				OrderedSnack = Console.ReadLine();
+				OrderedSnack = Console.ReadLine()!;
 				}
 				while((OrderedSnack == null) || (MovieLogic.IsDigitsOnly(OrderedSnack)== false) || (OrderedSnack == ""));
 				int OrderedSnackInt = Convert.ToInt32(OrderedSnack);
@@ -44,7 +44,7 @@ public static class SnackMenuLogic
 					{
 						Console.Clear();
 						Console.WriteLine($"How many {snack.Name} would you like?");
-						string SnackAmount = Console.ReadLine();
+						string SnackAmount = Console.ReadLine()!;
 
 						OrderedSnacks ??= new List<Tuple<string, int>>();
 
@@ -127,7 +127,7 @@ public static class SnackMenuLogic
 		}
 		// Ask user for the key to remove
 		Console.Write("\nEnter the number to remove: ");
-		string keyToRemove = Console.ReadLine();
+		string keyToRemove = Console.ReadLine()!;
 		int keyToRemoveInt = Convert.ToInt32(keyToRemove);
 
 		if (keyToRemoveInt >= 0 && keyToRemoveInt < OrderedSnacks.Count)

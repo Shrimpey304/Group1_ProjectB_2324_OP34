@@ -24,7 +24,7 @@ public static class MenuUtils{
 			Console.Clear();
 
 			if(headertype == "main"){
-				DisplayHeader.HeaderMain();
+				DisplayHeaderUI.HeaderMain();
 				if(AccountsLogic.CurrentAccount != null){
 				Console.WriteLine($"\nwelcome: {AccountsLogic.CurrentAccount.FullName}");
 				}else{
@@ -32,11 +32,11 @@ public static class MenuUtils{
 				}
 			}
 			else if(headertype == "snacks"){
-				DisplayHeader.HeaderSnack();
+				DisplayHeaderUI.HeaderSnack();
 				Console.WriteLine("\n\nWould you like to order (more)?");
 			}
 			else if(headertype == "admin"){
-				DisplayHeader.AdminHeader();
+				DisplayHeaderUI.AdminHeader();
 				Console.WriteLine($"\nwelcome admin: {AccountsLogic.CurrentAccount!.FullName}");
 			}
 			
@@ -72,9 +72,9 @@ public static class MenuUtils{
 		Dictionary<string, Action> MainMenuOptions = new()
 		{ 
 
-			{ "Login", TestLogin },
-			{ "Register", TestRegister },
-			{ "Display MovieList", () => MovieLogic.ListAllMovies(true)},
+			{ "Login", UserLogin.Start },
+			{ "Register", UserRegistration.Start },
+			{ "Display MovieList", () => MovieUI.ListAllMovies(true)},
 			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Exit", KillProgram},
 
@@ -93,7 +93,7 @@ public static class MenuUtils{
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Display MovieList", () => MovieLogic.ListAllMovies(true)},
+			{ "Display MovieList", () => MovieUI.ListAllMovies(true)},
 			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
@@ -110,8 +110,8 @@ public static class MenuUtils{
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
 
-			{ "Change Seat Types", DisplayRoom.adminChangeSeatTypes},
-			{ "Create New Room", DisplayRoom.adminCreateRoom},
+			{ "Change Seat Types", AdminFuncUI.adminChangeSeatTypes},
+			{ "Create New Room", AdminFuncUI.adminCreateRoom},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
@@ -145,15 +145,6 @@ public static class MenuUtils{
 		
 	}
 
-	public static void RandomAdminOption(){
-		Console.WriteLine("Random option");
-	}
-	public static void TestLogin(){
-		UserLogin.Start();
-	}
-	public static void TestRegister(){
-		UserRegistration.Start();
-	}
 	public static void KillProgram(){
 		Console.WriteLine("Exiting the program...");
 		Environment.Exit(0);

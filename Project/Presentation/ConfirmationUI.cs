@@ -1,6 +1,6 @@
 namespace Cinema;
 
-class ConfirmationLogic
+class ConfirmationUI
 {
 	public static void ShowConfirmation(Ticket ticket)
 	{
@@ -37,8 +37,6 @@ class ConfirmationLogic
             HTMLSnacks = "No Snacks<br>";
         }
 
-
-		
 		string ConfirmationTextBody = $"Your reservation has been made!\n" +
 			$"Reservation ID: #{ticket.TicketID}\n\n" +
 			$"Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}\n" +
@@ -51,19 +49,6 @@ class ConfirmationLogic
 
 		Console.Clear();
 		Console.WriteLine(ConfirmationTextBody);
-		
-		// string htmlBody = $"<html>" +
-		// 	$"<body>" +
-		// 	$"<h1>Your reservation has been made!</h1>" +
-		// 	$"<p>Reservation Number: #{ticket.TicketID}<br></p>" +
-		// 	$"<p>Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}</p>" +
-		// 	$"<p>Room: #{ticket.moviesession.RoomID}</p>" +
-		// 	$"<p>{CurrentSeats}<br></p>" +
-		// 	$"<p>{HTMLSnacks}<br></p>" +
-		// 	$"<p>Total price: €{ticket.Totalprice},00<br></p>" +
-		// 	$"<p>Thank you for your reservation!</p>" +
-		// 	$"</body>" +
-		// 	$"</html>";
 
 		string actionLink = "https://hr.nl";
 		string htmlBody = $@"

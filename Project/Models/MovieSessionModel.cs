@@ -20,15 +20,4 @@ public class MovieSessionModel
 		RoomID = roomID;
 	}
 
-	// public static void MakeSession(DateTime start, DateTime end){
-
-	// 	MovieSession session = new(start, end);
-	// 	List<MovieSession> sessionToUpload = new(){session};
-	// 	const string filePath = "DataStorage/Sessions.json";
-		
-	// 	JsonAccess.UploadToJson(sessionToUpload, filePath);
-
-	// }
-
-
 }

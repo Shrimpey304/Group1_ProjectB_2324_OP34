@@ -36,6 +36,7 @@ public class AccountsLogic
 		}
 		catch (Exception e)
 		{
+			Console.WriteLine("Error: " + e.Message);
 			return null;
 		}
 	}
@@ -46,7 +47,7 @@ public class AccountsLogic
 		{
 			account.IsActive = false;  // Set IsActive to false for all accounts
 		}
-		JsonAccess.UploadToJson<AccountModel>(_accounts, filePathAccounts);
+		JsonAccess.UploadToJson(_accounts, filePathAccounts);
 	}
 
 	public static void logout(){
@@ -69,7 +70,7 @@ public class AccountsLogic
 	public AccountModel GetById(int id)
 	{
 		// Find and return the account by ID
-		return _accounts.FirstOrDefault(a => a.Id == id);
+		return _accounts.FirstOrDefault(a => a.Id == id)!;
 	}
 
 	public static void GetTickets(){
@@ -94,7 +95,7 @@ public class AccountsLogic
 	public static void getuserinfo(){
 		Console.WriteLine("your account info:");
 
-		Console.WriteLine($"Name: {CurrentAccount.FullName}");
+		Console.WriteLine($"Name: {CurrentAccount!.FullName}");
 		Console.WriteLine($"EMail: {CurrentAccount.EmailAddress}");
 	}
 }

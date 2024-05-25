@@ -36,7 +36,7 @@ public class MovieSessionLogic
                 Console.WriteLine("\nPlease select a session by typing the session ID and pressing enter.");
 
                 string inp = InputHandler.ReadInputWithCancelLoggedIn("\nPlease select a session by typing the session ID and pressing enter. Press ESC to cancel.");
-                if (inp == null) return null; // Handle cancellation
+                if (inp == null) return null!; // Handle cancellation
 
                 if (int.TryParse(inp, out int intinp) && intinp >= 1 && intinp <= usableSessions.Count)
                 {
@@ -51,7 +51,7 @@ public class MovieSessionLogic
         else
         {
             Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
-            return null;
+            return null!;
         }
     }
 

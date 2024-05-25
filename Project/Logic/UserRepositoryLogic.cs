@@ -24,9 +24,8 @@ public class UserRepository
         var users = GetAllUsers();
         newUser.Id = users.Any() ? users.Max(u => u.Id) + 1 : 1; // Auto-increment ID
         users.Add(newUser);
-        JsonAccess.UploadToJson<AccountModel>(users, _filePath);
-        // var options = new JsonSerializerOptions { WriteIndented = true };
-        // File.WriteAllText(_filePath, JsonSerializer.Serialize(users, options));
+        JsonAccess.UploadToJson(users, _filePath);
+
     }
 
     public bool UserExists(string email)

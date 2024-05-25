@@ -7,9 +7,9 @@ namespace Cinema;
 
 public static class DisplayRoom{
 
-	private static double NORMAL_SEAT_PRICE = 9.0;
-	private static double DELUXE_SEAT_PRICE = 12.0;
-	private static double PREMIUM_SEAT_PRICE = 15.0;
+	public static double NORMAL_SEAT_PRICE = 9.0;
+	public static double DELUXE_SEAT_PRICE = 12.0;
+	public static double PREMIUM_SEAT_PRICE = 15.0;
 
 
 	/// <summary>
@@ -17,7 +17,7 @@ public static class DisplayRoom{
 	/// </summary>
 	/// <param name="session">The movie session model.</param>
 	/// <returns>The file directory as a string.</returns>
-	private static string getFileDir(MovieSessionModel session){
+	public static string getFileDir(MovieSessionModel session){
 
 		string fileNM = "";
 		string DataStoragePath = @"DataStorage/"; 
@@ -54,7 +54,7 @@ public static class DisplayRoom{
 	/// Gets the file directories for all cinema rooms.
 	/// </summary>
 	/// <returns>A list of file directories as strings.</returns>
-	private static List<string> getFileDir(){
+	public static List<string> getFileDir(){
 
 		string DataStoragePath = @"DataStorage/"; 
 		string[] filelist = Directory.GetFiles(DataStoragePath);
@@ -85,76 +85,6 @@ public static class DisplayRoom{
 		return listOfRooms;
 	}
 
-	/// <summary>
-	/// Allows users to select seating for a movie session.
-	/// </summary>
-	/// <param name="session">The movie session model.</param>
-	/// <returns>A list of selected seating positions as tuples.</returns>
-	public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
-
-		string fileNM = getFileDir(session);
-
-		int selectedPositionCol = 0;
-		int selectedPositionRow = 0;
-
-		//item 1 = row    item 2 = col
-		List<Tuple<int,int>> SelectedPositions = new();   
-
-		List<Seating> SeatingJson = JsonAccess.ReadFromJson<Seating>(fileNM); //now the only seating instead of the temporary one every loop
-		Seating seating = SeatingJson[0]; 
-
-		if (seating == null)
-		{
-			Console.WriteLine("Failed to load seating arrangement from JSON.");
-			Thread.Sleep(2000);
-			return null!;
-		}
-
-		
-		while(!Console.KeyAvailable){
-			
-			getColCount(seating);
-			
-			SetColor(selectedPositionRow, selectedPositionCol, seating, session);
-
-			Legenda(SelectedPositions!);
-
-			switch(Console.ReadKey(true).Key){	//controller
-				case ConsoleKey.UpArrow:
-					selectedPositionRow = Math.Max(0, selectedPositionRow - 1);
-				break;
-				case ConsoleKey.DownArrow:
-					selectedPositionRow = Math.Min(seating.Rows - 1, selectedPositionRow + 1);
-				break;
-				case ConsoleKey.LeftArrow:
-					selectedPositionCol = Math.Max(0, selectedPositionCol - 1);
-				break;
-				case ConsoleKey.RightArrow:
-					selectedPositionCol = Math.Min(seating.Columns - 1, selectedPositionCol + 1);
-				break;
-				case ConsoleKey.Enter: //select seat
-
-					KeyEnterController(seating, SelectedPositions!, selectedPositionRow, selectedPositionCol, session);
-
-				break;
-				case ConsoleKey.Backspace: //cancel reservation
-
-					KeyBackspaceController(seating, fileNM);
-
-				break;
-				case ConsoleKey.R: //reserve selected seats
-					
-					KeyRController(SelectedPositions, seating, session, fileNM);
-
-				return SelectedPositions;
-			}
-
-			List<Seating> TempUploadSeating = new(){seating!};
-
-			JsonAccess.UploadToJson(TempUploadSeating, fileNM);
-		}
-		return null!;
-	}
 
 	/// <summary>
 	/// Handles seat selection when the Enter key is pressed.
@@ -164,7 +94,7 @@ public static class DisplayRoom{
 	/// <param name="selectedPositionRow">The selected row position.</param>
 	/// <param name="selectedPositionCol">The selected column position.</param>
 	/// <param name="session">The movie session model.</param>
-	private static void KeyEnterController(Seating seating, List<Tuple<int, int>> SelectedPositions, int selectedPositionRow, int selectedPositionCol, MovieSessionModel session)
+	public static void KeyEnterController(Seating seating, List<Tuple<int, int>> SelectedPositions, int selectedPositionRow, int selectedPositionCol, MovieSessionModel session)
 	{
 		SeatInfo cursorOnSeatingPosition = seating!.SeatingArrangement[selectedPositionRow, selectedPositionCol][0];
 
@@ -238,7 +168,7 @@ public static class DisplayRoom{
 	/// <param name="seating">The seating object.</param>
 	/// <param name="session">The movie session model.</param>
 	/// <param name="fileNM">The file directory.</param>
-	private static void KeyRController(List<Tuple<int,int>> SelectedPositions, Seating seating, MovieSessionModel session, string fileNM){
+	public static void KeyRController(List<Tuple<int,int>> SelectedPositions, Seating seating, MovieSessionModel session, string fileNM){
 
 		if(SelectedPositions is not null && SelectedPositions.Count != 0){
 			foreach(Tuple<int,int> pos in SelectedPositions){
@@ -265,7 +195,7 @@ public static class DisplayRoom{
 	/// </summary>
 	/// <param name="seating">The seating object.</param>
 	/// <param name="fileNM">The file directory.</param>
-	private static void KeyBackspaceController(Seating seating, string fileNM){
+	public static void KeyBackspaceController(Seating seating, string fileNM){
 		Console.WriteLine("Cancelling process...");
 
 		for (int i = 0; i < seating.Rows; i++)
@@ -349,7 +279,7 @@ public static class DisplayRoom{
 	}
 
 
-	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating, MovieSessionModel session){
+	public static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating, MovieSessionModel session){
 
 
 		for (int i = 0; i < seating.Rows; i++)
@@ -372,7 +302,7 @@ public static class DisplayRoom{
 	}
 
 
-	private static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating){
+	public static void SetColor(int SelectedPositionCol, int selectedPositionRow, Seating seating){
 
 
 		for (int i = 0; i < seating.Rows; i++)
@@ -395,7 +325,7 @@ public static class DisplayRoom{
 	}
 	
 
-	private static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
+	public static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
 
 		if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
 		{
@@ -421,8 +351,8 @@ public static class DisplayRoom{
 	}
 
 
-	private static void seatColor(SeatInfo seatinfo, bool OverrideColor){
-
+	public static void seatColor(SeatInfo seatinfo, bool OverrideColor)
+	{
 		if(!seatinfo.inPrereservation){
 
 			switch(seatinfo.Type){
@@ -477,62 +407,20 @@ public static class DisplayRoom{
 	}
 
 
-	private static void Legenda(List<Tuple<int,int>> SelectedPositions){
-		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({NORMAL_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DELUXE_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({PREMIUM_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
-		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
-		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
-		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
-		Console.Write("Press Backspace to cancel and go back to the main menu\n");
-		Console.Write("Press Enter to select a seat (max 8 in a row)\n");
-		Console.Write("Press R to reserve selected seats\n");
-		if(SelectedPositions!.Count > 0){
-
-			Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat ");
-
-			foreach(Tuple<int,int> seatLoc in SelectedPositions){
-
-				Console.Write($" [{seatLoc.Item2 +1}]");
-			}
-
-		}else{
-
-			Console.WriteLine("Selected seats: None");
-		}
-	}
-
-
-	private static void ChangeSeatLegenda(){
-		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({NORMAL_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DELUXE_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({PREMIUM_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
-		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
-		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
-		Console.Write("_____"); Console.Write(" = Screen  \n");
-		Console.Write("Press Enter to change seat type\n");
-		Console.Write("Press Backspace when you are finished and wish to go to the main menu\n");
-	}
-
-
-	private static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating seating)
+	public static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating seating)
 	{
 		if (selectedPositions.Count >= 8)
 		{
-			return false; // Maximum number of selected seats reached
+			return false; 
 		}
 
 		if (selectedPositions.Count == 0)
 		{
-			return true; // Allow selecting the first seat
+			return true; 
 		}
 
-		// Sort selected positions by column number
 		var sortedPositions = selectedPositions.OrderBy(pos => pos.Item2).ToList();
 
-		// Check if the selected position is next to any already selected position
 		bool isNextToSelected = false;
 		foreach (var pos in selectedPositions)
 		{
@@ -545,10 +433,9 @@ public static class DisplayRoom{
 
 		if (!isNextToSelected)
 		{
-			return false; // Selected seat is not next to any already selected seat
+			return false; 
 		}
 
-		// Check if there are no non-selected seats between selected seats
 		for (int i = 0; i < sortedPositions.Count - 1; i++)
 		{
 			var currentCol = sortedPositions[i].Item2;
@@ -556,147 +443,29 @@ public static class DisplayRoom{
 
 			if (nextCol - currentCol != 1)
 			{
-				return false; // Non-selected seat between selected seats
+				return false; 
 			}
 		}
 
-		// Check if the first or last selected seat is on the edge
 		var firstCol = sortedPositions.First().Item2;
 		var lastCol = sortedPositions.Last().Item2;
 		if (firstCol == 0 || lastCol == seating.Columns - 1)
 		{
-			return true; // Seats on the edge, no need to check further
+			return true; 
 		}
 
-		// Check if there are non-selected seats between the first and last selected seat
+
 		for (int col = firstCol + 1; col < lastCol; col++)
 		{
 			bool seatSelected = selectedPositions.Any(pos => pos.Item2 == col);
 			if (!seatSelected)
 			{
-				return false; // Non-selected seat between selected seats
+				return false; 
 			}
 		}
 
 		return true;
 	}
-
-	public static void changeSeattype(string fileNM){
-
-		List<Seating> seatinglist = JsonAccess.ReadFromJson<Seating>(fileNM);
-
-		Seating ?seating = seatinglist[0];
-
-		int selectedPositionCol = 0;
-		int selectedPositionRow = 0;
-
-		Tuple<int,int> lastPos = new Tuple<int, int>(selectedPositionRow,selectedPositionCol);
-
-		try{
-			while(!Console.KeyAvailable){
-
-				Console.Clear();
-
-				Console.ResetColor();
-				Console.WriteLine($"\n{"Screen".PadLeft((int)((seating!.Columns * 2.5) + 3))}");
-				Console.Write("".PadLeft(3));
-				for (int col = 0; col < seating.Columns; col++){
-					Console.ResetColor();
-					Console.Write("_____");
-				}
-				Console.WriteLine("\n");
-
-				if (seating != null)
-				{
-					Console.Write("".PadLeft(3));
-					for (int col = 0; col < seating.Columns; col++){
-						Console.ResetColor();
-
-						if(col >= 10){
-
-							Console.Write($" {col+1}  ");
-
-						}else if(col >= 100){
-
-							Console.Write($" {col+1} ");
-
-						}else{
-
-							Console.Write($"  {col+1}  ");
-
-						}
-					}
-					Console.WriteLine("");
-					
-					SetColor(selectedPositionRow, selectedPositionCol, seating);
-
-					ChangeSeatLegenda();
-
-				}
-				else
-				{
-					Console.WriteLine("Failed to load seating arrangement from JSON.");
-				}
-				
-				try{
-					switch(Console.ReadKey(true).Key){
-						case ConsoleKey.UpArrow:
-							if((selectedPositionRow - 1) < 0){
-								selectedPositionRow = lastPos.Item1;
-							}else{
-								selectedPositionRow --;
-							}
-						break;
-						case ConsoleKey.DownArrow:
-							if((selectedPositionRow +1) > (seating!.Rows -1)){
-								selectedPositionRow = lastPos.Item1;
-							}else{
-								selectedPositionRow ++;
-							}
-						break;
-						case ConsoleKey.LeftArrow:
-							if((selectedPositionCol - 1) < 0){
-								selectedPositionCol = lastPos.Item2;
-							}else{
-								selectedPositionCol --;
-							}
-						break;
-						case ConsoleKey.RightArrow:
-							if((selectedPositionCol +1) > (seating!.Columns -1)){
-								selectedPositionCol = lastPos.Item2;
-							}else{
-								selectedPositionCol ++;
-							}
-						break;
-						case ConsoleKey.Enter:
-
-							var seat = seating!.SeatingArrangement[selectedPositionRow, selectedPositionCol][0];
-
-							seat.Type = (SeatType)(((int)seat.Type + 1) % Enum.GetValues(typeof(SeatType)).Length);
-							changeSeatprice(seat);
-
-						break; // implement seatchanging
-						case ConsoleKey.Backspace:
-
-							MenuUtils.displayLoggedinAdminMenu();
-
-						break;
-					}
-				}catch(Exception ex ){
-					Console.WriteLine(ex.Message);
-				}
-
-				List<Seating> UploadSeating = new(){seating!};
-
-				JsonAccess.UploadToJson(UploadSeating, fileNM);
-			}
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine($"Error displaying seating: {ex.Message} \n {ex.Data} \n {ex.GetBaseException()} \n {ex.GetObjectData} \n {ex.StackTrace}");
-		}
-	}
-
 
 	public static void changeSeatprice(SeatInfo seat){
 
@@ -716,47 +485,6 @@ public static class DisplayRoom{
 		}
 	}
 
-
-	public static void adminChangeSeatTypes(){
-
-		List<string> files = getFileDir();
-
-		int cnt = 0;
-		foreach(var file in files){
-			Console.WriteLine($"roomnumber: {cnt+1}\nfile:{file}");
-			Console.WriteLine("----------------------------");
-			cnt++;
-		}
-		Console.Write("room to adjust >> ");
-		string inp = Console.ReadLine()!;
-		int intinp = Convert.ToInt32(inp);
-
-		string selected = files[intinp-1];
-
-		changeSeattype(selected);
-	}
-
-
-    public static void adminCreateRoom(){
-		DisplayHeader.AdminHeader();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
-		Console.WriteLine("How many rows will your room have\n");
-		Console.Write(">>> ");
-		string rows = Console.ReadLine()!;
-		int introws = Convert.ToInt32(rows);
-
-		Console.Clear();
-		DisplayHeader.AdminHeader();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
-		Console.WriteLine("How many Columns will your room have\n");
-		Console.Write(">>> ");
-		string cols = Console.ReadLine()!;
-		int intcols = Convert.ToInt32(cols);
-
-		CreateNewDefaultJson(introws, intcols);
-
-		Console.WriteLine("room created succesfully");
-	}
 
 	/// <summary>
 	/// used for creating new cinema rooms

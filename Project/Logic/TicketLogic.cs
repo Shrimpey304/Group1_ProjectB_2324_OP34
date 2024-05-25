@@ -11,10 +11,10 @@ public class TicketLogic{
 	
 	public static void ReserveTicket()
 	{
-		int selectedMovieID = MovieLogic.ListAllMovies();
+		int selectedMovieID = MovieUI.ListAllMovies();
 		Console.WriteLine("\n\n");
 		selectedSession = MovieSessionLogic.ListSessions(selectedMovieID);
-		selectedSeating = DisplayRoom.SelectSeating(selectedSession);
+		selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
 		totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
 		MenuUtils.displaySnackOption();
 
@@ -30,7 +30,7 @@ public class TicketLogic{
 		AccountsLogic.CurrentAccount.TicketList.Add(newticket);
 		_reservations.Add(newticket);
 		JsonAccess.UploadToJson(_reservations,filePathReservations);
-		ConfirmationLogic.ShowConfirmation(newticket);
+		ConfirmationUI.ShowConfirmation(newticket);
 		Console.WriteLine("Press any key to return to the main menu");
 		Console.ReadKey();
 		MenuUtils.displayLoggedinMenu();

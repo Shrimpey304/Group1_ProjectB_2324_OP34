@@ -12,7 +12,6 @@ public class MovieModel
 	public int RoomID;
 	
 	
-	
 	public MovieModel(string title, int ageRest, string genreName, string description, int rID) 
 	{
 		Title = title;

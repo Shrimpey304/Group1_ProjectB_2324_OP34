@@ -8,7 +8,7 @@ static class UserLogin
 
     public static void Start()
     {
-        DisplayHeader.LoginHeader();
+        DisplayHeaderUI.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
         Console.WriteLine("Welcome to the login page!");
         Console.WriteLine("Please enter your email address and press enter to confirm\nPress Esc key to cancel.");
@@ -23,11 +23,11 @@ static class UserLogin
         }
 
         Console.Clear();
-        DisplayHeader.LoginHeader();
+        DisplayHeaderUI.LoginHeader();
         Console.WriteLine("\n---------------------------------------------------------------------------\n");
 
         Console.WriteLine("Please enter your password and press enter to confirm\nPress Esc key to cancel.");
-        string password = GetPassword();
+        string password = GetPassword()!;
 
         if (password == null)
         {

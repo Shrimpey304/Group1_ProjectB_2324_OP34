@@ -8,7 +8,7 @@ public class JsonAccess{
         if (File.Exists(fileName))
         {
             string json = File.ReadAllText(fileName);
-            return JsonConvert.DeserializeObject<List<T>>(json);
+            return JsonConvert.DeserializeObject<List<T>>(json)!;
         }
         else
         {

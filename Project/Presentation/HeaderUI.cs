@@ -1,6 +1,6 @@
 namespace Cinema;
 
-public static class DisplayHeader{
+public static class DisplayHeaderUI{
 
 	//font used : https://patorjk.com/software/taag/#p=display&f=Jacky&t=test
 
