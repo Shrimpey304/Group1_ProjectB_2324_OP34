@@ -28,7 +28,7 @@ namespace Cinema
             {
                 if (!UserRegistrationLogic.ValidateEmail(email))
                 {
-                    Console.WriteLine("Invalid email. Please ensure the email contains '@gmail.com', '@outlook.com', '@gmail.nl', or '@outownline.nl'.");
+                    Console.WriteLine("Invalid email. Please ensure the email is propperly fromatted and try again.");
                     email = ReadInputOrCancel();
                     if (email == null)
                     {
