@@ -6,8 +6,7 @@
     "Salt": "HYMb0qj8TZRkqyjlRZWVrA==",
     "FullName": "kimo",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 1,
@@ -16,8 +15,7 @@
     "Salt": "bL9jU8Zm+Akmqfh8b4tbcQ==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 2,
@@ -26,8 +24,7 @@
     "Salt": "MHV9Tx5YGsGakWL4Zd5z/A==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 3,
@@ -36,8 +33,7 @@
     "Salt": "I0Pat6LJVd6oMOIbJiHFMg==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 4,
@@ -46,8 +42,7 @@
     "Salt": "JZGKXNjB0RSmJnM9B14P8A==",
     "FullName": "ki",
     "IsAdmin": true,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 5,
@@ -56,8 +51,7 @@
     "Salt": "W1oCmN65ukAXrT4NGBrg+Q==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 6,
@@ -66,8 +60,7 @@
     "Salt": "T9gsGD3hy4W0cbF0jKd0nw==",
     "FullName": "admin",
     "IsAdmin": true,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 7,
@@ -76,8 +69,7 @@
     "Salt": "YR0IO0NJkyd29akyJHUMYg==",
     "FullName": "ki",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 8,
@@ -86,8 +78,7 @@
     "Salt": "k7rvRydnxLIffZA7w7NFjg==",
     "FullName": "kimo",
     "IsAdmin": false,
-    "IsActive": false,
-    "TicketList": []
+    "IsActive": false
   },
   {
     "Id": 9,
@@ -96,7 +87,15 @@
     "Salt": "c+N9ZszoyhIY2dgiOxtnHA==",
     "FullName": "kiki",
     "IsAdmin": false,
-    "IsActive": true,
-    "TicketList": []
+    "IsActive": false
+  },
+  {
+    "Id": 10,
+    "EmailAddress": "RammusShenCho@gmail.com",
+    "Password": "2a0658a8fdc76661262b84d7f2e0e223dded64145da9e2b6fa54178aa86ce030",
+    "Salt": "sxqOSFfl8GhEQ+2Qf1xshw==",
+    "FullName": "Rammus Shen",
+    "IsAdmin": false,
+    "IsActive": false
   }
 ]

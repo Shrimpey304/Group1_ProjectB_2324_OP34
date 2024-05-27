@@ -8,7 +8,7 @@ public class MovieSessionUI
 {
     public static MovieSessionModel ListSessions(int UserInput)
     {
-        var SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
+        List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
         bool HasSessions = SessionList.Any(session => session.MovieID == UserInput);
 
         if (HasSessions)

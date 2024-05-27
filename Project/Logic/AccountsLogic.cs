@@ -73,17 +73,25 @@ public class AccountsLogic
 		return _accounts.FirstOrDefault(a => a.Id == id)!;
 	}
 
-	public static void GetTickets(){
+	public static void GetTickets()
+	{
 
 		Console.WriteLine("Current Tickets:\n\n");
 
-		if (CurrentAccount != null){
-			foreach(var ticket in CurrentAccount.TicketList){
+		if (CurrentAccount != null)
+		{
+			
+			List<Ticket> TicketsForAccount = JsonAccess.ReadFromJson<Ticket>("DataStorage/Reservation.json").Where(t => t.AccountID == CurrentAccount.Id).ToList();
+			foreach(Ticket ticket in TicketsForAccount)
+			{
+				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First();
 				Console.WriteLine("-------------------------------------------------");
-				Console.WriteLine($"Room: {ticket.moviesession.RoomID}");
-				Console.WriteLine($"Movie: {ticket.moviesession.MovieID} Time: {ticket.moviesession.StartTime}");
+				Console.WriteLine($"Room: {session.RoomID}");
+				Console.WriteLine($"MovieID: {session.MovieID}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
-				foreach (var seat in ticket.ReservedSeats){
+
+				foreach (var seat in ticket.ReservedSeats)
+				{
 					Console.Write($"{seat.Item2} ");
 				}
 				Console.WriteLine();
@@ -91,6 +99,7 @@ public class AccountsLogic
 			Console.WriteLine("-------------------------------------------------");
 		}
 	}
+	
 
 	public static void getuserinfo(){
 		Console.WriteLine("your account info:");

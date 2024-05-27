@@ -24,9 +24,6 @@ public class AccountModel
     [JsonPropertyName("isActive")]
     public bool IsActive { get; set; } // New property to indicate if the user is currently logged in
 
-    [JsonPropertyName("TicketList")]
-    public List<Ticket> TicketList { get; set; }
-
     public AccountModel(string emailAddress, string password, string salt, string fullName, bool isAdmin, bool isActive)
     {
         EmailAddress = emailAddress;
@@ -35,6 +32,5 @@ public class AccountModel
         FullName = fullName;
         IsAdmin = isAdmin;
         IsActive = isActive;
-        TicketList = new List<Ticket>(); 
     }
 }
