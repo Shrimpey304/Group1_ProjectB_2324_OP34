@@ -4,11 +4,20 @@ class ConfirmationUI
 {
 	public static void ShowConfirmation(Ticket ticket)
 	{
+		MovieSessionModel currentSession = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First();
+		// foreach(MovieSessionModel session in JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json"))
+		// {
+		// 	if(session.sessionID == ticket.sessionID)
+		// 	{
+		// 		currentSession = session;
+		// 	}
+		// }
+		
 		List<MovieModel> movies = JsonAccess.ReadFromJson<MovieModel>("DataStorage/Movies.json");
 		string CurrentMovieTitle = "Title not found :(";
 		foreach (var movie in movies)
 		{
-			if (movie.MovieID == ticket.moviesession.MovieID)
+			if (movie.MovieID == currentSession.MovieID)
 			{
 				CurrentMovieTitle = movie.Title;
 			}
@@ -21,26 +30,26 @@ class ConfirmationUI
 		}
 		
 
-        string CurrentSnacks;
-        string HTMLSnacks;
-        
-        if (SnackMenuLogic.OrderedSnacks != null){
-            CurrentSnacks = "Snacks:\n";
-            HTMLSnacks = "Snacks:<br>";
-            foreach (Tuple<string, int> snack in SnackMenuLogic.OrderedSnacks)
-            {
-                CurrentSnacks += $"• {snack.Item1} [{snack.Item2}x]\n";
-                HTMLSnacks += $"• {snack.Item1} [{snack.Item2}x]<br>";
-            }
-        }else{
-            CurrentSnacks = "No Snacks\n";
-            HTMLSnacks = "No Snacks<br>";
-        }
+		string CurrentSnacks;
+		string HTMLSnacks;
+		
+		if (SnackMenuLogic.OrderedSnacks != null){
+			CurrentSnacks = "Snacks:\n";
+			HTMLSnacks = "Snacks:<br>";
+			foreach (Tuple<string, int> snack in SnackMenuLogic.OrderedSnacks)
+			{
+				CurrentSnacks += $"• {snack.Item1} [{snack.Item2}x]\n";
+				HTMLSnacks += $"• {snack.Item1} [{snack.Item2}x]<br>";
+			}
+		}else{
+			CurrentSnacks = "No Snacks\n";
+			HTMLSnacks = "No Snacks<br>";
+		}
 
 		string ConfirmationTextBody = $"Your reservation has been made!\n" +
 			$"Reservation ID: #{ticket.TicketID}\n\n" +
-			$"Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}\n" +
-			$"Room: #{ticket.moviesession.RoomID}\n" +
+			$"Movie: [{currentSession.MovieID}] {CurrentMovieTitle}\n" +
+			$"Room: #{currentSession.RoomID}\n" +
 			$"{CurrentSeats}\n\n" +
 			$"{CurrentSnacks}\n\n" +
 			$"Total price: €{ticket.Totalprice},00\n\n" +
@@ -121,8 +130,8 @@ class ConfirmationUI
 				<div class='content'>
 					<h1>Hello, {AccountsLogic.CurrentAccount!.EmailAddress}!</h1>
 					<p>Reservation Number: #{ticket.TicketID}</p>
-					<p>Movie: [{ticket.moviesession.MovieID}] {CurrentMovieTitle}</p>
-					<p>Room: #{ticket.moviesession.RoomID}</p>
+					<p>Movie: [{currentSession.MovieID}] {CurrentMovieTitle}</p>
+					<p>Room: #{currentSession.RoomID}</p>
 					<p>{CurrentSeats}<br></p>
 					<p>{HTMLSnacks}<br></p>
 					<p>Total price: €{ticket.Totalprice},00<br></p>
