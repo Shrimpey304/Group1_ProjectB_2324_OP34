@@ -37,6 +37,7 @@ public class TicketLogic{
 		_reservations.Add(newticket);
 		JsonAccess.UploadToJson(_reservations,filePathReservations);
 		ConfirmationUI.ShowConfirmation(newticket);
+		SnackMenuLogic.FinishOrder = false;
 		Console.WriteLine("Press any key to return to the main menu");
 		Console.ReadKey();
 		MenuUtils.displayLoggedinMenu();
