@@ -19,6 +19,7 @@ namespace Cinema
             MenuUtils.displaySnackOption();
         }
 
+
         public static void AddReservation()
         {
             // Assuming SnackMenuLogic holds the ordered snacks
