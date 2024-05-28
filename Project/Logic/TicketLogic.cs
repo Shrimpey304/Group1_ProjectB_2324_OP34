@@ -25,14 +25,14 @@ public class TicketLogic{
 		
 		Ticket newticket = new(selectedSession!.sessionID, selectedSeating!, totalSeatPrice + SnackMenuLogic.TotalCost, SnackMenuLogic.OrderedSnacks, AccountsLogic.CurrentAccount!.Id, AccountsLogic.CurrentAccount!.Id);
 		
-		int currentRoomID = 0;
+		int currentRoomID = MovieLogic.getSession(newticket.sessionID).RoomID;
 		
-		foreach (Ticket ticket in _reservations.Where(t => t.sessionID == newticket.sessionID))
-		{
-			currentRoomID = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First().RoomID;
-		}
+		// foreach (Ticket ticket in _reservations.Where(t => t.sessionID == newticket.sessionID))
+		// {
+		// 	currentRoomID = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First().RoomID;
+		// }
 		
-		Console.WriteLine($"movie: {newticket.sessionID} \nRoom: {currentRoomID} Seats: {newticket.ReservedSeats} ");
+		Console.WriteLine($"movie: {newticket.sessionID}\nRoom: {currentRoomID} Seats: {newticket.ReservedSeats} ");
 		
 		_reservations.Add(newticket);
 		JsonAccess.UploadToJson(_reservations,filePathReservations);

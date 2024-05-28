@@ -8,7 +8,7 @@ public class SeatInfo
 	// public bool IsReserved { get; set; }
 	public bool inPrereservation { get; set; }
 	public List<MovieSessionModel> reservedInSession = new();
-	public List<int> reservedInSessionID = new();
+	// public List<int> reservedInSessionID = new();
 	public SeatType Type { get; set; }
 }
 
