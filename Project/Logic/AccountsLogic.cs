@@ -87,7 +87,7 @@ public class AccountsLogic
 				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"MovieID: {session.MovieID}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
 
@@ -95,19 +95,23 @@ public class AccountsLogic
 				{
 					Console.Write($"{seat.Item2} ");
 				}
-				Console.WriteLine();
+				Console.WriteLine("\nSnacks:");
 				if (ticket.OrderedSnacks.Count != 0)
 				{
-				Console.WriteLine(" ______________________________________________");
-				Console.WriteLine("| Name                                | Amount |");
-				Console.WriteLine("|-------------------------------------+--------|");
+					foreach (var snack in ticket.OrderedSnacks)
+					{
+						Console.WriteLine($"{snack.Item1} - {snack.Item2}");
+					}
+				// Console.WriteLine(" ______________________________________________");
+				// Console.WriteLine("| Name                                | Amount |");
+				// Console.WriteLine("|-------------------------------------+--------|");
 
-				foreach (var snack in ticket.OrderedSnacks)
-				{
-					Console.WriteLine($"| {snack.Item1.PadRight(35)} | {snack.Item2.ToString("0.00").PadLeft(6)} |");
-				}
+				// foreach (var snack in ticket.OrderedSnacks)
+				// {
+				// 	Console.WriteLine($"| {snack.Item1.PadRight(35)} | {snack.Item2.ToString("0.00").PadLeft(6)} |");
+				// }
 
-				Console.WriteLine("_______________________________________________");
+				// Console.WriteLine("_______________________________________________");
 			
 				Console.WriteLine();
 				}

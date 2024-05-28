@@ -62,5 +62,18 @@ public class MovieLogic
 		}
 		return null!;
 	}
+	
+	public static string FindMovie(int MovieID)
+	{
+		var movies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		foreach(MovieModel movie in movies)
+		{
+			if (movie.MovieID == MovieID)
+			{
+				return movie.Title;
+			}
+		}
+		return "";
+	}  
 
 }
