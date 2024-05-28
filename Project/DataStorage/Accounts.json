@@ -97,5 +97,14 @@
     "FullName": "Rammus Shen",
     "IsAdmin": false,
     "IsActive": false
+  },
+  {
+    "Id": 11,
+    "EmailAddress": "thom.jochems@gmail.com",
+    "Password": "1cd5f0d4d6e360511f45288a43bb6fd6dad664c288e796e385f3efabcefc955d",
+    "Salt": "TjVsrqiCWB/ixjm+oqX0Fg==",
+    "FullName": "Thom Jochems",
+    "IsAdmin": false,
+    "IsActive": true
   }
 ]

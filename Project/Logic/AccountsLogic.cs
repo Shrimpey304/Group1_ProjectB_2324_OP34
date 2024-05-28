@@ -84,17 +84,38 @@ public class AccountsLogic
 			List<Ticket> TicketsForAccount = JsonAccess.ReadFromJson<Ticket>("DataStorage/Reservation.json").Where(t => t.AccountID == CurrentAccount.Id).ToList();
 			foreach(Ticket ticket in TicketsForAccount)
 			{
-				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First();
+				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"MovieID: {session.MovieID}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
+				
 
 				foreach (var seat in ticket.ReservedSeats)
 				{
 					Console.Write($"{seat.Item2} ");
 				}
+				Console.WriteLine("\nSnacks:");
+				if (ticket.OrderedSnacks.Count != 0)
+				{
+					foreach (var snack in ticket.OrderedSnacks)
+					{
+						Console.WriteLine($"{snack.Item1} - {snack.Item2}");
+					}
+				// Console.WriteLine(" ______________________________________________");
+				// Console.WriteLine("| Name                                | Amount |");
+				// Console.WriteLine("|-------------------------------------+--------|");
+
+				// foreach (var snack in ticket.OrderedSnacks)
+				// {
+				// 	Console.WriteLine($"| {snack.Item1.PadRight(35)} | {snack.Item2.ToString("0.00").PadLeft(6)} |");
+				// }
+
+				// Console.WriteLine("_______________________________________________");
+			
 				Console.WriteLine();
+				}
+
 			}
 			Console.WriteLine("-------------------------------------------------");
 		}

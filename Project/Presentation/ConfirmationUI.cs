@@ -4,7 +4,7 @@ class ConfirmationUI
 {
 	public static void ShowConfirmation(Ticket ticket)
 	{
-		MovieSessionModel currentSession = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First();
+		MovieSessionModel currentSession = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
 		// foreach(MovieSessionModel session in JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json"))
 		// {
 		// 	if(session.sessionID == ticket.sessionID)
@@ -52,7 +52,7 @@ class ConfirmationUI
 			$"Room: #{currentSession.RoomID}\n" +
 			$"{CurrentSeats}\n\n" +
 			$"{CurrentSnacks}\n\n" +
-			$"Total price: €{ticket.Totalprice},00\n\n" +
+			$"Total price: €{ticket.TotalPrice},00\n\n" +
 			"Please pay at the register\n\n"+
 			"Thank you for your reservation!";
 
@@ -134,7 +134,7 @@ class ConfirmationUI
 					<p>Room: #{currentSession.RoomID}</p>
 					<p>{CurrentSeats}<br></p>
 					<p>{HTMLSnacks}<br></p>
-					<p>Total price: €{ticket.Totalprice},00<br></p>
+					<p>Total price: €{ticket.TotalPrice},00<br></p>
 					<p>Thank you for your reservation!</p>
 					<a href='{actionLink}' class='button'>Visit website</a>
 				</div>
