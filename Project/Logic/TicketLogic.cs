@@ -47,6 +47,7 @@ namespace Cinema
             _reservations.Add(newTicket);
             JsonAccess.UploadToJson(_reservations, filePathReservations);
             ConfirmationUI.ShowConfirmation(newTicket);
+            SnackMenuLogic.FinishOrder = false;
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadKey();
             MenuUtils.displayLoggedinMenu();
