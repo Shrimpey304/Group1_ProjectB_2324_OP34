@@ -8,6 +8,4 @@ public class Genre{
         MinimumAgeRestriction = ageRest;
     }
 
-
-
 }

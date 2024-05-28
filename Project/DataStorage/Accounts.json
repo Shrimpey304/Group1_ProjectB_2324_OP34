@@ -1,12 +1,110 @@
 [
   {
-    "Id": 1,
-    "EmailAddress": "kimo.edelbroek@gmail.com",
-    "Password": "428124b765599e1559b31da5574b47b0652af83cad17c495298b9028cdbd09a0",
-    "Salt": "jepmEGTgvhlX8daE4qdakg==",
+    "Id": 0,
+    "EmailAddress": "a.a@a.a",
+    "Password": "838d0758d5919bc1240afcf9cb477794452ded12d4217d0094a993eb37b6e7ce",
+    "Salt": "HYMb0qj8TZRkqyjlRZWVrA==",
     "FullName": "kimo",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 1,
+    "EmailAddress": "b.b@b.b",
+    "Password": "2903e103721704e5e75fc6a30d5546a84d45d525395519ba0918c25c91e91516",
+    "Salt": "bL9jU8Zm+Akmqfh8b4tbcQ==",
+    "FullName": "ki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 2,
+    "EmailAddress": "c.c@c.c",
+    "Password": "e35061f48db0fb3ec85b713051066f11c2f2408d2c7ddb335debcdc3304ff7c0",
+    "Salt": "MHV9Tx5YGsGakWL4Zd5z/A==",
+    "FullName": "ki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 3,
+    "EmailAddress": "d.d@d.d",
+    "Password": "4737cb13ebdd4452d186bb5b5d13cda7251092fd364da067f7b7771405afec15",
+    "Salt": "I0Pat6LJVd6oMOIbJiHFMg==",
+    "FullName": "ki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 4,
+    "EmailAddress": "f.f@f.f",
+    "Password": "0a2e146796921c4bd0c520192afad89687c74d7b1dfa9b8137eefbab10d2b35d",
+    "Salt": "JZGKXNjB0RSmJnM9B14P8A==",
+    "FullName": "ki",
     "IsAdmin": true,
-    "IsActive": true,
-    "TicketList": []
+    "IsActive": false
+  },
+  {
+    "Id": 5,
+    "EmailAddress": "q.q@q.q",
+    "Password": "882082c8506cf57c6749eb9bb0467b17eb270c680bae4989ccca0a1b86e91b5d",
+    "Salt": "W1oCmN65ukAXrT4NGBrg+Q==",
+    "FullName": "ki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 6,
+    "EmailAddress": "admin@gmail.com",
+    "Password": "27c410d630f53f323396f17622522bfb3076788dac67c5db7194f1b20dcd0557",
+    "Salt": "T9gsGD3hy4W0cbF0jKd0nw==",
+    "FullName": "admin",
+    "IsAdmin": true,
+    "IsActive": false
+  },
+  {
+    "Id": 7,
+    "EmailAddress": "e.e@e.e",
+    "Password": "93895978797eb008f0abea24561ec25141a0ee7bf476b51b13d8a9643cbb7ed1",
+    "Salt": "YR0IO0NJkyd29akyJHUMYg==",
+    "FullName": "ki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 8,
+    "EmailAddress": "kimo.edelbroek@gmail.com",
+    "Password": "3b501605ef14ce7cc12bf800374bb7d3961988d18aefa74c02bca70693025c2c",
+    "Salt": "k7rvRydnxLIffZA7w7NFjg==",
+    "FullName": "kimo",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 9,
+    "EmailAddress": "t.t@t.t",
+    "Password": "b307efd44da2839a48b073ccb91d362140144857a1b9d4f7223edce62a980d30",
+    "Salt": "c+N9ZszoyhIY2dgiOxtnHA==",
+    "FullName": "kiki",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 10,
+    "EmailAddress": "RammusShenCho@gmail.com",
+    "Password": "2a0658a8fdc76661262b84d7f2e0e223dded64145da9e2b6fa54178aa86ce030",
+    "Salt": "sxqOSFfl8GhEQ+2Qf1xshw==",
+    "FullName": "Rammus Shen",
+    "IsAdmin": false,
+    "IsActive": false
+  },
+  {
+    "Id": 11,
+    "EmailAddress": "thom.jochems@gmail.com",
+    "Password": "1cd5f0d4d6e360511f45288a43bb6fd6dad664c288e796e385f3efabcefc955d",
+    "Salt": "TjVsrqiCWB/ixjm+oqX0Fg==",
+    "FullName": "Thom Jochems",
+    "IsAdmin": false,
+    "IsActive": true
   }
 ]

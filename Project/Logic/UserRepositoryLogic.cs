@@ -10,8 +10,8 @@ public class UserRepository
 
     public List<AccountModel> GetAllUsers()
     {
-        var jsonData = File.ReadAllText(_filePath);
-        return JsonSerializer.Deserialize<List<AccountModel>>(jsonData) ?? new List<AccountModel>();
+        var jsonData = JsonAccess.ReadFromJson<AccountModel>(_filePath);
+        return jsonData ?? new List<AccountModel>();
     }
 
     public void AddUser(AccountModel newUser)
@@ -24,8 +24,8 @@ public class UserRepository
         var users = GetAllUsers();
         newUser.Id = users.Any() ? users.Max(u => u.Id) + 1 : 1; // Auto-increment ID
         users.Add(newUser);
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        File.WriteAllText(_filePath, JsonSerializer.Serialize(users, options));
+        JsonAccess.UploadToJson(users, _filePath);
+
     }
 
     public bool UserExists(string email)

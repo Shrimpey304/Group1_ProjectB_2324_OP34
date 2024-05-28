@@ -1,6 +1,8 @@
 namespace Cinema;
 public class MovieLogic
 {
+	const string filePathMovies = "DataStorage/Movies.json";
+	const string filePathSessions = "DataStorage/Sessions.json";
 	private int _ageRestriction;
 	public int AgeRestriction
 	{
@@ -27,85 +29,51 @@ public class MovieLogic
 
 	public static void AddMovie(MovieModel movie)
 	{
-		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>("Movies.json");
+		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 
 		MovieList.Add(movie);
 
-		JsonAccess.UploadToJson(MovieList, "Movies.Json");
+		JsonAccess.UploadToJson(MovieList, filePathMovies);
 	}
 
-	const string filePathMovies = "DataStorage/Movies.json";
 
-	public static int ListAllMovies()
+	public static void AddMovieSession(MovieSessionModel session)
 	{
-		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
-		Console.WriteLine($" ____________________________________________________________________________________________");
-		Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
-		Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
+		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
 
-		foreach (MovieModel movie in MovieList)
-		{
-			// string movieIDString = Convert.ToString(movie.movieID);
-			Console.WriteLine($"| {Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
+		int cnt = 0;
+		foreach(MovieSessionModel sesh in SessionList){
+			cnt ++;
 		}
-		Console.WriteLine($" --------------------------------------------------------------------------------------------");
-		string UserInput;
-		do
-		{
-			Console.Write("Type the ID of a movie to see it's upcoming sessions.\n  >>> ");
-			UserInput = Console.ReadLine();
-		}while ((UserInput == null) || (IsDigitsOnly(UserInput) == false) || (UserInput == ""));
+		session.sessionID = cnt;
+
+		SessionList.Add(session);
+
+		JsonAccess.UploadToJson(SessionList, filePathSessions);
+	}
+
+	public static MovieSessionModel getSession(int id){
 		
-		int UserInputInt = Convert.ToInt32(UserInput);  // this is possible, because it is always only numbers (see 2 lines above)
-		foreach (MovieModel movie in MovieList)
-		{
-			if (UserInputInt == movie.MovieID)
-			{
-				Console.Clear();
-				Console.WriteLine("Current selected movie:");
-				// Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-				Console.WriteLine($"{Convert.ToString(movie.MovieID)}: {movie.Title} [PG-{Convert.ToString(movie.AgeRestriction)}]");
-				// MovieSessionLogic.ListSessions(UserInputInt);
-				return UserInputInt;
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		foreach(MovieSessionModel sesh in sessions){
+			if (sesh.sessionID == id){
+				return sesh;
 			}
 		}
-		return 0;
+		return null!;
 	}
-
-	public static void ListAllMovies(bool isvoid)
+	
+	public static string FindMovie(int MovieID)
 	{
-		if(isvoid){
-			List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
-			Console.WriteLine($" ____________________________________________________________________________________________");
-			Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
-			Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
-
-			foreach (MovieModel movie in MovieList)
+		var movies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		foreach(MovieModel movie in movies)
+		{
+			if (movie.MovieID == MovieID)
 			{
-				// string movieIDString = Convert.ToString(movie.movieID);
-				Console.WriteLine($"| {Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
-			}
-			Console.WriteLine($" --------------------------------------------------------------------------------------------");
-			string UserInput;
-			do
-			{
-				Console.Write("Type the ID of a movie to see it's upcoming sessions.\n  >>> ");
-				UserInput = Console.ReadLine();
-			}while ((UserInput == null) || (IsDigitsOnly(UserInput) == false) || (UserInput == ""));
-			
-			int UserInputInt = Convert.ToInt32(UserInput);  // this is possible, because it is always only numbers (see 2 lines above)
-			foreach (MovieModel movie in MovieList)
-			{
-				if (UserInputInt == movie.MovieID)
-				{
-					Console.Clear();
-					Console.WriteLine("Current selected movie:");
-					// Console.WriteLine("\nTitle: {0}\nAge Restriction: {1}\nDescription: {2}\nGenre: {3}\n\n", movie.Title, movie.AgeRestriction, movie.Description, movie.GenreName);
-					Console.WriteLine($"{Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)}");
-					// MovieSessionLogic.ListSessions(UserInputInt);
-					
-				}
+				return movie.Title;
 			}
 		}
-	}
+		return "";
+	}  
+
 }
