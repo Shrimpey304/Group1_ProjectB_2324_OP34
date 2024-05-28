@@ -52,4 +52,15 @@ public class MovieLogic
 		JsonAccess.UploadToJson(SessionList, filePathSessions);
 	}
 
+	public static MovieSessionModel getSession(int id){
+		
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		foreach(MovieSessionModel sesh in sessions){
+			if (sesh.sessionID == id){
+				return sesh;
+			}
+		}
+		return null!;
+	}
+
 }
