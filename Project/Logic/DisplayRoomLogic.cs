@@ -104,9 +104,10 @@ public static class DisplayRoom{
 		}
 
 		bool containsSession = false;
-		foreach (var sesh in cursorOnSeatingPosition.reservedInSession)
+		
+		foreach (var seshID in cursorOnSeatingPosition.reservedInSessionID)
 		{
-			if (sesh.sessionID == session.sessionID)
+			if (seshID == session.sessionID)
 			{
 				containsSession = true;
 				Console.WriteLine("Can't reserve a seat that is already reserved.");
@@ -175,7 +176,7 @@ public static class DisplayRoom{
 
 				var selectedSeatingPosition = seating!.SeatingArrangement[pos.Item1, pos.Item2][0];
 
-				selectedSeatingPosition.reservedInSession.Add(session);
+				selectedSeatingPosition.reservedInSessionID.Add(session.sessionID);
 				selectedSeatingPosition.inPrereservation = false;
 				List<Seating> uploadSeatingReserved = new(){seating!};
 
@@ -327,11 +328,11 @@ public static class DisplayRoom{
 
 	public static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
 
-		if(seating.SeatingArrangement[i,j][0].reservedInSession.Count > 0)
+		if(seating.SeatingArrangement[i,j][0].reservedInSessionID.Count > 0)
 		{
 			bool reserved = false;
-			foreach(var	thissession in seating.SeatingArrangement[i,j][0].reservedInSession){
-				if (thissession.sessionID == session.sessionID)
+			foreach(var	thissessionID in seating.SeatingArrangement[i,j][0].reservedInSessionID){
+				if (thissessionID == session.sessionID)
 				{
 					reserved = true;
 					Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -344,7 +345,7 @@ public static class DisplayRoom{
 
 			}
 		}
-		else if(seating.SeatingArrangement[i,j][0].reservedInSession.Count <= 0 )
+		else if(seating.SeatingArrangement[i,j][0].reservedInSessionID.Count <= 0 )
 		{
 			seatColor(seating.SeatingArrangement[i,j][0], color);
 		}
@@ -534,7 +535,7 @@ public static class DisplayRoom{
 						RowID = i,
 						ColumnID = j,
 						Price = NORMAL_SEAT_PRICE,
-						reservedInSession = new(),
+						reservedInSessionID = new(),
 						Type = SeatType.Normal,
 						inPrereservation = false
 
@@ -562,7 +563,7 @@ public static class DisplayRoom{
 						RowID = i,
 						ColumnID = j,
 						Price = NORMAL_SEAT_PRICE,
-						reservedInSession = new(),
+						reservedInSessionID = new(),
 						Type = SeatType.Normal,
 						inPrereservation = false
 

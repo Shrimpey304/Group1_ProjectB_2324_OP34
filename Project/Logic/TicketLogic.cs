@@ -8,7 +8,7 @@ public class TicketLogic{
 	public static MovieSessionModel ?selectedSession;
 	public static List<Tuple<int, int>> ?selectedSeating;
 	public static double totalSeatPrice;
-	
+
 	public static void ReserveTicket()
 	{
 		int selectedMovieID = MovieUI.ListAllMovies();
@@ -17,8 +17,8 @@ public class TicketLogic{
 		selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
 		totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
 		MenuUtils.displaySnackOption();
-
 	}
+
 	public static void AddReservation()
 	{
 		// List<MovieSessionModel> session = JsonAccess.ReadFromJson<MovieSessionModel>($"DataStorage/Sessions.json");
