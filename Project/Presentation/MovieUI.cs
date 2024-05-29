@@ -4,6 +4,23 @@ public class MovieUI{
 
 	const string filePathMovies = "DataStorage/Movies.json";
 
+	public static void ShowMovies()
+{
+    List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+
+    Console.Clear();
+    Console.WriteLine($" ____________________________________________________________________________________________");
+    Console.WriteLine($"| {"ID".PadRight(4)} | {"Title".PadRight(50)} | {"Age".PadRight(4)}    | {"Genre".PadRight(20)} |");
+    Console.WriteLine($"|------+----------------------------------------------------+---------+----------------------|");
+
+    foreach (MovieModel movie in MovieList)
+    {
+        Console.WriteLine($"| {Convert.ToString(movie.MovieID).PadRight(4)} | {movie.Title.PadRight(50)} | PG-{Convert.ToString(movie.AgeRestriction).PadRight(4)} | {movie.GenreName.PadRight(20)} |");
+    }
+    Console.WriteLine($" --------------------------------------------------------------------------------------------");
+}
+
+
     public static int ListAllMovies()
 	{
 		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
