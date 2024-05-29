@@ -93,7 +93,7 @@ public static class MenuUtils{
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Show MovieList", MovieUI.ShowMovies },
+			{ "Show MovieList", () => MovieUI.ListAllMovies(true)},
 			{ "Show Snack Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}

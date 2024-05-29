@@ -97,5 +97,14 @@
     "FullName": "Rammus Shen",
     "IsAdmin": false,
     "IsActive": false
+  },
+  {
+    "Id": 11,
+    "EmailAddress": "aidan@gmail.com",
+    "Password": "afeace802aa51c0069a57c0f54201f71f8dff3169f7b801cf933797af3bb1739",
+    "Salt": "rxFrMnkYMvU+f//2HB/n/w==",
+    "FullName": "Aidan",
+    "IsAdmin": false,
+    "IsActive": true
   }
 ]
