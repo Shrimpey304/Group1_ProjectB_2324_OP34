@@ -74,8 +74,8 @@ public static class MenuUtils{
 
 			{ "Login", UserLogin.Start },
 			{ "Register", UserRegistration.Start },
-			{ "Display MovieList", () => MovieUI.ListAllMovies(true)},
-			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show MovieList", () => MovieUI.ListAllMovies(true)},
+			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Exit", KillProgram},
 
 		};
@@ -116,7 +116,7 @@ public static class MenuUtils{
 			{ "Add Session", AdminFuncUI.adminAddSession},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Display Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
