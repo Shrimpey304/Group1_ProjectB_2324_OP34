@@ -32,7 +32,17 @@ public static class SnackMenuLogic
 
 				Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 				Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
+				Console.WriteLine("Your current order:\n");
+				if (OrderedSnacks.Count!= 0)
+				{
+					foreach (Tuple<string,int> snack in OrderedSnacks)
+					{
+						Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
+					}
+				}
+				Console.WriteLine();
 				Console.WriteLine("Type the in the SnackID you want to order");	
+				Console.Write(">>>");
 				OrderedSnack = Console.ReadLine()!;
 				}
 				while((OrderedSnack == null) || (MovieLogic.IsDigitsOnly(OrderedSnack)== false) || (OrderedSnack == ""));
@@ -45,10 +55,14 @@ public static class SnackMenuLogic
 						Console.Clear();
 						Console.WriteLine($"How many {snack.Name} would you like?");
 						string SnackAmount = Console.ReadLine()!;
-
+						
 						OrderedSnacks ??= new List<Tuple<string, int>>();
-
+						
 						int SnackAmountInt = Convert.ToInt32(SnackAmount);
+						if (SnackAmountInt <= 0)
+						{
+							SnackAmountInt = 1;
+						}
 						var a = new Tuple<string, int>(snack.Name, SnackAmountInt);
 
 						OrderedSnacks.Add(a);
@@ -144,4 +158,8 @@ public static class SnackMenuLogic
 			Console.WriteLine($"Invalid index. Index should be between 0 and {OrderedSnacks.Count - 1}.");
 		}
 	} 
+	
+
 }
+
+// List<SnackMenuModel> menuList = JsonAccess.ReadFromJson<SnackMenuModel>(filePathSnackMenu);

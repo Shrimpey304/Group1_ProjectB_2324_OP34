@@ -23,6 +23,15 @@ public static class DisplayHeaderUI{
 		Console.WriteLine("     ) )  ( ( ( ( ( (     )    (   ( (       () /\\ \\    ");
 		Console.WriteLine(" ___/ /   / /  \\ \\/ /    /  /\\  \\   \\ \\___   ( (  \\ \\   ");
 		Console.WriteLine("/____/   (_/    \\__/    /__(  )__\\   \\____)  ()_)  \\_\\  ");
+		Console.WriteLine("_________________________________________________________________");
+		Console.WriteLine("Your current order:\n");
+		if (SnackMenuLogic.OrderedSnacks.Count!= 0)
+		{
+			foreach (Tuple<string,int> snack in SnackMenuLogic.OrderedSnacks)
+			{
+				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
+			}
+		}
 	}
 
 	public static void AdminHeader()
@@ -34,7 +43,7 @@ public static class DisplayHeaderUI{
 		Console.WriteLine("  )    (     ) )  ) )   / / \\/ \\ \\      | |    ( ( ( ( ( (   ");
 		Console.WriteLine(" /  /\\  \\   / /__/ /   /_/      \\_\\    _| |__  / /  \\ \\/ /   ");
 		Console.WriteLine("/__(  )__\\ (______/   (/          \\)  /_____( (_/    \\__/    ");
-                                                             
+															 
 	}
 
 	public static void LoginHeader()
