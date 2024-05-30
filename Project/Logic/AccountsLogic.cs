@@ -14,6 +14,7 @@ public class AccountsLogic
 			// Attempt to find the user by email.
 			_accounts = JsonAccess.ReadFromJson<AccountModel>(filePathAccounts);
 			var user = _accounts.FirstOrDefault(u => u != null && u.EmailAddress.Equals(email, StringComparison.OrdinalIgnoreCase));
+
 			if (user != null)
 			{
 				// Hash the input password with the user's stored salt
@@ -29,15 +30,19 @@ public class AccountsLogic
 					return user;
 				}
 			}else{
-				throw new NullReferenceException("");
+
+				throw new NullReferenceException("NullRefference exception in AccountLogic L34");
+
 			}
 			// Authentication failed
 			return null;
 		}
 		catch (Exception e)
 		{
+
 			Console.WriteLine("Error: " + e.Message);
 			return null;
+
 		}
 	}
 
@@ -51,15 +56,18 @@ public class AccountsLogic
 	}
 
 	public static void logout(){
+
 		SetAllAccountsInactive();
 		CurrentAccount = null;
 		MenuUtils.displayMainMenu();
+
 	}
 
 	public void UpdateList(AccountModel acc)
 	{
 		// Find the account in the list and update it
 		var index = _accounts.FindIndex(a => a.Id == acc.Id);
+
 		if (index != -1)
 		{
 			_accounts[index] = acc;
@@ -82,6 +90,7 @@ public class AccountsLogic
 		{
 			
 			List<Ticket> TicketsForAccount = JsonAccess.ReadFromJson<Ticket>("DataStorage/Reservation.json").Where(t => t.AccountID == CurrentAccount.Id).ToList();
+
 			foreach(Ticket ticket in TicketsForAccount)
 			{
 				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
@@ -95,25 +104,16 @@ public class AccountsLogic
 				{
 					Console.Write($"{seat.Item2} ");
 				}
+
 				Console.WriteLine("\nSnacks:");
+				
 				if (ticket.OrderedSnacks.Count != 0)
 				{
 					foreach (var snack in ticket.OrderedSnacks)
 					{
 						Console.WriteLine($"{snack.Item1} - {snack.Item2}");
 					}
-				// Console.WriteLine(" ______________________________________________");
-				// Console.WriteLine("| Name                                | Amount |");
-				// Console.WriteLine("|-------------------------------------+--------|");
-
-				// foreach (var snack in ticket.OrderedSnacks)
-				// {
-				// 	Console.WriteLine($"| {snack.Item1.PadRight(35)} | {snack.Item2.ToString("0.00").PadLeft(6)} |");
-				// }
-
-				// Console.WriteLine("_______________________________________________");
-			
-				Console.WriteLine();
+					Console.WriteLine();
 				}
 
 			}

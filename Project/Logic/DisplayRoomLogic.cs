@@ -114,6 +114,7 @@ public static class DisplayRoom{
 				break;
 			}
 		}
+
 		if (containsSession)
 		{
 			return;
@@ -202,7 +203,9 @@ public static class DisplayRoom{
 		for (int i = 0; i < seating.Rows; i++)
 		{
 			for (int j = 0; j < seating.Columns; j++){
+
 				var seat = seating.SeatingArrangement[i,j][0];
+
 				if(seat.inPrereservation){
 					seat.inPrereservation = false;
 				}

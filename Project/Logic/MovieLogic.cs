@@ -44,7 +44,7 @@ const string filePathMovies = "DataStorage/Movies.json";
 		if (File.Exists(filePathMovies))
 		{
 			string json = File.ReadAllText(filePathMovies);
-			movies = JsonConvert.DeserializeObject<List<MovieModel>>(json);
+			movies = JsonConvert.DeserializeObject<List<MovieModel>>(json)!;
 			if (movies != null && movies.Count > 0)
 			{
 				nextMovieID = movies[movies.Count - 1].MovieID + 1;
@@ -91,7 +91,7 @@ const string filePathMovies = "DataStorage/Movies.json";
 				return movie;
 			}
 		}
-		return null;
+		return null!;
 	}
 
 	public static void UpdateMovie(MovieModel updatedMovie)
@@ -160,5 +160,13 @@ const string filePathMovies = "DataStorage/Movies.json";
 		}
 		return "";
 	}  
+
+	public static void DisplayMovieDetails(MovieModel movie)
+	{
+		Console.WriteLine($"Title: {movie.Title}");
+		Console.WriteLine($"Age Restriction: {movie.AgeRestriction}");
+		Console.WriteLine($"Description: {movie.Description}");
+		Console.WriteLine($"Genre: {movie.GenreName}");
+	}
 
 }

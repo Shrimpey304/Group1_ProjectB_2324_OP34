@@ -98,7 +98,7 @@ public class AdminFuncUI{
 		Console.WriteLine("\n---------------------------------------------------------------------------\n"); 
 		MovieUI.ShowMovies();           
 		Console.WriteLine("Enter the ID of the movie you want to edit:");
-		int movieId = int.Parse(Console.ReadLine());
+		int movieId = int.Parse(Console.ReadLine()!);
 
 		// Fetch the movie with the specified ID
 		MovieModel movieToEdit = MovieLogic.GetMovieByID(movieId);
@@ -106,32 +106,32 @@ public class AdminFuncUI{
 		if (movieToEdit != null)
 		{
 			Console.WriteLine($"Current details of movie with ID {movieToEdit.MovieID}:");
-			MovieModel.DisplayMovieDetails(movieToEdit);
+			MovieLogic.DisplayMovieDetails(movieToEdit);
 
 			// Prompt the admin to enter new details for the movie
 			Console.WriteLine("Enter new title (leave empty to keep current):");
-			string newTitle = Console.ReadLine();
+			string newTitle = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newTitle))
 			{
 				movieToEdit.Title = newTitle;
 			}
 
 			Console.WriteLine("Enter new age restriction (leave empty to keep current):");
-			string newAgeRestriction = Console.ReadLine();
+			string newAgeRestriction = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newAgeRestriction))
 			{
 				movieToEdit.AgeRestriction = int.Parse(newAgeRestriction);
 			}
 
 			Console.WriteLine("Enter new description (leave empty to keep current):");
-			string newDescription = Console.ReadLine();
+			string newDescription = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newDescription))
 			{
 				movieToEdit.Description = newDescription;
 			}
 
 			Console.WriteLine("Enter new genre (leave empty to keep current):");
-			string newGenre = Console.ReadLine();
+			string newGenre = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newGenre))
 			{
 				movieToEdit.GenreName = newGenre;
@@ -153,7 +153,7 @@ public class AdminFuncUI{
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");            
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to delete:");
-		int movieId = int.Parse(Console.ReadLine());
+		int movieId = int.Parse(Console.ReadLine()!);
 
 		// Delete the movie with the specified ID
 		bool success = MovieLogic.DeleteMovie(movieId);

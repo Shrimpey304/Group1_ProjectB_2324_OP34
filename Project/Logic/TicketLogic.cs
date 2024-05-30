@@ -36,12 +36,6 @@ namespace Cinema
 
             int currentRoomID = MovieLogic.getSession(newTicket.SessionID).RoomID;
             
-            // This part of the code is commented out because it seems unnecessary
-            // foreach (Ticket ticket in _reservations.Where(t => t.sessionID == newticket.sessionID))
-            // {
-            //     currentRoomID = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.sessionID).First().RoomID;
-            // }
-            
             Console.WriteLine($"movie: {newTicket.SessionID}\nRoom: {currentRoomID} Seats: {newTicket.ReservedSeats} ");
             
             _reservations.Add(newTicket);

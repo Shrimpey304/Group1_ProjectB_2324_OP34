@@ -1,17 +1,13 @@
 namespace Cinema;
 
+// THIS PROGRAM USES AN EMAIL SERVER OF 1 OF THE TEAMMEMBERS OF THIS PROJECT.
+// PLEASE BE AWARE THAT THIS SERVER, THE HOSTING, AND THE SETUP OF IT MAY BE SUBJECT TO CHANGE AND MAY NOT WORK IN THE FUTURE DUE TO LACK OF CODE UPKEEP!
+
 class ConfirmationUI
 {
 	public static void ShowConfirmation(Ticket ticket)
 	{
 		MovieSessionModel currentSession = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
-		// foreach(MovieSessionModel session in JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json"))
-		// {
-		// 	if(session.sessionID == ticket.sessionID)
-		// 	{
-		// 		currentSession = session;
-		// 	}
-		// }
 		
 		List<MovieModel> movies = JsonAccess.ReadFromJson<MovieModel>("DataStorage/Movies.json");
 		string CurrentMovieTitle = "Title not found :(";
