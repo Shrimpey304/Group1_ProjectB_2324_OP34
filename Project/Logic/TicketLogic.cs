@@ -96,16 +96,24 @@ public class TicketLogic
             // Load the JSON data
             List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(file);
 
-            // Find the session ID and remove it
+            // Find the session ID and remove it from the reservedInSessionID list
             foreach (Seating seating in seatingJson)
             {
-                if (MovieSessionModel.sID == sessionID)
+                for (int i = 0; i < seating.Rows; i++)
                 {
-                    MovieSessionModel.sID = 0;
-                    JsonAccess.UploadToJson(seatingJson, file);
-                    break;
+                    for (int j = 0; j < seating.Columns; j++)
+                    {
+                        SeatInfo seat = seating.SeatingArrangement[i, j][0];
+                        if (seat.reservedInSessionID.Contains(sessionID))
+                        {
+                            seat.reservedInSessionID.Remove(sessionID);
+                        }
+                    }
                 }
             }
+
+            // Save the modified data back to the JSON file
+            JsonAccess.UploadToJson(seatingJson, file);
         }
     }
 
