@@ -117,6 +117,8 @@ public static class MenuUtils{
 			{ "Edit Movie", AdminFuncUI.AdminEditMovie},
 			{ "Delete Movie", AdminFuncUI.AdminDeleteMovie},
 			{ "Add Session", AdminFuncUI.adminAddSession},
+			{ "Edit Session", AdminFuncUI.adminUpdateSession},
+			{ "Delete Session", AdminFuncUI.adminDeleteSession},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Show Menu", SnackMenuLogic.ListSnackMenu},

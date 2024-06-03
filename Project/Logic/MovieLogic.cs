@@ -124,17 +124,13 @@ public class MovieLogic
 
 	public static void AddMovieSession(MovieSessionModel session)
 	{
-		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		List<MovieSessionModel> sessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
 
-		int cnt = 0;
-		foreach(MovieSessionModel sesh in SessionList){
-			cnt ++;
-		}
-		session.sessionID = cnt;
+		int lastSessionID = sessionList.Any() ? sessionList.Max(s => s.sessionID) : 0;
+		session.sessionID = lastSessionID + 1;
 
-		SessionList.Add(session);
-
-		JsonAccess.UploadToJson(SessionList, filePathSessions);
+		sessionList.Add(session);
+		JsonAccess.UploadToJson(sessionList, filePathSessions);
 	}
 
 	public static MovieSessionModel getSession(int id){
@@ -147,6 +143,46 @@ public class MovieLogic
 		}
 		return null!;
 	}
+
+	public static void UpdateMovieSession(int sessionID, MovieSessionModel updatedSession)
+	{
+		List<MovieSessionModel> sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+
+		foreach (var session in sessions)
+		{
+			if (session.sessionID == sessionID)
+			{
+				// Update session properties
+				session.StartTime = updatedSession.StartTime;
+				session.EndTime = updatedSession.EndTime;
+				session.MovieID = updatedSession.MovieID;
+				session.RoomID = updatedSession.RoomID;
+
+				// Save updated sessions to file
+				JsonAccess.UploadToJson(sessions, filePathSessions);
+				return;
+			}
+		}
+
+		Console.WriteLine($"Session with ID {sessionID} not found.");
+	}
+
+
+	public static bool DeleteMovieSession(int sessionID)
+	{
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		for (int i = 0; i < sessions.Count; i++)
+		{
+			if (sessions[i].sessionID == sessionID)
+			{
+				sessions.RemoveAt(i);
+				JsonAccess.UploadToJson(sessions, filePathSessions);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	public static string FindMovie(int MovieID)
 	{
@@ -168,5 +204,19 @@ public class MovieLogic
 		Console.WriteLine($"Description: {movie.Description}");
 		Console.WriteLine($"Genre: {movie.GenreName}");
 	}
+
+	public static MovieSessionModel GetSession(int sessionID)
+	{
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		foreach (var session in sessions)
+		{
+			if (session.sessionID == sessionID)
+			{
+				return session;
+			}
+		}
+		return null;
+	}
+
 
 }
