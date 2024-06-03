@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace Cinema;
 public class MovieLogic
 {
-const string filePathMovies = "DataStorage/Movies.json";
+	const string filePathMovies = "DataStorage/Movies.json";
 	const string filePathSessions = "DataStorage/Sessions.json";
 	private int _ageRestriction;
 	public int AgeRestriction

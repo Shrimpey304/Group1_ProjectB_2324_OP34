@@ -105,6 +105,15 @@
     "Salt": "rxFrMnkYMvU+f//2HB/n/w==",
     "FullName": "Aidan",
     "IsAdmin": false,
-    "IsActive": true
+    "IsActive": false
+  },
+  {
+    "Id": 12,
+    "EmailAddress": "aidanvb5@gmail.com",
+    "Password": "c70cd061bd7735a177276928c95e891aaf1ac0bfba6fae03b66329257f669248",
+    "Salt": "gXtfY9MxZrUMJfL3M2Jdmw==",
+    "FullName": "Aidan",
+    "IsAdmin": false,
+    "IsActive": false
   }
 ]
