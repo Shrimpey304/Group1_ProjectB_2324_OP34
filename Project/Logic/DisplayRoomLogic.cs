@@ -172,24 +172,20 @@ public static class DisplayRoom{
 	/// <param name="fileNM">The file directory.</param>
 	public static void KeyRController(List<Tuple<int,int>> SelectedPositions, Seating seating, MovieSessionModel session, string fileNM){
 
-		if(SelectedPositions is not null && SelectedPositions.Count != 0){
-			foreach(Tuple<int,int> pos in SelectedPositions){
+		foreach(Tuple<int,int> pos in SelectedPositions){
 
-				var selectedSeatingPosition = seating!.SeatingArrangement[pos.Item1, pos.Item2][0];
+			var selectedSeatingPosition = seating!.SeatingArrangement[pos.Item1, pos.Item2][0];
 
-				selectedSeatingPosition.reservedInSessionID.Add(session.sessionID);
-				selectedSeatingPosition.inPrereservation = false;
-				List<Seating> uploadSeatingReserved = new(){seating!};
+			selectedSeatingPosition.reservedInSessionID.Add(session.sessionID);
+			selectedSeatingPosition.inPrereservation = false;
+			List<Seating> uploadSeatingReserved = new(){seating!};
 
-				JsonAccess.UploadToJson(uploadSeatingReserved, fileNM);
-			}
-			Console.WriteLine("\nGenerating ticket for selected seats");
-			Thread.Sleep(2000);
-		}else{
-			Console.WriteLine("you need to select atleast 1 seat");
-			Thread.Sleep(1000);
-			return;
+			JsonAccess.UploadToJson(uploadSeatingReserved, fileNM);
 		}
+
+		Console.WriteLine("\nGenerating ticket for selected seats");
+		Thread.Sleep(2000);
+
 	}
 
 	/// <summary>
@@ -365,62 +361,29 @@ public static class DisplayRoom{
 
 	public static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating seating)
 	{
-		if (selectedPositions.Count >= 8)
+		if (selectedPositions.Count >= 8 || selectedPositions.Count == 0)
 		{
-			return false; 
-		}
-
-		if (selectedPositions.Count == 0)
-		{
-			return true; 
+			return selectedPositions.Count == 0;
 		}
 
 		var sortedPositions = selectedPositions.OrderBy(pos => pos.Item2).ToList();
+		var firstCol = sortedPositions.First().Item2;
+		var lastCol = sortedPositions.Last().Item2;
 
-		bool isNextToSelected = false;
-		foreach (var pos in selectedPositions)
+		if (firstCol == 0 || lastCol == seating.Columns - 1)
 		{
-			if (Math.Abs(pos.Item2 - selectedPositionCol) == 1 && pos.Item1 == selectedPositionRow)
-			{
-				isNextToSelected = true;
-				break;
-			}
-		}
-
-		if (!isNextToSelected)
-		{
-			return false; 
+			return true;
 		}
 
 		for (int i = 0; i < sortedPositions.Count - 1; i++)
 		{
-			var currentCol = sortedPositions[i].Item2;
-			var nextCol = sortedPositions[i + 1].Item2;
-
-			if (nextCol - currentCol != 1)
+			if (sortedPositions[i + 1].Item2 - sortedPositions[i].Item2 != 1)
 			{
-				return false; 
+				return false;
 			}
 		}
 
-		var firstCol = sortedPositions.First().Item2;
-		var lastCol = sortedPositions.Last().Item2;
-		if (firstCol == 0 || lastCol == seating.Columns - 1)
-		{
-			return true; 
-		}
-
-
-		for (int col = firstCol + 1; col < lastCol; col++)
-		{
-			bool seatSelected = selectedPositions.Any(pos => pos.Item2 == col);
-			if (!seatSelected)
-			{
-				return false; 
-			}
-		}
-
-		return true;
+		return sortedPositions.Any(pos => pos.Item1 == selectedPositionRow && Math.Abs(pos.Item2 - selectedPositionCol) == 1);
 	}
 
 	public static void changeSeatprice(SeatInfo seat){
@@ -455,79 +418,66 @@ public static class DisplayRoom{
 
 		List<Seating> seatingInstance = new();
 
-		int Rows = rows;
-		int Columns = cols;
-
 		string[] filelist = Directory.GetFiles(DataStoragePath);
 		List<int> cinemaroomlist = new();
 
-		if (filelist != null){
-
-			foreach(string file in filelist){
-				if (file.ToLower().Contains("cinemaroom")){
-					string[] splitfile = file.ToLower().Split("cinemaroom");
-					string[] splitfileID = splitfile[1].Split(".json");
-					int fileID = Convert.ToInt32(splitfileID[0]);
-					cinemaroomlist.Add(fileID);
-				}
+		foreach(string file in filelist)
+		{
+			if (file.ToLower().Contains("cinemaroom"))
+			{
+				string[] splitfile = file.ToLower().Split("cinemaroom");
+				string[] splitfileID = splitfile[1].Split(".json");
+				int fileID = Convert.ToInt32(splitfileID[0]);
+				cinemaroomlist.Add(fileID);
 			}
 		}
 
-		if (cinemaroomlist is not null){
+		int id = cinemaroomlist.Any() ? cinemaroomlist.Max() + 1 : 1;
+		Seating seating = new Seating(rows, cols, id);
 
-			int id = cinemaroomlist.Max() + 1;
-			Seating seating = new Seating(Rows, Columns, id);
-			for (int i = 0; i < Rows; i++)
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
 			{
-				for (int j = 0; j < Columns; j++)
+				if (seating.SeatingArrangement[i, j] == null)
 				{
-					if (seating.SeatingArrangement[i, j] == null)
-					{
-						seating.SeatingArrangement[i, j] = new List<SeatInfo>();
-					}
-					seating.SeatingArrangement[i, j].Add(new SeatInfo{
-
-						RowID = i,
-						ColumnID = j,
-						Price = NORMAL_SEAT_PRICE,
-						reservedInSessionID = new(),
-						Type = SeatType.Normal,
-						inPrereservation = false
-
-					});
+					seating.SeatingArrangement[i, j] = new List<SeatInfo>();
 				}
-			}
-			string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
-			seatingInstance.Add(seating);
-			JsonAccess.UploadToJson(seatingInstance, newPath);
-
-		}else{
-
-			int id = 1;
-			Seating seating = new Seating(Rows, Columns, id);
-			for (int i = 0; i < Rows; i++)
-			{
-				for (int j = 0; j < Columns; j++)
+				seating.SeatingArrangement[i, j].Add(new SeatInfo
 				{
-					if (seating.SeatingArrangement[i, j] == null)
-					{
-						seating.SeatingArrangement[i, j] = new List<SeatInfo>();
-					}
-					seating.SeatingArrangement[i, j].Add(new SeatInfo{
-
-						RowID = i,
-						ColumnID = j,
-						Price = NORMAL_SEAT_PRICE,
-						reservedInSessionID = new(),
-						Type = SeatType.Normal,
-						inPrereservation = false
-
-					});
-				}
+					RowID = i,
+					ColumnID = j,
+					Price = NORMAL_SEAT_PRICE,
+					reservedInSessionID = new(),
+					Type = SeatType.Normal,
+					inPrereservation = false
+				});
 			}
-			string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
-			seatingInstance.Add(seating);
-			JsonAccess.UploadToJson(seatingInstance, newPath);
 		}
+
+		string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
+		seatingInstance.Add(seating);
+		JsonAccess.UploadToJson(seatingInstance, newPath);
 	}
+	public static int GetValidSize(string prompt)
+	{
+		int value;
+		while (true)
+		{
+			Console.WriteLine(prompt);
+			Console.Write(">>> ");
+			string input = Console.ReadLine()!;
+
+			if (int.TryParse(input, out value) && value >= 0 && value <= 35)
+			{
+				break;
+			}
+			else
+			{
+				Console.WriteLine("Invalid input. Please enter a number between 0 and 35.");
+			}
+		}
+		return value;
+	}
+
 }
