@@ -103,24 +103,13 @@ public static class DisplayRoom{
 			return;
 		}
 
-		bool containsSession = false;
-		
-		foreach (var seshID in cursorOnSeatingPosition.reservedInSessionID)
+		if (cursorOnSeatingPosition.reservedInSessionID.Contains(session.sessionID))
 		{
-			if (seshID == session.sessionID)
-			{
-				containsSession = true;
-				Console.WriteLine("Can't reserve a seat that is already reserved.");
-				break;
-			}
-		}
-
-		if (containsSession)
-		{
+			Console.WriteLine("Can't reserve a seat that is already reserved.");
 			return;
 		}
 
-		if (cursorOnSeatingPosition.inPrereservation == false)
+		if (!cursorOnSeatingPosition.inPrereservation)
 		{
 			if (SelectedPositions.Count == 0 || SelectedSeatsInRow(SelectedPositions, selectedPositionRow, selectedPositionCol, seating))
 			{
@@ -133,7 +122,7 @@ public static class DisplayRoom{
 				Console.WriteLine("You can only select multiple connecting seats in the same row.");
 			}
 		}
-		else if (cursorOnSeatingPosition.inPrereservation == true)
+		else
 		{
 			var sortedPositions = SelectedPositions.OrderBy(pos => pos.Item2).ToList();
 
@@ -459,6 +448,7 @@ public static class DisplayRoom{
 		seatingInstance.Add(seating);
 		JsonAccess.UploadToJson(seatingInstance, newPath);
 	}
+	
 	public static int GetValidSize(string prompt)
 	{
 		int value;

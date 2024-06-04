@@ -121,9 +121,15 @@ public class MovieUI{
 		}while ((UserInput == null) || (MovieLogic.IsDigitsOnly(UserInput) == false) || (UserInput == ""));
 		
 		int UserInputInt = Convert.ToInt32(UserInput);  // this is possible, because it is always only numbers (see 2 lines above)
-		if (UserInputInt != null){
+
+		try{
 
 			TicketLogic.ReserveFilteredTicket(filteredList[UserInputInt-1].MovieID);
+
+		}catch(ArgumentOutOfRangeException){
+
+			Console.WriteLine("This number is not on the list");
+			ShowFilteredMovies(filteredList);
 
 		}
 	}
