@@ -65,10 +65,16 @@ public static class DisplayRoomUI{
 
 				break;
 				case ConsoleKey.R: //reserve selected seats
-					
-					DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
 
-				return SelectedPositions;
+					if(SelectedPositions is not null && SelectedPositions.Count != 0){	
+
+						DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
+						return SelectedPositions;			
+					}else{
+						Console.WriteLine("you need to select atleast 1 seat");
+						Thread.Sleep(1000);
+						break;
+					}
 			}
 
 			List<Seating> TempUploadSeating = new(){seating!};
