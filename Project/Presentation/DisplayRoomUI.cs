@@ -7,12 +7,12 @@ namespace Cinema;
 
 public static class DisplayRoomUI{
 
-    /// <summary>
+	/// <summary>
 	/// Allows users to select seating for a movie session.
 	/// </summary>
 	/// <param name="session">The movie session model.</param>
 	/// <returns>A list of selected seating positions as tuples.</returns>
-    public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
+	public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
 
 		string fileNM = DisplayRoom.getFileDir(session);
 
@@ -87,6 +87,7 @@ public static class DisplayRoomUI{
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
 		Console.Write("Press Backspace to cancel and go back to the main menu\n");
+		Console.Write("Use the arrow keys to navigate the seats\n");
 		Console.Write("Press Enter to select a seat (max 8 in a row)\n");
 		Console.Write("Press R to reserve selected seats\n");
 		if(SelectedPositions!.Count > 0){
@@ -113,6 +114,7 @@ public static class DisplayRoomUI{
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.Write(" = Screen  \n");
+		Console.Write("Use the arrow keys to navigate the seats\n");
 		Console.Write("Press Enter to change seat type\n");
 		Console.Write("Press Backspace when you are finished and wish to go to the main menu\n");
 	}
