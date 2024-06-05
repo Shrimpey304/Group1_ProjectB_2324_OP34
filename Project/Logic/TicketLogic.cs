@@ -71,16 +71,6 @@ public class TicketLogic
                 // Remove the SessionID from the corresponding cinema room JSON file
                 RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
 
-        public static void ReserveFilteredTicket(int selectedMovieID){
-            
-            Console.WriteLine("\n\n");
-            selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
-            selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
-            totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
-            MenuUtils.displaySnackOption();
-        }
-
-
                 _reservations.Remove(reservationToCancel);
                 JsonAccess.UploadToJson(_reservations, filePathReservations);
                 Console.WriteLine($"Reservation with ID {reservationId} cancelled successfully.");
@@ -96,6 +86,15 @@ public class TicketLogic
             Console.WriteLine("Invalid reservation ID.");
         }
     }
+
+        public static void ReserveFilteredTicket(int selectedMovieID){
+            
+            Console.WriteLine("\n\n");
+            selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+            selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
+            totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
+            MenuUtils.displaySnackOption();
+        }
 
     private static void RemoveSessionFromCinemaRoom(int sessionID)
     {
