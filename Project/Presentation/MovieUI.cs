@@ -3,6 +3,7 @@ using Cinema;
 public class MovieUI{
 
 	const string filePathMovies = "DataStorage/Movies.json";
+	const string filePathSessions = "DataStorage/Sessions.json";
 
 	public static void ShowMovies()
 	{
@@ -97,6 +98,24 @@ public class MovieUI{
 		}
 	}
 
+
+	public static void ShowSessions()
+	{
+		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+
+		Console.Clear();
+		Console.WriteLine($" _______________________________________________________________________________________________________________");
+		Console.WriteLine($"| {"ID".PadRight(4)} | {"Start Time".PadRight(20)} | {"End Time".PadRight(20)} | {"Movie ID".PadRight(8)} | {"Room ID".PadRight(8)} |");
+		Console.WriteLine($"|------+----------------------+----------------------+----------+---------|");
+
+		foreach (MovieSessionModel session in SessionList)
+		{
+			Console.WriteLine($"| {session.sessionID.ToString().PadRight(4)} | {session.StartTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.EndTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.MovieID.ToString().PadRight(8)} | {session.RoomID.ToString().PadRight(8)} |");
+		}
+		Console.WriteLine($" ------------------------------------------------------------------------------------------------------------------");
+	}
+
+
 	public static void ShowFilteredMovies(List<MovieModel> filteredList){
 		
 		string UserInput;
@@ -140,6 +159,5 @@ public class MovieUI{
 		MenuUtils.displayFilters();
 
 	}
-
 
 }

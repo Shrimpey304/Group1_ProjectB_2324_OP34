@@ -109,11 +109,11 @@
   },
   {
     "Id": 12,
-    "EmailAddress": "thom.jochems@gmail.com",
-    "Password": "aa429a9731e2b3cc31f98e041160decbd0f2776ab3c80495eea59f183209579a",
-    "Salt": "nP7ln4xgxenWGm+1lTxGNA==",
-    "FullName": "Thom Jochems",
+    "EmailAddress": "aidanvb5@gmail.com",
+    "Password": "c70cd061bd7735a177276928c95e891aaf1ac0bfba6fae03b66329257f669248",
+    "Salt": "gXtfY9MxZrUMJfL3M2Jdmw==",
+    "FullName": "Aidan",
     "IsAdmin": false,
-    "IsActive": true
+    "IsActive": false
   }
 ]
