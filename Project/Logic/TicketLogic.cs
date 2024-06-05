@@ -45,6 +45,7 @@ public class TicketLogic
         SnackMenuLogic.FinishOrder = false;
         Console.WriteLine("Press any key to return to the main menu");
         Console.ReadKey();
+        SnackMenuLogic.OrderedSnacks.Clear();
         MenuUtils.displayLoggedinMenu();
     }
 
@@ -54,7 +55,7 @@ public class TicketLogic
         AccountsLogic.CancelTickets();
 
         Console.WriteLine("Enter the reservation ID to cancel (leave blank if you don't want to cancel any reservation): ");
-        string input = Console.ReadLine();
+        string input = Console.ReadLine()!;
         if (string.IsNullOrEmpty(input))
         {
             Console.WriteLine("Cancellation cancelled.");
@@ -64,22 +65,12 @@ public class TicketLogic
 
         if (int.TryParse(input, out int reservationId))
         {
-            Ticket reservationToCancel = _reservations.FirstOrDefault(r => r.TicketID == reservationId);
+            Ticket reservationToCancel = _reservations.FirstOrDefault(r => r.TicketID == reservationId)!;
 
             if (reservationToCancel != null)
             {
                 // Remove the SessionID from the corresponding cinema room JSON file
                 RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
-
-        public static void ReserveFilteredTicket(int selectedMovieID){
-            
-            Console.WriteLine("\n\n");
-            selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
-            selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
-            totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
-            MenuUtils.displaySnackOption();
-        }
-
 
                 _reservations.Remove(reservationToCancel);
                 JsonAccess.UploadToJson(_reservations, filePathReservations);
@@ -95,6 +86,14 @@ public class TicketLogic
         {
             Console.WriteLine("Invalid reservation ID.");
         }
+    }
+    public static void ReserveFilteredTicket(int selectedMovieID){
+        
+        Console.WriteLine("\n\n");
+        selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+        selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
+        totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
+        MenuUtils.displaySnackOption();
     }
 
     private static void RemoveSessionFromCinemaRoom(int sessionID)

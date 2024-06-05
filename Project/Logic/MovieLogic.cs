@@ -278,7 +278,7 @@ public class MovieLogic
 				return session;
 			}
 		}
-		return null;
+		return null!;
 	}
 
 

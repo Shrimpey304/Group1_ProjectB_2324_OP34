@@ -12,7 +12,7 @@ namespace Cinema
             // Retrieve session details for the canceled reservation
             MovieSessionModel currentSession = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json")
                 .Where(s => s.sessionID == ticket.SessionID)
-                .FirstOrDefault();
+                .FirstOrDefault()!;
 
             // If session details are not found, exit the method
             if (currentSession == null)

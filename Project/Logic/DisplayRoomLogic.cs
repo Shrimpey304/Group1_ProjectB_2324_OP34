@@ -250,10 +250,15 @@ public static class DisplayRoom{
 
 		List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileNM);
 		Seating seating = seatingJson[0];
-		
-		foreach (var seat in selectedSeats)
-		{
-			totalSeatPrice += seating.SeatingArrangement[seat.Item1, seat.Item2][0].Price;
+		try{	
+
+			foreach (var seat in selectedSeats)
+			{
+				totalSeatPrice += seating.SeatingArrangement[seat.Item1, seat.Item2][0].Price;
+			}
+			
+		}catch(NullReferenceException e){
+			Console.WriteLine(e);
 		}
 
 		return totalSeatPrice;

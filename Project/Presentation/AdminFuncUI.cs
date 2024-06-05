@@ -94,7 +94,7 @@ public class AdminFuncUI
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to edit:");
-		string movieIdInput = Console.ReadLine();
+		string movieIdInput = Console.ReadLine()!;
 
 		if (string.IsNullOrWhiteSpace(movieIdInput))
 		{
@@ -161,7 +161,7 @@ public class AdminFuncUI
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to delete:");
-		string movieIdInput = Console.ReadLine();
+		string movieIdInput = Console.ReadLine()!;
 
 		if (string.IsNullOrWhiteSpace(movieIdInput))
 		{
@@ -209,21 +209,21 @@ public class AdminFuncUI
 			Console.WriteLine("\n---------------------------------------------------------------------------\n");
 			Console.WriteLine($"what time do you want to schedule this session (hh:mm:ss)\n");
 			Console.Write(">>> ");
-			string timeInput = Console.ReadLine();
+			string timeInput = Console.ReadLine()!;
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
 			Console.WriteLine("\n---------------------------------------------------------------------------\n");
 			Console.WriteLine($"what is the duration of this movie (hh:mm:ss)\n");
 			Console.Write(">>> ");
-			string durationInput = Console.ReadLine();
+			string durationInput = Console.ReadLine()!;
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
 			Console.WriteLine("\n---------------------------------------------------------------------------\n");
 			Console.WriteLine($"what room number will the movie play in\n");
 			Console.Write(">>> ");
-			string roomnumber = Console.ReadLine();
+			string roomnumber = Console.ReadLine()!;
 			int introomnumber = Convert.ToInt32(roomnumber);
 
 			// Parse date and time inputs
@@ -272,7 +272,7 @@ public class AdminFuncUI
 
 			// Prompt the admin to enter new details for the session
 			Console.WriteLine("Enter the new date for the session (dd-MM-yyyy):");
-			string dateInput = Console.ReadLine();
+			string dateInput = Console.ReadLine()!;
 			DateTime newStartTime;
 			if (!DateTime.TryParseExact(dateInput, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out newStartTime))
 			{
@@ -281,7 +281,7 @@ public class AdminFuncUI
 			}
 
 			Console.WriteLine("Enter the new starting time for the session (HH:mm:ss):");
-			string startTimeInput = Console.ReadLine();
+			string startTimeInput = Console.ReadLine()!;
 			DateTime startTime;
 			if (!DateTime.TryParseExact(startTimeInput, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out startTime))
 			{
@@ -290,7 +290,7 @@ public class AdminFuncUI
 			}
 
 			Console.WriteLine("Enter the new ending time for the session (HH:mm:ss):");
-			string endTimeInput = Console.ReadLine();
+			string endTimeInput = Console.ReadLine()!;
 			DateTime endTime;
 			if (!DateTime.TryParseExact(endTimeInput, "HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out endTime))
 			{
@@ -299,7 +299,7 @@ public class AdminFuncUI
 			}
 
 			Console.WriteLine("Enter the new movie ID:");
-			string movieIDInput = Console.ReadLine();
+			string movieIDInput = Console.ReadLine()!;
 			int newMovieID;
 			if (!int.TryParse(movieIDInput, out newMovieID))
 			{
@@ -308,7 +308,7 @@ public class AdminFuncUI
 			}
 
 			Console.WriteLine("Enter the new room ID:");
-			string roomIDInput = Console.ReadLine();
+			string roomIDInput = Console.ReadLine()!;
 			int newRoomID;
 			if (!int.TryParse(roomIDInput, out newRoomID))
 			{
@@ -339,7 +339,7 @@ public class AdminFuncUI
 		MovieUI.ShowSessions();
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine("Enter the ID of the session you want to delete:");
-		string sessionIDInput = Console.ReadLine();
+		string sessionIDInput = Console.ReadLine()!;
 
 		// Check if input is empty
 		if (string.IsNullOrWhiteSpace(sessionIDInput))
