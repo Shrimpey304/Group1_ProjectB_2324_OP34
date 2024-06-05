@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Cinema;
 public class MovieLogic
 {
@@ -9,7 +11,7 @@ public class MovieLogic
 		get => _ageRestriction;
 		set
 		{
-			if (value < AgeRestriction)
+			if (value > AgeRestriction)
 			{
 				_ageRestriction = value;
 			}
@@ -17,39 +19,118 @@ public class MovieLogic
 	}
 
 	public static bool IsDigitsOnly(string str)
-{
-	foreach (char c in str)
 	{
-		if (c < '0' || c > '9')
-			return false;
+		foreach (char c in str)
+		{
+			if (c < '0' || c > '9')
+				return false;
+		}
+
+		return true;
 	}
 
-	return true;
-}
+
+	private static List<MovieModel> movies;
+	private static int nextMovieID = 1;
+	
+
+	static MovieLogic()
+	{
+		InitializeMovies();
+	}
+
+	private static void InitializeMovies()
+	{
+		if (File.Exists(filePathMovies))
+		{
+			string json = File.ReadAllText(filePathMovies);
+			movies = JsonConvert.DeserializeObject<List<MovieModel>>(json)!;
+			if (movies != null && movies.Count > 0)
+			{
+				nextMovieID = movies[movies.Count - 1].MovieID + 1;
+			}
+			else
+			{
+				movies = new List<MovieModel>();
+			}
+		}
+		else
+		{
+			movies = new List<MovieModel>();
+		}
+	}
 
 	public static void AddMovie(MovieModel movie)
+        {
+            if (movies.Count > 0)
+            {
+                nextMovieID = movies.Max(m => m.MovieID) + 1;
+            }
+            else
+            {
+                nextMovieID = 1;
+            }
+
+            movie.MovieID = nextMovieID++;
+            movies.Add(movie);
+            SaveMovies();
+        }
+
+	private static void SaveMovies()
 	{
-		List<MovieModel> MovieList = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		string json = JsonConvert.SerializeObject(movies, Formatting.Indented);
+		File.WriteAllText(filePathMovies, json);
+	}
 
-		MovieList.Add(movie);
+	public static MovieModel GetMovieByID(int movieID)
+	{
+		foreach (var movie in movies)
+		{
+			if (movie.MovieID == movieID)
+			{
+				return movie;
+			}
+		}
+		return null!;
+	}
 
-		JsonAccess.UploadToJson(MovieList, filePathMovies);
+	public static void UpdateMovie(MovieModel updatedMovie)
+	{
+		for (int i = 0; i < movies.Count; i++)
+		{
+			if (movies[i].MovieID == updatedMovie.MovieID)
+			{
+				movies[i] = updatedMovie;
+				JsonAccess.UploadToJson(movies, filePathMovies);
+				break;
+			}
+		}
+	}
+
+	public static bool DeleteMovie(int movieID)
+	{
+		for (int i = 0; i < movies.Count; i++)
+		{
+			if (movies[i].MovieID == movieID)
+			{
+				movies.RemoveAt(i);
+				JsonAccess.UploadToJson(movies, filePathMovies);
+				return true;
+			}
+		}
+		return false;
 	}
 
 
 	public static void AddMovieSession(MovieSessionModel session)
 	{
-		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		List<MovieSessionModel> sessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
 
-		int cnt = 0;
-		foreach(MovieSessionModel sesh in SessionList){
-			cnt ++;
-		}
-		session.sessionID = cnt;
+		int lastSessionID = sessionList.Any() ? sessionList.Max(s => s.sessionID) : 0;
+		session.sessionID = lastSessionID + 1;
 
-		SessionList.Add(session);
-
-		JsonAccess.UploadToJson(SessionList, filePathSessions);
+		sessionList.Add(session);
+		JsonAccess.UploadToJson(sessionList, filePathSessions);
 	}
 
 	public static MovieSessionModel getSession(int id){
@@ -62,6 +143,46 @@ public class MovieLogic
 		}
 		return null!;
 	}
+
+	public static void UpdateMovieSession(int sessionID, MovieSessionModel updatedSession)
+	{
+		List<MovieSessionModel> sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+
+		foreach (var session in sessions)
+		{
+			if (session.sessionID == sessionID)
+			{
+				// Update session properties
+				session.StartTime = updatedSession.StartTime;
+				session.EndTime = updatedSession.EndTime;
+				session.MovieID = updatedSession.MovieID;
+				session.RoomID = updatedSession.RoomID;
+
+				// Save updated sessions to file
+				JsonAccess.UploadToJson(sessions, filePathSessions);
+				return;
+			}
+		}
+
+		Console.WriteLine($"Session with ID {sessionID} not found.");
+	}
+
+
+	public static bool DeleteMovieSession(int sessionID)
+	{
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		for (int i = 0; i < sessions.Count; i++)
+		{
+			if (sessions[i].sessionID == sessionID)
+			{
+				sessions.RemoveAt(i);
+				JsonAccess.UploadToJson(sessions, filePathSessions);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	public static string FindMovie(int MovieID)
 	{
@@ -75,5 +196,90 @@ public class MovieLogic
 		}
 		return "";
 	}  
+
+	
+	public static void movieGenreFilter(){
+
+		Console.Clear();
+
+		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		List<MovieModel> SelectedMovies = new();
+
+		Console.WriteLine("enter what you want genre you want to filter");
+		Console.Write(">>>");
+		string filter = Console.ReadLine()!;
+
+		foreach(MovieModel movie in CurrentMovies){
+
+			if(movie.GenreName.Contains(filter)){
+
+				SelectedMovies.Add(movie);
+
+			}
+		}
+
+		if (SelectedMovies.Count != 0){
+			MovieUI.ShowFilteredMovies(SelectedMovies);
+		}
+		
+		MenuUtils.displayLoggedinMenu();
+
+	}
+
+
+	public static void movieNameFilter(){
+
+		Console.Clear();
+
+		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		List<MovieModel> SelectedMovies = new();
+
+		Console.WriteLine("enter what you want name you want to filter");
+		Console.Write(">>>");
+		string filter = Console.ReadLine()!;
+
+		foreach(MovieModel movie in CurrentMovies){
+
+			if(movie.Title.Contains(filter)){
+
+				SelectedMovies.Add(movie);
+
+			}
+		}
+
+		if (SelectedMovies.Count != 0){
+			MovieUI.ShowFilteredMovies(SelectedMovies);
+		}
+		
+		MenuUtils.displayLoggedinMenu();
+
+	}
+
+	public static void selectMovieWithFilter(){
+
+	}
+
+
+	public static void DisplayMovieDetails(MovieModel movie)
+	{
+		Console.WriteLine($"Title: {movie.Title}");
+		Console.WriteLine($"Age Restriction: {movie.AgeRestriction}");
+		Console.WriteLine($"Description: {movie.Description}");
+		Console.WriteLine($"Genre: {movie.GenreName}");
+	}
+
+	public static MovieSessionModel GetSession(int sessionID)
+	{
+		var sessions = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
+		foreach (var session in sessions)
+		{
+			if (session.sessionID == sessionID)
+			{
+				return session;
+			}
+		}
+		return null!;
+	}
+
 
 }

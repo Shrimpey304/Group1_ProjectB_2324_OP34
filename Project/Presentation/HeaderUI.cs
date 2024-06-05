@@ -23,6 +23,15 @@ public static class DisplayHeaderUI{
 		Console.WriteLine("     ) )  ( ( ( ( ( (     )    (   ( (       () /\\ \\    ");
 		Console.WriteLine(" ___/ /   / /  \\ \\/ /    /  /\\  \\   \\ \\___   ( (  \\ \\   ");
 		Console.WriteLine("/____/   (_/    \\__/    /__(  )__\\   \\____)  ()_)  \\_\\  ");
+		Console.WriteLine("_________________________________________________________________");
+		Console.WriteLine("Your current order:\n");
+		if (SnackMenuLogic.OrderedSnacks.Count!= 0)
+		{
+			foreach (Tuple<string,int> snack in SnackMenuLogic.OrderedSnacks)
+			{
+				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
+			}
+		}
 	}
 
 	public static void AdminHeader()
@@ -34,7 +43,7 @@ public static class DisplayHeaderUI{
 		Console.WriteLine("  )    (     ) )  ) )   / / \\/ \\ \\      | |    ( ( ( ( ( (   ");
 		Console.WriteLine(" /  /\\  \\   / /__/ /   /_/      \\_\\    _| |__  / /  \\ \\/ /   ");
 		Console.WriteLine("/__(  )__\\ (______/   (/          \\)  /_____( (_/    \\__/    ");
-                                                             
+															 
 	}
 
 	public static void LoginHeader()
@@ -58,5 +67,25 @@ public static class DisplayHeaderUI{
 		Console.WriteLine("( ( \\ \\_))  \\ \\___    \\ \\__/ /    _| |__  ___/ /     ( (      \\ \\___  ( ( \\ \\_)) ");
 		Console.WriteLine(" )_) \\__/    \\____\\    \\____/    /_____( /____/      /__\\      \\____\\  )_) \\__/  ");
 	}
+
+	public static void TicketsHeader(){
+		Console.WriteLine(" ________    _____     ____    __   ___    _____   ________    _____  ");
+		Console.WriteLine("(___  ___)  (_   _)   / ___)  () ) / __)  / ___/  (___  ___)  / ____\\ ");
+		Console.WriteLine("    ) )       | |    / /      ( (_/ /    ( (__        ) )    ( (___   ");
+		Console.WriteLine("   ( (        | |   ( (       ()   (      ) __)      ( (      \\___ \\  ");
+		Console.WriteLine("    ) )       | |   ( (       () /\\ \\    ( (          ) )         ) ) ");
+		Console.WriteLine("   ( (       _| |__  \\ \\___   ( (  \\ \\    \\ \\___     ( (      ___/ /  ");
+		Console.WriteLine("   /__\\     /_____(   \\____)  ()_)  \\_\\    \\____\\    /__\\    /____/	 ");
+	}
+
+	public static void UserHeader(){
+		Console.WriteLine(" __    __    _____    _____   ______    ");
+		Console.WriteLine(" ) )  ( (   / ____\\  / ___/  (   __ \\   ");
+		Console.WriteLine("( (    ) ) ( (___   ( (__     ) (__) )  ");
+		Console.WriteLine(" ) )  ( (   \\___ \\   ) __)   (    __/   ");
+		Console.WriteLine("( (    ) )      ) ) ( (       ) \\ \\  _  ");
+		Console.WriteLine(" ) \\__/ (   ___/ /   \\ \\___  ( ( \\ \\_)) ");
+		Console.WriteLine(" \\______/  /____/     \\____\\  )_) \\__/  ");
+	}                                 
 
 }

@@ -33,7 +33,6 @@ public class MovieSessionUI
                 }
 
                 Console.WriteLine($" ------------------------------------------------------------------------");
-                Console.WriteLine("\nPlease select a session by typing the session ID and pressing enter.");
 
                 string inp = InputHandler.ReadInputWithCancelLoggedIn("\nPlease select a session by typing the session ID and pressing enter. Press ESC to cancel.");
                 if (inp == null) return null!; // Handle cancellation

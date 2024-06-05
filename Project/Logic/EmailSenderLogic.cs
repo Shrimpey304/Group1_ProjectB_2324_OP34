@@ -4,6 +4,10 @@ using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 
+// THIS PROGRAM USES AN EMAIL SERVER OF 1 OF THE TEAMMEMBERS OF THIS PROJECT.
+// PLEASE BE AWARE THAT THIS SERVER, THE HOSTING, AND THE SETUP OF IT MAY BE SUBJECT TO CHANGE AND MAY NOT WORK IN THE FUTURE DUE TO LACK OF CODE UPKEEP!
+
+
 public class EmailSenderLogic
 {
 	public void SendEmail(string smtpHost, int smtpPort, string smtpUser, string smtpPass, 
