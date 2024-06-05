@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "TicketID": 1,
+    "SessionID": 9,
+    "ReservedSeats": [
+      {
+        "Item1": 1,
+        "Item2": 3
+      },
+      {
+        "Item1": 1,
+        "Item2": 4
+      },
+      {
+        "Item1": 1,
+        "Item2": 5
+      },
+      {
+        "Item1": 1,
+        "Item2": 6
+      },
+      {
+        "Item1": 1,
+        "Item2": 7
+      }
+    ],
+    "TotalPrice": 153.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Churros",
+        "Item2": 2
+      }
+    ]
+  },
+  {
+    "TicketID": 2,
+    "SessionID": 9,
+    "ReservedSeats": [
+      {
+        "Item1": 9,
+        "Item2": 0
+      }
+    ],
+    "TotalPrice": 125.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Churros",
+        "Item2": 2
+      }
+    ]
+  },
+  {
+    "TicketID": 3,
+    "SessionID": 9,
+    "ReservedSeats": [
+      {
+        "Item1": 6,
+        "Item2": 5
+      },
+      {
+        "Item1": 6,
+        "Item2": 6
+      }
+    ],
+    "TotalPrice": 45.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Nachos with Cheese",
+        "Item2": 3
+      }
+    ]
+  },
+  {
+    "TicketID": 4,
+    "SessionID": 9,
+    "ReservedSeats": [
+      {
+        "Item1": 12,
+        "Item2": 3
+      },
+      {
+        "Item1": 12,
+        "Item2": 4
+      },
+      {
+        "Item1": 12,
+        "Item2": 5
+      },
+      {
+        "Item1": 12,
+        "Item2": 6
+      }
+    ],
+    "TotalPrice": 99.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Nachos with Cheese",
+        "Item2": 3
+      }
+    ]
+  },
+  {
+    "TicketID": 5,
+    "SessionID": 7,
+    "ReservedSeats": [
+      {
+        "Item1": 0,
+        "Item2": 3
+      },
+      {
+        "Item1": 0,
+        "Item2": 4
+      }
+    ],
+    "TotalPrice": 99.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Nachos with Cheese",
+        "Item2": 3
+      }
+    ]
+  },
+  {
+    "TicketID": 6,
+    "SessionID": 2,
+    "ReservedSeats": [
+      {
+        "Item1": 0,
+        "Item2": 4
+      },
+      {
+        "Item1": 0,
+        "Item2": 5
+      }
+    ],
+    "TotalPrice": 46.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": []
+  },
+  {
+    "TicketID": 7,
+    "SessionID": 2,
+    "ReservedSeats": [
+      {
+        "Item1": 2,
+        "Item2": 3
+      }
+    ],
+    "TotalPrice": 45.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Pretzel",
+        "Item2": 2
+      }
+    ]
+  },
+  {
+    "TicketID": 8,
+    "SessionID": 7,
+    "ReservedSeats": [
+      {
+        "Item1": 2,
+        "Item2": 2
+      }
+    ],
+    "TotalPrice": 24.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Large Soda",
+        "Item2": 1
+      },
+      {
+        "Item1": "Caramel Popcorn",
+        "Item2": 2
+      }
+    ]
+  },
+  {
+    "TicketID": 9,
+    "SessionID": 9,
+    "ReservedSeats": [
+      {
+        "Item1": 11,
+        "Item2": 3
+      }
+    ],
+    "TotalPrice": 28.0,
+    "AccountID": 10,
+    "UserID": 10,
+    "OrderedSnacks": [
+      {
+        "Item1": "Salty Popcorn",
+        "Item2": 1
+      }
+    ]
+  }
+]

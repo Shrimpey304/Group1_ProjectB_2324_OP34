@@ -114,7 +114,7 @@ public class AccountsLogic
 				{
 					foreach (var snack in ticket.OrderedSnacks)
 					{
-						Console.WriteLine($"{snack.Item1} - {snack.Item2}");
+						Console.WriteLine($"- {snack.Item1} [{snack.Item2}x]");
 					}
 					Console.WriteLine();
 				}

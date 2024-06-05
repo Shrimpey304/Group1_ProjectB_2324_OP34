@@ -26,12 +26,9 @@ public class SnackMenuLogic
 					}
 				}
 			}
-			if (OrderedSnacks != null)
+			foreach (Tuple<string,int> snack in OrderedSnacks)
 			{
-				foreach (Tuple<string,int> snack in OrderedSnacks)
-				{
-					Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
-				}
+				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
 			}
 		}
 		Console.WriteLine($"Total cost:\n${TotalCost}");
@@ -52,7 +49,7 @@ public class SnackMenuLogic
 		}
 		else
 		{
-			Console.WriteLine("No snacks ordered.");
+			Console.WriteLine("No snacks to remove.");
 			return;
 		}
 		// Ask user for the key to remove
