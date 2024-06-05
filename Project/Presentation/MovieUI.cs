@@ -98,7 +98,6 @@ public class MovieUI{
 		}
 	}
 
-
 	public static void ShowSessions()
 	{
 		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
@@ -114,7 +113,6 @@ public class MovieUI{
 		}
 		Console.WriteLine($" ------------------------------------------------------------------------------------------------------------------");
 	}
-
 
 	public static void ShowFilteredMovies(List<MovieModel> filteredList){
 		
@@ -159,5 +157,6 @@ public class MovieUI{
 		MenuUtils.displayFilters();
 
 	}
+
 
 }
