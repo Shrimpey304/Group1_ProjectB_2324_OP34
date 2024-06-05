@@ -84,21 +84,21 @@
         "ExtraInfo": "[V]"
     },
     {
-        "SnackID": 14,
+        "SnackID": 13,
         "Name": "Milkshake",
         "Price": 6.0,
         "Description": "Creamy milkshake available in flavors like chocolate, vanilla, or strawberry.",
         "ExtraInfo": "[L]"
     },
     {
-        "SnackID": 15,
+        "SnackID": 14,
         "Name": "Loaded Fries",
         "Price": 7.0,
         "Description": "French fries topped with melted cheese, bacon bits, and green onions.",
-        "ExtraInfo": "[V]"
+        "ExtraInfo": "[L]"
     },
     {
-        "SnackID": 16,
+        "SnackID": 15,
         "Name": "Brownie",
         "Price": 4.0,
         "Description": "Rich chocolate brownie, served warm and gooey.",

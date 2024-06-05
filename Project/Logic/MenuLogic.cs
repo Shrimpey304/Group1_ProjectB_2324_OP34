@@ -75,7 +75,7 @@ public static class MenuUtils{
 			{ "Login", UserLogin.Start },
 			{ "Register", UserRegistration.Start },
 			{ "Show MovieList", MovieUI.ShowMovies },
-			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Exit", KillProgram},
 
 		};
@@ -94,7 +94,7 @@ public static class MenuUtils{
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Show MovieList", () => MovieUI.ListAllMovies(true)},
-			{ "Show Snack Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Snack Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -118,7 +118,7 @@ public static class MenuUtils{
 			{ "Add Session", AdminFuncUI.adminAddSession},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -134,7 +134,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> DisplaySnack = new()
 		{ 
 
-			{ "Add snacks",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Add snacks",() => SnackMenuUI.ListSnackMenu(true)},
 			{"Remove snack", SnackMenuLogic.RemoveSnack},
 			{ "Finish order", SnackMenuLogic.FinishOrdering},
 
