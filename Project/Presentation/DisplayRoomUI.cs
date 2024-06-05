@@ -39,7 +39,7 @@ public static class DisplayRoomUI{
 			
 			DisplayRoom.SetColor(selectedPositionRow, selectedPositionCol, seating, session);
 
-			Legenda(SelectedPositions!);
+			Legenda(SelectedPositions!, session);
 
 			switch(Console.ReadKey(true).Key){	//controller
 				case ConsoleKey.UpArrow:
@@ -65,10 +65,16 @@ public static class DisplayRoomUI{
 
 				break;
 				case ConsoleKey.R: //reserve selected seats
-					
-					DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
 
-				return SelectedPositions;
+					if(SelectedPositions is not null && SelectedPositions.Count != 0){	
+
+						DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
+						return SelectedPositions;			
+					}else{
+						Console.WriteLine("you need to select atleast 1 seat");
+						Thread.Sleep(1000);
+						break;
+					}
 			}
 
 			List<Seating> TempUploadSeating = new(){seating!};
@@ -78,7 +84,7 @@ public static class DisplayRoomUI{
 		return null!;
 	}
 
-	public static void Legenda(List<Tuple<int,int>> SelectedPositions){
+	public static void Legenda(List<Tuple<int,int>> SelectedPositions, MovieSessionModel session){
 		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} euro)\n");
@@ -92,7 +98,7 @@ public static class DisplayRoomUI{
 		Console.Write("Press R to reserve selected seats\n");
 		if(SelectedPositions!.Count > 0){
 
-			Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat ");
+			Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat:");
 
 			foreach(Tuple<int,int> seatLoc in SelectedPositions){
 
@@ -103,6 +109,7 @@ public static class DisplayRoomUI{
 
 			Console.WriteLine("Selected seats: None");
 		}
+		Console.WriteLine($"\nCurrent price: {DisplayRoom.getSeatPricing(SelectedPositions, session)} euro\n");
 	}
 
 

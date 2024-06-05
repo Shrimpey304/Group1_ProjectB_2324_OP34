@@ -91,6 +91,7 @@ public static class MenuUtils{
 		{ 
 
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
+			{ "Reserve Ticket With Filter", MovieUI.FilterMovies},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Show MovieList", () => MovieUI.ListAllMovies(true)},
@@ -146,6 +147,20 @@ public static class MenuUtils{
 		}
 		return;
 		
+		
+	}
+
+	public static void displayFilters(){
+
+		Dictionary<string, Action> displayFilters = new()
+		{ 
+
+			{"Filter By Name", MovieLogic.movieNameFilter},
+			{"Filter By Genre", MovieLogic.movieGenreFilter}
+
+		};
+
+		RunCheckboxMenu(displayFilters, "main");
 		
 	}
 

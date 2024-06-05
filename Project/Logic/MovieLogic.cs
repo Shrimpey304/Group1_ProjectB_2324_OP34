@@ -161,6 +161,69 @@ const string filePathMovies = "DataStorage/Movies.json";
 		return "";
 	}  
 
+	
+	public static void movieGenreFilter(){
+
+		Console.Clear();
+
+		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		List<MovieModel> SelectedMovies = new();
+
+		Console.WriteLine("enter what you want genre you want to filter");
+		Console.Write(">>>");
+		string filter = Console.ReadLine()!;
+
+		foreach(MovieModel movie in CurrentMovies){
+
+			if(movie.GenreName.Contains(filter)){
+
+				SelectedMovies.Add(movie);
+
+			}
+		}
+
+		if (SelectedMovies.Count != 0){
+			MovieUI.ShowFilteredMovies(SelectedMovies);
+		}
+		
+		MenuUtils.displayLoggedinMenu();
+
+	}
+
+
+	public static void movieNameFilter(){
+
+		Console.Clear();
+
+		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
+		List<MovieModel> SelectedMovies = new();
+
+		Console.WriteLine("enter what you want name you want to filter");
+		Console.Write(">>>");
+		string filter = Console.ReadLine()!;
+
+		foreach(MovieModel movie in CurrentMovies){
+
+			if(movie.Title.Contains(filter)){
+
+				SelectedMovies.Add(movie);
+
+			}
+		}
+
+		if (SelectedMovies.Count != 0){
+			MovieUI.ShowFilteredMovies(SelectedMovies);
+		}
+		
+		MenuUtils.displayLoggedinMenu();
+
+	}
+
+	public static void selectMovieWithFilter(){
+
+	}
+
+
 	public static void DisplayMovieDetails(MovieModel movie)
 	{
 		Console.WriteLine($"Title: {movie.Title}");

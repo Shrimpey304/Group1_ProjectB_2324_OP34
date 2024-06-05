@@ -22,25 +22,17 @@ public class AdminFuncUI{
 	}
 
 
-    public static void adminCreateRoom(){
+    public static void adminCreateRoom()
+	{
 		DisplayHeaderUI.AdminHeader();
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
-		Console.WriteLine("How many rows will your room have\n");
-		Console.Write(">>> ");
-		string rows = Console.ReadLine()!;
-		int introws = Convert.ToInt32(rows);
 
-		Console.Clear();
-		DisplayHeaderUI.AdminHeader();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
-		Console.WriteLine("How many Columns will your room have\n");
-		Console.Write(">>> ");
-		string cols = Console.ReadLine()!;
-		int intcols = Convert.ToInt32(cols);
+		int introws = DisplayRoom.GetValidSize("How many rows will your room have (0-35)? ");
+		int intcols = DisplayRoom.GetValidSize("How many columns will your room have (0-35)? ");
 
 		DisplayRoom.CreateNewDefaultJson(introws, intcols);
 
-		Console.WriteLine("room created succesfully");
+		Console.WriteLine("Room created successfully");
 	}
 
 

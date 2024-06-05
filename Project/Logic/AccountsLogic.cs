@@ -84,7 +84,9 @@ public class AccountsLogic
 	public static void GetTickets()
 	{
 
-		Console.WriteLine("Current Tickets:\n\n");
+		DisplayHeaderUI.TicketsHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine("Tickets:\n\n");
 
 		if (CurrentAccount != null)
 		{
@@ -99,10 +101,11 @@ public class AccountsLogic
 				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
-
-				foreach (var seat in ticket.ReservedSeats)
-				{
-					Console.Write($"{seat.Item2} ");
+				if (ticket.ReservedSeats.Count != 0){
+					foreach (var seat in ticket.ReservedSeats)
+					{
+						Console.Write($"{seat.Item2} ");
+					}
 				}
 
 				Console.WriteLine("\nSnacks:");
@@ -123,6 +126,9 @@ public class AccountsLogic
 	
 
 	public static void getuserinfo(){
+
+		DisplayHeaderUI.UserHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine("your account info:");
 
 		Console.WriteLine($"Name: {CurrentAccount!.FullName}");

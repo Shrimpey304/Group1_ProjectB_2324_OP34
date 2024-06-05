@@ -19,6 +19,15 @@ namespace Cinema
             MenuUtils.displaySnackOption();
         }
 
+        public static void ReserveFilteredTicket(int selectedMovieID){
+            
+            Console.WriteLine("\n\n");
+            selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+            selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
+            totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
+            MenuUtils.displaySnackOption();
+        }
+
 
         public static void AddReservation()
         {

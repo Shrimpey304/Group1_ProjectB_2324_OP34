@@ -103,24 +103,13 @@ public static class DisplayRoom{
 			return;
 		}
 
-		bool containsSession = false;
-		
-		foreach (var seshID in cursorOnSeatingPosition.reservedInSessionID)
+		if (cursorOnSeatingPosition.reservedInSessionID.Contains(session.sessionID))
 		{
-			if (seshID == session.sessionID)
-			{
-				containsSession = true;
-				Console.WriteLine("Can't reserve a seat that is already reserved.");
-				break;
-			}
-		}
-
-		if (containsSession)
-		{
+			Console.WriteLine("Can't reserve a seat that is already reserved.");
 			return;
 		}
 
-		if (cursorOnSeatingPosition.inPrereservation == false)
+		if (!cursorOnSeatingPosition.inPrereservation)
 		{
 			if (SelectedPositions.Count == 0 || SelectedSeatsInRow(SelectedPositions, selectedPositionRow, selectedPositionCol, seating))
 			{
@@ -133,7 +122,7 @@ public static class DisplayRoom{
 				Console.WriteLine("You can only select multiple connecting seats in the same row.");
 			}
 		}
-		else if (cursorOnSeatingPosition.inPrereservation == true)
+		else
 		{
 			var sortedPositions = SelectedPositions.OrderBy(pos => pos.Item2).ToList();
 
@@ -172,24 +161,20 @@ public static class DisplayRoom{
 	/// <param name="fileNM">The file directory.</param>
 	public static void KeyRController(List<Tuple<int,int>> SelectedPositions, Seating seating, MovieSessionModel session, string fileNM){
 
-		if(SelectedPositions is not null && SelectedPositions.Count != 0){
-			foreach(Tuple<int,int> pos in SelectedPositions){
+		foreach(Tuple<int,int> pos in SelectedPositions){
 
-				var selectedSeatingPosition = seating!.SeatingArrangement[pos.Item1, pos.Item2][0];
+			var selectedSeatingPosition = seating!.SeatingArrangement[pos.Item1, pos.Item2][0];
 
-				selectedSeatingPosition.reservedInSessionID.Add(session.sessionID);
-				selectedSeatingPosition.inPrereservation = false;
-				List<Seating> uploadSeatingReserved = new(){seating!};
+			selectedSeatingPosition.reservedInSessionID.Add(session.sessionID);
+			selectedSeatingPosition.inPrereservation = false;
+			List<Seating> uploadSeatingReserved = new(){seating!};
 
-				JsonAccess.UploadToJson(uploadSeatingReserved, fileNM);
-			}
-			Console.WriteLine("\nGenerating ticket for selected seats");
-			Thread.Sleep(2000);
-		}else{
-			Console.WriteLine("you need to select atleast 1 seat");
-			Thread.Sleep(1000);
-			return;
+			JsonAccess.UploadToJson(uploadSeatingReserved, fileNM);
 		}
+
+		Console.WriteLine("\nGenerating ticket for selected seats");
+		Thread.Sleep(2000);
+
 	}
 
 	/// <summary>
@@ -266,19 +251,11 @@ public static class DisplayRoom{
 		List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(fileNM);
 		Seating seating = seatingJson[0];
 		
-		for (int i = 0; i < seating.Rows; i++)
+		foreach (var seat in selectedSeats)
 		{
-			for (int j = 0; j < seating.Columns; j++){
-				
-				foreach(var seat in selectedSeats){
-
-					if (seating.SeatingArrangement[i,j][0] == seating.SeatingArrangement[seat.Item1, seat.Item2][0]){
-						totalSeatPrice += seating.SeatingArrangement[i,j][0].Price;
-						continue;
-					}
-				}
-			}
+			totalSeatPrice += seating.SeatingArrangement[seat.Item1, seat.Item2][0].Price;
 		}
+
 		return totalSeatPrice;
 	}
 
@@ -292,14 +269,8 @@ public static class DisplayRoom{
 			Console.Write($"{i+1}".PadRight(3)); //displays rownumber
 			for (int j = 0; j < seating.Columns; j++)
 			{
-				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
-				{
-					processSeat(i, j, seating, session, true);
-				}
-				else 
-				{
-					processSeat(i, j, seating, session, false);
-				}
+				bool isSelected = seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol, selectedPositionRow];
+				processSeat(i, j, seating, session, isSelected);
 			}
 			Console.WriteLine("");
 		}
@@ -314,16 +285,10 @@ public static class DisplayRoom{
 			Console.ResetColor();
 			Console.Write($"{i+1}".PadRight(3)); //displays rownumber
 			for (int j = 0; j < seating.Columns; j++)
-			{
-				if (seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol , selectedPositionRow])
-				{
-					seatColor(seating.SeatingArrangement[i,j][0], true);
-				}
-				else
-				{
-					seatColor(seating.SeatingArrangement[i,j][0], false);
-				}
-			}
+	        {
+            	bool isSelected = seating.SeatingArrangement[i,j] == seating.SeatingArrangement[SelectedPositionCol, selectedPositionRow];
+            	seatColor(seating.SeatingArrangement[i,j][0], isSelected);
+        	}
 			Console.WriteLine("");
 		}
 	}
@@ -331,144 +296,83 @@ public static class DisplayRoom{
 
 	public static void processSeat(int i, int j, Seating seating, MovieSessionModel session, bool color){
 
-		if(seating.SeatingArrangement[i,j][0].reservedInSessionID.Count > 0)
+		if (seating.SeatingArrangement[i, j][0].reservedInSessionID.Any(thisSessionID => thisSessionID == session.sessionID))
 		{
-			bool reserved = false;
-			foreach(var	thissessionID in seating.SeatingArrangement[i,j][0].reservedInSessionID){
-				if (thissessionID == session.sessionID)
-				{
-					reserved = true;
-					Console.BackgroundColor = ConsoleColor.DarkGray;
-					Console.Write($"[ R ]");
-				}
-			}
-			if(!reserved){
-	
-				seatColor(seating.SeatingArrangement[i,j][0], color);
-
-			}
+			Console.BackgroundColor = ConsoleColor.DarkGray;
+			Console.Write($"[ R ]");
 		}
-		else if(seating.SeatingArrangement[i,j][0].reservedInSessionID.Count <= 0 )
+		else
 		{
-			seatColor(seating.SeatingArrangement[i,j][0], color);
+			seatColor(seating.SeatingArrangement[i, j][0], color);
 		}
 	}
 
 
 	public static void seatColor(SeatInfo seatinfo, bool OverrideColor)
 	{
-		if(!seatinfo.inPrereservation){
+		ConsoleColor color;
+		string seatType;
 
-			switch(seatinfo.Type){
+		if (seatinfo.inPrereservation)
+		{
+			color = OverrideColor ? ConsoleColor.Green : ConsoleColor.DarkMagenta;
+			seatType = "[ S ]";
+		}
+		else
+		{
+			switch (seatinfo.Type)
+			{
 				case SeatType.Normal:
-					if(!OverrideColor){
-						Console.BackgroundColor = ConsoleColor.Yellow;
-						Console.Write($"[ N ]");
-					}else{
-						Console.BackgroundColor = ConsoleColor.Green;
-						Console.Write($"[ N ]");
-					}
+					color = OverrideColor ? ConsoleColor.Green : ConsoleColor.Yellow;
+					seatType = "[ N ]";
 					break;
 				case SeatType.Deluxe:
-					if(!OverrideColor){
-						Console.BackgroundColor = ConsoleColor.Blue;
-						Console.Write($"[ D ]");
-					}else{
-						Console.BackgroundColor = ConsoleColor.Green;
-						Console.Write($"[ D ]");
-					}
+					color = OverrideColor ? ConsoleColor.Green : ConsoleColor.Blue;
+					seatType = "[ D ]";
 					break;
 				case SeatType.Premium:
-					if(!OverrideColor){
-						Console.BackgroundColor = ConsoleColor.Red;
-						Console.Write($"[ P ]");
-					}else{
-						Console.BackgroundColor = ConsoleColor.Green;
-						Console.Write($"[ P ]");
-					}
+					color = OverrideColor ? ConsoleColor.Green : ConsoleColor.Red;
+					seatType = "[ P ]";
 					break;
 				case SeatType.NoSeat:
-					if(!OverrideColor){
-						Console.BackgroundColor = ConsoleColor.Black;
-						Console.Write($"     ");
-					}else{
-						Console.BackgroundColor = ConsoleColor.Green;
-						Console.Write($"     ");
-					}
+					color = OverrideColor ? ConsoleColor.Green : ConsoleColor.Black;
+					seatType = "     ";
 					break;
-			}
-		}else{
-
-			if(!OverrideColor){
-				Console.BackgroundColor = ConsoleColor.DarkMagenta;
-				Console.Write($"[ S ]");
-			}else{
-				Console.BackgroundColor = ConsoleColor.Green;
-				Console.Write($"[ S ]");
+				default:
+					throw new ArgumentException($"Invalid seat type: {seatinfo.Type}");
 			}
 		}
 
+		Console.BackgroundColor = color;
+		Console.Write(seatType);
 	}
 
 
 	public static bool SelectedSeatsInRow(List<Tuple<int, int>> selectedPositions, int selectedPositionRow, int selectedPositionCol, Seating seating)
 	{
-		if (selectedPositions.Count >= 8)
+		if (selectedPositions.Count >= 8 || selectedPositions.Count == 0)
 		{
-			return false; 
-		}
-
-		if (selectedPositions.Count == 0)
-		{
-			return true; 
+			return selectedPositions.Count == 0;
 		}
 
 		var sortedPositions = selectedPositions.OrderBy(pos => pos.Item2).ToList();
+		var firstCol = sortedPositions.First().Item2;
+		var lastCol = sortedPositions.Last().Item2;
 
-		bool isNextToSelected = false;
-		foreach (var pos in selectedPositions)
+		if (firstCol == 0 || lastCol == seating.Columns - 1)
 		{
-			if (Math.Abs(pos.Item2 - selectedPositionCol) == 1 && pos.Item1 == selectedPositionRow)
-			{
-				isNextToSelected = true;
-				break;
-			}
-		}
-
-		if (!isNextToSelected)
-		{
-			return false; 
+			return true;
 		}
 
 		for (int i = 0; i < sortedPositions.Count - 1; i++)
 		{
-			var currentCol = sortedPositions[i].Item2;
-			var nextCol = sortedPositions[i + 1].Item2;
-
-			if (nextCol - currentCol != 1)
+			if (sortedPositions[i + 1].Item2 - sortedPositions[i].Item2 != 1)
 			{
-				return false; 
+				return false;
 			}
 		}
 
-		var firstCol = sortedPositions.First().Item2;
-		var lastCol = sortedPositions.Last().Item2;
-		if (firstCol == 0 || lastCol == seating.Columns - 1)
-		{
-			return true; 
-		}
-
-
-		for (int col = firstCol + 1; col < lastCol; col++)
-		{
-			bool seatSelected = selectedPositions.Any(pos => pos.Item2 == col);
-			if (!seatSelected)
-			{
-				return false; 
-			}
-		}
-
-		return true;
+		return sortedPositions.Any(pos => pos.Item1 == selectedPositionRow && Math.Abs(pos.Item2 - selectedPositionCol) == 1);
 	}
 
 	public static void changeSeatprice(SeatInfo seat){
@@ -503,79 +407,67 @@ public static class DisplayRoom{
 
 		List<Seating> seatingInstance = new();
 
-		int Rows = rows;
-		int Columns = cols;
-
 		string[] filelist = Directory.GetFiles(DataStoragePath);
 		List<int> cinemaroomlist = new();
 
-		if (filelist != null){
-
-			foreach(string file in filelist){
-				if (file.ToLower().Contains("cinemaroom")){
-					string[] splitfile = file.ToLower().Split("cinemaroom");
-					string[] splitfileID = splitfile[1].Split(".json");
-					int fileID = Convert.ToInt32(splitfileID[0]);
-					cinemaroomlist.Add(fileID);
-				}
+		foreach(string file in filelist)
+		{
+			if (file.ToLower().Contains("cinemaroom"))
+			{
+				string[] splitfile = file.ToLower().Split("cinemaroom");
+				string[] splitfileID = splitfile[1].Split(".json");
+				int fileID = Convert.ToInt32(splitfileID[0]);
+				cinemaroomlist.Add(fileID);
 			}
 		}
 
-		if (cinemaroomlist is not null){
+		int id = cinemaroomlist.Any() ? cinemaroomlist.Max() + 1 : 1;
+		Seating seating = new Seating(rows, cols, id);
 
-			int id = cinemaroomlist.Max() + 1;
-			Seating seating = new Seating(Rows, Columns, id);
-			for (int i = 0; i < Rows; i++)
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
 			{
-				for (int j = 0; j < Columns; j++)
+				if (seating.SeatingArrangement[i, j] == null)
 				{
-					if (seating.SeatingArrangement[i, j] == null)
-					{
-						seating.SeatingArrangement[i, j] = new List<SeatInfo>();
-					}
-					seating.SeatingArrangement[i, j].Add(new SeatInfo{
-
-						RowID = i,
-						ColumnID = j,
-						Price = NORMAL_SEAT_PRICE,
-						reservedInSessionID = new(),
-						Type = SeatType.Normal,
-						inPrereservation = false
-
-					});
+					seating.SeatingArrangement[i, j] = new List<SeatInfo>();
 				}
-			}
-			string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
-			seatingInstance.Add(seating);
-			JsonAccess.UploadToJson(seatingInstance, newPath);
-
-		}else{
-
-			int id = 1;
-			Seating seating = new Seating(Rows, Columns, id);
-			for (int i = 0; i < Rows; i++)
-			{
-				for (int j = 0; j < Columns; j++)
+				seating.SeatingArrangement[i, j].Add(new SeatInfo
 				{
-					if (seating.SeatingArrangement[i, j] == null)
-					{
-						seating.SeatingArrangement[i, j] = new List<SeatInfo>();
-					}
-					seating.SeatingArrangement[i, j].Add(new SeatInfo{
-
-						RowID = i,
-						ColumnID = j,
-						Price = NORMAL_SEAT_PRICE,
-						reservedInSessionID = new(),
-						Type = SeatType.Normal,
-						inPrereservation = false
-
-					});
-				}
+					RowID = i,
+					ColumnID = j,
+					Price = NORMAL_SEAT_PRICE,
+					reservedInSessionID = new(),
+					Type = SeatType.Normal,
+					inPrereservation = false
+				});
 			}
-			string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
-			seatingInstance.Add(seating);
-			JsonAccess.UploadToJson(seatingInstance, newPath);
 		}
+
+		string newPath = $"{DataStoragePath}/CinemaRoom{id}.json";
+		seatingInstance.Add(seating);
+		JsonAccess.UploadToJson(seatingInstance, newPath);
 	}
+	
+	public static int GetValidSize(string prompt)
+	{
+		int value;
+		while (true)
+		{
+			Console.WriteLine(prompt);
+			Console.Write(">>> ");
+			string input = Console.ReadLine()!;
+
+			if (int.TryParse(input, out value) && value >= 0 && value <= 35)
+			{
+				break;
+			}
+			else
+			{
+				Console.WriteLine("Invalid input. Please enter a number between 0 and 35.");
+			}
+		}
+		return value;
+	}
+
 }
