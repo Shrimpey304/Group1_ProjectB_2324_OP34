@@ -7,12 +7,12 @@ namespace Cinema;
 
 public static class DisplayRoomUI{
 
-    /// <summary>
+	/// <summary>
 	/// Allows users to select seating for a movie session.
 	/// </summary>
 	/// <param name="session">The movie session model.</param>
 	/// <returns>A list of selected seating positions as tuples.</returns>
-    public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
+	public static List<Tuple<int,int>> SelectSeating(MovieSessionModel session){
 
 		string fileNM = DisplayRoom.getFileDir(session);
 
@@ -39,7 +39,7 @@ public static class DisplayRoomUI{
 			
 			DisplayRoom.SetColor(selectedPositionRow, selectedPositionCol, seating, session);
 
-			Legenda(SelectedPositions!);
+			Legenda(SelectedPositions!, session);
 
 			switch(Console.ReadKey(true).Key){	//controller
 				case ConsoleKey.UpArrow:
@@ -65,10 +65,16 @@ public static class DisplayRoomUI{
 
 				break;
 				case ConsoleKey.R: //reserve selected seats
-					
-					DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
 
-				return SelectedPositions;
+					if(SelectedPositions is not null && SelectedPositions.Count != 0){	
+
+						DisplayRoom.KeyRController(SelectedPositions, seating, session, fileNM);
+						return SelectedPositions;			
+					}else{
+						Console.WriteLine("you need to select atleast 1 seat");
+						Thread.Sleep(1000);
+						break;
+					}
 			}
 
 			List<Seating> TempUploadSeating = new(){seating!};
@@ -78,7 +84,7 @@ public static class DisplayRoomUI{
 		return null!;
 	}
 
-	public static void Legenda(List<Tuple<int,int>> SelectedPositions){
+	public static void Legenda(List<Tuple<int,int>> SelectedPositions, MovieSessionModel session){
 		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} euro)\n");
 		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} euro)\n");
@@ -87,11 +93,12 @@ public static class DisplayRoomUI{
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.ResetColor(); Console.Write(" = Screen  \n");
 		Console.Write("Press Backspace to cancel and go back to the main menu\n");
+		Console.Write("Use the arrow keys to navigate the seats\n");
 		Console.Write("Press Enter to select a seat (max 8 in a row)\n");
 		Console.Write("Press R to reserve selected seats\n");
 		if(SelectedPositions!.Count > 0){
 
-			Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat ");
+			Console.Write($"Selected seats: Row: [{SelectedPositions[0].Item1 +1}] Seat:");
 
 			foreach(Tuple<int,int> seatLoc in SelectedPositions){
 
@@ -102,6 +109,7 @@ public static class DisplayRoomUI{
 
 			Console.WriteLine("Selected seats: None");
 		}
+		Console.WriteLine($"\nCurrent price: {DisplayRoom.getSeatPricing(SelectedPositions, session)} euro\n");
 	}
 
 
@@ -113,6 +121,7 @@ public static class DisplayRoomUI{
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
 		Console.Write("_____"); Console.Write(" = Screen  \n");
+		Console.Write("Use the arrow keys to navigate the seats\n");
 		Console.Write("Press Enter to change seat type\n");
 		Console.Write("Press Backspace when you are finished and wish to go to the main menu\n");
 	}

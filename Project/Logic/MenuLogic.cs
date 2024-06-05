@@ -75,7 +75,7 @@ public static class MenuUtils{
 			{ "Login", UserLogin.Start },
 			{ "Register", UserRegistration.Start },
 			{ "Show MovieList", MovieUI.ShowMovies },
-			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Exit", KillProgram},
 
 		};
@@ -91,11 +91,12 @@ public static class MenuUtils{
 		{ 
 
 			{ "Reserve Ticket", TicketLogic.ReserveTicket},
+			{ "Reserve Ticket With Filter", MovieUI.FilterMovies},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Cancel Ticket", TicketLogic.CancelReservation},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Show MovieList", () => MovieUI.ListAllMovies(true)},
-			{ "Show Snack Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Snack Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -121,7 +122,7 @@ public static class MenuUtils{
 			{ "Delete Session", AdminFuncUI.adminDeleteSession},
 			{ "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
-			{ "Show Menu", SnackMenuLogic.ListSnackMenu},
+			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
 
@@ -137,7 +138,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> DisplaySnack = new()
 		{ 
 
-			{ "Add snacks",() => SnackMenuLogic.ListSnackMenu(true)},
+			{ "Add snacks",() => SnackMenuUI.ListSnackMenu(true)},
 			{"Remove snack", SnackMenuLogic.RemoveSnack},
 			{ "Finish order", SnackMenuLogic.FinishOrdering},
 
@@ -149,6 +150,20 @@ public static class MenuUtils{
 		}
 		return;
 		
+		
+	}
+
+	public static void displayFilters(){
+
+		Dictionary<string, Action> displayFilters = new()
+		{ 
+
+			{"Filter By Name", MovieLogic.movieNameFilter},
+			{"Filter By Genre", MovieLogic.movieGenreFilter}
+
+		};
+
+		RunCheckboxMenu(displayFilters, "main");
 		
 	}
 

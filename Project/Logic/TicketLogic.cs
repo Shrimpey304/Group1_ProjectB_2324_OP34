@@ -61,6 +61,7 @@ public class TicketLogic
             return;
         }
 
+
         if (int.TryParse(input, out int reservationId))
         {
             Ticket reservationToCancel = _reservations.FirstOrDefault(r => r.TicketID == reservationId);
@@ -69,6 +70,16 @@ public class TicketLogic
             {
                 // Remove the SessionID from the corresponding cinema room JSON file
                 RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
+
+        public static void ReserveFilteredTicket(int selectedMovieID){
+            
+            Console.WriteLine("\n\n");
+            selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+            selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
+            totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
+            MenuUtils.displaySnackOption();
+        }
+
 
                 _reservations.Remove(reservationToCancel);
                 JsonAccess.UploadToJson(_reservations, filePathReservations);

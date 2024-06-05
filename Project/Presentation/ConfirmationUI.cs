@@ -19,10 +19,10 @@ class ConfirmationUI
 			}
 		}
 		
-		string CurrentSeats = $"Seats (Row {ticket.ReservedSeats[0].Item1}): ";
+		string CurrentSeats = $"Seats (Row {ticket.ReservedSeats[0].Item1 + 1}): ";
 		foreach (var seat in ticket.ReservedSeats)
 		{
-			CurrentSeats += $"[{seat.Item2}] ";
+			CurrentSeats += $"[{seat.Item2 +1}] ";
 		}
 		
 
