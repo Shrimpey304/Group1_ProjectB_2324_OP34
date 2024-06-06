@@ -8,7 +8,17 @@ public class JsonAccess{
         if (File.Exists(fileName))
         {
             string json = File.ReadAllText(fileName);
-            return JsonConvert.DeserializeObject<List<T>>(json)!;
+            try{
+
+                return JsonConvert.DeserializeObject<List<T>>(json)!;
+
+            }catch(JsonSerializationException e){
+
+                Console.WriteLine($"Error reading file: {fileName}");
+                Console.WriteLine(e.Message);
+                return new List<T>();
+
+            }
         }
         else
         {
@@ -19,7 +29,15 @@ public class JsonAccess{
 
     public static void UploadToJson<T>(List<T> objList, string fileName) where T : class
     {
-        string json = JsonConvert.SerializeObject(objList, Formatting.Indented);
-        File.WriteAllText(fileName, json);
+        try{
+
+            string json = JsonConvert.SerializeObject(objList, Formatting.Indented);
+            File.WriteAllText(fileName, json);
+
+        }catch(JsonSerializationException e){
+            
+            Console.WriteLine($"Error writing to file: {fileName}");
+            Console.WriteLine(e.Message);
+        }
     }
 }
