@@ -234,7 +234,7 @@ public class MovieLogic
 		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 		List<MovieModel> SelectedMovies = new();
 
-		Console.WriteLine("enter what you want name you want to filter");
+		Console.WriteLine("enter what you want to filter by");
 		Console.Write(">>>");
 		string filter = Console.ReadLine()!;
 
