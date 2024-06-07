@@ -90,9 +90,9 @@ public static class DisplayRoomUI{
 
 	public static void Legenda(List<Tuple<int,int>> SelectedPositions, MovieSessionModel session){
 		try{
-			Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} euro)\n");
-			Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} euro)\n");
-			Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} euro)\n");
+			Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} Euro)\n");
+			Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} Euro)\n");
+			Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} Euro)\n");
 			Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
 			Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 			Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");
@@ -114,7 +114,7 @@ public static class DisplayRoomUI{
 
 				Console.WriteLine("Selected seats: None");
 			}
-			Console.WriteLine($"\nCurrent price: {DisplayRoom.getSeatPricing(SelectedPositions, session)} euro\n");
+			Console.WriteLine($"\nCurrent price: {DisplayRoom.getSeatPricing(SelectedPositions, session)} Euro\n");
 			
 		}catch(Exception ex){
 			Console.WriteLine(ex.Message);
@@ -123,9 +123,9 @@ public static class DisplayRoomUI{
 
 
 	public static void ChangeSeatLegenda(){
-		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} euro)\n");
-		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} euro)\n");
+		Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("\n\n[N]".PadLeft(3)); Console.ResetColor(); Console.Write($" = Normal seat  ({DisplayRoom.NORMAL_SEAT_PRICE} Euro)\n");
+		Console.BackgroundColor = ConsoleColor.Blue; Console.Write("[D]"); Console.ResetColor(); Console.Write($" = Deluxe seat  ({DisplayRoom.DELUXE_SEAT_PRICE} Euro)\n");
+		Console.BackgroundColor = ConsoleColor.Red; Console.Write("[P]"); Console.ResetColor(); Console.Write($" = Premium seat  ({DisplayRoom.PREMIUM_SEAT_PRICE} Euro)\n");
 		Console.BackgroundColor = ConsoleColor.DarkGray; Console.Write("[R]"); Console.ResetColor(); Console.Write(" = Reserved seat  \n");
 		Console.BackgroundColor = ConsoleColor.Magenta; Console.Write("[S]"); Console.ResetColor(); Console.Write(" = Selected seat  \n");
 		Console.BackgroundColor = ConsoleColor.Black; Console.Write("---"); Console.ResetColor(); Console.Write(" = Unselectable place  \n");

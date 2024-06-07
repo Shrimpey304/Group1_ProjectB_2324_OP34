@@ -98,7 +98,7 @@ public class AccountsLogic
 				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.Id)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
 				if (ticket.ReservedSeats.Count != 0){
@@ -140,7 +140,7 @@ public class AccountsLogic
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Ticket ID: {ticket.TicketID}");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.Id)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
 

@@ -94,26 +94,26 @@ public class AdminFuncUI
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to edit:");
-		string movieIdInput = Console.ReadLine()!;
+		string IdInput = Console.ReadLine()!;
 
-		if (string.IsNullOrWhiteSpace(movieIdInput))
+		if (string.IsNullOrWhiteSpace(IdInput))
 		{
 			Console.WriteLine("Update canceled. No movie ID provided.");
 			return;
 		}
 
-		if (!int.TryParse(movieIdInput, out int movieId))
+		if (!int.TryParse(IdInput, out int Id))
 		{
 			Console.WriteLine("Invalid movie ID format. Please enter a valid integer ID.");
 			return;
 		}
 
 		// Fetch the movie with the specified ID
-		MovieModel movieToEdit = MovieLogic.GetMovieByID(movieId);
+		MovieModel movieToEdit = MovieLogic.GetMovieByID(Id);
 
 		if (movieToEdit != null)
 		{
-			Console.WriteLine($"Current details of movie with ID {movieToEdit.MovieID}:");
+			Console.WriteLine($"Current details of movie with ID {movieToEdit.Id}:");
 			MovieLogic.DisplayMovieDetails(movieToEdit);
 
 			// Prompt the admin to enter new details for the movie
@@ -147,11 +147,11 @@ public class AdminFuncUI
 
 			// Update the movie in the data storage
 			MovieLogic.UpdateMovie(movieToEdit);
-			Console.WriteLine($"Movie with ID {movieToEdit.MovieID} has been updated.");
+			Console.WriteLine($"Movie with ID {movieToEdit.Id} has been updated.");
 		}
 		else
 		{
-			Console.WriteLine($"No movie found with ID {movieId}.");
+			Console.WriteLine($"No movie found with ID {Id}.");
 		}
 	}
 
@@ -161,30 +161,30 @@ public class AdminFuncUI
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to delete:");
-		string movieIdInput = Console.ReadLine()!;
+		string IdInput = Console.ReadLine()!;
 
-		if (string.IsNullOrWhiteSpace(movieIdInput))
+		if (string.IsNullOrWhiteSpace(IdInput))
 		{
 			Console.WriteLine("Deletion canceled. No movie ID provided.");
 			return;
 		}
 
-		if (!int.TryParse(movieIdInput, out int movieId))
+		if (!int.TryParse(IdInput, out int Id))
 		{
 			Console.WriteLine("Invalid movie ID format. Please enter a valid integer ID.");
 			return;
 		}
 
 		// Delete the movie with the specified ID
-		bool success = MovieLogic.DeleteMovie(movieId);
+		bool success = MovieLogic.DeleteMovie(Id);
 
 		if (success)
 		{
-			Console.WriteLine($"Movie with ID {movieId} has been deleted.");
+			Console.WriteLine($"Movie with ID {Id} has been deleted.");
 		}
 		else
 		{
-			Console.WriteLine($"No movie found with ID {movieId}.");
+			Console.WriteLine($"No movie found with ID {Id}.");
 		}
 	}
 
@@ -299,9 +299,9 @@ public class AdminFuncUI
 			}
 
 			Console.WriteLine("Enter the new movie ID:");
-			string movieIDInput = Console.ReadLine()!;
-			int newMovieID;
-			if (!int.TryParse(movieIDInput, out newMovieID))
+			string IdInput = Console.ReadLine()!;
+			int newId;
+			if (!int.TryParse(IdInput, out newId))
 			{
 				Console.WriteLine("Invalid movie ID format.");
 				return;
@@ -319,7 +319,7 @@ public class AdminFuncUI
 			// Modify session details as required
 			sessionToUpdate.StartTime = new DateTime(newStartTime.Year, newStartTime.Month, newStartTime.Day, startTime.Hour, startTime.Minute, startTime.Second);
 			sessionToUpdate.EndTime = new DateTime(newStartTime.Year, newStartTime.Month, newStartTime.Day, endTime.Hour, endTime.Minute, endTime.Second);
-			sessionToUpdate.MovieID = newMovieID;
+			sessionToUpdate.Id = newId;
 			sessionToUpdate.RoomID = newRoomID;
 
 			// Update the session

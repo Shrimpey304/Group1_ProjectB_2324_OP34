@@ -31,7 +31,7 @@ public class MovieLogic
 
 
 	private static List<MovieModel> movies;
-	private static int nextMovieID = 1;
+	private static int nextId = 1;
 	
 
 	static MovieLogic()
@@ -47,7 +47,7 @@ public class MovieLogic
 			movies = JsonConvert.DeserializeObject<List<MovieModel>>(json)!;
 			if (movies != null && movies.Count > 0)
 			{
-				nextMovieID = movies[movies.Count - 1].MovieID + 1;
+				nextId = movies[movies.Count - 1].Id + 1;
 			}
 			else
 			{
@@ -64,14 +64,14 @@ public class MovieLogic
         {
             if (movies.Count > 0)
             {
-                nextMovieID = movies.Max(m => m.MovieID) + 1;
+                nextId = movies.Max(m => m.Id) + 1;
             }
             else
             {
-                nextMovieID = 1;
+                nextId = 1;
             }
 
-            movie.MovieID = nextMovieID++;
+            movie.Id = nextId++;
             movies.Add(movie);
             SaveMovies();
         }
@@ -82,11 +82,11 @@ public class MovieLogic
 		File.WriteAllText(filePathMovies, json);
 	}
 
-	public static MovieModel GetMovieByID(int movieID)
+	public static MovieModel GetMovieByID(int Id)
 	{
 		foreach (var movie in movies)
 		{
-			if (movie.MovieID == movieID)
+			if (movie.Id == Id)
 			{
 				return movie;
 			}
@@ -98,7 +98,7 @@ public class MovieLogic
 	{
 		for (int i = 0; i < movies.Count; i++)
 		{
-			if (movies[i].MovieID == updatedMovie.MovieID)
+			if (movies[i].Id == updatedMovie.Id)
 			{
 				movies[i] = updatedMovie;
 				JsonAccess.UploadToJson(movies, filePathMovies);
@@ -107,11 +107,11 @@ public class MovieLogic
 		}
 	}
 
-	public static bool DeleteMovie(int movieID)
+	public static bool DeleteMovie(int Id)
 	{
 		for (int i = 0; i < movies.Count; i++)
 		{
-			if (movies[i].MovieID == movieID)
+			if (movies[i].Id == Id)
 			{
 				movies.RemoveAt(i);
 				JsonAccess.UploadToJson(movies, filePathMovies);
@@ -155,7 +155,7 @@ public class MovieLogic
 				// Update session properties
 				session.StartTime = updatedSession.StartTime;
 				session.EndTime = updatedSession.EndTime;
-				session.MovieID = updatedSession.MovieID;
+				session.Id = updatedSession.Id;
 				session.RoomID = updatedSession.RoomID;
 
 				// Save updated sessions to file
@@ -184,12 +184,12 @@ public class MovieLogic
 	}
 
 	
-	public static string FindMovie(int MovieID)
+	public static string FindMovie(int Id)
 	{
 		var movies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 		foreach(MovieModel movie in movies)
 		{
-			if (movie.MovieID == MovieID)
+			if (movie.Id == Id)
 			{
 				return movie.Title;
 			}

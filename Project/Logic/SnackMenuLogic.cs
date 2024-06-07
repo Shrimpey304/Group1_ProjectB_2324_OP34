@@ -31,7 +31,7 @@ public class SnackMenuLogic
 				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
 			}
 		}
-		Console.WriteLine($"Total cost:\n${TotalCost}");
+		Console.WriteLine($"Total cost:\n{TotalCost} Euro");
 		Console.WriteLine("Press any key to confirm your order");
 		Console.ReadKey();
 		TicketLogic.AddReservation();
@@ -76,7 +76,7 @@ public class SnackMenuLogic
 	{
 		foreach(SnackMenuModel snack in menuList)
 			{
-				if (snack.SnackID == OrderedSnackInt)
+				if (snack.Id == OrderedSnackInt)
 				{
 					Console.Clear();
 					Console.WriteLine($"How many {snack.Name} would you like?");

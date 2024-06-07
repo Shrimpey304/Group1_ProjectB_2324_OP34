@@ -11,9 +11,9 @@ public class TicketLogic
 
 	public static void ReserveTicket()
 	{
-		int selectedMovieID = MovieUI.ListAllMovies();
+		int selectedId = MovieUI.ListAllMovies();
 		Console.WriteLine("\n\n");
-		selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+		selectedSession = MovieSessionUI.ListSessions(selectedId);
 		selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
 		totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
 		MenuUtils.displaySnackOption();
@@ -59,10 +59,10 @@ public class TicketLogic
 
 	public static void CancelReservation()
 	{
-		Console.WriteLine("Your reservations:");
+		Console.WriteLine("Your tickets:");
 		AccountsLogic.CancelTickets();
 
-		Console.WriteLine("Enter the reservation ID to cancel (leave blank if you don't want to cancel any reservation): ");
+		Console.WriteLine("Enter the Ticket ID to cancel (leave blank if you don't want to cancel any reservation): ");
 		string input = Console.ReadLine()!;
 		if (string.IsNullOrEmpty(input))
 		{
@@ -95,10 +95,10 @@ public class TicketLogic
 			Console.WriteLine("Invalid reservation ID.");
 		}
 	}
-	public static void ReserveFilteredTicket(int selectedMovieID){
+	public static void ReserveFilteredTicket(int selectedId){
 		
 		Console.WriteLine("\n\n");
-		selectedSession = MovieSessionUI.ListSessions(selectedMovieID);
+		selectedSession = MovieSessionUI.ListSessions(selectedId);
 		selectedSeating = DisplayRoomUI.SelectSeating(selectedSession);
 		totalSeatPrice = DisplayRoom.getSeatPricing(selectedSeating, selectedSession);
 		MenuUtils.displaySnackOption();

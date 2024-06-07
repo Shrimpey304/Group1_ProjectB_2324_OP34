@@ -163,9 +163,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 1,
             "ColumnID": 3,
             "Price": 9.0,
@@ -175,9 +173,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 1,
             "ColumnID": 4,
             "Price": 9.0,
@@ -187,9 +183,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 1,
             "ColumnID": 5,
             "Price": 9.0,
@@ -199,9 +193,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 1,
             "ColumnID": 6,
             "Price": 9.0,
@@ -211,9 +203,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 1,
             "ColumnID": 7,
             "Price": 9.0,
@@ -809,9 +799,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 6,
             "ColumnID": 5,
             "Price": 15.0,
@@ -821,9 +809,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 6,
             "ColumnID": 6,
             "Price": 15.0,
@@ -1129,9 +1115,7 @@
       [
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 9,
             "ColumnID": 0,
             "Price": 9.0,
@@ -1405,9 +1389,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 11,
             "ColumnID": 3,
             "Price": 9.0,
@@ -1529,9 +1511,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 12,
             "ColumnID": 3,
             "Price": 9.0,
@@ -1541,9 +1521,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 12,
             "ColumnID": 4,
             "Price": 9.0,
@@ -1553,9 +1531,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 12,
             "ColumnID": 5,
             "Price": 9.0,
@@ -1565,9 +1541,7 @@
         ],
         [
           {
-            "reservedInSessionID": [
-              9
-            ],
+            "reservedInSessionID": [],
             "RowID": 12,
             "ColumnID": 6,
             "Price": 9.0,
@@ -1749,7 +1723,7 @@
         ]
       ]
     ],
-    "ID": 1,
+    "Id": 1,
     "Rows": 14,
     "Columns": 12
   }

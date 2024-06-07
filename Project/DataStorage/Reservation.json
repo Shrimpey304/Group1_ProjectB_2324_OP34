@@ -191,21 +191,21 @@
     ]
   },
   {
-    "TicketID": 9,
+    "TicketID": 10,
     "SessionID": 9,
     "ReservedSeats": [
       {
-        "Item1": 11,
-        "Item2": 3
+        "Item1": 13,
+        "Item2": 2
       }
     ],
-    "TotalPrice": 28.0,
+    "TotalPrice": 17.0,
     "AccountID": 10,
     "UserID": 10,
     "OrderedSnacks": [
       {
-        "Item1": "Salty Popcorn",
-        "Item2": 1
+        "Item1": "Brownie",
+        "Item2": 2
       }
     ]
   }
