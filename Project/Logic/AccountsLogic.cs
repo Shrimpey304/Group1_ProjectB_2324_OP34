@@ -63,24 +63,6 @@ public class AccountsLogic
 
 	}
 
-	public void UpdateList(AccountModel acc)
-	{
-		// Find the account in the list and update it
-		var index = _accounts.FindIndex(a => a.Id == acc.Id);
-
-		if (index != -1)
-		{
-			_accounts[index] = acc;
-			JsonAccess.UploadToJson(_accounts, filePathAccounts); // Persist changes to JSON
-		}
-	}
-
-	public AccountModel GetById(int id)
-	{
-		// Find and return the account by ID
-		return _accounts.FirstOrDefault(a => a.Id == id)!;
-	}
-
 	public static void GetTickets()
 	{
 

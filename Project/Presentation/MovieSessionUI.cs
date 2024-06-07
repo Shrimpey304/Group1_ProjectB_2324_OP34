@@ -81,10 +81,4 @@ public class MovieSessionUI
             Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
         }
     }
-
-    public static MovieSessionModel GetSessionByID(int Id)
-    {
-        List<MovieSessionModel> _sessions = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
-        return _sessions.FirstOrDefault(a => a.sessionID == Id)!;
-    }
 }

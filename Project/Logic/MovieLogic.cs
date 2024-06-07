@@ -33,33 +33,6 @@ public class MovieLogic
 	private static List<MovieModel> movies;
 	private static int nextId = 1;
 	
-
-	static MovieLogic()
-	{
-		InitializeMovies();
-	}
-
-	private static void InitializeMovies()
-	{
-		if (File.Exists(filePathMovies))
-		{
-			string json = File.ReadAllText(filePathMovies);
-			movies = JsonConvert.DeserializeObject<List<MovieModel>>(json)!;
-			if (movies != null && movies.Count > 0)
-			{
-				nextId = movies[movies.Count - 1].Id + 1;
-			}
-			else
-			{
-				movies = new List<MovieModel>();
-			}
-		}
-		else
-		{
-			movies = new List<MovieModel>();
-		}
-	}
-
 	public static void AddMovie(MovieModel movie)
         {
             if (movies.Count > 0)
@@ -255,11 +228,6 @@ public class MovieLogic
 
 	}
 
-	public static void selectMovieWithFilter(){
-
-	}
-
-
 	public static void DisplayMovieDetails(MovieModel movie)
 	{
 		Console.WriteLine($"Title: {movie.Title}");
@@ -280,6 +248,4 @@ public class MovieLogic
 		}
 		return null!;
 	}
-
-
 }

@@ -63,9 +63,4 @@ public static class SnackMenuUI
 		Console.WriteLine(" ------------------------------------------------------------------------------------------------------------------------------------------------------");
 		Console.WriteLine("Legend\n[V] = Vegan\n[L] = Contains lactose\n");
 	}
-	
-
-	
-
 }
-

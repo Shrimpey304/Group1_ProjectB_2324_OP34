@@ -204,7 +204,6 @@ public static class DisplayRoom{
 		MenuUtils.displayLoggedinMenu();
 	}
 
-
 	public static void getColCount(Seating seating){
 
 		Console.Clear();
@@ -240,7 +239,6 @@ public static class DisplayRoom{
 		}
 		Console.WriteLine("");
 	}
-
 
 	public static double getSeatPricing(List<Tuple<int,int>> selectedSeats, MovieSessionModel session){
 

@@ -111,7 +111,6 @@ public static class MenuUtils{
 
 		Dictionary<string, Action> LoginMenuOptions = new()
 		{ 
-
 			{ "Change Seat Types", AdminFuncUI.adminChangeSeatTypes},
 			{ "Create New Room", AdminFuncUI.adminCreateRoom},
 			{ "Add Movie", AdminFuncUI.adminAddMovie},
@@ -125,12 +124,9 @@ public static class MenuUtils{
 			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},
 			{ "Exit", KillProgram}
-
 		};
 
-		
 		RunCheckboxMenu(LoginMenuOptions, "admin");
-		
 	}
 	
 	public static void displaySnackOption(){
@@ -149,8 +145,6 @@ public static class MenuUtils{
 			RunCheckboxMenu(DisplaySnack, "snacks");
 		}
 		return;
-		
-		
 	}
 
 	public static void displayFilters(){
