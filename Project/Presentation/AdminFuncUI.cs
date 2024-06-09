@@ -49,6 +49,11 @@ public class AdminFuncUI
 			Console.WriteLine("What is the Movie's title?\n");
 			Console.Write(">>> ");
 			string movieName = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(movieName))
+			{
+				Console.WriteLine("Movie title cannot be empty.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -56,7 +61,11 @@ public class AdminFuncUI
 			Console.WriteLine($"How old does a person have to be for {movieName}?\n");
 			Console.Write(">>> ");
 			string ageRestriction = Console.ReadLine()!;
-			int intageRestriction = Convert.ToInt32(ageRestriction);
+			if (!int.TryParse(ageRestriction, out int intageRestriction) || intageRestriction < 0)
+			{
+				Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -64,6 +73,11 @@ public class AdminFuncUI
 			Console.WriteLine($"What Genre is {movieName}?\n");
 			Console.Write(">>> ");
 			string genre = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(genre))
+			{
+				Console.WriteLine("Genre cannot be empty.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -71,6 +85,11 @@ public class AdminFuncUI
 			Console.WriteLine($"Enter a description for: {movieName}\n");
 			Console.Write(">>> ");
 			string description = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(description))
+			{
+				Console.WriteLine("Description cannot be empty.");
+				return;
+			}
 
 			MovieModel movie = new MovieModel(movieName, intageRestriction, genre, description);
 			MovieLogic.AddMovie(movie);
@@ -80,13 +99,15 @@ public class AdminFuncUI
 			Console.WriteLine("\n---------------------------------------------------------------------------\n");
 			Console.WriteLine($"Movie Added\n");
 		}
-		catch
+		catch (Exception ex)
 		{
-			Console.WriteLine("invalid input");
+			Console.WriteLine($"Error: {ex.Message}");
+			Console.WriteLine("Invalid input");
 			MenuUtils.displayLoggedinAdminMenu();
 		}
 		return;
 	}
+
 
 	public static void AdminEditMovie()
 	{
@@ -128,7 +149,12 @@ public class AdminFuncUI
 			string newAgeRestriction = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newAgeRestriction))
 			{
-				movieToEdit.AgeRestriction = int.Parse(newAgeRestriction);
+				if (!int.TryParse(newAgeRestriction, out int age))
+				{
+					Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number.");
+					return;
+				}
+				movieToEdit.AgeRestriction = age;
 			}
 
 			Console.WriteLine("Enter new description (leave empty to keep current):");
@@ -154,6 +180,7 @@ public class AdminFuncUI
 			Console.WriteLine($"No movie found with ID {Id}.");
 		}
 	}
+
 
 	public static void AdminDeleteMovie()
 	{
