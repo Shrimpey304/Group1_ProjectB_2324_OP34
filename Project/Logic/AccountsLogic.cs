@@ -174,4 +174,9 @@ public class AccountsLogic
 		Console.WriteLine($"Name: {CurrentAccount!.FullName}");
 		Console.WriteLine($"EMail: {CurrentAccount.EmailAddress}");
 	}
+	public static AccountModel? GetAccountById(int accountId)
+        {
+            // Find and return the account by ID
+            return _accounts.FirstOrDefault(a => a.Id == accountId);
+        }
 }

@@ -148,5 +148,42 @@ public class TicketLogic
 			return maxID + 1;
 		}
 	}
+	public static List<Ticket> GetReservationsBySession(int sessionID)
+	{
+		// Read all reservations from the JSON file
+		List<Ticket> allReservations = JsonAccess.ReadFromJson<Ticket>(filePathReservations) ?? new List<Ticket>();
+
+		// Filter reservations by session ID
+		List<Ticket> reservationsForSession = allReservations.Where(r => r.SessionID == sessionID).ToList();
+
+		return reservationsForSession;
+	}
+
+	public static void CancelReservations(int sessionID)
+	{
+		// Read all reservations from the JSON file
+		List<Ticket> allReservations = JsonAccess.ReadFromJson<Ticket>(filePathReservations) ?? new List<Ticket>();
+
+		// Find reservations for the specified session ID
+		List<Ticket> reservationsToCancel = allReservations.Where(r => r.SessionID == sessionID).ToList();
+
+		if (reservationsToCancel.Count == 0)
+		{
+			Console.WriteLine("No reservations found for the specified session.");
+			return;
+		}
+
+		// Remove each reservation from the list
+		foreach (var reservation in reservationsToCancel)
+		{
+			allReservations.Remove(reservation);
+
+			// Here you can send cancellation emails or perform other necessary actions
+			CancellationUI.ShowCancellation(reservation);
+		}
+
+		// Save the updated list of reservations to the JSON file
+		JsonAccess.UploadToJson(allReservations, filePathReservations);
+	}
 }
 

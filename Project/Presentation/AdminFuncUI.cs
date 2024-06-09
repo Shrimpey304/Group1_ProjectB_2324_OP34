@@ -355,17 +355,34 @@ public class AdminFuncUI
 			return;
 		}
 
-		// Delete the session with the specified ID
-		bool success = MovieLogic.DeleteMovieSession(sessionID);
+		// Get the session to be deleted
+		MovieSessionModel sessionToDelete = MovieLogic.GetSession(sessionID);
 
-		if (success)
+		if (sessionToDelete != null)
 		{
-			Console.WriteLine($"Session with ID {sessionID} has been deleted.");
+			// Check if there are reservations for this session
+			List<Ticket> reservationsToDelete = TicketLogic.GetReservationsBySession(sessionID);
+
+			if (reservationsToDelete.Count > 0)
+			{
+				// Delete the session from cinema rooms and cancel corresponding reservations
+				TicketLogic.CancelReservations(sessionID); // Pass sessionID instead of reservationsToDelete
+				MovieLogic.DeleteMovieSession(sessionID);
+
+				Console.WriteLine($"Session with ID {sessionID} has been deleted, and corresponding reservations have been cancelled and notified.");
+			}
+			else
+			{
+				// No reservations for this session, simply delete the session
+				MovieLogic.DeleteMovieSession(sessionID);
+				Console.WriteLine($"Session with ID {sessionID} has been deleted.");
+			}
 		}
 		else
 		{
 			Console.WriteLine($"No session found with ID {sessionID}.");
 		}
 	}
+
 }
 
