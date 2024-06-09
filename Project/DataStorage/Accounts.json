@@ -115,5 +115,14 @@
     "FullName": "Aidan",
     "IsAdmin": false,
     "IsActive": false
+  },
+  {
+    "Id": 13,
+    "EmailAddress": "aidanvanboxtel@gmail.com",
+    "Password": "c70cd061bd7735a177276928c95e891aaf1ac0bfba6fae03b66329257f669248",
+    "Salt": "gXtfY9MxZrUMJfL3M2Jdmw==",
+    "FullName": "Aidan",
+    "IsAdmin": true,
+    "IsActive": false
   }
 ]

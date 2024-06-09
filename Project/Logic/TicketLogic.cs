@@ -159,31 +159,23 @@ public class TicketLogic
 		return reservationsForSession;
 	}
 
-	public static void CancelReservations(int sessionID)
+	public static void CancelReservations(List<Ticket> reservations)
 	{
-		// Read all reservations from the JSON file
-		List<Ticket> allReservations = JsonAccess.ReadFromJson<Ticket>(filePathReservations) ?? new List<Ticket>();
-
-		// Find reservations for the specified session ID
-		List<Ticket> reservationsToCancel = allReservations.Where(r => r.SessionID == sessionID).ToList();
-
-		if (reservationsToCancel.Count == 0)
+		foreach (var reservationToCancel in reservations)
 		{
-			Console.WriteLine("No reservations found for the specified session.");
-			return;
+			// Remove the SessionID from the corresponding cinema room JSON file
+			RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
+
+			// Remove the reservation from the list of reservations
+			_reservations.Remove(reservationToCancel);
+
+			// Upload the updated list of reservations to JSON
+			JsonAccess.UploadToJson(_reservations, filePathReservations);
+
+			// Show cancellation and send email
+			CancellationUI.ShowCancellation(reservationToCancel);
 		}
-
-		// Remove each reservation from the list
-		foreach (var reservation in reservationsToCancel)
-		{
-			allReservations.Remove(reservation);
-
-			// Here you can send cancellation emails or perform other necessary actions
-			CancellationUI.ShowCancellation(reservation);
-		}
-
-		// Save the updated list of reservations to the JSON file
-		JsonAccess.UploadToJson(allReservations, filePathReservations);
 	}
+
 }
 

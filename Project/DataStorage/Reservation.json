@@ -208,5 +208,27 @@
         "Item2": 2
       }
     ]
+  },
+  {
+    "TicketID": 11,
+    "SessionID": 31,
+    "ReservedSeats": [
+      {
+        "Item1": 0,
+        "Item2": 9
+      },
+      {
+        "Item1": 0,
+        "Item2": 10
+      },
+      {
+        "Item1": 0,
+        "Item2": 11
+      }
+    ],
+    "TotalPrice": 27.0,
+    "AccountID": 12,
+    "UserID": 12,
+    "OrderedSnacks": []
   }
 ]

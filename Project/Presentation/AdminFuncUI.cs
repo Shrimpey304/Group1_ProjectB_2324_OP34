@@ -366,7 +366,7 @@ public class AdminFuncUI
 			if (reservationsToDelete.Count > 0)
 			{
 				// Delete the session from cinema rooms and cancel corresponding reservations
-				TicketLogic.CancelReservations(sessionID); // Pass sessionID instead of reservationsToDelete
+				TicketLogic.CancelReservations(reservationsToDelete); // Pass reservationsToDelete
 				MovieLogic.DeleteMovieSession(sessionID);
 
 				Console.WriteLine($"Session with ID {sessionID} has been deleted, and corresponding reservations have been cancelled and notified.");
@@ -383,6 +383,7 @@ public class AdminFuncUI
 			Console.WriteLine($"No session found with ID {sessionID}.");
 		}
 	}
+
 
 }
 
