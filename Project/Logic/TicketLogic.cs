@@ -77,7 +77,6 @@ public class TicketLogic
 
 			if (reservationToCancel != null)
 			{
-				// Remove the SessionID from the corresponding cinema room JSON file
 				RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
 
 				_reservations.Remove(reservationToCancel);
@@ -106,15 +105,12 @@ public class TicketLogic
 
 	private static void RemoveSessionFromCinemaRoom(int sessionID)
 	{
-		// Get the file directory for the cinema room JSON files
 		List<string> cinemaRoomFiles = DisplayRoom.getFileDir();
 
 		foreach (string file in cinemaRoomFiles)
 		{
-			// Load the JSON data
 			List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(file);
 
-			// Find the session ID and remove it from the reservedInSessionID list
 			foreach (Seating seating in seatingJson)
 			{
 				for (int i = 0; i < seating.Rows; i++)
@@ -130,7 +126,6 @@ public class TicketLogic
 				}
 			}
 
-			// Save the modified data back to the JSON file
 			JsonAccess.UploadToJson(seatingJson, file);
 		}
 	}
@@ -140,7 +135,7 @@ public class TicketLogic
 	{
 		if (_reservations.Count == 0)
 		{
-			return 1; // Start with ID 1 if there are no existing reservations
+			return 1;
 		}
 		else
 		{
@@ -150,10 +145,8 @@ public class TicketLogic
 	}
 	public static List<Ticket> GetReservationsBySession(int sessionID)
 	{
-		// Read all reservations from the JSON file
 		List<Ticket> allReservations = JsonAccess.ReadFromJson<Ticket>(filePathReservations) ?? new List<Ticket>();
 
-		// Filter reservations by session ID
 		List<Ticket> reservationsForSession = allReservations.Where(r => r.SessionID == sessionID).ToList();
 
 		return reservationsForSession;
@@ -163,16 +156,12 @@ public class TicketLogic
 	{
 		foreach (var reservationToCancel in reservations)
 		{
-			// Remove the SessionID from the corresponding cinema room JSON file
 			RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
 
-			// Remove the reservation from the list of reservations
 			_reservations.Remove(reservationToCancel);
 
-			// Upload the updated list of reservations to JSON
 			JsonAccess.UploadToJson(_reservations, filePathReservations);
 
-			// Show cancellation and send email
 			CancellationUI.ShowCancellation(reservationToCancel);
 		}
 	}
