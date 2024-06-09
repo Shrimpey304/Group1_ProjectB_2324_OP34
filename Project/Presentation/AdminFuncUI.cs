@@ -61,9 +61,9 @@ public class AdminFuncUI
 			Console.WriteLine($"How old does a person have to be for {movieName}?\n");
 			Console.Write(">>> ");
 			string ageRestriction = Console.ReadLine()!;
-			if (!int.TryParse(ageRestriction, out int intageRestriction) || intageRestriction < 0)
+			if (!int.TryParse(ageRestriction, out int intAgeRestriction) || intAgeRestriction < 0 || intAgeRestriction > 21)
 			{
-				Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number.");
+				Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number up to 21.");
 				return;
 			}
 
@@ -91,7 +91,7 @@ public class AdminFuncUI
 				return;
 			}
 
-			MovieModel movie = new MovieModel(movieName, intageRestriction, genre, description);
+			MovieModel movie = new MovieModel(movieName, intAgeRestriction, genre, description);
 			MovieLogic.AddMovie(movie);
 
 			Console.Clear();
@@ -149,9 +149,9 @@ public class AdminFuncUI
 			string newAgeRestriction = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newAgeRestriction))
 			{
-				if (!int.TryParse(newAgeRestriction, out int age))
+				if (!int.TryParse(newAgeRestriction, out int age) || age < 0 || age > 21)
 				{
-					Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number.");
+					Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number up to 21.");
 					return;
 				}
 				movieToEdit.AgeRestriction = age;
