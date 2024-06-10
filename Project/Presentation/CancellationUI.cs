@@ -24,6 +24,15 @@ namespace Cinema
             // Retrieve movie title for the canceled reservation
             string currentMovieTitle = FindMovie(currentSession.Id);
 
+            // Retrieve the account associated with the ticket
+            AccountModel account = AccountsLogic.GetAccountById(ticket.AccountID);
+
+            if (account == null)
+            {
+                Console.WriteLine("Error: Account details not found.");
+                return;
+            }
+
             // Construct a string to represent the reserved seats
             string currentSeats = $"Seats (Row {ticket.ReservedSeats[0].Item1}): ";
             foreach (var seat in ticket.ReservedSeats)
@@ -152,7 +161,7 @@ namespace Cinema
             string smtpUser = "cineville@solidhorizons.net"; // SMTP username
             string smtpPass = "cineville123!"; // SMTP password
             string fromAddress = "cineville@solidhorizons.net"; // Your email address
-            string toAddress = AccountsLogic.CurrentAccount!.EmailAddress; // Recipient email address
+            string toAddress = account.EmailAddress; // Recipient email address (associated with the ticket)
             string subject = $"Cancellation of Reservation #{ticket.TicketID} at Cineville"; // Email subject
             string body = htmlBody; // Cancellation email body
 

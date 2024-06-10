@@ -49,6 +49,11 @@ public class AdminFuncUI
 			Console.WriteLine("What is the Movie's title?\n");
 			Console.Write(">>> ");
 			string movieName = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(movieName))
+			{
+				Console.WriteLine("Movie title cannot be empty.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -56,7 +61,11 @@ public class AdminFuncUI
 			Console.WriteLine($"How old does a person have to be for {movieName}?\n");
 			Console.Write(">>> ");
 			string ageRestriction = Console.ReadLine()!;
-			int intageRestriction = Convert.ToInt32(ageRestriction);
+			if (!int.TryParse(ageRestriction, out int intAgeRestriction) || intAgeRestriction < 0 || intAgeRestriction > 21)
+			{
+				Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number up to 21.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -64,6 +73,11 @@ public class AdminFuncUI
 			Console.WriteLine($"What Genre is {movieName}?\n");
 			Console.Write(">>> ");
 			string genre = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(genre))
+			{
+				Console.WriteLine("Genre cannot be empty.");
+				return;
+			}
 
 			Console.Clear();
 			DisplayHeaderUI.AdminHeader();
@@ -71,8 +85,13 @@ public class AdminFuncUI
 			Console.WriteLine($"Enter a description for: {movieName}\n");
 			Console.Write(">>> ");
 			string description = Console.ReadLine()!;
+			if (string.IsNullOrWhiteSpace(description))
+			{
+				Console.WriteLine("Description cannot be empty.");
+				return;
+			}
 
-			MovieModel movie = new MovieModel(movieName, intageRestriction, genre, description);
+			MovieModel movie = new MovieModel(movieName, intAgeRestriction, genre, description);
 			MovieLogic.AddMovie(movie);
 
 			Console.Clear();
@@ -80,13 +99,15 @@ public class AdminFuncUI
 			Console.WriteLine("\n---------------------------------------------------------------------------\n");
 			Console.WriteLine($"Movie Added\n");
 		}
-		catch
+		catch (Exception ex)
 		{
-			Console.WriteLine("invalid input");
+			Console.WriteLine($"Error: {ex.Message}");
+			Console.WriteLine("Invalid input");
 			MenuUtils.displayLoggedinAdminMenu();
 		}
 		return;
 	}
+
 
 	public static void AdminEditMovie()
 	{
@@ -128,7 +149,12 @@ public class AdminFuncUI
 			string newAgeRestriction = Console.ReadLine()!;
 			if (!string.IsNullOrEmpty(newAgeRestriction))
 			{
-				movieToEdit.AgeRestriction = int.Parse(newAgeRestriction);
+				if (!int.TryParse(newAgeRestriction, out int age) || age < 0 || age > 21)
+				{
+					Console.WriteLine("Invalid age restriction. Please enter a valid non-negative number up to 21.");
+					return;
+				}
+				movieToEdit.AgeRestriction = age;
 			}
 
 			Console.WriteLine("Enter new description (leave empty to keep current):");
@@ -154,6 +180,7 @@ public class AdminFuncUI
 			Console.WriteLine($"No movie found with ID {Id}.");
 		}
 	}
+
 
 	public static void AdminDeleteMovie()
 	{
@@ -190,65 +217,72 @@ public class AdminFuncUI
 
 	public static void adminAddSession()
 	{
-		try
+		Console.Clear();
+		DisplayHeaderUI.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		int selectedID = MovieUI.ListAllMovies();
+
+		Console.Clear();
+		DisplayHeaderUI.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine($"what date do you want to schedule this session (dd-mm-yyyy)\n");
+		Console.Write(">>> ");
+		string dateInput = Console.ReadLine()!;
+		if (!DateTime.TryParseExact(dateInput, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startDate))
 		{
-			Console.Clear();
-			DisplayHeaderUI.AdminHeader();
-			Console.WriteLine("\n---------------------------------------------------------------------------\n");
-			int selectedID = MovieUI.ListAllMovies();
-
-			Console.Clear();
-			DisplayHeaderUI.AdminHeader();
-			Console.WriteLine("\n---------------------------------------------------------------------------\n");
-			Console.WriteLine($"what date do you want to schedule this session (dd-mm-yyyy)\n");
-			Console.Write(">>> ");
-			string dateInput = Console.ReadLine()!;
-
-			Console.Clear();
-			DisplayHeaderUI.AdminHeader();
-			Console.WriteLine("\n---------------------------------------------------------------------------\n");
-			Console.WriteLine($"what time do you want to schedule this session (hh:mm:ss)\n");
-			Console.Write(">>> ");
-			string timeInput = Console.ReadLine()!;
-
-			Console.Clear();
-			DisplayHeaderUI.AdminHeader();
-			Console.WriteLine("\n---------------------------------------------------------------------------\n");
-			Console.WriteLine($"what is the duration of this movie (hh:mm:ss)\n");
-			Console.Write(">>> ");
-			string durationInput = Console.ReadLine()!;
-
-			Console.Clear();
-			DisplayHeaderUI.AdminHeader();
-			Console.WriteLine("\n---------------------------------------------------------------------------\n");
-			Console.WriteLine($"what room number will the movie play in\n");
-			Console.Write(">>> ");
-			string roomnumber = Console.ReadLine()!;
-			int introomnumber = Convert.ToInt32(roomnumber);
-
-			// Parse date and time inputs
-			DateTime startTime = DateTime.ParseExact(dateInput + " " + timeInput, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-			TimeSpan duration = TimeSpan.Parse(durationInput);
-
-			// Calculate end time
-			DateTime endTime = startTime.Add(duration);
-
-			MovieSessionModel session = new MovieSessionModel(startTime, endTime, selectedID, introomnumber);
-
-			MovieLogic.AddMovieSession(session);
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine($"Error: {ex.Message}");
-			Console.WriteLine("Invalid input");
+			Console.WriteLine("Invalid date format. Please enter the date in the format dd-mm-yyyy.");
 			return;
 		}
 
 		Console.Clear();
 		DisplayHeaderUI.AdminHeader();
 		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine($"what time do you want to schedule this session (hh:mm:ss)\n");
+		Console.Write(">>> ");
+		string timeInput = Console.ReadLine()!;
+		if (!TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan startTime))
+		{
+			Console.WriteLine("Invalid time format. Please enter the time in the format hh:mm:ss.");
+			return;
+		}
+
+		Console.Clear();
+		DisplayHeaderUI.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine($"what is the duration of this movie (hh:mm:ss)\n");
+		Console.Write(">>> ");
+		string durationInput = Console.ReadLine()!;
+		if (!TimeSpan.TryParseExact(durationInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan duration))
+		{
+			Console.WriteLine("Invalid duration format. Please enter the duration in the format hh:mm:ss.");
+			return;
+		}
+
+		Console.Clear();
+		DisplayHeaderUI.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine($"what room number will the movie play in\n");
+		Console.Write(">>> ");
+		string roomnumber = Console.ReadLine()!;
+		if (!int.TryParse(roomnumber, out int introomnumber))
+		{
+			Console.WriteLine("Invalid room number format. Please enter a valid integer.");
+			return;
+		}
+
+		// Calculate end time
+		DateTime endTime = startDate.Date + startTime + duration;
+
+		MovieSessionModel session = new MovieSessionModel(startDate, endTime, selectedID, introomnumber);
+
+		MovieLogic.AddMovieSession(session);
+
+		Console.Clear();
+		DisplayHeaderUI.AdminHeader();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine($"Session Added\n");
 	}
+
 	public static void adminUpdateSession()
 	{
 		Console.Clear();
@@ -355,17 +389,35 @@ public class AdminFuncUI
 			return;
 		}
 
-		// Delete the session with the specified ID
-		bool success = MovieLogic.DeleteMovieSession(sessionID);
+		// Get the session to be deleted
+		MovieSessionModel sessionToDelete = MovieLogic.GetSession(sessionID);
 
-		if (success)
+		if (sessionToDelete != null)
 		{
-			Console.WriteLine($"Session with ID {sessionID} has been deleted.");
+			// Check if there are reservations for this session
+			List<Ticket> reservationsToDelete = TicketLogic.GetReservationsBySession(sessionID);
+
+			if (reservationsToDelete.Count > 0)
+			{
+				// Delete the session from cinema rooms and cancel corresponding reservations
+				TicketLogic.CancelReservations(reservationsToDelete); // Pass reservationsToDelete
+				MovieLogic.DeleteMovieSession(sessionID);
+
+				Console.WriteLine($"Session with ID {sessionID} has been deleted, and corresponding reservations have been cancelled and notified.");
+			}
+			else
+			{
+				// No reservations for this session, simply delete the session
+				MovieLogic.DeleteMovieSession(sessionID);
+				Console.WriteLine($"Session with ID {sessionID} has been deleted.");
+			}
 		}
 		else
 		{
 			Console.WriteLine($"No session found with ID {sessionID}.");
 		}
 	}
+
+
 }
 

@@ -77,7 +77,6 @@ public class TicketLogic
 
 			if (reservationToCancel != null)
 			{
-				// Remove the SessionID from the corresponding cinema room JSON file
 				RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
 
 				_reservations.Remove(reservationToCancel);
@@ -106,15 +105,12 @@ public class TicketLogic
 
 	private static void RemoveSessionFromCinemaRoom(int sessionID)
 	{
-		// Get the file directory for the cinema room JSON files
 		List<string> cinemaRoomFiles = DisplayRoom.getFileDir();
 
 		foreach (string file in cinemaRoomFiles)
 		{
-			// Load the JSON data
 			List<Seating> seatingJson = JsonAccess.ReadFromJson<Seating>(file);
 
-			// Find the session ID and remove it from the reservedInSessionID list
 			foreach (Seating seating in seatingJson)
 			{
 				for (int i = 0; i < seating.Rows; i++)
@@ -130,7 +126,6 @@ public class TicketLogic
 				}
 			}
 
-			// Save the modified data back to the JSON file
 			JsonAccess.UploadToJson(seatingJson, file);
 		}
 	}
@@ -140,7 +135,7 @@ public class TicketLogic
 	{
 		if (_reservations.Count == 0)
 		{
-			return 1; // Start with ID 1 if there are no existing reservations
+			return 1;
 		}
 		else
 		{
@@ -148,5 +143,28 @@ public class TicketLogic
 			return maxID + 1;
 		}
 	}
+	public static List<Ticket> GetReservationsBySession(int sessionID)
+	{
+		List<Ticket> allReservations = JsonAccess.ReadFromJson<Ticket>(filePathReservations) ?? new List<Ticket>();
+
+		List<Ticket> reservationsForSession = allReservations.Where(r => r.SessionID == sessionID).ToList();
+
+		return reservationsForSession;
+	}
+
+	public static void CancelReservations(List<Ticket> reservations)
+	{
+		foreach (var reservationToCancel in reservations)
+		{
+			RemoveSessionFromCinemaRoom(reservationToCancel.SessionID);
+
+			_reservations.Remove(reservationToCancel);
+
+			JsonAccess.UploadToJson(_reservations, filePathReservations);
+
+			CancellationUI.ShowCancellation(reservationToCancel);
+		}
+	}
+
 }
 
