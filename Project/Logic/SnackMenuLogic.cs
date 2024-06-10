@@ -40,8 +40,8 @@ public class SnackMenuLogic
 	public static void RemoveSnack()
 	{
 		if (OrderedSnacks.Count != 0){
-			int counter = 0;
-			Console.WriteLine("Current Dictionary:");
+			int counter = 1;
+			Console.WriteLine("Current snacks:");
 			foreach (Tuple<string,int> snack in OrderedSnacks)
 			{
 				Console.WriteLine($"{counter++} {snack.Item1} [{snack.Item2}x]");
