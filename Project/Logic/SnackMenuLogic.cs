@@ -53,7 +53,7 @@ public class SnackMenuLogic
 			return;
 		}
 		// Ask user for the key to remove
-		Console.Write("\nEnter the number to remove: ");
+		Console.Write("\nEnter the number in front of the snack to remove: ");
 		string keyToRemove = Console.ReadLine()!;
 		int keyToRemoveInt = Convert.ToInt32(keyToRemove) - 1;
 
@@ -64,11 +64,11 @@ public class SnackMenuLogic
 
 			// Remove the key-value pair
 			OrderedSnacks.Remove(pairToRemove);
-			Console.WriteLine($"Key '{pairToRemove.Item1}' removed successfully.");
+			Console.WriteLine($"Snack '{pairToRemove.Item1}' removed successfully.");
 		}
 		else
 		{
-			Console.WriteLine($"Invalid index. Index should be between 0 and {OrderedSnacks.Count - 1}.");
+			Console.WriteLine($"Invalid input. Number should be between 0 and {OrderedSnacks.Count - 1}.");
 		}
 	} 
 	
