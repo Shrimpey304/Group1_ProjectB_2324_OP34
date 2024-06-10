@@ -55,7 +55,7 @@ public class SnackMenuLogic
 		// Ask user for the key to remove
 		Console.Write("\nEnter the number to remove: ");
 		string keyToRemove = Console.ReadLine()!;
-		int keyToRemoveInt = Convert.ToInt32(keyToRemove);
+		int keyToRemoveInt = Convert.ToInt32(keyToRemove) - 1;
 
 		if (keyToRemoveInt >= 0 && keyToRemoveInt < OrderedSnacks.Count)
 		{
