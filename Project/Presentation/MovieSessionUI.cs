@@ -9,7 +9,7 @@ public class MovieSessionUI
     public static MovieSessionModel ListSessions(int UserInput)
     {
         List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
-        bool HasSessions = SessionList.Any(session => session.MovieID == UserInput);
+        bool HasSessions = SessionList.Any(session => session.Id == UserInput);
 
         if (HasSessions)
         {
@@ -25,7 +25,7 @@ public class MovieSessionUI
                 Console.WriteLine($"|---------+---------------------------+---------------------------+-------|");
 
                 int Counter = 1;
-                foreach (MovieSessionModel session in SessionList.Where(s => s.MovieID == UserInput))
+                foreach (MovieSessionModel session in SessionList.Where(s => s.Id == UserInput))
                 {
                     Console.WriteLine($"| {Counter.ToString().PadRight(7)} | {session.StartTime.ToString().PadRight(25)} | End: {session.EndTime.ToString().PadRight(20)} | {session.RoomID.ToString().PadRight(5)} |");
                     usableSessions.Add(session);
@@ -57,7 +57,7 @@ public class MovieSessionUI
     public static void ListSessionsNoReservation(int UserInput)
     {
         var SessionList = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
-        if (SessionList.Any(session => session.MovieID == UserInput))
+        if (SessionList.Any(session => session.Id == UserInput))
         {
             Console.WriteLine("Upcoming sessions for this movie:");
             Console.WriteLine($" _________________________________________________________________________");
@@ -65,7 +65,7 @@ public class MovieSessionUI
             Console.WriteLine($"|---------+---------------------------+---------------------------+-------|");
 
             int Counter = 1;
-            foreach (MovieSessionModel session in SessionList.Where(s => s.MovieID == UserInput))
+            foreach (MovieSessionModel session in SessionList.Where(s => s.Id == UserInput))
             {
                 Console.WriteLine($"| {Counter.ToString().PadRight(7)} | {session.StartTime.ToString().PadRight(25)} | End: {session.EndTime.ToString().PadRight(20)} | {session.RoomID.ToString().PadRight(5)} |");
                 Counter++;
@@ -80,11 +80,5 @@ public class MovieSessionUI
         {
             Console.WriteLine("There are currently no sessions planned for this movie.\nPerhaps a different movie piques your interest.");
         }
-    }
-
-    public static MovieSessionModel GetSessionByID(int movieID)
-    {
-        List<MovieSessionModel> _sessions = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json");
-        return _sessions.FirstOrDefault(a => a.sessionID == movieID)!;
     }
 }

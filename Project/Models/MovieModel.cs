@@ -1,10 +1,10 @@
 namespace Cinema;
 
-public class MovieModel
+public class MovieModel : IID
 {
 	public string Title;
 	public static int mID = 1;
-	public int MovieID;
+	public int Id { get; set; }
 	public string Description;
 	public string GenreName;
 	public int AgeRestriction;
@@ -15,7 +15,7 @@ public class MovieModel
 		Description = description;
 		AgeRestriction = ageRest;
 		GenreName = genreName;
-		MovieID = mID ++;
+		Id = mID ++;
 	}
 	
 }

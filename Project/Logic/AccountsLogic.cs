@@ -63,24 +63,6 @@ public class AccountsLogic
 
 	}
 
-	public void UpdateList(AccountModel acc)
-	{
-		// Find the account in the list and update it
-		var index = _accounts.FindIndex(a => a.Id == acc.Id);
-
-		if (index != -1)
-		{
-			_accounts[index] = acc;
-			JsonAccess.UploadToJson(_accounts, filePathAccounts); // Persist changes to JSON
-		}
-	}
-
-	public AccountModel GetById(int id)
-	{
-		// Find and return the account by ID
-		return _accounts.FirstOrDefault(a => a.Id == id)!;
-	}
-
 	public static void GetTickets()
 	{
 
@@ -98,7 +80,7 @@ public class AccountsLogic
 				MovieSessionModel session = JsonAccess.ReadFromJson<MovieSessionModel>("DataStorage/Sessions.json").Where(s => s.sessionID == ticket.SessionID).First();
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.Id)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
 				if (ticket.ReservedSeats.Count != 0){
@@ -114,7 +96,7 @@ public class AccountsLogic
 				{
 					foreach (var snack in ticket.OrderedSnacks)
 					{
-						Console.WriteLine($"{snack.Item1} - {snack.Item2}");
+						Console.WriteLine($"- {snack.Item1} [{snack.Item2}x]");
 					}
 					Console.WriteLine();
 				}
@@ -140,7 +122,7 @@ public class AccountsLogic
 				Console.WriteLine("-------------------------------------------------");
 				Console.WriteLine($"Ticket ID: {ticket.TicketID}");
 				Console.WriteLine($"Room: {session.RoomID}");
-				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.MovieID)}\nTime: {session.StartTime}");
+				Console.WriteLine($"Movie: {MovieLogic.FindMovie(session.Id)}\nTime: {session.StartTime}");
 				Console.Write($"Seats (Row {ticket.ReservedSeats[0].Item1}): ");
 				
 
@@ -174,4 +156,9 @@ public class AccountsLogic
 		Console.WriteLine($"Name: {CurrentAccount!.FullName}");
 		Console.WriteLine($"EMail: {CurrentAccount.EmailAddress}");
 	}
+	public static AccountModel? GetAccountById(int accountId)
+        {
+            // Find and return the account by ID
+            return _accounts.FirstOrDefault(a => a.Id == accountId);
+        }
 }

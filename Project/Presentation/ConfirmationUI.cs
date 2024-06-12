@@ -13,7 +13,7 @@ class ConfirmationUI
 		string CurrentMovieTitle = "Title not found :(";
 		foreach (var movie in movies)
 		{
-			if (movie.MovieID == currentSession.MovieID)
+			if (movie.Id == currentSession.Id)
 			{
 				CurrentMovieTitle = movie.Title;
 			}
@@ -44,11 +44,11 @@ class ConfirmationUI
 
 		string ConfirmationTextBody = $"Your reservation has been made!\n" +
 			$"Reservation ID: #{ticket.TicketID}\n\n" +
-			$"Movie: [{currentSession.MovieID}] {CurrentMovieTitle}\n" +
+			$"Movie: [{currentSession.Id}] {CurrentMovieTitle}\n" +
 			$"Room: #{currentSession.RoomID}\n" +
 			$"{CurrentSeats}\n\n" +
 			$"{CurrentSnacks}\n\n" +
-			$"Total price: €{ticket.TotalPrice},00\n\n" +
+			$"Total price: {ticket.TotalPrice},00 Euro\n\n" +
 			"Please pay at the register\n\n"+
 			"Thank you for your reservation!";
 
@@ -126,11 +126,11 @@ class ConfirmationUI
 				<div class='content'>
 					<h1>Hello, {AccountsLogic.CurrentAccount!.EmailAddress}!</h1>
 					<p>Reservation Number: #{ticket.TicketID}</p>
-					<p>Movie: [{currentSession.MovieID}] {CurrentMovieTitle}</p>
+					<p>Movie: [{currentSession.Id}] {CurrentMovieTitle}</p>
 					<p>Room: #{currentSession.RoomID}</p>
 					<p>{CurrentSeats}<br></p>
 					<p>{HTMLSnacks}<br></p>
-					<p>Total price: €{ticket.TotalPrice},00<br></p>
+					<p>Total price: {ticket.TotalPrice},00 Euro<br></p>
 					<p>Thank you for your reservation!</p>
 					<a href='{actionLink}' class='button'>Visit website</a>
 				</div>

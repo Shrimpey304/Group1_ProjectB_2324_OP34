@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Cinema;
 
-public class AccountModel
+public class AccountModel : IID
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }

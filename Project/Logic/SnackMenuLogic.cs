@@ -26,15 +26,12 @@ public class SnackMenuLogic
 					}
 				}
 			}
-			if (OrderedSnacks != null)
+			foreach (Tuple<string,int> snack in OrderedSnacks)
 			{
-				foreach (Tuple<string,int> snack in OrderedSnacks)
-				{
-					Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
-				}
+				Console.WriteLine($"{snack.Item1} [{snack.Item2}x]");
 			}
 		}
-		Console.WriteLine($"Total cost:\n${TotalCost}");
+		Console.WriteLine($"Total cost:\n{TotalCost} Euro");
 		Console.WriteLine("Press any key to confirm your order");
 		Console.ReadKey();
 		TicketLogic.AddReservation();
@@ -43,8 +40,8 @@ public class SnackMenuLogic
 	public static void RemoveSnack()
 	{
 		if (OrderedSnacks.Count != 0){
-			int counter = 0;
-			Console.WriteLine("Current Dictionary:");
+			int counter = 1;
+			Console.WriteLine("Current snacks:");
 			foreach (Tuple<string,int> snack in OrderedSnacks)
 			{
 				Console.WriteLine($"{counter++} {snack.Item1} [{snack.Item2}x]");
@@ -52,13 +49,13 @@ public class SnackMenuLogic
 		}
 		else
 		{
-			Console.WriteLine("No snacks ordered.");
+			Console.WriteLine("No snacks to remove.");
 			return;
 		}
 		// Ask user for the key to remove
-		Console.Write("\nEnter the number to remove: ");
+		Console.Write("\nEnter the number in front of the snack to remove: ");
 		string keyToRemove = Console.ReadLine()!;
-		int keyToRemoveInt = Convert.ToInt32(keyToRemove);
+		int keyToRemoveInt = Convert.ToInt32(keyToRemove) - 1;
 
 		if (keyToRemoveInt >= 0 && keyToRemoveInt < OrderedSnacks.Count)
 		{
@@ -67,11 +64,11 @@ public class SnackMenuLogic
 
 			// Remove the key-value pair
 			OrderedSnacks.Remove(pairToRemove);
-			Console.WriteLine($"Key '{pairToRemove.Item1}' removed successfully.");
+			Console.WriteLine($"Snack '{pairToRemove.Item1}' removed successfully.");
 		}
 		else
 		{
-			Console.WriteLine($"Invalid index. Index should be between 0 and {OrderedSnacks.Count - 1}.");
+			Console.WriteLine($"Invalid input. Number should be between 0 and {OrderedSnacks.Count - 1}.");
 		}
 	} 
 	
@@ -79,7 +76,7 @@ public class SnackMenuLogic
 	{
 		foreach(SnackMenuModel snack in menuList)
 			{
-				if (snack.SnackID == OrderedSnackInt)
+				if (snack.Id == OrderedSnackInt)
 				{
 					Console.Clear();
 					Console.WriteLine($"How many {snack.Name} would you like?");

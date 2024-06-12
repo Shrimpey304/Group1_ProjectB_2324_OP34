@@ -34,7 +34,9 @@
         ],
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              7
+            ],
             "RowID": 0,
             "ColumnID": 3,
             "Price": 9.0,
@@ -44,7 +46,10 @@
         ],
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              7,
+              2
+            ],
             "RowID": 0,
             "ColumnID": 4,
             "Price": 9.0,
@@ -54,7 +59,9 @@
         ],
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              2
+            ],
             "RowID": 0,
             "ColumnID": 5,
             "Price": 9.0,
@@ -268,7 +275,9 @@
         ],
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              7
+            ],
             "RowID": 2,
             "ColumnID": 2,
             "Price": 9.0,
@@ -278,7 +287,9 @@
         ],
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              2
+            ],
             "RowID": 2,
             "ColumnID": 3,
             "Price": 9.0,
@@ -370,7 +381,9 @@
       [
         [
           {
-            "reservedInSessionID": [],
+            "reservedInSessionID": [
+              7
+            ],
             "RowID": 3,
             "ColumnID": 0,
             "Price": 9.0,
@@ -1710,7 +1723,7 @@
         ]
       ]
     ],
-    "ID": 1,
+    "Id": 1,
     "Rows": 14,
     "Columns": 12
   }

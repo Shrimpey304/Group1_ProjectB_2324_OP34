@@ -22,7 +22,16 @@ namespace Cinema
             }
 
             // Retrieve movie title for the canceled reservation
-            string currentMovieTitle = FindMovie(currentSession.MovieID);
+            string currentMovieTitle = FindMovie(currentSession.Id);
+
+            // Retrieve the account associated with the ticket
+            AccountModel account = AccountsLogic.GetAccountById(ticket.AccountID);
+
+            if (account == null)
+            {
+                Console.WriteLine("Error: Account details not found.");
+                return;
+            }
 
             // Construct a string to represent the reserved seats
             string currentSeats = $"Seats (Row {ticket.ReservedSeats[0].Item1}): ";
@@ -126,11 +135,11 @@ namespace Cinema
                         <div class='content'>
                             <h1>Hello, <span class='email-address'>{AccountsLogic.CurrentAccount!.EmailAddress}</span>!</h1>
                             <p>Reservation ID: #{ticket.TicketID}</p>
-                            <p>Movie: [{currentSession.MovieID}] {currentMovieTitle}</p>
+                            <p>Movie: [{currentSession.Id}] {currentMovieTitle}</p>
                             <p>Room: #{currentSession.RoomID}</p>
                             <p>{currentSeats}<br></p>
                             <p>{HTMLSnacks}<br></p>
-                            <p>Total price: €{ticket.TotalPrice},00<br></p>
+                            <p>Total price: {ticket.TotalPrice},00 Euro<br></p>
                             <p>Your reservation has been cancelled!</p>
                             <a href='{actionLink}' class='button'>Visit website</a>
                         </div>
@@ -152,7 +161,7 @@ namespace Cinema
             string smtpUser = "cineville@solidhorizons.net"; // SMTP username
             string smtpPass = "cineville123!"; // SMTP password
             string fromAddress = "cineville@solidhorizons.net"; // Your email address
-            string toAddress = AccountsLogic.CurrentAccount!.EmailAddress; // Recipient email address
+            string toAddress = account.EmailAddress; // Recipient email address (associated with the ticket)
             string subject = $"Cancellation of Reservation #{ticket.TicketID} at Cineville"; // Email subject
             string body = htmlBody; // Cancellation email body
 
@@ -161,12 +170,12 @@ namespace Cinema
         }
 
         const string filePathMovies = "DataStorage/Movies.json";
-        private static string FindMovie(int movieID)
+        private static string FindMovie(int Id)
         {
             var movies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
             foreach (MovieModel movie in movies)
             {
-                if (movie.MovieID == movieID)
+                if (movie.Id == Id)
                 {
                     return movie.Title;
                 }

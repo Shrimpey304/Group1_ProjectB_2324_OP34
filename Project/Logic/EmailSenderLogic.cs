@@ -69,5 +69,5 @@ public class EmailSenderLogic
 			Console.WriteLine($"Failed to validate server certificate. Error: {ex.Message}");
 			return false;
 		}
-		}
+	}
 }

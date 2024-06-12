@@ -60,7 +60,7 @@
     "Salt": "T9gsGD3hy4W0cbF0jKd0nw==",
     "FullName": "admin",
     "IsAdmin": true,
-    "IsActive": false
+    "IsActive": true
   },
   {
     "Id": 7,
@@ -115,5 +115,14 @@
     "FullName": "Aidan",
     "IsAdmin": false,
     "IsActive": false
+  },
+  {
+    "Id": 13,
+    "EmailAddress": "thom.jochems@gmail.com",
+    "Password": "c698fd9b3bf82db2541240722f2ea87077919bed828f21578e4085ad565d9b36",
+    "Salt": "R+bRGfUuUoVj7xmi9Bi7XA==",
+    "FullName": "Thom Jochems",
+    "IsAdmin": false,
+    "IsActive": true
   }
 ]
