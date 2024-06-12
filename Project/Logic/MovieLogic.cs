@@ -205,7 +205,9 @@ public class MovieLogic
 		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 		List<MovieModel> SelectedMovies = new();
 
-		Console.WriteLine("enter what you want genre you want to filter");
+		DisplayHeaderUI.HeaderMain();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
+		Console.WriteLine("Enter what genre you want to filter by");
 		Console.Write(">>>");
 		string filter = Console.ReadLine()!;
 
@@ -234,13 +236,15 @@ public class MovieLogic
 		List<MovieModel> CurrentMovies = JsonAccess.ReadFromJson<MovieModel>(filePathMovies);
 		List<MovieModel> SelectedMovies = new();
 
+		DisplayHeaderUI.HeaderMain();
+		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine("enter what you want to filter by");
 		Console.Write(">>>");
 		string filter = Console.ReadLine()!;
 
 		foreach(MovieModel movie in CurrentMovies){
 
-			if(movie.Title.Contains(filter)){
+			if(movie.Title.ToLower().Contains(filter.ToLower())){
 
 				SelectedMovies.Add(movie);
 

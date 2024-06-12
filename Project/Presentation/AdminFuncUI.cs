@@ -7,19 +7,36 @@ public class AdminFuncUI
 {
 	public static void adminChangeSeatTypes()
 	{
+		int intinp = 0;
+		bool validInput = false;
 		List<string> files = DisplayRoom.getFileDir();
 
-		int cnt = 0;
-		foreach(var file in files){
-			Console.WriteLine($"roomnumber: {cnt+1}\nfile:{file}");
-			Console.WriteLine("----------------------------");
-			cnt++;
-		}
-		Console.Write("room to adjust >> ");
-		string inp = Console.ReadLine()!;
-		int intinp = Convert.ToInt32(inp);
+		while (!validInput)
+		{
+			Console.Clear();
 
-		string selected = files[intinp-1];
+			int cnt = 0;
+			foreach(var file in files){
+				Console.WriteLine($"roomnumber: {cnt+1}\nfile:{file}");
+				Console.WriteLine("-------------------------------------");
+				cnt++;
+			}
+			Console.Write("room to adjust >> ");
+			string inp = Console.ReadLine()!;
+			
+			if (int.TryParse(inp, out intinp) && intinp >= 1 && intinp <= files.Count)
+			{
+				validInput = true;
+			}
+			else
+			{
+				Console.WriteLine("Invalid input. Please enter a number corresponding to a room number.");
+				Thread.Sleep(500);
+				
+			}
+		}
+
+		string selected = files[intinp - 1];
 
 		DisplayRoomUI.changeSeattype(selected);
 	}
@@ -111,8 +128,6 @@ public class AdminFuncUI
 
 	public static void AdminEditMovie()
 	{
-		DisplayHeaderUI.AdminHeader();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to edit:");
 		string IdInput = Console.ReadLine()!;
@@ -184,8 +199,6 @@ public class AdminFuncUI
 
 	public static void AdminDeleteMovie()
 	{
-		DisplayHeaderUI.AdminHeader();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		MovieUI.ShowMovies();
 		Console.WriteLine("Enter the ID of the movie you want to delete:");
 		string IdInput = Console.ReadLine()!;
@@ -288,8 +301,8 @@ public class AdminFuncUI
 		Console.Clear();
 		DisplayHeaderUI.AdminHeader();
 		MovieUI.ShowSessions();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine("Enter the ID of the session you want to update:");
+		Console.Write(">>> ");
 		int sessionID;
 		if (!int.TryParse(Console.ReadLine(), out sessionID))
 		{
@@ -371,7 +384,6 @@ public class AdminFuncUI
 		Console.Clear();
 		DisplayHeaderUI.AdminHeader();
 		MovieUI.ShowSessions();
-		Console.WriteLine("\n---------------------------------------------------------------------------\n");
 		Console.WriteLine("Enter the ID of the session you want to delete:");
 		string sessionIDInput = Console.ReadLine()!;
 

@@ -119,7 +119,7 @@ public static class MenuUtils{
 			{ "Add Session", AdminFuncUI.adminAddSession},
 			{ "Edit Session", AdminFuncUI.adminUpdateSession},
 			{ "Delete Session", AdminFuncUI.adminDeleteSession},
-			{ "Show Tickets", AccountsLogic.GetTickets},
+			// { "Show Tickets", AccountsLogic.GetTickets},
 			{ "Show Profile", AccountsLogic.getuserinfo},
 			{ "Show Menu", SnackMenuUI.ListSnackMenu},
 			{ "Logout", AccountsLogic.logout},

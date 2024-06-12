@@ -104,15 +104,15 @@ public class MovieUI{
 		List<MovieSessionModel> SessionList = JsonAccess.ReadFromJson<MovieSessionModel>(filePathSessions);
 
 		Console.Clear();
-		Console.WriteLine($" _______________________________________________________________________________________________________________");
-		Console.WriteLine($"| {"ID".PadRight(4)} | {"Start Time".PadRight(20)} | {"End Time".PadRight(20)} | {"Movie ID".PadRight(8)} | {"Room ID".PadRight(8)} |");
-		Console.WriteLine($"|------+----------------------+----------------------+----------+---------|");
+		Console.WriteLine($" _______________________________________________________________________________________________________________________________");
+		Console.WriteLine($"| {"ID".PadRight(4)} | {"Start Time".PadRight(20)} | {"End Time".PadRight(20)} | {"Movie ID".PadRight(8)} | {"Room ID".PadRight(8)} | {"MovieTitle".PadRight(50)} |");
+		Console.WriteLine($"|------+----------------------+----------------------+----------+----------+----------------------------------------------------|");
 
 		foreach (MovieSessionModel session in SessionList)
 		{
-			Console.WriteLine($"| {session.sessionID.ToString().PadRight(4)} | {session.StartTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.EndTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.Id.ToString().PadRight(8)} | {session.RoomID.ToString().PadRight(8)} |");
+			Console.WriteLine($"| {session.sessionID.ToString().PadRight(4)} | {session.StartTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.EndTime.ToString("dd-MM-yyyy HH:mm:ss").PadRight(20)} | {session.Id.ToString().PadRight(8)} | {session.RoomID.ToString().PadRight(8)} | {MovieLogic.GetMovieByID(session.Id).Title.PadRight(50)} |");
 		}
-		Console.WriteLine($" ------------------------------------------------------------------------------------------------------------------");
+		Console.WriteLine($" -------------------------------------------------------------------------------------------------------------------------------");
 	}
 
 

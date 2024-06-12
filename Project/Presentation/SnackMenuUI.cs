@@ -52,7 +52,7 @@ public static class SnackMenuUI
 	public static void ListSnackMenu()
 	{
 		Console.WriteLine(" ______________________________________________________________________________________________________________________________________________________");
-		Console.WriteLine("| Id | Name                                | Price   | Description                                                                   | Extra Info |");
+		Console.WriteLine("| Id      | Name                                | Price   | Description                                                                   | Extra Info |");
 		Console.WriteLine("|---------+-------------------------------------+---------+-------------------------------------------------------------------------------+------------|");
 
 		foreach (SnackMenuModel snack in SnackMenuLogic.menuList)
