@@ -31,7 +31,6 @@ public class AccountsLogic
 				}
 			}else{
 
-				throw new NullReferenceException("NullRefference exception in AccountLogic L34");
 
 			}
 			// Authentication failed

@@ -133,7 +133,7 @@ namespace Cinema
                             <h1>Cinneville Rotterdam</h1>
                         </div>
                         <div class='content'>
-                            <h1>Hello, <span class='email-address'>{AccountsLogic.CurrentAccount!.EmailAddress}</span>!</h1>
+                            <h1>Hello, <span class='email-address'>{account.EmailAddress}</span>!</h1>
                             <p>Reservation ID: #{ticket.TicketID}</p>
                             <p>Movie: [{currentSession.Id}] {currentMovieTitle}</p>
                             <p>Room: #{currentSession.RoomID}</p>

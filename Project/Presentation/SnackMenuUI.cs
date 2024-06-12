@@ -36,7 +36,7 @@ public static class SnackMenuUI
 					}
 				}
 				Console.WriteLine();
-				Console.WriteLine("Type the in the Id you want to order");	
+				Console.WriteLine("Type the Id of the snack you want to order");	
 				Console.Write(">>>");
 				OrderedSnack = Console.ReadLine()!;
 				}
