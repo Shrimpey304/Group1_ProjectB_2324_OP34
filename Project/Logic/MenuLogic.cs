@@ -134,7 +134,7 @@ public static class MenuUtils{
 		Dictionary<string, Action> DisplaySnack = new()
 		{ 
 
-			{ "Add snacks",() => SnackMenuUI.ListSnackMenu(true)},
+			{ "Add snack",() => SnackMenuUI.ListSnackMenu(true)},
 			{"Remove snack", SnackMenuLogic.RemoveSnack},
 			{ "Finish order", SnackMenuLogic.FinishOrdering},
 

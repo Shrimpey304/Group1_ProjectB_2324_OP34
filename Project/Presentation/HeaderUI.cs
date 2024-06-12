@@ -5,13 +5,13 @@ public static class DisplayHeaderUI{
 	//font used : https://patorjk.com/software/taag/#p=display&f=Jacky&t=test
 
 	public static void HeaderMain(){
-		Console.WriteLine("   ____    _____      __      _    _____     __    __       ____    ");
-		Console.WriteLine("  / ___)  (_   _)    /  \\    / )  / ___/     \\ \\  / /      (    )   ");
-		Console.WriteLine(" / /        | |     / /\\ \\  / /  ( (__       () \\/ ()      / /\\ \\   ");
-		Console.WriteLine("( (         | |     ) ) ) ) ) )   ) __)      / _  _ \\     ( (__) )  ");
-		Console.WriteLine("( (         | |    ( ( ( ( ( (   ( (        / / \\/ \\ \\     )    (   ");
-		Console.WriteLine(" \\ \\___    _| |__  / /  \\ \\/ /    \\ \\___   /_/      \\_\\   /  /\\  \\  ");
-		Console.WriteLine("  \\____)  /_____( (_/    \\__/      \\____\\ (/          \\) /__(  )__\\ ");
+		Console.WriteLine("   ____    _____      __      _    _____   __    __    _____   _____       _____        _____  ");
+		Console.WriteLine("  / ___)  (_   _)    /  \\    / )  / ___/   ) )  ( (   (_   _) (_   _)     (_   _)      / ___/  ");
+		Console.WriteLine(" / /        | |     / /\\ \\  / /  ( (__    ( (    ) )    | |     | |         | |       ( (__    ");
+		Console.WriteLine("( (         | |     ) ) ) ) ) )   ) __)    \\ \\  / /     | |     | |         | |        ) __)   ");
+		Console.WriteLine("( (         | |    ( ( ( ( ( (   ( (        \\ \\/ /      | |     | |   __    | |   __  ( (      ");
+		Console.WriteLine(" \\ \\___    _| |__  / /  \\ \\/ /    \\ \\___     \\  /      _| |__ __| |___) ) __| |___) )  \\ \\___  ");
+		Console.WriteLine("  \\____)  /_____( (_/    \\__/      \\____\\     \\/      /_____( \\________/  \\________/    \\____\\ ");                                                                                 
 	}
 	
 	public static void HeaderSnack()
