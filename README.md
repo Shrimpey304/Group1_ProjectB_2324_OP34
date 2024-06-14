@@ -4,7 +4,7 @@ Group1_ProjectB_2324_OP34
 
 ## How to run the program
 
-To run the program you dotnet run the Program.cs file
+To run the program you have to open the folder "Project" in any terminal and use "dotnet run" this should get you to the begin menu.
 
 ## NOTICE!
 The email system is created on a an email server of one of the team members.
